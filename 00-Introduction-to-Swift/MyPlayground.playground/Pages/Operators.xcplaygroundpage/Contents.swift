@@ -2,6 +2,19 @@
 
 import Foundation
 
-var str = "Hello, playground"
 
+func stringConcatenation() {
+    let firstName = "Taylor"
+    let lastName = "Swift"
+    
+    let fullName = firstName + " " + lastName
+}
+
+
+func main() {
+    stringConcatenation()
+}
+
+
+main()
 //: [Next](@next)
