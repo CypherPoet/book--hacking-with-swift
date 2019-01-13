@@ -7,10 +7,10 @@
 
 ### Beginner 📕
 
-| #    | Project                      | Topics Learned   | Progress   |
+| #    | Project                      | Topics Covered   | Progress   |
 | :--: | :--------------------------: | :--------------: | :--------: |
-| 0    | 🛠<br>[Introduction to Swift](/00-Introduction-to-Swift)  | Playgrounds, Constants & Variables, Data Types, Operators, String Interpolation, Arrays & Dictionaries, Conditional Statements, Control Flow, Functions & Methods, Optionals, Enumerations, Classes & Structures, Property Observers, Access Control, Typecasting, Closures | ✅ |
-| 1    | 📱<br>[Storm Viewer](/01-Storm-Viewer)           | Xcode, UIKit, UIViewController, `super`, viewDidLoad(), FileManager, Bundle, `try-catch` Blocks, print(), Storyboards & Interface Builder, UITableView, UITableViewDelegate, UITableViewDataSource, UIImageView, UIImage, UIButton, Auto Layout, Outlets & Actions, UINavigationController | 🔴 |
+| 0    | 🛠<br>[Introduction to Swift](/00-Introduction-to-Swift)  | playgrounds, constants & variables, data types, operators, string interpolation, arrays & dictionaries, conditional statements, control flow, functions & methods, optionals, enumerations, classes & structures, property observers, access control, typecasting, closures | ✅ |
+| 1    | 📱<br>[Storm Viewer](/01-Storm-Viewer)           | Xcode, UIKit, UIViewController, `super`, viewDidLoad(), FileManager, app bundles, `try-catch` blocks, Storyboards & Interface Builder, UITableView, UITableViewDelegate, UITableViewDataSource, UIImageView, UIImage, UIButton, Auto Layout, Outlets & Actions, UINavigationController, view stacking | ✅ |
 | 2    | 🕹<br>[Guess the Flag](/02-Guess-the-Flag)         | UIButton, Asset Catalogs, Retina displays & @2x and @3x images, UIControlState, CALayer, UIView, UIColor, CGColor, Random Numbers, UIAlertController, UIAlertAction, UILabel | 🔴 |
 | 3    | 🛠 [Social Media](/03-Social-Media)              | UIActivityViewController, UINavigationBar, UIBarButtonItem, `#selector` & `@objc`, Info.plist, Privacy & Permissions | 🔴 |
 | 4    | 📱<br>[Easy Browser](/04-Easy-Browser)           | WKWebView, URL, URLRequest, UIToolbar, UIProgressView, KVO Design Pattern, WKNavigationDelegate | 🔴 |

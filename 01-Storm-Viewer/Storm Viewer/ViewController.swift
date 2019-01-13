@@ -10,10 +10,12 @@ import UIKit
 
 class ViewController: UITableViewController {
     var imagePaths = [String]()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        title = "Storm Viewer ⚡️"
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         let fm = FileManager.default
         let path = Bundle.main.resourcePath!
@@ -25,9 +27,11 @@ class ViewController: UITableViewController {
         print(imagePaths)
     }
     
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return imagePaths.count
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
@@ -45,7 +49,7 @@ class ViewController: UITableViewController {
             // set the vc's `imagePath` property to match the image selected
             detailViewController.imagePath = imagePaths[indexPath.row]
             
-            // push the detail vc onto the naviation controller
+            // push the detail VC onto the navigation controller
             navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
