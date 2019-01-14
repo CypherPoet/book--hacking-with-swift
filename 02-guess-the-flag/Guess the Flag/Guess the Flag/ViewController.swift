@@ -8,35 +8,20 @@
 
 import UIKit
 
-let flagFileNames = [
-    "estonia",
-    "france",
-    "germany",
-    "ireland",
-    "italy",
-    "monaco",
-    "nigeria",
-    "poland",
-    "russia",
-    "spain",
-    "uk",
-    "us"
+let flagFilePathsAndNames = [
+    "estonia": "Estonia",
+    "france": "France",
+    "germany": "Germany",
+    "ireland": "Ireland",
+    "italy": "Italy",
+    "monaco": "Monaco",
+    "nigeria": "Nigeria",
+    "poland": "Poland",
+    "russia": "Russia",
+    "spain": "Spain",
+    "uk": "United Kingdom",
+    "us": "United States",
 ]
-
-enum Country: String {
-    case estonia = "Estonia"
-    case france = "France"
-    case germany = "Germany"
-    case ireland = "Ireland"
-    case italy = "Italy"
-    case monaco = "Monaco"
-    case nigeria = "Nigeria"
-    case poland = "Poland"
-    case russia = "Russia"
-    case spain = "Spain"
-    case uk = "United Kingdom"
-    case us = "United States"
-}
 
 
 class ViewController: UIViewController {
@@ -44,7 +29,6 @@ class ViewController: UIViewController {
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
     
-    var countries = [Country]()
     var currentScore = 0
     
     
@@ -58,14 +42,16 @@ class ViewController: UIViewController {
 
     
     func askQuestion() {
-        let flagToGuess = _getFlagToGuess()
-        let flagFileNameChoices = _getFlagChoices()
+        let flagKeys = flagFilePathsAndNames.keys.shuffled()[..<3]
+        let flagToGuess = flagFilePathsAndNames[flagKeys.randomElement() ?? flagKeys[0]]
+
+        if let _flagToGuess = flagToGuess {
+            title = "Which flag belongs to \(_flagToGuess)"
+        }
         
-        title = "Which flag belongs to \(flagToGuess.rawValue)"
-        
-        button1.setImage(UIImage(named: flagFileNameChoices[0]), for: .normal)
-        button2.setImage(UIImage(named: flagFileNameChoices[1]), for: .normal)
-        button3.setImage(UIImage(named: flagFileNameChoices[2]), for: .normal)
+        for (index, button) in [button1, button2, button3].enumerated() {
+            button?.setImage(UIImage(named: flagKeys[index]), for: .normal)
+        }
     }
     
     
@@ -74,19 +60,6 @@ class ViewController: UIViewController {
             button?.layer.borderWidth = 1
             button?.layer.borderColor = UIColor(red: 1.00, green: 0.28, blue: 0.38, alpha: 1.00).cgColor
         }
-    }
-    
-    
-    func _getFlagToGuess() -> Country {
-        return .russia
-    }
-    
-    func _getFlagChoices() -> [String] {
-        return [
-            flagFileNames[0],
-            flagFileNames[1],
-            flagFileNames[2],
-        ]
     }
 }
 
