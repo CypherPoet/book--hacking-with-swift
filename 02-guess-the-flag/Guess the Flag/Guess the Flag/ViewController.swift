@@ -28,8 +28,14 @@ class ViewController: UIViewController {
     @IBOutlet var button1: UIButton!
     @IBOutlet var button2: UIButton!
     @IBOutlet var button3: UIButton!
+    @IBOutlet var scoreLabel: UILabel!
     
-    var currentScore = 0
+    var currentScore = 0 {
+        didSet {
+            scoreLabel.text = "Current Score: \(self.currentScore)"
+        }
+    }
+    
     var flagChoiceKeys = [String]()
     var correctFlagKey: String?
     
@@ -37,6 +43,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        currentScore = 0
         setupButtonStyles()
         askQuestion()
     }
@@ -68,15 +75,18 @@ class ViewController: UIViewController {
     
     
     func handleChoice(wasCorrect: Bool) {
+        var responseMessage: String
+        
         if wasCorrect {
             title = "Correct!"
+            responseMessage = "You just gained 1 point."
             currentScore += 1
         } else {
             title = "Incorrect!"
-            currentScore = min(currentScore - 3, 0)
+            responseMessage = "You just lost 3 points"
+            currentScore = max(0, currentScore - 3)
         }
         
-        let responseMessage = "Your score is now \(currentScore)."
         let alertController = UIAlertController(title: title, message: responseMessage, preferredStyle: .alert)
         
         alertController.addAction(
