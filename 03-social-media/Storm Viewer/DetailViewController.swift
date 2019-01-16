@@ -11,7 +11,7 @@ import UIKit
 class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     
-    var imagePath: String?
+    var selectedImagePath: String?
     
     override var prefersHomeIndicatorAutoHidden: Bool {
         get {
@@ -23,7 +23,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = imagePath
+        title = selectedImagePath
         navigationItem.largeTitleDisplayMode = .never
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
             action: #selector(shareTapped)
         )
         
-        if let _imagePath = imagePath {
+        if let _imagePath = selectedImagePath {
             imageView.image = UIImage(named: _imagePath)
         }
     }

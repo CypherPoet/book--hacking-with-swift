@@ -45,7 +45,7 @@ class ViewController: UITableViewController {
         
         if let detailViewController = storyboard?.instantiateViewController(withIdentifier: "Image Detail") as? DetailViewController {
             // set the vc's `imagePath` property to match the image selected
-            detailViewController.imagePath = imagePaths[indexPath.row]
+            detailViewController.selectedImagePath = imagePaths[indexPath.row]
             
             // push the detail VC onto the navigation controller
             navigationController?.pushViewController(detailViewController, animated: true)
