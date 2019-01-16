@@ -60,21 +60,13 @@
 | 38   | 🛠<br>[Github Commits (Core Data)](/38-GitHubCommits) | NSFetchRequest, NSManagedObject, NSPredicate, NSSortDescriptor, NSFetchedResultsController, ISO8601DateFormatter | 🔴 |
 | 39   | 🛠<br>[Unit testing with XCTest](/39-Swift-Unit-Tests) | XCTest, `filter()`, Test-Driven Development, Functional Programming, XCTestCase, Setting a Baseline, NSCountedSet, XCUIApplication(), XCUIElementQuery, UI Test Recording | 🔴 |
 
-## Challenges 📙
+## Challenges 🥅
 
 | #    | Project Name                 | Progress |
 | :--: | :--------------------------: | :------: |
-| 0    | 🛠<br>[Fizz Buzz](/C00-Fizz-Buzz-Test)              | ✅ |
-| 1    | 📱<br>[Shopping List](/C01-Shopping-List)          | 🔴 |
-| 2    | 📱<br>[World Flags](/C02-World-Flags)            | 🔴 |
-| 3    | 🕹<br>[Hangman](/C03-Hangman)                | 🔴 |
-| 4    | 🛠<br>[Storm Viewer v2.0](/C04-Storm-Viewer-v2.0)     | 🔴 |
-| 5    | 📱<br>[World Facts](/C05-World-Facts)            | 🔴 |
-| 6    | 📱<br>[Apple Notes Clone](/C06-Apple-Notes-Clone)      | 🔴 |
-| 7    | 🕹<br>[Target Practice](/C07-Target-Practice)        | 🔴 |
-| 8    | 🛠<br>[Swift Extensions](/C08-Swift-Extensions)       | 🔴 |
-| 9    | 🛠<br>[Core Graphics Rainbow](/C09-Core-Graphics-Rainbow) | 🔴 |
-| 10   | 📱<br>[Private Photos](/C10-Private-Photos)         | 🔴 |
+| 0    | 🛠<br>[Fizz Buzz](/challenges/fizz-buzz)           | ✅ |
+| 2    | 📱<br>[World Flags](/challenges/world-flag-sharing)            | 🚧 |
+
 
 ## Certificate of Completion 🎓
 
