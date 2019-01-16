@@ -9,7 +9,8 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    var selectedImageAsset: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
