@@ -39,6 +39,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     
     func setupNavigationBar() {
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
+        
+        toolbarItems = [spacer, refresh]
+        navigationController?.isToolbarHidden = false
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "🌐",
             style: .plain,
