@@ -17,13 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="Yji-QI-dgW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="estonia" translatesAutoresizingMaskIntoConstraints="NO" id="7Zr-xM-JTq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7Zr-xM-JTq" firstAttribute="bottom" secondItem="A3t-x5-ago" secondAttribute="bottom" id="0JS-qJ-Cs4"/>
+                            <constraint firstItem="7Zr-xM-JTq" firstAttribute="top" secondItem="Yji-QI-dgW" secondAttribute="top" id="Bqi-uY-xhF"/>
+                            <constraint firstAttribute="trailing" secondItem="7Zr-xM-JTq" secondAttribute="trailing" id="UqI-9K-vDU"/>
+                            <constraint firstItem="7Zr-xM-JTq" firstAttribute="leading" secondItem="Yji-QI-dgW" secondAttribute="leading" id="wQ1-bT-TR0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="A3t-x5-ago"/>
                     </view>
+                    <connections>
+                        <outlet property="flagImageView" destination="7Zr-xM-JTq" id="mMt-MI-UTi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDZ-4X-lHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2802" y="116"/>
+            <point key="canvasLocation" x="2800.8000000000002" y="115.59220389805098"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="8Ra-nE-OJh">
@@ -90,4 +104,7 @@
             <point key="canvasLocation" x="1004" y="115.59220389805098"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="estonia" width="200" height="100"/>
+    </resources>
 </document>
