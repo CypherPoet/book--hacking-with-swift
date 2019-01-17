@@ -28,6 +28,8 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     
@@ -38,7 +40,7 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Flag List Item", for: indexPath) as! FlagTableViewCell
-        let flagAssetName = Array(flagAssetNamesAndLabels.keys)[indexPath.row]
+        let flagAssetName = Array(flagAssetNamesAndLabels.keys.sorted())[indexPath.row]
         let flagLabel = flagAssetNamesAndLabels[flagAssetName]
         
         cell.flagImage?.image = UIImage(named: flagAssetName)
@@ -51,9 +53,12 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // load the detail view controller on to the navigation controller stack
         if let detailVC = storyboard?.instantiateViewController(withIdentifier: "Flag Detail") as? DetailViewController {
-            let flagAssetName = Array(flagAssetNamesAndLabels.keys)[indexPath.row]
-
+            let flagAssetName = Array(flagAssetNamesAndLabels.keys.sorted())[indexPath.row]
+            let flagName = flagAssetNamesAndLabels[flagAssetName]
+            
             detailVC.selectedImageAsset = flagAssetName
+            detailVC.flagName = flagName
+            
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
