@@ -47,6 +47,34 @@ class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            progressView.progress = Float(webView.estimatedProgress)
+        }
+    }
+    
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let url = navigationAction.request.url
+        
+        if let host = url?.host {
+            for siteName in siteNames {
+                if host.contains(siteName) {
+                    decisionHandler(.allow)
+                    return
+                }
+            }
+        }
+        
+        decisionHandler(.cancel)
+    }
+    
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        title = webView.title
+    }
+    
+    
     func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "🌐",
@@ -92,18 +120,6 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let pageURL = URL(string: "https://\(action.title!)")!
         
         webView.load(URLRequest(url: pageURL))
-    }
-    
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        title = webView.title
-    }
-    
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "estimatedProgress" {
-            progressView.progress = Float(webView.estimatedProgress)
-        }
     }
 }
 
