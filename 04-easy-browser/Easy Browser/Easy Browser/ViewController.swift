@@ -11,6 +11,7 @@ import WebKit
 
 class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
+    var progressView: UIProgressView!
     var urlsToChoose = [URL]()
     
     let siteNames = [
@@ -26,6 +27,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.navigationDelegate = self
         
         view = webView
+        
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
     }
     
     
@@ -35,22 +38,35 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.allowsBackForwardNavigationGestures = true
         
         setupNavigationBar()
+        setupToolbar()
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress))
     }
     
     
     func setupNavigationBar() {
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
-        
-        toolbarItems = [spacer, refresh]
-        navigationController?.isToolbarHidden = false
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "🌐",
             style: .plain,
             target: self,
             action: #selector(openSitePicker)
         )
+    }
+    
+    
+    func setupToolbar() {
+        progressView = UIProgressView(progressViewStyle: .default)
+        progressView.sizeToFit()
+        
+        let progressButton = UIBarButtonItem(customView: progressView)
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
+        
+        toolbarItems = [progressButton, spacer, refresh]
+        navigationController?.isToolbarHidden = false
     }
     
     
@@ -81,6 +97,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         title = webView.title
+    }
+    
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress" {
+            progressView.progress = Float(webView.estimatedProgress)
+        }
     }
 }
 
