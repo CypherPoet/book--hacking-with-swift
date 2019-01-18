@@ -41,9 +41,11 @@ class ViewController: UITableViewController {
         if let pathToStartWords = Bundle.main.path(forResource: "starting-words", ofType: "txt") {
             if let startWords = try? String(contentsOfFile: pathToStartWords) {
                 allWords = startWords.components(separatedBy: "\n")
+            } else {
+                loadDefaultWords()
             }
         } else {
-            allWords = ["silkworm"]
+            loadDefaultWords()
         }
     }
     
