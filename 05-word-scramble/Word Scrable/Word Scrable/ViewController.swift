@@ -108,8 +108,14 @@ class ViewController: UITableViewController {
                     
                     usedWords.insert(answer, at: 0)
                     tableView.insertRows(at: [indexPath], with: .automatic)
+                } else {
+                    showSubmissionError(title: "Try again!", message: "\"\(answer)\" is not a valid anagram for \"\(currentSubject!)\"")
                 }
+            } else {
+                showSubmissionError(title: "Unknown word", message: "\"\(answer)\" wasn't recognized as a valid English word")
             }
+        } else {
+            showSubmissionError(title: "Be original!", message: "You've already used \"\(answer)\" as an anagram for \"\(currentSubject!)\"")
         }
     }
     
@@ -152,6 +158,14 @@ class ViewController: UITableViewController {
         )
         
         return misspelledRange.location == NSNotFound
+    }
+    
+    
+    func showSubmissionError(title: String, message: String) -> Void {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertController, animated: true)
     }
 }
 
