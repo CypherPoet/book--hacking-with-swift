@@ -92,8 +92,66 @@ class ViewController: UITableViewController {
     }
     
     
+    /*
+     Given a subject word, we check that an answer:
+     - Hasn't already been used by the player
+     - Can be made from the letters of the subject
+     - Is a valid English word (i.e., not gibberish)
+     */
     func handleSubmitAnswer(answer: String) {
         print("Handling answer of \"\(answer)\"")
+        
+        if isOriginalAnswer(word: answer) {
+            if isValidEnglish(word: answer) {
+                if isValidAnagram(subject: currentSubject, answer: answer) {
+                    let indexPath = IndexPath(row: 0, section: 0)
+                    
+                    usedWords.insert(answer, at: 0)
+                    tableView.insertRows(at: [indexPath], with: .automatic)
+                }
+            }
+        }
+    }
+    
+    
+    func isOriginalAnswer(word: String) -> Bool {
+        return !usedWords.contains(word.lowercased())
+    }
+    
+    
+    func isValidAnagram(subject: String, answer: String) -> Bool {
+        if answer.count > subject.count { return false }
+        
+        let sortedSubjectLetters = String(subject.sorted())
+        var sortedAnswerLetters = String(answer.sorted())
+        
+        while sortedAnswerLetters.count > 0 {
+            let charToMatch = sortedAnswerLetters.first!
+            
+            if !sortedSubjectLetters.contains(charToMatch) {
+                return false
+            }
+            
+            let numCharsToDrop = sortedAnswerLetters.lastIndex(of: charToMatch)!.encodedOffset + 1
+            
+            sortedAnswerLetters = String(sortedAnswerLetters.dropFirst(numCharsToDrop))
+        }
+        return true
+    }
+    
+    
+    func isValidEnglish(word: String) -> Bool {
+        let checker = UITextChecker()
+        let range = NSMakeRange(0, word.utf16.count)
+        let misspelledRange = checker.rangeOfMisspelledWord(
+            in: word,
+            range: range,
+            startingAt: 0,
+            wrap: false,
+            language: "en"
+        )
+        
+        return misspelledRange.location == NSNotFound
     }
 }
 
