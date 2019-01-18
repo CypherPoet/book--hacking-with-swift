@@ -14,8 +14,8 @@
 | 2    | 🕹<br>[Guess the Flag](/02-guess-the-flag)         | UIButton, action handling, asset catalogs, retina displays & @2x and @3x images, UIControlState, CALayer, UIView, UIColor, CGColor, random numbers, UIAlertController, UIAlertAction, UILabel, Auto Layout and alignment | ✅ |
 | 3    | 🛠 [Social Media](/03-social-media)              | UIActivityViewController, UINavigationBar, UIBarButtonItem, `#selector` & `@objc`, Info.plist, privacy & permissions | ✅ |
 | 4    | 📱<br>[Easy Browser](/04-easy-browser)           | WKWebView, URL, URLRequest, UIToolbar, UIProgressView, KVO (Key-Value Observing) design pattern (not sure if this is an optimal design for most cases, though), WKNavigationDelegate, classes (instances passed by reference) vs structs (instances passed by copy), class inheritance and protocol conformance | ✅ |
-| 5    | 🕹<br>[Word Scramble](/05-word-scramble)          | String Methods, NSRange, UITextChecker, lowercased(), IndexPath | 🔴 |
-| 6    | 🛠<br>[Auto Layout](/06-Auto-Layout)            | Ctrl-drag, Visual Format Language | 🔴 |
+| 5    | 🕹<br>[Word Scramble](/05-word-scramble)          | string methods, NSRange, UITextChecker, lowercased(), IndexPath, anagrams, inserting rows into tables without reloading, UIAlertController text fields, constants can be declared w/o a value, as long as it's set before use | ✅ |
+| 6    | 🛠<br>[Auto Layout](/06-auto-layout)            | Ctrl-drag, Visual Format Language | 🚧 |
 | 7    | 📱<br>[WH Petitions](/07-White-House-Petitions)           | UITabBarController, Parsing JSON, SwiftyJSON didFinishLaunchingWithOptions | 🔴 |
 | 8    | 🕹<br>[Seven Swifty Words](/08-Seven-Swifty-Words)     | addTarget(), enumerated(), index(of:), joined(), replacingOccurrences(), Property Observers, Range Operators | 🔴 |
 | 9    | 🛠<br>[Grand Central Dispatch](/09-Grand-Central-Dispatch) | async(), DispatchQueue.main, Quality of Service, global(), performSelector(inBackground:) | 🔴 |
