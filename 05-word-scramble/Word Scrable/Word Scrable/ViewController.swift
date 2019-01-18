@@ -98,25 +98,36 @@ class ViewController: UITableViewController {
      - Can be made from the letters of the subject
      - Is a valid English word (i.e., not gibberish)
      */
-    func handleSubmitAnswer(answer: String) {
+    func handleSubmitAnswer(answer: String) -> Void {
         print("Handling answer of \"\(answer)\"")
         
-        if isOriginalAnswer(word: answer) {
-            if isValidEnglish(word: answer) {
-                if isValidAnagram(subject: currentSubject, answer: answer) {
-                    let indexPath = IndexPath(row: 0, section: 0)
-                    
-                    usedWords.insert(answer, at: 0)
-                    tableView.insertRows(at: [indexPath], with: .automatic)
-                } else {
-                    showSubmissionError(title: "Try again!", message: "\"\(answer)\" is not a valid anagram for \"\(currentSubject!)\"")
-                }
-            } else {
-                showSubmissionError(title: "Unknown word", message: "\"\(answer)\" wasn't recognized as a valid English word")
-            }
-        } else {
-            showSubmissionError(title: "Be original!", message: "You've already used \"\(answer)\" as an anagram for \"\(currentSubject!)\"")
+        if answer.isEmpty {
+            return showSubmissionError(title: "Try again!", message: "Your answer can't be empty.")
         }
+
+        if answer == currentSubject! {
+            return showSubmissionError(title: "Mix it up!", message: "Your answer shouldn't match the original word")
+        }
+
+        if !isOriginalAnswer(word: answer) {
+            return showSubmissionError(
+                title: "Be original!",
+                message: "You've already used \"\(answer)\" as an anagram for \"\(currentSubject!)\""
+            )
+        }
+
+        if !isValidEnglish(word: answer) {
+            return showSubmissionError(title: "Unknown word", message: "\"\(answer)\" wasn't recognized as a valid English word")
+        }
+        
+        if !isValidAnagram(subject: currentSubject, answer: answer) {
+            return showSubmissionError(title: "Try again!", message: "\"\(answer)\" is not a valid anagram for \"\(currentSubject!)\"")
+        }
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        usedWords.insert(answer, at: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
     
@@ -166,6 +177,11 @@ class ViewController: UITableViewController {
         
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         present(alertController, animated: true)
+    }
+    
+    
+    func loadDefaultWords() {
+        allWords = ["silkworm"]
     }
 }
 
