@@ -69,10 +69,15 @@ class ViewController: UIViewController {
         }
         
         /*
-            📝 By ommitting the ending "|", we're leaving whitespace past the last label,
-            instead of forcing it to stretch to the bottom edge of the view
+         Auto Layout VFL string with the following constraints:
+            - Each of the 5 labels should be 88 points high.
+            - The bottom of our last label must be at least 10 points away from the
+              bottom of the view controller's view.
+         
+         📝 When specifying the size of a space, we need to use the "-" before and
+            after the size: a simple space, "-", becomes "-(>=10)-".
         */
-        let layouString = "V:|" + (1...5).map({ "[label\($0)]" }).joined(separator: "-")
+        let layouString = "V:|" + (1...5).map({ "[label\($0)(==88)]" }).joined(separator: "-") + "-(>=10)-|"
         
         view.addConstraints(
             NSLayoutConstraint.constraints(
