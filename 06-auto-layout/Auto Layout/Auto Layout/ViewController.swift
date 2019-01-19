@@ -27,7 +27,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         createViews()
-        addViewConstraints()
+        addHorizontalViewConstraints()
+        addVerticalViewConstraints()
     }
     
     
@@ -56,7 +57,7 @@ class ViewController: UIViewController {
     }
     
     
-    func addViewConstraints() {
+    func addHorizontalViewConstraints() {
         for labelKey in labelViews.keys {
             view.addConstraints(
                 NSLayoutConstraint.constraints(
@@ -67,32 +68,38 @@ class ViewController: UIViewController {
                 )
             )
         }
-        
+    }
+    
+    
+    func addVerticalViewConstraints() {
         let metrics = ["labelHeight": 88]
         
         /*
          Auto Layout VFL string with the following constraints:
-            - Each of the 5 labels should be "(labelHeight)" points high.
+            - Each of the 5 labels should be "(labelHeight)" points high, with a priority of "999"
             - The bottom of our last label must be at least 10 points away from the
               bottom of the view controller's view.
          
          📝 When specifying the size of a space, we need to use the "-" before and
             after the size: a simple space, "-", becomes "-(>=10)-".
         */
-        let layouString = "V:|" + (1...5).map({ "[label\($0)(labelHeight)]" }).joined(separator: "-") + "-(>=10)-|"
+        let layoutStringPrefix = "V:|"
+        let layoutStringHeights = "[label1(labelHeight@999)]-[label2(label1)]-[label3(label1)]-[label4(label1)]-[label5(label1)]"
+        let layoutStringSuffix = "->=10-|"
+        
+        let layoutString = "\(layoutStringPrefix)\(layoutStringHeights)\(layoutStringSuffix)"
+        
+        
         
         view.addConstraints(
             NSLayoutConstraint.constraints(
-                withVisualFormat: layouString,
+                withVisualFormat: layoutString,
                 options: [],
                 metrics: metrics,
                 views: labelViews
             )
         )
     }
-    
-    
-
 
 }
 
