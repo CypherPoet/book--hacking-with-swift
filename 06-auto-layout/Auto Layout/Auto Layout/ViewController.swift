@@ -27,8 +27,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         createViews()
-        addHorizontalViewConstraints()
-        addVerticalViewConstraints()
+//        addHorizontalViewConstraints()
+//        addVerticalViewConstraints()
+        addAnchorConstraints()
     }
     
     
@@ -99,6 +100,23 @@ class ViewController: UIViewController {
                 views: labelViews
             )
         )
+    }
+    
+    
+    func addAnchorConstraints() {
+        for labelNumber in 1...labelViews.count {
+            let label = labelViews["label\(labelNumber)"]!
+            
+            label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+            label.heightAnchor.constraint(equalToConstant: 88).isActive = true
+            
+            if labelNumber > 1 {
+                let labelAbove = labelViews["label\(labelNumber - 1)"]!
+                
+                // create a topAnchor constraint if we have a previous label (and thus, a bottomAnchor to offset from)
+                label.topAnchor.constraint(equalTo: labelAbove.bottomAnchor, constant: 10).isActive = true
+            }
+        }
     }
 
 }
