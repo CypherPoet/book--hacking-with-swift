@@ -68,22 +68,24 @@ class ViewController: UIViewController {
             )
         }
         
+        let metrics = ["labelHeight": 88]
+        
         /*
          Auto Layout VFL string with the following constraints:
-            - Each of the 5 labels should be 88 points high.
+            - Each of the 5 labels should be "(labelHeight)" points high.
             - The bottom of our last label must be at least 10 points away from the
               bottom of the view controller's view.
          
          📝 When specifying the size of a space, we need to use the "-" before and
             after the size: a simple space, "-", becomes "-(>=10)-".
         */
-        let layouString = "V:|" + (1...5).map({ "[label\($0)(==88)]" }).joined(separator: "-") + "-(>=10)-|"
+        let layouString = "V:|" + (1...5).map({ "[label\($0)(labelHeight)]" }).joined(separator: "-") + "-(>=10)-|"
         
         view.addConstraints(
             NSLayoutConstraint.constraints(
                 withVisualFormat: layouString,
                 options: [],
-                metrics: nil,
+                metrics: metrics,
                 views: labelViews
             )
         )
