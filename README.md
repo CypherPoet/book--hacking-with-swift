@@ -16,7 +16,7 @@
 | 4    | 📱<br>[Easy Browser](/04-easy-browser)           | WKWebView, URL, URLRequest, UIToolbar, UIProgressView, KVO (Key-Value Observing) design pattern (not sure if this is an optimal design for most cases, though), WKNavigationDelegate, classes (instances passed by reference) vs structs (instances passed by copy), class inheritance and protocol conformance | ✅ |
 | 5    | 🕹<br>[Word Scramble](/05-word-scramble)          | string methods, NSRange, UITextChecker, lowercased(), IndexPath, anagrams, inserting rows into tables without reloading, UIAlertController text fields, constants can be declared w/o a value, as long as it's set before use | ✅ |
 | 6    | 🛠<br>[Auto Layout](/06-auto-layout)            | Ctrl-drag, Auto Layout Visual Format Language (including anchors, metrics, priority, and vertical/horizontal specifications) | ✅ |
-| 7    | 📱<br>[White House Petitions](/07-white-house-petitions)           | UITabBarController, Parsing JSON, SwiftyJSON didFinishLaunchingWithOptions | 🔴 |
+| 7    | 📱<br>[Near Earth Objects](/07-near-earth-objects)           | UITabBarController, Parsing JSON, SwiftyJSON didFinishLaunchingWithOptions | 🚧 |
 | 8    | 🕹<br>[Seven Swifty Words](/08-Seven-Swifty-Words)     | addTarget(), enumerated(), index(of:), joined(), replacingOccurrences(), Property Observers, Range Operators | 🔴 |
 | 9    | 🛠<br>[Grand Central Dispatch](/09-Grand-Central-Dispatch) | async(), DispatchQueue.main, Quality of Service, global(), performSelector(inBackground:) | 🔴 |
 | 10   | 📱<br>[Names to Faces](/10-Names-to-Faces)   | UICollectionView, UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerController, UUID, Custom NSObject Classes | 🔴 |
