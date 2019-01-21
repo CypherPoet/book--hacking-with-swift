@@ -8,22 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		F3C4951721F58F39002853B6 /* AsteroidDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4951621F58F39002853B6 /* AsteroidDetailViewController.swift */; };
+		F3C4951921F67AA0002853B6 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4951821F67AA0002853B6 /* HistoryViewController.swift */; };
+		F3C4951B21F687DF002853B6 /* NEOHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4951A21F687DF002853B6 /* NEOHistory.swift */; };
 		F3FD7F1121F3F56D009FDABA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD7F1021F3F56D009FDABA /* AppDelegate.swift */; };
 		F3FD7F1321F3F56D009FDABA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD7F1221F3F56D009FDABA /* HomeViewController.swift */; };
 		F3FD7F1621F3F56D009FDABA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3FD7F1421F3F56D009FDABA /* Main.storyboard */; };
 		F3FD7F1821F3F56E009FDABA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3FD7F1721F3F56E009FDABA /* Assets.xcassets */; };
-		F3FD7F1B21F3F56E009FDABA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3FD7F1921F3F56E009FDABA /* LaunchScreen.storyboard */; };
 		F3FD7F2321F420D7009FDABA /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3FD7F2221F420D7009FDABA /* Asteroid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F3C4951621F58F39002853B6 /* AsteroidDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidDetailViewController.swift; sourceTree = "<group>"; };
+		F3C4951821F67AA0002853B6 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		F3C4951A21F687DF002853B6 /* NEOHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEOHistory.swift; sourceTree = "<group>"; };
 		F3FD7F0D21F3F56D009FDABA /* Near Earth Objects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Near Earth Objects.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3FD7F1021F3F56D009FDABA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3FD7F1221F3F56D009FDABA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F3FD7F1521F3F56D009FDABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3FD7F1721F3F56E009FDABA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F3FD7F1A21F3F56E009FDABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3FD7F1C21F3F56E009FDABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3FD7F2221F420D7009FDABA /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,13 +60,14 @@
 		F3FD7F0F21F3F56D009FDABA /* Near Earth Objects */ = {
 			isa = PBXGroup;
 			children = (
+				F3C4951A21F687DF002853B6 /* NEOHistory.swift */,
+				F3C4951821F67AA0002853B6 /* HistoryViewController.swift */,
 				F3FD7F1021F3F56D009FDABA /* AppDelegate.swift */,
 				F3FD7F1221F3F56D009FDABA /* HomeViewController.swift */,
 				F3FD7F2221F420D7009FDABA /* Asteroid.swift */,
 				F3FD7F1421F3F56D009FDABA /* Main.storyboard */,
 				F3C4951621F58F39002853B6 /* AsteroidDetailViewController.swift */,
 				F3FD7F1721F3F56E009FDABA /* Assets.xcassets */,
-				F3FD7F1921F3F56E009FDABA /* LaunchScreen.storyboard */,
 				F3FD7F1C21F3F56E009FDABA /* Info.plist */,
 			);
 			path = "Near Earth Objects";
@@ -128,7 +131,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3FD7F1B21F3F56E009FDABA /* LaunchScreen.storyboard in Resources */,
 				F3FD7F1821F3F56E009FDABA /* Assets.xcassets in Resources */,
 				F3FD7F1621F3F56D009FDABA /* Main.storyboard in Resources */,
 			);
@@ -142,8 +144,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C4951721F58F39002853B6 /* AsteroidDetailViewController.swift in Sources */,
+				F3C4951B21F687DF002853B6 /* NEOHistory.swift in Sources */,
 				F3FD7F1321F3F56D009FDABA /* HomeViewController.swift in Sources */,
 				F3FD7F1121F3F56D009FDABA /* AppDelegate.swift in Sources */,
+				F3C4951921F67AA0002853B6 /* HistoryViewController.swift in Sources */,
 				F3FD7F2321F420D7009FDABA /* Asteroid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -157,14 +161,6 @@
 				F3FD7F1521F3F56D009FDABA /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F3FD7F1921F3F56E009FDABA /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F3FD7F1A21F3F56E009FDABA /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

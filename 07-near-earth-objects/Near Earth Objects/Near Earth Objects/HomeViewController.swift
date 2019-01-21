@@ -9,7 +9,8 @@
 import UIKit
 
 class HomeViewController: UITableViewController {
-    var asteroids = [Asteroid]()
+    let apiURL = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY"
+    var closeApproachAsteroids = [Asteroid]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +21,13 @@ class HomeViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return asteroids.count
+        return closeApproachAsteroids.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Asteroid Cell", for: indexPath)
-        let asteroid = asteroids[indexPath.row]
+        let asteroid = closeApproachAsteroids[indexPath.row]
         
         cell.textLabel?.text = asteroid.name
         
@@ -43,30 +44,33 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = AsteroidDetailViewController()
         
-        detailVC.asteroid = asteroids[indexPath.row]
+        detailVC.asteroid = closeApproachAsteroids[indexPath.row]
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
 
     func loadAsteroids() {
-        let urlString = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY"
-        
-        if let apiURL = URL(string: urlString) {
+        if let apiURL = URL(string: apiURL) {
             if let data = try? Data(contentsOf: apiURL) {
-                parseAsteroidData(data: data)
+                closeApproachAsteroids = parseAsteroidData(data: data)
+                print("Number of close approaches: \(closeApproachAsteroids.count)")
+                tableView.reloadData()
             }
         }
     }
     
-    func parseAsteroidData(data: Data) {
+    func parseAsteroidData(data: Data) -> [Asteroid] {
         let decoder = JSONDecoder()
         
-        if let responseJSON = try? decoder.decode(Asteroids.self, from: data) {
-            asteroids = responseJSON.nearEarthObjects
+        if let asteroidsJSON = try? decoder.decode(Asteroids.self, from: data) {
+            let asteroids = asteroidsJSON.nearEarthObjects
             print("Fetched \(asteroids.count) asteroids")
-            tableView.reloadData()
+            
+            return asteroids.filter({ $0.closeApproachDate != nil })
         } else {
             print("Unable to fetch asteroid JSON")
+            
+            return [Asteroid]()
         }
     }
 }

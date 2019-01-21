@@ -23,7 +23,6 @@ struct Asteroid: Codable {
      we're looking for close-approach data relative to Earth
      */
     var missDistanceKM: Double?
-//    var closeApproachDate: Date?
     var closeApproachDate: String?
     
 
