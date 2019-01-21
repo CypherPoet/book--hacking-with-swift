@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class AsteroidDetailView: UIViewController {
+class AsteroidDetailViewController: UIViewController {
     var webView: WKWebView!
     var asteroid: Asteroid?
     
