@@ -55,8 +55,11 @@ class HomeViewController: UITableViewController {
                 closeApproachAsteroids = parseAsteroidData(data: data)
                 print("Number of close approaches: \(closeApproachAsteroids.count)")
                 tableView.reloadData()
+                
+                return
             }
         }
+        showError()
     }
     
     func parseAsteroidData(data: Data) -> [Asteroid] {
@@ -72,6 +75,19 @@ class HomeViewController: UITableViewController {
             
             return [Asteroid]()
         }
+    }
+    
+    
+    func showError() {
+        let alertController = UIAlertController(
+            title: "Error Loading Data",
+            message: "There was a problem loading the feed. Please check your connection and try again.",
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(UIAlertAction(title: "👌 OK", style: .default))
+        
+        present(alertController, animated: true)
     }
 }
 

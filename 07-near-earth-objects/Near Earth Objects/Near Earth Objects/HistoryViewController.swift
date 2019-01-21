@@ -24,8 +24,11 @@ class HistoryViewController: UIViewController {
         if let url = URL(string: apiURL) {
             if let requestData = try? Data(contentsOf: url) {
                 historyData = parseHistoryData(data: requestData)
+                
+                return
             }
         }
+        showError()
     }
     
     
@@ -33,5 +36,18 @@ class HistoryViewController: UIViewController {
         let decoder = JSONDecoder()
         
         return try? decoder.decode(NEOHistory.self, from: data)
+    }
+    
+    
+    func showError() {
+        let alertController = UIAlertController(
+            title: "Error Loading Data",
+            message: "There was a problem loading the feed. Please check your connection and try again.",
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(UIAlertAction(title: "👌 OK", style: .default))
+        
+        present(alertController, animated: true)
     }
 }
