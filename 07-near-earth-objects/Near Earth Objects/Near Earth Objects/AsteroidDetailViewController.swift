@@ -42,8 +42,8 @@ class AsteroidDetailViewController: UIViewController {
             if let missDistanceKM = asteroid.missDistanceKM {
                 nearMissHTML = """
                 <p>
-                    The asteroid made its closes approach to Earth on \(closeApproachDate) &mdash; passing
-                    within \(missDistanceKM)!
+                    The asteroid made its closest approach to Earth on \(closeApproachDate) &mdash; passing
+                    within \(missDistanceKM) kilometers!
                 </p>
                 """
             }
@@ -73,7 +73,7 @@ class AsteroidDetailViewController: UIViewController {
                 \(nearMissHTML)
         
                 <p>
-                    Visit this asteriod's <a href="\(asteroid.jplURL.absoluteString)">NASA JPL's page</a> to learn more
+                    Visit this asteriod's <a href="\(asteroid.jplURL.absoluteURL)">NASA JPL's page</a> to learn more
                 </p>
             </body>
             </html>

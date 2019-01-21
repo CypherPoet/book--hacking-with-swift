@@ -39,6 +39,14 @@ class HomeViewController: UITableViewController {
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = AsteroidDetailViewController()
+        
+        detailVC.asteroid = asteroids[indexPath.row]
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
 
     func loadAsteroids() {
         let urlString = "https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=DEMO_KEY"
