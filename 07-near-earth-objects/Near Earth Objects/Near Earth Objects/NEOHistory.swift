@@ -20,7 +20,7 @@ struct NEOHistory: Codable {
         case nearEarthObjectCount = "near_earth_object_count"
         case closeApproachCount = "close_approach_count"
         case lastUpdated = "last_updated"
-        case source = "source"
+        case source
         case jplURL = "nasa_jpl_url"
     }
 }
