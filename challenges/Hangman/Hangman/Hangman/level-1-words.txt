@@ -1,0 +1,12 @@
+corner
+iphone
+common
+display
+music
+apple
+internet
+computer
+bagel
+coffee
+cheese
+magic

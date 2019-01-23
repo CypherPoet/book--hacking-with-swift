@@ -56,7 +56,7 @@ class HomeViewController: UITableViewController {
                 print("Number of close approaches: \(closeApproachAsteroids.count)")
                 
                 tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
-                return
+                    return
             }
         }
         performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
