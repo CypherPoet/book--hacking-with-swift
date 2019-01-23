@@ -11,6 +11,8 @@
 		F3C4952B21F69881002853B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C4952A21F69881002853B6 /* ViewController.swift */; };
 		F3C4952E21F69881002853B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C4952C21F69881002853B6 /* Main.storyboard */; };
 		F3C4953021F69882002853B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C4952F21F69882002853B6 /* Assets.xcassets */; };
+		F3C4953D21F6EBEF002853B6 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3C4953B21F6EBEE002853B6 /* level2.txt */; };
+		F3C4953E21F6EBEF002853B6 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3C4953C21F6EBEF002853B6 /* level1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		F3C4952F21F69882002853B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C4953421F69882002853B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3C4953A21F69EFA002853B6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F3C4953B21F6EBEE002853B6 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level2.txt; path = "../../../private/book-source/project8-files/level2.txt"; sourceTree = "<group>"; };
+		F3C4953C21F6EBEF002853B6 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level1.txt; path = "../../../private/book-source/project8-files/level1.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 		F3C4952721F69881002853B6 /* Seven Swifty Words */ = {
 			isa = PBXGroup;
 			children = (
+				F3C4953C21F6EBEF002853B6 /* level1.txt */,
+				F3C4953B21F6EBEE002853B6 /* level2.txt */,
 				F3C4952821F69881002853B6 /* AppDelegate.swift */,
 				F3C4952A21F69881002853B6 /* ViewController.swift */,
 				F3C4952C21F69881002853B6 /* Main.storyboard */,
@@ -122,7 +128,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C4953021F69882002853B6 /* Assets.xcassets in Resources */,
+				F3C4953E21F6EBEF002853B6 /* level1.txt in Resources */,
 				F3C4952E21F69881002853B6 /* Main.storyboard in Resources */,
+				F3C4953D21F6EBEF002853B6 /* level2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
