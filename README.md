@@ -18,13 +18,13 @@
 | 6    | 🛠<br>[Auto Layout](/06-auto-layout)            | Ctrl-drag, Auto Layout Visual Format Language (including anchors, metrics, priority, and vertical/horizontal specifications) | ✅ |
 | 7    | 📱<br>[Near Earth Objects](/07-near-earth-objects)           | UITabBarController, UITabBarItem, parsing JSON for structs that implement the Codable protocol, didFinishLaunchingWithOptions | ✅ |
 | 8    | 🕹<br>[Seven Swifty Words](/08-seven-swifty-words)     | addTarget(), enumerated(), index(of:), joined(), replacingOccurrences(), property observers, range operators, programmatic button event handling | ✅ |
-| 9    | 🛠<br>[Grand Central Dispatch](/09-Grand-Central-Dispatch) | async(), DispatchQueue.main, Quality of Service, global(), performSelector(inBackground:) | 🔴 |
-| 10   | 📱<br>[Names to Faces](/10-Names-to-Faces)   | UICollectionView, UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerController, UUID, Custom NSObject Classes | 🔴 |
-| 11   | 🕹<br>[Peggle](/11-Peggle)                 | CGFloat, SKSpriteNode, UITouch, SKPhysicsBody, circleOfRadius, SKPhysicsContactDelegate, SKLabelNode, SKEmitterNode | 🔴 |
-| 12   | 🛠<br>[User Defaults](/12-User-Defaults)   | NSCoding, Codable | 🔴 |
-| 13   | 📱<br>[Instafilter](/13-Instafilter)            | UISlider, CIContext, CIFilter | 🔴 |
-| 14   | 🕹<br>[Whack-a-Penguin](/14-Whack-a-Penguin)        | SKCropNode, SKTexture, SKActions, asyncAfter() | 🔴 |
-| 15   | 🛠<br>[Core Animation](/15-Animation)         | `switch`, `case`, animate(withDuration:), CGAffineTransform, CGFloat.pi | 🔴 |
+| 9    | 🛠<br>[Grand Central Dispatch](/09-grand-central-dispatch) | Grand Central Dispatch, async(), DispatchQueue.main, Quality of Service, global(), performSelector(inBackground:), **never do UI work on a background thread** | ✅ |
+| 10   | 📱<br>[Names to Faces](/10-names-to-faces)   | UICollectionView, UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerController, UUID, Custom NSObject Classes | 🔴 |
+| 11   | 🕹<br>[Peggle](/11-peggle)                 | CGFloat, SKSpriteNode, UITouch, SKPhysicsBody, circleOfRadius, SKPhysicsContactDelegate, SKLabelNode, SKEmitterNode | 🔴 |
+| 12   | 🛠<br>[User Defaults](/12-user-defaults)   | NSCoding, Codable | 🔴 |
+| 13   | 📱<br>[Instafilter](/13-instafilter)            | UISlider, CIContext, CIFilter | 🔴 |
+| 14   | 🕹<br>[Whack-a-Penguin](/14-whack-a-penguin)        | SKCropNode, SKTexture, SKActions, asyncAfter() | 🔴 |
+| 15   | 🛠<br>[Core Animation](/15-animation)         | `switch`, `case`, animate(withDuration:), CGAffineTransform, CGFloat.pi | 🔴 |
 
 ### Intermediate 📗
 
