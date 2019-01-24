@@ -66,6 +66,7 @@
 | :--: | :--------------------------: | :------: |
 | 0    | 🛠<br>[Fizz Buzz](/challenges/fizz-buzz)           | ✅ |
 | 1    | 📱<br>[World Flags](/challenges/world-flag-sharing)            | ✅ |
+| 2    | 📱<br>[Hangman](/challenges/hangman)            | ✅ |
 
 
 ## Certificate of Completion 🎓
