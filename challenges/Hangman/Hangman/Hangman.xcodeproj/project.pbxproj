@@ -13,6 +13,8 @@
 		F35A33A821F8483D0025CFE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F35A33A721F8483D0025CFE0 /* Assets.xcassets */; };
 		F35A33AB21F8483D0025CFE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35A33A921F8483D0025CFE0 /* LaunchScreen.storyboard */; };
 		F35A33B421F86AD90025CFE0 /* level-1-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = F35A33B321F86AD90025CFE0 /* level-1-words.txt */; };
+		F3BA7EF121F95A05001FD18E /* level-2-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3BA7EF021F95A05001FD18E /* level-2-words.txt */; };
+		F3BA7EF321F95A5D001FD18E /* level-3-words.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3BA7EF221F95A5D001FD18E /* level-3-words.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		F35A33AC21F8483D0025CFE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F35A33B221F848CD0025CFE0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F35A33B321F86AD90025CFE0 /* level-1-words.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "level-1-words.txt"; sourceTree = "<group>"; };
+		F3BA7EF021F95A05001FD18E /* level-2-words.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "level-2-words.txt"; path = "../level-2-words.txt"; sourceTree = "<group>"; };
+		F3BA7EF221F95A5D001FD18E /* level-3-words.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "level-3-words.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		F35A339F21F8483C0025CFE0 /* Hangman */ = {
 			isa = PBXGroup;
 			children = (
+				F3BA7EF021F95A05001FD18E /* level-2-words.txt */,
 				F35A33A021F8483C0025CFE0 /* AppDelegate.swift */,
 				F35A33A221F8483C0025CFE0 /* ViewController.swift */,
 				F35A33A421F8483C0025CFE0 /* Main.storyboard */,
@@ -65,6 +70,7 @@
 				F35A33A921F8483D0025CFE0 /* LaunchScreen.storyboard */,
 				F35A33AC21F8483D0025CFE0 /* Info.plist */,
 				F35A33B321F86AD90025CFE0 /* level-1-words.txt */,
+				F3BA7EF221F95A5D001FD18E /* level-3-words.txt */,
 			);
 			path = Hangman;
 			sourceTree = "<group>";
@@ -127,8 +133,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3BA7EF121F95A05001FD18E /* level-2-words.txt in Resources */,
 				F35A33AB21F8483D0025CFE0 /* LaunchScreen.storyboard in Resources */,
 				F35A33B421F86AD90025CFE0 /* level-1-words.txt in Resources */,
+				F3BA7EF321F95A5D001FD18E /* level-3-words.txt in Resources */,
 				F35A33A821F8483D0025CFE0 /* Assets.xcassets in Resources */,
 				F35A33A621F8483C0025CFE0 /* Main.storyboard in Resources */,
 			);
