@@ -8,12 +8,13 @@
 
 import SpriteKit
 
-let sceneWidth = 1024
-let sceneHeight = 768
+let sceneWidth = 1024.0
+let sceneHeight = 768.0
 
 class GameScene: SKScene {
     override func didMove(to view: SKView) {
         createBackground()
+        placeObjects()
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
     }
@@ -21,11 +22,13 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let location = touch.location(in: self)
-            let box = SKSpriteNode(color: .red, size: CGSize(width: 64, height: 64))
+            let ball = SKSpriteNode(imageNamed: "ballRed")
             
-            box.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 64, height: 64))
-            box.position = location
-            addChild(box)
+            ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
+            ball.physicsBody?.restitution = 0.4
+            ball.position = location
+            
+            addChild(ball)
         }
     }
     
@@ -33,10 +36,28 @@ class GameScene: SKScene {
     func createBackground() {
         let backgroundNode = SKSpriteNode(imageNamed: "background.jpg")
         
-        backgroundNode.position = CGPoint(x: sceneWidth/2, y: sceneHeight/2)
+        backgroundNode.position = CGPoint(x: sceneWidth / 2.0, y: sceneHeight / 2.0)
         backgroundNode.zPosition = -1
         backgroundNode.blendMode = .replace
         
         addChild(backgroundNode)
+    }
+    
+    func placeObjects() {
+        for i in 0..<5 {
+            let bouncerPoint = CGPoint(x: (sceneWidth / 4.0) * Double(i), y: 0.0)
+            
+            addChild(makeBouncer(at: bouncerPoint))
+        }
+    }
+    
+    func makeBouncer(at position: CGPoint) -> SKSpriteNode {
+        let bouncer = SKSpriteNode(imageNamed: "bouncer")
+        
+        bouncer.position = position
+        bouncer.physicsBody = SKPhysicsBody(circleOfRadius: bouncer.size.width / 2.0)
+        bouncer.physicsBody?.isDynamic = false
+        
+        return bouncer
     }
 }
