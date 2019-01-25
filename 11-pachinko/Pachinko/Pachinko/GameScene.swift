@@ -44,12 +44,39 @@ class GameScene: SKScene {
     }
     
     func placeObjects() {
+        let objectSpacing = sceneWidth / 4.0
+        
         for i in 0..<5 {
-            let bouncerPoint = CGPoint(x: (sceneWidth / 4.0) * Double(i), y: 0.0)
-            
+            let bouncerPoint = CGPoint(x: objectSpacing * Double(i), y: 0.0)
             addChild(makeBouncer(at: bouncerPoint))
         }
+        
+        for i in 0..<4 {
+            let slotBasePoint = CGPoint(x: 128 + (objectSpacing * Double(i)), y: 0.0)
+            addChild(makeSlot(at: slotBasePoint, isGood: i % 2 == 0))
+        }
     }
+    
+    func makeSlot(at position: CGPoint, isGood: Bool) -> SKSpriteNode {
+        let slotFileName = isGood ? "slotBaseGood" : "slotBaseBad"
+        let slotGlowFileName = isGood ? "slotGlowGood" : "slotGlowBad"
+        
+        let slotContainer = SKSpriteNode()
+        let slotBase = SKSpriteNode(imageNamed: slotFileName)
+        let slotGlow = SKSpriteNode(imageNamed: slotGlowFileName)
+        
+        let spinAction = SKAction.rotate(byAngle: .pi, duration: 10)
+        let glowSpin = SKAction.repeatForever(spinAction)
+        
+        slotGlow.run(glowSpin)
+        
+        slotContainer.position = position
+        slotContainer.addChild(slotBase)
+        slotContainer.addChild(slotGlow)
+        
+        return slotContainer
+    }
+    
     
     func makeBouncer(at position: CGPoint) -> SKSpriteNode {
         let bouncer = SKSpriteNode(imageNamed: "bouncer")

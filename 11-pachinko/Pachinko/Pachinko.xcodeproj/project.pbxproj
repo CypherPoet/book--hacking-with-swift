@@ -42,6 +42,7 @@
 		F3048B2421FA88FA00ECADB1 /* ballGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = F3048B0821FA88FA00ECADB1 /* ballGreen.png */; };
 		F3048B2521FA88FA00ECADB1 /* bouncer.png in Resources */ = {isa = PBXBuildFile; fileRef = F3048B0921FA88FA00ECADB1 /* bouncer.png */; };
 		F3048B2621FA88FA00ECADB1 /* ballBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = F3048B0A21FA88FA00ECADB1 /* ballBlue.png */; };
+		F3048B2821FB006300ECADB1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F3048B2721FB006300ECADB1 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		F3048B0821FA88FA00ECADB1 /* ballGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballGreen.png; sourceTree = "<group>"; };
 		F3048B0921FA88FA00ECADB1 /* bouncer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bouncer.png; sourceTree = "<group>"; };
 		F3048B0A21FA88FA00ECADB1 /* ballBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballBlue.png; sourceTree = "<group>"; };
+		F3048B2721FB006300ECADB1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		F3048ACA21FA4D3900ECADB1 = {
 			isa = PBXGroup;
 			children = (
+				F3048B2721FB006300ECADB1 /* README.md */,
 				F3048AD521FA4D3900ECADB1 /* Pachinko */,
 				F3048AD421FA4D3900ECADB1 /* Products */,
 				F3048AEE21FA88FA00ECADB1 /* Content */,
@@ -230,6 +233,7 @@
 				F3048B0E21FA88FA00ECADB1 /* slotGlowBad@2x.png in Resources */,
 				F3048AE221FA4D3900ECADB1 /* Main.storyboard in Resources */,
 				F3048B1321FA88FA00ECADB1 /* ballPurple@2x.png in Resources */,
+				F3048B2821FB006300ECADB1 /* README.md in Resources */,
 				F3048B1121FA88FA00ECADB1 /* ballRed.png in Resources */,
 				F3048B1521FA88FA00ECADB1 /* slotBaseBad@2x.png in Resources */,
 				F3048B2121FA88FA00ECADB1 /* ballYellow.png in Resources */,
