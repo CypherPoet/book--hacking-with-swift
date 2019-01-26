@@ -18,7 +18,8 @@ enum NodeName: String {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    var scoreLabel = SKLabelNode()
+    var scoreLabel: SKLabelNode!
+    var editModeLabel: SKLabelNode!
     
     var currentScore = 0 {
         didSet {
@@ -26,6 +27,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    var isInEditMode = false {
+        didSet {
+            editModeLabel.text = self.isInEditMode ? "Done" : "Edit"
+        }
+    }
     
     override func didMove(to view: SKView) {
         createBackground()
@@ -37,10 +43,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let location = touch.location(in: self)
-            
-            addChild(makeBall(at: location))
+        guard let touch = touches.first else { return }
+        
+        let location = touch.location(in: self)
+        
+        if nodes(at: location).contains(editModeLabel) {
+            isInEditMode.toggle()
+        } else if isInEditMode {
+            // create an obstacle
+            addChild(makeObstacle(at: location))
+        } else {
+            // drop a ball from the top of the screen at the corresponding x position
+            addChild(makeBall(at: CGPoint(x: location.x, y: CGFloat(sceneHeight))))
         }
     }
     
@@ -70,12 +84,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupUI() {
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        editModeLabel = SKLabelNode(fontNamed: "Chalkduster")
         
         scoreLabel.text = "Score: \(currentScore)"
         scoreLabel.horizontalAlignmentMode = .right
         scoreLabel.position = CGPoint(x: sceneWidth * 0.95, y: sceneHeight * 0.91)
         
+        editModeLabel.text = "Edit"
+        editModeLabel.position = CGPoint(x: sceneWidth * 0.078, y: sceneHeight * 0.91)
+        
+        
         addChild(scoreLabel)
+        addChild(editModeLabel)
     }
     
     
@@ -146,6 +166,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ball.name = NodeName.ball.rawValue
         
         return ball
+    }
+    
+    
+    func makeObstacle(at position: CGPoint) -> SKNode {
+        let boxSize = CGSize(width: Int.random(in: 16...256), height: 16)
+        let boxColor = UIColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1)
+        let box = SKSpriteNode(color: boxColor, size: boxSize)
+        
+        box.zRotation = CGFloat.random(in: 0...3)
+        box.position = position
+        box.physicsBody = SKPhysicsBody(rectangleOf: boxSize)
+        box.physicsBody!.isDynamic = false
+        
+        return box
     }
     
     
