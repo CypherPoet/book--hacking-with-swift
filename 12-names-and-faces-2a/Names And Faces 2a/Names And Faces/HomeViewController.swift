@@ -9,13 +9,14 @@
 import UIKit
 
 class HomeViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var people = [Person]()
+    var people: [Person]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        loadData()
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
     }
 
@@ -64,10 +65,10 @@ class HomeViewController: UICollectionViewController, UIImagePickerControllerDel
         }
         
         people.append(Person(name: "Unknown", imageName: fileName))
+        saveData()
         collectionView?.reloadData()
         
         picker.dismiss(animated: true)
-        
     }
     
     
@@ -78,9 +79,9 @@ class HomeViewController: UICollectionViewController, UIImagePickerControllerDel
         imagePicker.delegate = self
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
+            // 📝 TODO: Add additional logic to ask the user if they'd like to use their device camera
+            // imagePicker.sourceType = .camera
         }
-        
         
         present(imagePicker, animated: true)
     }
@@ -117,11 +118,33 @@ class HomeViewController: UICollectionViewController, UIImagePickerControllerDel
                 let newName = alertController.textFields![0].text!
                 
                 person.name = newName
+                
+                self.saveData()
                 self.collectionView?.reloadData()
             }
         )
         
         present(alertController, animated: true)
+    }
+    
+    
+    func saveData() {
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            
+            defaults.set(savedData, forKey: "people")
+        }
+    }
+    
+    
+    func loadData() {
+        let defaults = UserDefaults.standard
+        
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) as? [Person] {
+                people = decodedPeople ?? [Person]()
+            }
+        }
     }
 }
 
