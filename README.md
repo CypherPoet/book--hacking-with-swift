@@ -15,13 +15,15 @@
 | 3    | 🛠 [Social Media](/03-social-media)              | UIActivityViewController, UINavigationBar, UIBarButtonItem, `#selector` & `@objc`, Info.plist, privacy & permissions | ✅ |
 | 4    | 📱<br>[Easy Browser](/04-easy-browser)           | WKWebView, URL, URLRequest, UIToolbar, UIProgressView, KVO (Key-Value Observing) design pattern (not sure if this is an optimal design for most cases, though), WKNavigationDelegate, classes (instances passed by reference) vs structs (instances passed by copy), class inheritance and protocol conformance | ✅ |
 | 5    | 🕹<br>[Word Scramble](/05-word-scramble)          | string methods, NSRange, UITextChecker, lowercased(), IndexPath, anagrams, inserting rows into tables without reloading, UIAlertController text fields, constants can be declared w/o a value, as long as it's set before use | ✅ |
-| 6    | 🛠<br>[Auto Layout](/06-auto-layout)            | Ctrl-drag, Auto Layout Visual Format Language (including anchors, metrics, priority, and vertical/horizontal specifications) | ✅ |
+| 6a    | 🛠<br>[Auto Layout](/06-auto-layout)            | Ctrl-drag, Auto Layout Visual Format Language (including anchors, metrics, priority, and vertical/horizontal specifications) | ✅ |
+| 6b    | 🛠<br>[Guess The Flag V2](/06-guess-the-flag-v2)            | Ctrl-drag, Auto Layout Visual Format Language (including anchors, metrics, priority, and vertical/horizontal specifications) | ✅ |
 | 7    | 📱<br>[Near Earth Objects](/07-near-earth-objects)           | UITabBarController, UITabBarItem, parsing JSON for structs that implement the Codable protocol, didFinishLaunchingWithOptions | ✅ |
 | 8    | 🕹<br>[Seven Swifty Words](/08-seven-swifty-words)     | addTarget(), enumerated(), index(of:), joined(), replacingOccurrences(), property observers, range operators, programmatic button event handling | ✅ |
 | 9    | 🛠<br>[Grand Central Dispatch](/09-grand-central-dispatch) | Grand Central Dispatch, async(), DispatchQueue.main, Quality of Service, global(), performSelector(inBackground:), **never do UI work on a background thread** | ✅ |
 | 10   | 📱<br>[Names to Faces](/10-names-to-faces)   | UICollectionView, UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerController, UUID, Custom NSObject Classes, URLs for app directories, writing JPEG data to disk | ✅ |
-| 11   | 🕹<br>[Pachinko](/11-pachinko)                 | CGFloat, SKSpriteNode, UITouch, SKPhysicsBody, circleOfRadius, SKPhysicsContactDelegate, SKLabelNode, SKEmitterNode | 🔴 |
-| 12   | 🛠<br>[User Defaults](/12-user-defaults)   | NSCoding, Codable | 🔴 |
+| 11   | 🕹<br>[Pachinko](/11-pachinko)                 | CGFloat, SKSpriteNode, UITouch, SKPhysicsBody, circleOfRadius/rectangleOf for shaping physics bodies, SKPhysicsContactDelegate, SKActions &mdash; and adding them to nodes, SKLabelNode, SKEmitterNode, sprite drawing blend modes, | ✅ |
+| 12a   | 🛠<br>[Saving User Defaults & Data: NSCoding](/12-names-and-faces-2a)   | NSCoding | 🚧 |
+| 12b   | 🛠<br>[Saving User Defaults & Data: Codeable](/12-names-and-faces-2b)   | NSCoding | 🚧 |
 | 13   | 📱<br>[Instafilter](/13-instafilter)            | UISlider, CIContext, CIFilter | 🔴 |
 | 14   | 🕹<br>[Whack-a-Penguin](/14-whack-a-penguin)        | SKCropNode, SKTexture, SKActions, asyncAfter() | 🔴 |
 | 15   | 🛠<br>[Core Animation](/15-animation)         | `switch`, `case`, animate(withDuration:), CGAffineTransform, CGFloat.pi | 🔴 |
