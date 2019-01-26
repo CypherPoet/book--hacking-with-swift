@@ -18,8 +18,18 @@ enum NodeName: String {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var scoreLabel = SKLabelNode()
+    
+    var currentScore = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(self.currentScore)"
+        }
+    }
+    
+    
     override func didMove(to view: SKView) {
         createBackground()
+        setupUI()
         setupObjects()
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
@@ -56,6 +66,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(backgroundNode)
     }
+    
+    
+    func setupUI() {
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        
+        scoreLabel.text = "Score: \(currentScore)"
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.position = CGPoint(x: sceneWidth * 0.95, y: sceneHeight * 0.91)
+        
+        addChild(scoreLabel)
+    }
+    
     
     func setupObjects() {
         let objectSpacing = sceneWidth / 4.0
@@ -128,7 +150,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func handleCollisionBetween(ball: SKNode, object: SKNode) {
-        if [NodeName.goodSlot.rawValue, NodeName.badSlot.rawValue].contains(object.name) {
+        if object.name == NodeName.goodSlot.rawValue {
+            currentScore += 1
+            destroy(ball: ball)
+        } else if (object.name == NodeName.badSlot.rawValue) {
+            currentScore -= 1
             destroy(ball: ball)
         }
     }
