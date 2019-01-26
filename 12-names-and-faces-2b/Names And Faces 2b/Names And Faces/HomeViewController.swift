@@ -9,13 +9,14 @@
 import UIKit
 
 class HomeViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var people = [Person]()
+    var people: [Person]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        loadData()
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
     }
 
@@ -64,6 +65,7 @@ class HomeViewController: UICollectionViewController, UIImagePickerControllerDel
         }
         
         people.append(Person(name: "Unknown", imageName: fileName))
+        saveData()
         collectionView?.reloadData()
         
         picker.dismiss(animated: true)
@@ -78,9 +80,9 @@ class HomeViewController: UICollectionViewController, UIImagePickerControllerDel
         imagePicker.delegate = self
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker.sourceType = .camera
+            // 📝 TODO: Add additional logic to ask the user if they'd like to use their device camera
+            // imagePicker.sourceType = .camera
         }
-        
         
         present(imagePicker, animated: true)
     }
@@ -117,11 +119,35 @@ class HomeViewController: UICollectionViewController, UIImagePickerControllerDel
                 let newName = alertController.textFields![0].text!
                 
                 person.name = newName
+                self.saveData()
                 self.collectionView?.reloadData()
             }
         )
         
         present(alertController, animated: true)
+    }
+    
+    
+    func saveData() {
+        let encoder = JSONEncoder()
+        
+        if let peopleData = try? encoder.encode(people) {
+            UserDefaults.standard.set(peopleData, forKey: "people")
+        } else {
+            print("Failed to save people data")
+        }
+    }
+    
+    func loadData() {
+        if let savedPeople = UserDefaults.standard.object(forKey: "people") as? Data {
+            let decoder = JSONDecoder()
+            
+            do {
+                people = try decoder.decode([Person].self, from: savedPeople)
+            } catch {
+                print("Failed to load people data")
+            }
+        }
     }
 }
 
