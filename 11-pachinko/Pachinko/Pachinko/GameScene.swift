@@ -14,6 +14,7 @@ let sceneHeight = 768.0
 enum NodeName: String {
     case goodSlot = "slot--good"
     case badSlot = "slot--bad"
+    case obstacle
     case ball
 }
 
@@ -50,8 +51,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if nodes(at: location).contains(editModeLabel) {
             isInEditMode.toggle()
         } else if isInEditMode {
-            // create an obstacle
-            addChild(makeObstacle(at: location))
+            // create an obstacle -- or remove an obstacle that's being touched
+            if let obstacle = nodes(at: location).first(where: { $0.name == NodeName.obstacle.rawValue }) {
+                obstacle.removeFromParent()
+            } else {
+                addChild(makeObstacle(at: location))
+            }
         } else {
             // drop a ball from the top of the screen at the corresponding x position
             addChild(makeBall(at: CGPoint(x: location.x, y: CGFloat(sceneHeight))))
@@ -172,14 +177,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func makeObstacle(at position: CGPoint) -> SKNode {
         let boxSize = CGSize(width: Int.random(in: 16...256), height: 16)
         let boxColor = UIColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1)
-        let box = SKSpriteNode(color: boxColor, size: boxSize)
+        let obstacle = SKSpriteNode(color: boxColor, size: boxSize)
         
-        box.zRotation = CGFloat.random(in: 0...3)
-        box.position = position
-        box.physicsBody = SKPhysicsBody(rectangleOf: boxSize)
-        box.physicsBody!.isDynamic = false
+        obstacle.zRotation = CGFloat.random(in: 0...3)
+        obstacle.position = position
+        obstacle.physicsBody = SKPhysicsBody(rectangleOf: boxSize)
+        obstacle.physicsBody!.isDynamic = false
+        obstacle.name = NodeName.obstacle.rawValue
         
-        return box
+        return obstacle
     }
     
     
