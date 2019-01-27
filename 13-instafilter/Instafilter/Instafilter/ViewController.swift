@@ -90,7 +90,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let (filterKey, value) = currentFilterKeyAndValue else { return }
         
         currentImageFilter.setValue(value, forKey: filterKey)
-                
+        
         if let cgImage = imageFilterContext.createCGImage(
             currentImageFilter.outputImage!,
             from: currentImageFilter.outputImage!.extent
@@ -103,6 +103,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func setFilter(action: UIAlertAction) {
         currentImageFilterName = action.title!
+    }
+    
+    @objc func imageSaved(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        
+        if let error = error {
+            alertController.title = "Save Error"
+            alertController.message = error.localizedDescription
+        } else {
+            alertController.title = "Saved!"
+            alertController.message = "Your altered image has been saved to your photos."
+        }
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        present(alertController, animated: true)
     }
 
     
@@ -117,6 +133,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func save(_ sender: Any) {
+        UIImageWriteToSavedPhotosAlbum(
+            currentImage,
+            self,
+            #selector(imageSaved(_:didFinishSavingWithError:contextInfo:)),
+            nil
+        )
     }
     
     @IBAction func intensityChanged(_ sender: Any) {
