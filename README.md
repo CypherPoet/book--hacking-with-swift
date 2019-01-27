@@ -22,9 +22,9 @@
 | 9    | 🛠<br>[Grand Central Dispatch](/09-grand-central-dispatch) | Grand Central Dispatch, async(), DispatchQueue.main, Quality of Service, global(), performSelector(inBackground:), **never do UI work on a background thread** | ✅ |
 | 10   | 📱<br>[Names to Faces](/10-names-to-faces)   | UICollectionView, UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerController, UUID, Custom NSObject Classes, URLs for app directories, writing JPEG data to disk | ✅ |
 | 11   | 🕹<br>[Pachinko](/11-pachinko)                 | CGFloat, SKSpriteNode, UITouch, SKPhysicsBody, circleOfRadius/rectangleOf for shaping physics bodies, SKPhysicsContactDelegate, SKActions &mdash; and adding them to nodes, SKLabelNode, SKEmitterNode, sprite drawing blend modes, | ✅ |
-| 12a   | 🛠<br>[Saving User Defaults & Data: NSCoding](/12-names-and-faces-2a)   | NSCoding | 🚧 |
-| 12b   | 🛠<br>[Saving User Defaults & Data: Codeable](/12-names-and-faces-2b)   | NSCoding | 🚧 |
-| 13   | 📱<br>[Instafilter](/13-instafilter)            | UISlider, CIContext, CIFilter | 🔴 |
+| 12a   | 🛠<br>[Saving User Defaults & Data: NSCoding](/12-names-and-faces-2a)   | UserDefaults + NSCoding/NSKeyedArchiver | ✅ |
+| 12b   | 🛠<br>[Saving User Defaults & Data: Codeable](/12-names-and-faces-2b)   | UserDefaults + Codeable/JSONEncoder/JSONDecoder | ✅ |
+| 13   | 📱<br>[Instafilter](/13-instafilter)            | UISlider, CIContext, CIFilter | 🚧 |
 | 14   | 🕹<br>[Whack-a-Penguin](/14-whack-a-penguin)        | SKCropNode, SKTexture, SKActions, asyncAfter() | 🔴 |
 | 15   | 🛠<br>[Core Animation](/15-animation)         | `switch`, `case`, animate(withDuration:), CGAffineTransform, CGFloat.pi | 🔴 |
 
@@ -69,6 +69,7 @@
 | 0    | 🛠<br>[Fizz Buzz](/challenges/fizz-buzz)           | ✅ |
 | 1    | 📱<br>[World Flags](/challenges/world-flag-sharing)            | ✅ |
 | 2    | 📱<br>[Hangman](/challenges/hangman)            | ✅ |
+| 3    | 📱<br>[Storm Viewer 2 (Collection View)](/challenges/storm-viewer-collection-view)            | ✅ |
 
 
 ## Certificate of Completion 🎓
