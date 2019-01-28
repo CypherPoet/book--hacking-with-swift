@@ -29,7 +29,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             currentImageFilter = CIFilter(name: self.currentImageFilterName)
             
             if let currentImage = currentImage {
-                currentImageFilter.setValue(CIImage(image: currentImage), forKey: kCIInputImageKey)
+                let newImage = CIImage(image: currentImage)
+                
+                currentImageFilter.setValue(newImage, forKey: kCIInputImageKey)
                 applyImageProcessing()
             }
         }
@@ -38,9 +40,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var currentFilterKeyAndValue: (key: String, value: Any)? {
         return _currentFilterKeyAndValue()
     }
-    
-    lazy var filterChoiceActions = _makeFilterChoiceActions()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,7 +124,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func changeFilter(_ sender: Any) {
         let controller = UIAlertController(title: "Choose a Filter", message: nil, preferredStyle: .actionSheet)
         
-        for action in filterChoiceActions {
+        for action in _makeFilterChoiceActions() {
             controller.addAction(action)
         }
         
@@ -158,7 +157,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             "CIVignette",
         ].map({ UIAlertAction(title: $0, style: .default, handler: setFilter) })
         
-        actions.append(UIAlertAction(title: "Cancel", style: .cancel, handler: setFilter))
+        actions.append(UIAlertAction(title: "Cancel", style: .cancel))
         
         return actions
     }
