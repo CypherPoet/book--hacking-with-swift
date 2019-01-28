@@ -24,8 +24,8 @@
 | 11   | 🕹<br>[Pachinko](/11-pachinko)                 | CGFloat, SKSpriteNode, UITouch, SKPhysicsBody, circleOfRadius/rectangleOf for shaping physics bodies, SKPhysicsContactDelegate, SKActions &mdash; and adding them to nodes, SKLabelNode, SKEmitterNode, sprite drawing blend modes, | ✅ |
 | 12a   | 🛠<br>[Saving User Defaults & Data: NSCoding](/12-names-and-faces-2a)   | UserDefaults + NSCoding/NSKeyedArchiver | ✅ |
 | 12b   | 🛠<br>[Saving User Defaults & Data: Codeable](/12-names-and-faces-2b)   | UserDefaults + Codeable/JSONEncoder/JSONDecoder | ✅ |
-| 13   | 📱<br>[Instafilter](/13-instafilter)            | UISlider, CIContext, CIFilter | 🚧 |
-| 14   | 🕹<br>[Whack-a-Penguin](/14-whack-a-penguin)        | SKCropNode, SKTexture, SKActions, asyncAfter() | 🔴 |
+| 13   | 📱<br>[Instafilter](/13-instafilter)            | UISlider, CIImage, CGImage, CIContext, CIFilter, UIImageWriteToSavedPhotosAlbum, Using full function signatures with #selector | ✅ |
+| 14   | 🕹<br>[Whack-a-Penguin](/14-whack-a-penguin)        | SKCropNode, SKTexture, SKActions, asyncAfter() | 🚧 |
 | 15   | 🛠<br>[Core Animation](/15-animation)         | `switch`, `case`, animate(withDuration:), CGAffineTransform, CGFloat.pi | 🔴 |
 
 ### Intermediate 📗
