@@ -14,6 +14,20 @@
 		F3048B9621FEBA5B00ECADB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3048B9421FEBA5B00ECADB1 /* Main.storyboard */; };
 		F3048B9821FEBA5C00ECADB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3048B9721FEBA5C00ECADB1 /* Assets.xcassets */; };
 		F3048B9B21FEBA5C00ECADB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3048B9921FEBA5C00ECADB1 /* LaunchScreen.storyboard */; };
+		F3225F3F21FEBDD1004F4DF8 /* whackBad.caf in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3121FEBDD1004F4DF8 /* whackBad.caf */; };
+		F3225F4021FEBDD1004F4DF8 /* penguinGood.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3221FEBDD1004F4DF8 /* penguinGood.png */; };
+		F3225F4121FEBDD1004F4DF8 /* whackMask.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3321FEBDD1004F4DF8 /* whackMask.png */; };
+		F3225F4221FEBDD1004F4DF8 /* whackBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3421FEBDD1004F4DF8 /* whackBackground.png */; };
+		F3225F4321FEBDD1004F4DF8 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3521FEBDD1004F4DF8 /* whack.caf */; };
+		F3225F4421FEBDD1004F4DF8 /* gameOver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3621FEBDD1004F4DF8 /* gameOver@2x.png */; };
+		F3225F4521FEBDD1004F4DF8 /* whackHole.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3721FEBDD1004F4DF8 /* whackHole.png */; };
+		F3225F4621FEBDD1004F4DF8 /* penguinEvil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3821FEBDD1004F4DF8 /* penguinEvil@2x.png */; };
+		F3225F4721FEBDD1004F4DF8 /* whackHole@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3921FEBDD1004F4DF8 /* whackHole@2x.png */; };
+		F3225F4821FEBDD1004F4DF8 /* penguinEvil.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3A21FEBDD1004F4DF8 /* penguinEvil.png */; };
+		F3225F4921FEBDD1004F4DF8 /* penguinGood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3B21FEBDD1004F4DF8 /* penguinGood@2x.png */; };
+		F3225F4A21FEBDD1004F4DF8 /* gameOver.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3C21FEBDD1004F4DF8 /* gameOver.png */; };
+		F3225F4B21FEBDD1004F4DF8 /* whackMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3D21FEBDD1004F4DF8 /* whackMask@2x.png */; };
+		F3225F4C21FEBDD1004F4DF8 /* whackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F3225F3E21FEBDD1004F4DF8 /* whackBackground@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +40,20 @@
 		F3048B9721FEBA5C00ECADB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3048B9A21FEBA5C00ECADB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3048B9C21FEBA5C00ECADB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3225F3121FEBDD1004F4DF8 /* whackBad.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whackBad.caf; sourceTree = "<group>"; };
+		F3225F3221FEBDD1004F4DF8 /* penguinGood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguinGood.png; sourceTree = "<group>"; };
+		F3225F3321FEBDD1004F4DF8 /* whackMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whackMask.png; sourceTree = "<group>"; };
+		F3225F3421FEBDD1004F4DF8 /* whackBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whackBackground.png; sourceTree = "<group>"; };
+		F3225F3521FEBDD1004F4DF8 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
+		F3225F3621FEBDD1004F4DF8 /* gameOver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameOver@2x.png"; sourceTree = "<group>"; };
+		F3225F3721FEBDD1004F4DF8 /* whackHole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whackHole.png; sourceTree = "<group>"; };
+		F3225F3821FEBDD1004F4DF8 /* penguinEvil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penguinEvil@2x.png"; sourceTree = "<group>"; };
+		F3225F3921FEBDD1004F4DF8 /* whackHole@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackHole@2x.png"; sourceTree = "<group>"; };
+		F3225F3A21FEBDD1004F4DF8 /* penguinEvil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguinEvil.png; sourceTree = "<group>"; };
+		F3225F3B21FEBDD1004F4DF8 /* penguinGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penguinGood@2x.png"; sourceTree = "<group>"; };
+		F3225F3C21FEBDD1004F4DF8 /* gameOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameOver.png; sourceTree = "<group>"; };
+		F3225F3D21FEBDD1004F4DF8 /* whackMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackMask@2x.png"; sourceTree = "<group>"; };
+		F3225F3E21FEBDD1004F4DF8 /* whackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackBackground@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +94,31 @@
 				F3048B9721FEBA5C00ECADB1 /* Assets.xcassets */,
 				F3048B9921FEBA5C00ECADB1 /* LaunchScreen.storyboard */,
 				F3048B9C21FEBA5C00ECADB1 /* Info.plist */,
+				F3225F3021FEBDD1004F4DF8 /* Content */,
 			);
 			path = "Whack a Penguin";
+			sourceTree = "<group>";
+		};
+		F3225F3021FEBDD1004F4DF8 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				F3225F3121FEBDD1004F4DF8 /* whackBad.caf */,
+				F3225F3221FEBDD1004F4DF8 /* penguinGood.png */,
+				F3225F3321FEBDD1004F4DF8 /* whackMask.png */,
+				F3225F3421FEBDD1004F4DF8 /* whackBackground.png */,
+				F3225F3521FEBDD1004F4DF8 /* whack.caf */,
+				F3225F3621FEBDD1004F4DF8 /* gameOver@2x.png */,
+				F3225F3721FEBDD1004F4DF8 /* whackHole.png */,
+				F3225F3821FEBDD1004F4DF8 /* penguinEvil@2x.png */,
+				F3225F3921FEBDD1004F4DF8 /* whackHole@2x.png */,
+				F3225F3A21FEBDD1004F4DF8 /* penguinEvil.png */,
+				F3225F3B21FEBDD1004F4DF8 /* penguinGood@2x.png */,
+				F3225F3C21FEBDD1004F4DF8 /* gameOver.png */,
+				F3225F3D21FEBDD1004F4DF8 /* whackMask@2x.png */,
+				F3225F3E21FEBDD1004F4DF8 /* whackBackground@2x.png */,
+			);
+			name = Content;
+			path = "../../../private/book-source/project14-files/Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,10 +179,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3225F3F21FEBDD1004F4DF8 /* whackBad.caf in Resources */,
 				F3048B9621FEBA5B00ECADB1 /* Main.storyboard in Resources */,
+				F3225F4721FEBDD1004F4DF8 /* whackHole@2x.png in Resources */,
+				F3225F4921FEBDD1004F4DF8 /* penguinGood@2x.png in Resources */,
+				F3225F4321FEBDD1004F4DF8 /* whack.caf in Resources */,
+				F3225F4A21FEBDD1004F4DF8 /* gameOver.png in Resources */,
 				F3048B8D21FEBA5B00ECADB1 /* GameScene.sks in Resources */,
+				F3225F4421FEBDD1004F4DF8 /* gameOver@2x.png in Resources */,
 				F3048B9821FEBA5C00ECADB1 /* Assets.xcassets in Resources */,
+				F3225F4221FEBDD1004F4DF8 /* whackBackground.png in Resources */,
+				F3225F4521FEBDD1004F4DF8 /* whackHole.png in Resources */,
+				F3225F4C21FEBDD1004F4DF8 /* whackBackground@2x.png in Resources */,
+				F3225F4121FEBDD1004F4DF8 /* whackMask.png in Resources */,
+				F3225F4621FEBDD1004F4DF8 /* penguinEvil@2x.png in Resources */,
 				F3048B9B21FEBA5C00ECADB1 /* LaunchScreen.storyboard in Resources */,
+				F3225F4821FEBDD1004F4DF8 /* penguinEvil.png in Resources */,
+				F3225F4021FEBDD1004F4DF8 /* penguinGood.png in Resources */,
+				F3225F4B21FEBDD1004F4DF8 /* whackMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +356,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRXXH2RKAG;
 				INFOPLIST_FILE = "Whack a Penguin/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -308,6 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRXXH2RKAG;
 				INFOPLIST_FILE = "Whack a Penguin/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
