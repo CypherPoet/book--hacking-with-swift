@@ -13,6 +13,7 @@ let sceneHeight = 768.0
 
 class GameScene: SKScene {
     var currentScoreLabel: SKLabelNode!
+    var slots = [WhackSlot]()
     
     var currentScore = 0 {
         didSet {
@@ -24,6 +25,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setupBackground()
         setupUI()
+        setupSlots()
         
         currentScore = 0
     }
@@ -53,5 +55,39 @@ class GameScene: SKScene {
         currentScoreLabel.fontSize = 48
         
         addChild(currentScoreLabel)
+    }
+    
+    func setupSlots() {
+        let slotPositions = makeSlotPositions()
+        
+        for position in slotPositions {
+            let whackSlot = WhackSlot()
+            
+            whackSlot.setup(at: position)
+            addChild(whackSlot)
+            slots.append(whackSlot)
+        }
+    }
+    
+    func makeSlotPositions() -> [CGPoint] {
+        let holeWidth = 170.0
+        let widerRowStartX = sceneWidth * 0.1
+        let thinnerRowStartX = sceneWidth * 0.12
+        let rowHeights = [0.534, 0.416, 0.298, 0.180].map({ $0 * sceneHeight })
+        var positions = [CGPoint]()
+        
+        // row 1
+        for i in 0..<5 { positions.append(CGPoint(x: widerRowStartX + (holeWidth * Double(i)), y: rowHeights[0])) }
+        
+        // row 2
+        for i in 0..<4 { positions.append(CGPoint(x: thinnerRowStartX + (holeWidth * Double(i)), y: rowHeights[1])) }
+        
+        // row 3
+        for i in 0..<5 { positions.append(CGPoint(x: widerRowStartX + (holeWidth * Double(i)), y: rowHeights[2])) }
+        
+        // row 4
+        for i in 0..<4 { positions.append(CGPoint(x: thinnerRowStartX + (holeWidth * Double(i)), y: rowHeights[3])) }
+        
+        return positions
     }
 }
