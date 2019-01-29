@@ -14,11 +14,19 @@ let sceneHeight = 768.0
 class GameScene: SKScene {
     var currentScoreLabel: SKLabelNode!
     var slots = [WhackSlot]()
+    var popupTime = 0.85
     
     var currentScore = 0 {
         didSet {
             currentScoreLabel.text = "Score: \(self.currentScore)"
         }
+    }
+    
+    var createEnemyDelay: Double {
+        let minDelay = popupTime / 2.0
+        let maxDelay = popupTime * 2.0
+        
+        return Double.random(in: minDelay...maxDelay)
     }
     
     
@@ -28,6 +36,8 @@ class GameScene: SKScene {
         setupSlots()
         
         currentScore = 0
+        
+        startPopupLoop()
     }
     
     
@@ -89,5 +99,38 @@ class GameScene: SKScene {
         for i in 0..<4 { positions.append(CGPoint(x: thinnerRowStartX + (holeWidth * Double(i)), y: rowHeights[3])) }
         
         return positions
+    }
+    
+    
+    func startPopupLoop() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+            self.createEnemy()
+        }
+    }
+    
+    @objc func createEnemy() {
+        popupTime *= 0.991
+        
+        for slot in getSlotsToShow() {
+            slot.show(for: popupTime)        
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + createEnemyDelay) { [unowned self] in
+            self.createEnemy()
+        }
+    }
+    
+    func getSlotsToShow() -> [WhackSlot] {
+        slots.shuffle()
+        
+        var slotsToShow = [slots.first!]
+        
+        for (idx, threshold) in [4, 8, 10, 11].enumerated() {
+            if Int.random(in: 0...12) > threshold {
+                slotsToShow.append(slots[idx + 1])
+            }
+        }
+        
+        return slotsToShow
     }
 }

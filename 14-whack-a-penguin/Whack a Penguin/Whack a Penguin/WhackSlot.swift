@@ -41,21 +41,27 @@ class WhackSlot: SKNode {
     }
     
     
-    func show(for duration: Double) {
+    func show(for timeUntilHide: Double) {
         guard !isShowingPenguin else { return }
         
         isPenguinGood = Double.random(in: 0...1) >= 0.3333
+
+        penguinNode.run(SKAction.moveBy(x: 0, y: 80, duration: 0.05))
         
-        showPenguin(for: duration)
-    }
-    
-    
-    private func showPenguin(for duration: Double) {
-        let showAction = SKAction.moveBy(x: 0, y: 80, duration: 0.05)
-        
-        penguinNode.run(showAction)
         isShowingPenguin = true
         isWhacked = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + (timeUntilHide * 3.5)) { [unowned self] in
+            self.hide()
+        }
+    }
+    
+    func hide() {
+        guard isShowingPenguin else { return }
+        
+        penguinNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.05))
+
+        isShowingPenguin = false
     }
     
     
