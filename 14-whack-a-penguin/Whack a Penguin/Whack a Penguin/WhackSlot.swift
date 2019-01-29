@@ -30,6 +30,26 @@ class WhackSlot: SKNode {
         }
     }
     
+    var showAction: SKAction {
+        return SKAction.moveBy(x: 0, y: 80, duration: 0.05)
+    }
+    
+    var hideAction: SKAction {
+        return SKAction.moveBy(x: 0, y: -80, duration: 0.05)
+    }
+    
+    
+    static func getPenguinSlot(from node: SKNode) -> WhackSlot? {
+        if (
+            node.name == WhackSlot.NodeName.evilPenguin.rawValue ||
+            node.name == WhackSlot.NodeName.goodPenguin.rawValue
+        ) {
+            return node.parent?.parent as? WhackSlot
+        }
+
+        return nil
+    }
+    
     
     func setup(at position: CGPoint) {
         self.position = position
@@ -46,8 +66,10 @@ class WhackSlot: SKNode {
         
         isPenguinGood = Double.random(in: 0...1) >= 0.3333
 
-        penguinNode.run(SKAction.moveBy(x: 0, y: 80, duration: 0.05))
-        
+        penguinNode.xScale = 1
+        penguinNode.yScale = 1
+        penguinNode.run(showAction)
+
         isShowingPenguin = true
         isWhacked = false
         
@@ -59,9 +81,23 @@ class WhackSlot: SKNode {
     func hide() {
         guard isShowingPenguin else { return }
         
-        penguinNode.run(SKAction.moveBy(x: 0, y: -80, duration: 0.05))
+        penguinNode.run(hideAction)
 
         isShowingPenguin = false
+    }
+    
+    
+    func whack(andShrink: Bool = false) {
+        guard isShowingPenguin && !isWhacked else { return }
+        
+        let delay = SKAction.wait(forDuration: 0.25)
+        let turnOffVisibility = SKAction.run({ [unowned self] in self.isShowingPenguin = false })
+        
+        isWhacked = true
+        
+        penguinNode.xScale = 0.85
+        penguinNode.yScale = 0.85
+        penguinNode.run(SKAction.sequence([delay, hideAction, turnOffVisibility]))
     }
     
     

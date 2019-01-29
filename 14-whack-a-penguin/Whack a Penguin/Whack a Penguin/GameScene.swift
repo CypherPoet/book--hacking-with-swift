@@ -15,6 +15,11 @@ class GameScene: SKScene {
     var currentScoreLabel: SKLabelNode!
     var slots = [WhackSlot]()
     var popupTime = 0.85
+    var currentRound = 0
+    
+    var remainingRounds: Int {
+        return 30 - currentRound
+    }
     
     var currentScore = 0 {
         didSet {
@@ -42,7 +47,16 @@ class GameScene: SKScene {
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
         
+        let location = touch.location(in: self)
+        let tappedNodes = nodes(at: location)
+        
+        for node in tappedNodes {
+            if let slot = WhackSlot.getPenguinSlot(from: node) {
+                whackPenguin(inSlot: slot)
+            }
+        }
     }
     
     
@@ -109,10 +123,14 @@ class GameScene: SKScene {
     }
     
     @objc func createEnemy() {
+        currentRound += 1
+        
+        guard remainingRounds > 0 else { return endGame() }
+        
         popupTime *= 0.991
         
         for slot in getSlotsToShow() {
-            slot.show(for: popupTime)        
+            slot.show(for: popupTime)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + createEnemyDelay) { [unowned self] in
@@ -132,5 +150,37 @@ class GameScene: SKScene {
         }
         
         return slotsToShow
+    }
+    
+    
+    func whackPenguin(inSlot slot: WhackSlot) {
+        if slot.penguinNode.name == WhackSlot.NodeName.goodPenguin.rawValue {
+            guard !slot.isWhacked && slot.isShowingPenguin else { return }
+            
+            slot.whack(andShrink: true)
+            currentScore += 1
+            
+            run(SKAction.playSoundFileNamed("whack.caf", waitForCompletion: false))
+            
+        } else if slot.penguinNode.name == WhackSlot.NodeName.evilPenguin.rawValue {
+            guard !slot.isWhacked && slot.isShowingPenguin else { return }
+            
+            slot.whack()
+            currentScore -= 5
+            
+            run(SKAction.playSoundFileNamed("whackBad.caf", waitForCompletion: false))
+        }
+    }
+    
+    
+    func endGame() {
+        for slot in slots { slot.hide() }
+        
+        let gameOverText = SKSpriteNode(imageNamed: "gameOver")
+        
+        gameOverText.position = CGPoint(x: sceneWidth / 2, y: sceneHeight / 2)
+        gameOverText.zPosition = 1
+        
+        addChild(gameOverText)
     }
 }
