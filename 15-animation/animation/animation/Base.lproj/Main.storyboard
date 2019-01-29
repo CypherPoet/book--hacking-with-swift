@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="animation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJW-yS-JE2">
-                                <rect key="frame" x="164.66666666666666" y="661" width="46" height="48"/>
+                                <rect key="frame" x="184" y="745" width="46" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="dIN-1h-hw3"/>
                                 </constraints>
@@ -31,13 +31,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LJW-yS-JE2" secondAttribute="bottom" constant="69" id="IcL-IN-Vkd"/>
-                            <constraint firstItem="LJW-yS-JE2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OSN-7C-RZ3"/>
+                            <constraint firstItem="LJW-yS-JE2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IvM-e8-hp3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LJW-yS-JE2" secondAttribute="bottom" constant="69" id="uPk-QE-Nsu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="triggerButton" destination="LJW-yS-JE2" id="Egn-6r-1kL"/>
+                        <outlet property="triggerButton" destination="LJW-yS-JE2" id="97E-Es-jV8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
