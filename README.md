@@ -25,28 +25,28 @@
 | 12a   | 🛠<br>[Saving User Defaults & Data: NSCoding](/12-names-and-faces-2a)   | UserDefaults + NSCoding/NSKeyedArchiver | ✅ |
 | 12b   | 🛠<br>[Saving User Defaults & Data: Codeable](/12-names-and-faces-2b)   | UserDefaults + Codeable/JSONEncoder/JSONDecoder | ✅ |
 | 13   | 📱<br>[Instafilter](/13-instafilter)            | UISlider, CIImage, CGImage, CIContext, CIFilter, UIImageWriteToSavedPhotosAlbum, Using full function signatures with #selector | ✅ |
-| 14   | 🕹<br>[Whack-a-Penguin](/14-whack-a-penguin)        | SKCropNode, SKTexture, SKActions, asyncAfter() | 🚧 |
-| 15   | 🛠<br>[Core Animation](/15-animation)         | `switch`, `case`, animate(withDuration:), CGAffineTransform, CGFloat.pi | 🔴 |
+| 14   | 🕹<br>[Whack-a-Penguin](/14-whack-a-penguin)        | SKCropNode, SKTexture, SKActions, GCD's asyncAfter(), SKAction.playSoundFileNamed | ✅ |
+| 15   | 🛠<br>[Core Animation](/15-animation)         | `switch`, `case`, animate(withDuration:), CGAffineTransform, CGFloat.pi | 🚧 |
 
 ### Intermediate 📗
 
 | #    | Project Name                | Topics Learned | Progress |
 | :--: | :-------------------------: | :------------: | :------: |
-| 16   | 📱<br>[JavaScript Injection](/16-JavaScript-Injection)  | NSExtensionItem, plists, NSDictionary, UITextView, NSItemProvider, kUTTypePropertyList, Keyboard Notifications, NSValue, CGRect, CGPoint, CGSize, UIEdgeInsets | 🔴 |
-| 17   | 🕹<br>[Fruity Penguins](/17-Fruity-Penguins)       | SKShapeNode, CGPath, UIBezierPath, AVAudioPlayer, CaseIterable & Custom Enums, Default Method Parameters | 🔴 |
-| 18   | 🛠<br>[Debugging](/18-Debugging)             | `print`, `assert`, breakpoints, Visual Debugging | 🔴 |
-| 19   | 📱<br>[Capital Cities](/19-Capital-Cities)        | MKMapView, MKAnnotation, MKPinAnnotationView, CLLocationCoordinate2D, dequeueReusableAnnotationView() | 🔴 |
-| 20   | 🕹<br>[Fireworks Night](/20-Fireworks-Night)       | Timer, SKNode, follow(), motionBegan(), prefersStatusBarHidden, Timer.invalidate() | 🔴 |
-| 21   | 🛠<br>[Local Notifications](/21-Local-Notifications)   | UNUserNotificationCenter, UNNotificationRequest, UNNotificationAction, UNNotificationCategory, UNUserNotificationCenterDelegate, UNNotificationDefaultActionIdentifier | 🔴 |
-| 22   | 📱<br>[Detect-A-Beacon](/22-Detect-A-Beacon)       | Core Location, CLBeaconRegion, CLLocationManager, startMonitoring(for:), startRangingBeacons(in:), `uuidgen`, CLBeaconRegion, CLProximity | 🔴 |
-| 23   | 🕹<br>[Space Race](/23-Space-Race)            | Per-Pixel Collision Detection, Advancing Particle Systems, Adjust Linear & Angular Damping, touchesEnded(), touchesMoved(), touchesBegan() | 🔴 |
-| 24   | 🛠<br>[Swift Extensions](/24-Swift-Extensions/SwiftExtensions.playground)      | `mutating`, Protocol-Oriented Programming, Methods as Verbs, Properties as State, ExSwift | 🔴 |
-| 25   | 📱<br>[Selfie Share](/25-Selfie-Share)             | MCSession, MCBrowswerViewController, showConnectionPrompt(), MCPeerID, MCAdvertiserAssistant, MCSessionDelegate, MCBrowserViewControllerDelegate, Data, data(using:), String.Encoding.utf8 | 🔴 |
-| 26   | 🕹<br>[Marble Maze](/26-Marble-Maze)              | categoryBitMask, collisionBitMask, contactTestBitMask, CMMotionManager, update() | 🔴 |
-| 27   | 🛠<br>[Core Graphics](/27-Core-Graphics)            | UIGraphicsImageRenderer, UIGraphicsImageRendererContext, CGContext, addRect(), addEllipse(), String.draw(with:), UIFont, NSMutableParagraphStyle() | 🔴 |
-| 28   | 📱<br>[Secret Swift](/28-Secret-Swift)             | KeychainWrapper, resignFirstResponder(), NotificationCenter, UIApplication.willResignActiveNotification, LocalAuthentication, LAContext, canEvaluatePolicy(), .deviceOwnerAuthenticationWithBiometrics, evaluatePolicy(), `[unowned self]`, `self`, Privacy for Touch ID & Face ID | 🔴 |
-| 29   | 🕹<br>[Exploding Monkeys](/29-Exploding-Monkeys)       | UIKit + SpriteKit, Texture Atlases, Scene Transitions, Destructable Terrain | 🔴 |
-| 30   | 🛠<br>[Instruments](/30-Instruments)              | TimeProfiler, Color Blended Layers, Color Offscreen-Rendered Yellow, Color Hits Green and Misses Red | 🔴 |
+| 16   | 📱<br>[JavaScript Injection](/16-Javascript-injection)  | NSExtensionItem, plists, NSDictionary, UITextView, NSItemProvider, kUTTypePropertyList, Keyboard Notifications, NSValue, CGRect, CGPoint, CGSize, UIEdgeInsets | 🔴 |
+| 17   | 🕹<br>[Fruity Penguins](/17-fruity-penguins)       | SKShapeNode, CGPath, UIBezierPath, AVAudioPlayer, CaseIterable & Custom Enums, Default Method Parameters | 🔴 |
+| 18   | 🛠<br>[Debugging](/18-debugging)             | `print`, `assert`, breakpoints, Visual Debugging | 🔴 |
+| 19   | 📱<br>[Capital Cities](/19-capital-cities)        | MKMapView, MKAnnotation, MKPinAnnotationView, CLLocationCoordinate2D, dequeueReusableAnnotationView() | 🔴 |
+| 20   | 🕹<br>[Fireworks Night](/20-fireworks-night)       | Timer, SKNode, follow(), motionBegan(), prefersStatusBarHidden, Timer.invalidate() | 🔴 |
+| 21   | 🛠<br>[Local Notifications](/21-local-notifications)   | UNUserNotificationCenter, UNNotificationRequest, UNNotificationAction, UNNotificationCategory, UNUserNotificationCenterDelegate, UNNotificationDefaultActionIdentifier | 🔴 |
+| 22   | 📱<br>[Detect-A-Beacon](/22-detect-a-beacon)       | Core Location, CLBeaconRegion, CLLocationManager, startMonitoring(for:), startRangingBeacons(in:), `uuidgen`, CLBeaconRegion, CLProximity | 🔴 |
+| 23   | 🕹<br>[Space Race](/23-space-race)            | Per-Pixel Collision Detection, Advancing Particle Systems, Adjust Linear & Angular Damping, touchesEnded(), touchesMoved(), touchesBegan() | 🔴 |
+| 24   | 🛠<br>[Swift Extensions](/24-swift-extensions/swiftextensions.playground)      | `mutating`, Protocol-Oriented Programming, Methods as Verbs, Properties as State, ExSwift | 🔴 |
+| 25   | 📱<br>[Selfie Share](/25-selfie-share)             | MCSession, MCBrowswerViewController, showConnectionPrompt(), MCPeerID, MCAdvertiserAssistant, MCSessionDelegate, MCBrowserViewControllerDelegate, Data, data(using:), String.Encoding.utf8 | 🔴 |
+| 26   | 🕹<br>[Marble Maze](/26-marble-maze)              | categoryBitMask, collisionBitMask, contactTestBitMask, CMMotionManager, update() | 🔴 |
+| 27   | 🛠<br>[Core Graphics](/27-core-graphics)            | UIGraphicsImageRenderer, UIGraphicsImageRendererContext, CGContext, addRect(), addEllipse(), String.draw(with:), UIFont, NSMutableParagraphStyle() | 🔴 |
+| 28   | 📱<br>[Secret Swift](/28-secret-swift)             | KeychainWrapper, resignFirstResponder(), NotificationCenter, UIApplication.willResignActiveNotification, LocalAuthentication, LAContext, canEvaluatePolicy(), .deviceOwnerAuthenticationWithBiometrics, evaluatePolicy(), `[unowned self]`, `self`, Privacy for Touch ID & Face ID | 🔴 |
+| 29   | 🕹<br>[Exploding Monkeys](/29-exploding-monkeys)       | UIKit + SpriteKit, Texture Atlases, Scene Transitions, Destructable Terrain | 🔴 |
+| 30   | 🛠<br>[Instruments](/30-instruments)              | TimeProfiler, Color Blended Layers, Color Offscreen-Rendered Yellow, Color Hits Green and Misses Red | 🔴 |
 
 ## Advanced 📘
 
