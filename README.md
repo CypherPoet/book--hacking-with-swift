@@ -32,7 +32,7 @@
 
 | #    | Project Name                | Topics Learned | Progress |
 | :--: | :-------------------------: | :------------: | :------: |
-| 16   | 📱<br>[Safari Extension & JavaScript Injection](/16-safari-extension)  | NSExtensionItem, plists, NSDictionary, UITextView, NSItemProvider, kUTTypePropertyList, Keyboard Notifications, NSValue, CGRect, CGPoint, CGSize, UIEdgeInsets | 🔴 |
+| 16   | 📱<br>[Safari Extension & JavaScript Injection](/16-safari-extension)  | NSExtensionItem, plists (property lists), NSDictionary, NSExtensionJavaScriptPreprocessingResultsKey, UITextView, NSItemProvider, kUTTypePropertyList, keyboard notifications, NSValue, CGRect, CGPoint, CGSize, view.convert, UIEdgeInsets | 🔴 |
 | 17   | 🎮<br>[Fruity Penguins](/17-fruity-penguins)       | SKShapeNode, CGPath, UIBezierPath, AVAudioPlayer, CaseIterable & Custom Enums, Default Method Parameters | 🔴 |
 | 18   | 🛠<br>[Debugging](/18-debugging)             | `print`, `assert`, breakpoints, Visual Debugging | 🔴 |
 | 19   | 📱<br>[Capital Cities](/19-capital-cities)        | MKMapView, MKAnnotation, MKPinAnnotationView, CLLocationCoordinate2D, dequeueReusableAnnotationView() | 🔴 |
@@ -52,15 +52,15 @@
 
 | #    | Project Name                | Topics Learned   | Progress   |
 | :--: | :-------------------------: | :--------------: | :--------: |
-| 31   | 📱<br>[Multibrowser](/31-Multibrowser)            | UIStackView, iPad Multitasking, addArrangedSubview(), WKNavigationDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, App Transport Security | 🔴 |
-| 32   | 📱<br>[Swift Searcher](/32-Swift-Searcher)            | Dynamic Type, NSAttributedString, SFSafariViewController, SFSafariViewControllerDelegate, Core Spotlight, UIContentSizeCategoryDidChange | 🔴 |
-| 33   | 📱<br>[Name That Tune](/33-Name-that-Tune)          | AVAudioRecorder, AVAudioSession, requestRecordPermission(), CloudKit, CKRecord, CKAsset, CloudKit Dashboard, CKQueryOperation, NSPredicate, CKRecord.Reference, fetch(withRecordID:), save(), CKQuerySubscription, NSSortDescriptor | 🔴 |
-| 34   | 🎮<br>[Four in a Row](/34-Connect-Four)            | GameplayKit AI, GKGameModel, GKGameModelPlayer, GKGameModelUpdate, AI Heuristics, NSCopying, GKMinmaxStrategist | 🔴 |
+| 31   | 📱<br>[Multibrowser](/31-multibrowser)            | UIStackView, iPad Multitasking, addArrangedSubview(), WKNavigationDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, App Transport Security | 🔴 |
+| 32   | 📱<br>[Swift Searcher](/32-swift-searcher)            | Dynamic Type, NSAttributedString, SFSafariViewController, SFSafariViewControllerDelegate, Core Spotlight, UIContentSizeCategoryDidChange | 🔴 |
+| 33   | 📱<br>[Name That Tune](/33-name-that-tune)          | AVAudioRecorder, AVAudioSession, requestRecordPermission(), CloudKit, CKRecord, CKAsset, CloudKit Dashboard, CKQueryOperation, NSPredicate, CKRecord.Reference, fetch(withRecordID:), save(), CKQuerySubscription, NSSortDescriptor | 🔴 |
+| 34   | 🎮<br>[Four in a Row](/34-connect-four)            | GameplayKit AI, GKGameModel, GKGameModelPlayer, GKGameModelUpdate, AI Heuristics, NSCopying, GKMinmaxStrategist | 🔴 |
 | 35   | 🛠<br>[Random Numbers](/35-Random-Numbers)           | Int.random(in:), Float.random(in:), Double.random(in:), CGFloat.random(in:), Bool.random(), arc4random(), GKRandomSource.sharedRandom(), GKLinearCongruentialRandomSource, GKMersenneTwisterRandomSource, GKARC4RandomSource, GKRandomDistribution, GKShuffledDistribution, GKGaussianDistribution, Fisher-Yates Algorithm, arrayByShufflingObjects(in:) | 🔴 |
-| 36   | 🎮<br>[Crashy Plane](/36-Crashy-Plane)             | Composed Methods,  Scale Modes, Parallax Scrolling, SpriteKit Physics, SKPhysicsContactDelegate, SKPhysicsBody, SKAudioNode, Managing Game State  | 🔴 |
-| 37   | 🎮<br>[Psychic Tester](/37-Psychic-Tester)           | WatchKit Extensions, 3D Touch, CAEmitterLayer, CAGradientLayer, @IBDesignable, @IBInspectable, transition(with:), WCSession, WKInterfaceLabel, WKInterfaceButton | 🔴 |
-| 38   | 🛠<br>[Github Commits (Core Data)](/38-GitHubCommits) | NSFetchRequest, NSManagedObject, NSPredicate, NSSortDescriptor, NSFetchedResultsController, ISO8601DateFormatter | 🔴 |
-| 39   | 🛠<br>[Unit testing with XCTest](/39-Swift-Unit-Tests) | XCTest, `filter()`, Test-Driven Development, Functional Programming, XCTestCase, Setting a Baseline, NSCountedSet, XCUIApplication(), XCUIElementQuery, UI Test Recording | 🔴 |
+| 36   | 🎮<br>[Crashy Plane](/36-crashy-plane)             | Composed Methods,  Scale Modes, Parallax Scrolling, SpriteKit Physics, SKPhysicsContactDelegate, SKPhysicsBody, SKAudioNode, Managing Game State  | 🔴 |
+| 37   | 🎮<br>[Psychic Tester](/37-psychic-tester)           | WatchKit Extensions, 3D Touch, CAEmitterLayer, CAGradientLayer, @IBDesignable, @IBInspectable, transition(with:), WCSession, WKInterfaceLabel, WKInterfaceButton | 🔴 |
+| 38   | 🛠<br>[Github Commits (Core Data)](/38-githubcommits) | NSFetchRequest, NSManagedObject, NSPredicate, NSSortDescriptor, NSFetchedResultsController, ISO8601DateFormatter | 🔴 |
+| 39   | 🛠<br>[Unit testing with XCTest](/39-swift-unit-tests) | XCTest, `filter()`, Test-Driven Development, Functional Programming, XCTestCase, Setting a Baseline, NSCountedSet, XCUIApplication(), XCUIElementQuery, UI Test Recording | 🔴 |
 
 
 ## Challenges 🥅
@@ -74,7 +74,7 @@
 | 4    | 📱<br>[Country Facts](/challenges/country-facts)            | ✅ |
 
 
-## Certificate of Completion 🎓
+## Certificate of Completion 🏆
 
 <img src="/certificate.jpg" width="500">
 
