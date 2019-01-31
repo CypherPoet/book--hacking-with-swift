@@ -10,11 +10,16 @@ import UIKit
 import MobileCoreServices
 
 class ActionViewController: UIViewController {
-
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var scriptTextView: UITextView!
+    
+    var pageTitle = ""
+    var pageURL = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
         
         // `inputItems` should be an array of data that the parent app is sending to our extension to use
         guard let inputItem = extensionContext!.inputItems.first as? NSExtensionItem else { return }
@@ -32,7 +37,12 @@ class ActionViewController: UIViewController {
                 let itemDictionary = dict as! NSDictionary
                 let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as! NSDictionary
                 
-                print(javaScriptValues)
+                self.pageURL = javaScriptValues["URL"] as! String
+                self.pageTitle = javaScriptValues["title"] as! String
+                
+                DispatchQueue.main.async {
+                    self.title = self.pageTitle
+                }
             }
         )
     }
@@ -71,11 +81,40 @@ class ActionViewController: UIViewController {
 //            }
 //        }
 //    }
+    
+    func setupUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .done, target: self, action: #selector(done)
+        )
+    }
+    
+    
+    func makeExtensionItemOnCompletion() -> NSExtensionItem {
+        let argument: NSDictionary = ["customJavaScript": scriptTextView.text]
+        
+        // 🔑 This is what will be sent as the argument to our script's `finalize` function
+        let webDictionary: NSDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: argument]
+        
+        let customJSProvider = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
+
+        let extensionItem = NSExtensionItem()
+        extensionItem.attachments = [customJSProvider]
+        
+        return extensionItem
+    }
+    
 
     @IBAction func done() {
         // Return any edited content to the host app.
         // This template doesn't do anything, so we just echo the passed in items.
-        self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
+//        self.extensionContext!.completeRequest(returningItems: self.extensionContext!.inputItems, completionHandler: nil)
+        
+        
+        self.extensionContext!.completeRequest(
+            returningItems: [makeExtensionItemOnCompletion()],
+            completionHandler: nil
+        )
     }
+    
 
 }

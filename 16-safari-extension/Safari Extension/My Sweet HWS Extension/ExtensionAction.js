@@ -18,8 +18,11 @@ ActionClass.prototype = {
     });
   },
 
+  /**
+   * Handle anything passed back from an extension when it's runtime completes
+   */
   finalize: function(params) {
-
+    eval(params.customJavaScript);
   }
 };
 
