@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Aj-9e-njE">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="03k-a7-2KZ">
+            <objects>
+                <tableViewController id="Es5-pJ-mK0" customClass="HomeViewController" customModule="City_Facts" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SgZ-V8-aJ5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="City Cell" rowHeight="86" id="ofo-Zk-mOY">
+                                <rect key="frame" x="0.0" y="28" width="414" height="86"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ofo-Zk-mOY" id="rDF-ks-OVu">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="85.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Es5-pJ-mK0" id="odh-7a-fX5"/>
+                            <outlet property="delegate" destination="Es5-pJ-mK0" id="Rx6-E2-NlS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="FHi-RH-ed9"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B1t-7g-ijG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="264" y="731"/>
+        </scene>
+        <!--City Detail View Controller-->
+        <scene sceneID="dKr-X0-yYw">
+            <objects>
+                <viewController storyboardIdentifier="City Details" id="xrH-Dl-aw0" customClass="CityDetailViewController" customModule="City_Facts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3OK-P8-hda">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="City Header Image" translatesAutoresizingMaskIntoConstraints="NO" id="bhd-zb-B4P">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="307"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Country Flag Image" image="uk" translatesAutoresizingMaskIntoConstraints="NO" id="PNs-dn-XNz">
+                                <rect key="frame" x="341" y="271" width="73" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="lNV-kU-WVm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D23-dR-5zI">
+                                <rect key="frame" x="57" y="329" width="300" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="Ze5-mJ-gjS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jns-9Z-Slt">
+                                <rect key="frame" x="33" y="481" width="348" height="356"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbE-oN-NXl">
+                                <rect key="frame" x="33" y="379" width="324" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Founded: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7s-Ls-tf8">
+                                <rect key="frame" x="33" y="411" width="324" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Population: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdx-Dt-k2y">
+                                <rect key="frame" x="33" y="440" width="324" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vdx-Dt-k2y" firstAttribute="leading" secondItem="Jns-9Z-Slt" secondAttribute="leading" id="6bC-eY-805"/>
+                            <constraint firstItem="D23-dR-5zI" firstAttribute="centerX" secondItem="Jns-9Z-Slt" secondAttribute="centerX" id="7N9-RU-Zee"/>
+                            <constraint firstItem="bhd-zb-B4P" firstAttribute="top" secondItem="3OK-P8-hda" secondAttribute="top" id="7ss-yB-QRh"/>
+                            <constraint firstItem="DbE-oN-NXl" firstAttribute="leading" secondItem="s7s-Ls-tf8" secondAttribute="leading" id="EBZ-0J-A0d"/>
+                            <constraint firstItem="bhd-zb-B4P" firstAttribute="centerX" secondItem="D23-dR-5zI" secondAttribute="centerX" id="EV5-sP-HW8"/>
+                            <constraint firstItem="D23-dR-5zI" firstAttribute="leading" secondItem="aD2-Ml-nOn" secondAttribute="leading" constant="57" id="HD3-jf-PTb"/>
+                            <constraint firstItem="DbE-oN-NXl" firstAttribute="top" secondItem="D23-dR-5zI" secondAttribute="bottom" constant="8" symbolic="YES" id="ID4-bM-xiy"/>
+                            <constraint firstItem="bhd-zb-B4P" firstAttribute="trailing" secondItem="PNs-dn-XNz" secondAttribute="trailing" id="Iwu-0P-0qa"/>
+                            <constraint firstItem="s7s-Ls-tf8" firstAttribute="leading" secondItem="vdx-Dt-k2y" secondAttribute="leading" id="KYu-vX-HrK"/>
+                            <constraint firstAttribute="trailing" secondItem="bhd-zb-B4P" secondAttribute="trailing" id="Luq-60-ibB"/>
+                            <constraint firstItem="bhd-zb-B4P" firstAttribute="leading" secondItem="3OK-P8-hda" secondAttribute="leading" id="Rlo-QC-TZa"/>
+                            <constraint firstItem="Jns-9Z-Slt" firstAttribute="top" secondItem="vdx-Dt-k2y" secondAttribute="bottom" constant="24" id="S9B-XE-waK"/>
+                            <constraint firstItem="vdx-Dt-k2y" firstAttribute="top" secondItem="s7s-Ls-tf8" secondAttribute="bottom" constant="12" id="V19-ao-dza"/>
+                            <constraint firstItem="aD2-Ml-nOn" firstAttribute="bottom" secondItem="Jns-9Z-Slt" secondAttribute="bottom" constant="25" id="Wv0-U5-Rn3"/>
+                            <constraint firstItem="PNs-dn-XNz" firstAttribute="top" secondItem="aD2-Ml-nOn" secondAttribute="top" constant="227" id="XhX-vE-ONM"/>
+                            <constraint firstItem="D23-dR-5zI" firstAttribute="top" secondItem="bhd-zb-B4P" secondAttribute="bottom" constant="22" id="YLc-cC-caU"/>
+                            <constraint firstItem="s7s-Ls-tf8" firstAttribute="top" secondItem="DbE-oN-NXl" secondAttribute="bottom" constant="15" id="c4T-cW-G26"/>
+                            <constraint firstItem="bhd-zb-B4P" firstAttribute="bottom" secondItem="PNs-dn-XNz" secondAttribute="bottom" id="d0u-rw-iiE"/>
+                            <constraint firstItem="D23-dR-5zI" firstAttribute="trailing" secondItem="DbE-oN-NXl" secondAttribute="trailing" id="f5W-rO-tMA"/>
+                            <constraint firstItem="s7s-Ls-tf8" firstAttribute="trailing" secondItem="vdx-Dt-k2y" secondAttribute="trailing" id="fM3-mQ-MZn"/>
+                            <constraint firstItem="PNs-dn-XNz" firstAttribute="leading" secondItem="aD2-Ml-nOn" secondAttribute="leading" constant="341" id="hmZ-jR-AZJ"/>
+                            <constraint firstItem="DbE-oN-NXl" firstAttribute="leading" secondItem="aD2-Ml-nOn" secondAttribute="leading" constant="33" id="nUA-gO-VSI"/>
+                            <constraint firstItem="DbE-oN-NXl" firstAttribute="trailing" secondItem="s7s-Ls-tf8" secondAttribute="trailing" id="tok-71-eVl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aD2-Ml-nOn"/>
+                    </view>
+                    <connections>
+                        <outlet property="cityNameLabel" destination="D23-dR-5zI" id="wR3-1I-q90"/>
+                        <outlet property="countryLabel" destination="DbE-oN-NXl" id="aTN-S3-9ld"/>
+                        <outlet property="dateFoundedLabel" destination="s7s-Ls-tf8" id="dE9-Jf-ceD"/>
+                        <outlet property="descriptionText" destination="Jns-9Z-Slt" id="N30-Ut-chq"/>
+                        <outlet property="flagImageView" destination="PNs-dn-XNz" id="MpW-2b-JN8"/>
+                        <outlet property="headerImageView" destination="bhd-zb-B4P" id="kla-zH-CBc"/>
+                        <outlet property="populationLabel" destination="vdx-Dt-k2y" id="acA-LP-VrN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="omv-qh-Hhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1176.8115942028987" y="730.58035714285711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rbg-8A-pfi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Aj-9e-njE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GXV-Tg-S1O">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Es5-pJ-mK0" kind="relationship" relationship="rootViewController" id="aZm-tc-HzS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EhO-7G-8Z3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="264.80000000000001" y="10.344827586206897"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="uk" width="1280" height="640"/>
+    </resources>
+</document>

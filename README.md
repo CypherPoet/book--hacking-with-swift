@@ -70,7 +70,7 @@
 | 1    | 📱<br>[World Flags](/challenges/world-flag-sharing)            | ✅ |
 | 2    | 🎮<br>[Hangman](/challenges/hangman)            | ✅ |
 | 3    | 📱<br>[Storm Viewer 2 (Collection View)](/challenges/storm-viewer-collection-view)            | ✅ |
-| 3    | 📱<br>[Country Facts](/challenges/country-facts)            | 🚧 |
+| 4    | 📱<br>[Country Facts](/challenges/country-facts)            | 🚧 |
 
 
 ## Certificate of Completion 🎓
