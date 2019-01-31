@@ -32,7 +32,7 @@
 
 | #    | Project Name                | Topics Learned | Progress |
 | :--: | :-------------------------: | :------------: | :------: |
-| 16   | 📱<br>[JavaScript Injection](/16-javascript-injection)  | NSExtensionItem, plists, NSDictionary, UITextView, NSItemProvider, kUTTypePropertyList, Keyboard Notifications, NSValue, CGRect, CGPoint, CGSize, UIEdgeInsets | 🔴 |
+| 16   | 📱<br>[Safari Extension & JavaScript Injection](/16-safari-extension)  | NSExtensionItem, plists, NSDictionary, UITextView, NSItemProvider, kUTTypePropertyList, Keyboard Notifications, NSValue, CGRect, CGPoint, CGSize, UIEdgeInsets | 🔴 |
 | 17   | 🎮<br>[Fruity Penguins](/17-fruity-penguins)       | SKShapeNode, CGPath, UIBezierPath, AVAudioPlayer, CaseIterable & Custom Enums, Default Method Parameters | 🔴 |
 | 18   | 🛠<br>[Debugging](/18-debugging)             | `print`, `assert`, breakpoints, Visual Debugging | 🔴 |
 | 19   | 📱<br>[Capital Cities](/19-capital-cities)        | MKMapView, MKAnnotation, MKPinAnnotationView, CLLocationCoordinate2D, dequeueReusableAnnotationView() | 🔴 |
@@ -62,6 +62,7 @@
 | 38   | 🛠<br>[Github Commits (Core Data)](/38-GitHubCommits) | NSFetchRequest, NSManagedObject, NSPredicate, NSSortDescriptor, NSFetchedResultsController, ISO8601DateFormatter | 🔴 |
 | 39   | 🛠<br>[Unit testing with XCTest](/39-Swift-Unit-Tests) | XCTest, `filter()`, Test-Driven Development, Functional Programming, XCTestCase, Setting a Baseline, NSCountedSet, XCUIApplication(), XCUIElementQuery, UI Test Recording | 🔴 |
 
+
 ## Challenges 🥅
 
 | #    | Project Name                 | Progress |
@@ -70,7 +71,7 @@
 | 1    | 📱<br>[World Flags](/challenges/world-flag-sharing)            | ✅ |
 | 2    | 🎮<br>[Hangman](/challenges/hangman)            | ✅ |
 | 3    | 📱<br>[Storm Viewer 2 (Collection View)](/challenges/storm-viewer-collection-view)            | ✅ |
-| 4    | 📱<br>[Country Facts](/challenges/country-facts)            | 🚧 |
+| 4    | 📱<br>[Country Facts](/challenges/country-facts)            | ✅ |
 
 
 ## Certificate of Completion 🎓
