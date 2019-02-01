@@ -32,8 +32,8 @@
 
 | #    | Project Name                | Topics Learned | Progress |
 | :--: | :-------------------------: | :------------: | :------: |
-| 16   | 📱<br>[Safari Extension & JavaScript Injection](/16-safari-extension)  | NSExtensionItem, plists (property lists), NSDictionary, NSExtensionJavaScriptPreprocessingResultsKey, UITextView, NSItemProvider, kUTTypePropertyList, keyboard notifications, NSValue, CGRect, CGPoint, CGSize, view.convert, UIEdgeInsets | 🔴 |
-| 17   | 🎮<br>[Fruity Penguins](/17-fruity-penguins)       | SKShapeNode, CGPath, UIBezierPath, AVAudioPlayer, CaseIterable & Custom Enums, Default Method Parameters | 🔴 |
+| 16   | 📱<br>[Safari Extension & JavaScript Injection](/16-safari-extension)  | NSExtensionItem, plists (property lists), NSDictionary, NSExtensionJavaScriptPreprocessingResultsKey, UITextView, NSItemProvider, kUTTypePropertyList, keyboard notifications, NSValue, CGRect, CGPoint, CGSize, view.convert, UIEdgeInsets | ✅ |
+| 17   | 🎮<br>[Swifty Ninja](/17-swifty-ninja)       | SKShapeNode, CGPath, UIBezierPath, AVAudioPlayer, CaseIterable & Custom Enums, Default Method Parameters | 🔴 |
 | 18   | 🛠<br>[Debugging](/18-debugging)             | `print`, `assert`, breakpoints, Visual Debugging | 🔴 |
 | 19   | 📱<br>[Capital Cities](/19-capital-cities)        | MKMapView, MKAnnotation, MKPinAnnotationView, CLLocationCoordinate2D, dequeueReusableAnnotationView() | 🔴 |
 | 20   | 🎮<br>[Fireworks Night](/20-fireworks-night)       | Timer, SKNode, follow(), motionBegan(), prefersStatusBarHidden, Timer.invalidate() | 🔴 |
