@@ -7,14 +7,30 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 let sceneWidth = 1024.0
 let sceneHeight = 768.0
+let enemySize = 64.0
+
+enum NextEnemy {
+    case bomb
+    case penguin
+    case random
+}
+
+enum NodeName: String {
+    case penguin = "penguin"
+    case bomb = "bomb"
+    case bombContainer = "bombContainer"
+}
+
 
 class GameScene: SKScene {
     var scoreLabel: SKLabelNode!
     var sliceTrailBG: SKShapeNode!
     var sliceTrailFG: SKShapeNode!
+    var currentBombSoundEffect: AVAudioPlayer?
     
     var isPlayingSwooshSound = false
     
@@ -24,8 +40,9 @@ class GameScene: SKScene {
         SKAction.playSoundFileNamed("swoosh3.caf", waitForCompletion: true)
     ]
     
-    var livesImageNodes = [SKSpriteNode]()
+    var lifeIndicators = [SKSpriteNode]()
     var sliceTrailPoints = [CGPoint]()
+    var activeEnemies = [SKSpriteNode]()
     
     var remainingLives = 3
     
@@ -33,6 +50,10 @@ class GameScene: SKScene {
         didSet {
             scoreLabel.text = "Score: \(self.currentScore)"
         }
+    }
+    
+    var hasBombsOnScreen: Bool {
+        return activeEnemies.firstIndex(where: { $0.name == NodeName.bombContainer.rawValue }) != nil
     }
     
     lazy var sceneCenterPoint = { () -> CGPoint in
@@ -59,7 +80,6 @@ class GameScene: SKScene {
         setupPhysics()
     }
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         sliceTrailPoints.removeAll(keepingCapacity: true)
         
@@ -68,9 +88,6 @@ class GameScene: SKScene {
         beginDrawingSlices(afterTouch: touch)
     }
     
-    /**
-     *
-     */
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         
@@ -88,6 +105,13 @@ class GameScene: SKScene {
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         touchesEnded(touches, with: event)
+    }
+    
+    
+    override func update(_ currentTime: TimeInterval) {
+        if !hasBombsOnScreen {
+            clearAnyBombSoundEffect()
+        }
     }
     
     
@@ -131,7 +155,7 @@ class GameScene: SKScene {
             
             addChild(lifeNode)
             
-            livesImageNodes.append(lifeNode)
+            lifeIndicators.append(lifeNode)
         }
     }
     
@@ -216,6 +240,113 @@ class GameScene: SKScene {
         
         run(soundAction) { [unowned self] in
             self.isPlayingSwooshSound = false
+        }
+    }
+    
+    
+    /**
+     * Things to consider:
+     *
+     *   1. Should this enemy be a penguin or a bomb?
+     *       - Sometimes we'll want to force one or the other. For example, it wouldn't
+     *         be fair to start off with a bomb as the very first target.
+     *   2. Where should be it created on the screen?
+     *   3. What direction should it be moving in?
+     */
+    func createEnemy(ofType enemyType: NextEnemy = .random) {
+        var enemy: SKSpriteNode
+        
+        if enemyType == .bomb {
+            enemy = makeBombNode()
+            
+        } else if enemyType == .penguin {
+            enemy = makePenguinNode()
+            
+        } else {
+            enemy = Int.random(in: 0...6) == 0 ? makeBombNode() : makePenguinNode()
+        }
+        
+        configureInScene(enemy: enemy)
+        activeEnemies.append(enemy)
+        addChild(enemy)
+    }
+    
+    
+    func makePenguinNode() -> SKSpriteNode {
+        let node = SKSpriteNode(imageNamed: "penguin")
+        node.name = NodeName.penguin.rawValue
+        
+        return node
+    }
+    
+    
+    /**
+     *  - Create a new SKSpriteNode that will hold the fuse and the bomb image as children, setting its Z position to be 1.
+     *  - Create the bomb image, name it "bomb", and add it to the container.
+     *  - If the bomb fuse sound effect is playing, stop it and destroy it.
+     *  - Create a new bomb fuse sound effect, then play it.
+     *  - Create a particle emitter node, position it so that it's at the end of the bomb image's fuse, and add it to the container.”
+     */
+    func makeBombNode() -> SKSpriteNode {
+        let container = SKSpriteNode()
+        let bomb = SKSpriteNode(imageNamed: "sliceBomb")
+        let fuse = SKEmitterNode(fileNamed: "sliceFuse")!
+        
+        fuse.position = CGPoint(x: bomb.size.width + 12, y: bomb.size.height)
+        
+        container.zPosition = 1
+        
+        bomb.name = NodeName.bomb.rawValue
+        container.name = NodeName.bombContainer.rawValue
+        
+        clearAnyBombSoundEffect()
+        
+        currentBombSoundEffect = makeBombSoundEffect()
+        currentBombSoundEffect!.play()
+        
+        container.addChild(fuse)
+        container.addChild(bomb)
+        
+        return container
+    }
+    
+    func makeBombSoundEffect() -> AVAudioPlayer {
+        let effectPath = Bundle.main.path(forResource: "sliceBombFuse.caf", ofType: nil)!
+        let url = URL(fileURLWithPath: effectPath)
+        
+        let sound = try! AVAudioPlayer(contentsOf: url)
+        
+        return sound
+    }
+    
+    
+    func configureInScene(enemy: SKSpriteNode) {
+        let yPosition = sceneHeight * -0.2
+        let xPosition = Double.random(in: enemySize ... (sceneHeight - enemySize))
+        
+        let position = CGPoint(x: xPosition, y: yPosition)
+        let angularVelocity = CGFloat.random(in: -6...6) / 2.0
+        
+        let yVelocity = Int.random(in: 24 ... 36)
+        var xVelocity = 0
+        
+        if xPosition < sceneWidth * 0.25 || xPosition >= sceneWidth * 0.75 {
+            xVelocity = Int.random(in: 8 ... 15)
+        } else {
+            xVelocity = Int.random(in: 3 ... 5)
+        }
+        
+        enemy.position = position
+        enemy.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(enemySize))
+        enemy.physicsBody!.velocity = CGVector(dx: xVelocity * 40, dy: yVelocity * 40)
+        enemy.physicsBody!.angularVelocity = angularVelocity
+        enemy.physicsBody!.collisionBitMask = 0
+    }
+    
+    func clearAnyBombSoundEffect() {
+        if currentBombSoundEffect != nil {
+            currentBombSoundEffect!.stop()
+            currentBombSoundEffect = nil
         }
     }
 }
