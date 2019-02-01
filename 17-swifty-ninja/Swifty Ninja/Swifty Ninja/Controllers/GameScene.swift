@@ -16,6 +16,14 @@ class GameScene: SKScene {
     var sliceTrailBG: SKShapeNode!
     var sliceTrailFG: SKShapeNode!
     
+    var isPlayingSwooshSound = false
+    
+    lazy var swooshSoundActions = [
+        SKAction.playSoundFileNamed("swoosh1.caf", waitForCompletion: true),
+        SKAction.playSoundFileNamed("swoosh2.caf", waitForCompletion: true),
+        SKAction.playSoundFileNamed("swoosh3.caf", waitForCompletion: true)
+    ]
+    
     var livesImageNodes = [SKSpriteNode]()
     var sliceTrailPoints = [CGPoint]()
     
@@ -30,6 +38,20 @@ class GameScene: SKScene {
     lazy var sceneCenterPoint = { () -> CGPoint in
         return CGPoint(x: sceneWidth / 2, y: sceneHeight / 2)
     }()
+    
+    var drawableSliceTrailPath: CGPath {
+        let path = UIBezierPath()
+        
+        if let startPoint = sliceTrailPoints.first {
+            path.move(to: startPoint)
+        }
+        
+        for index in 1 ..< sliceTrailPoints.count {
+            path.addLine(to: sliceTrailPoints[index])
+        }
+        
+        return path.cgPath
+    }
     
     
     override func didMove(to view: SKView) {
@@ -54,6 +76,10 @@ class GameScene: SKScene {
         
         sliceTrailPoints.append(touch.location(in: self))
         redrawSliceTrails()
+        
+        if !isPlayingSwooshSound {
+            playSwooshSound()
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -156,16 +182,8 @@ class GameScene: SKScene {
             sliceTrailPoints.removeFirst(sliceTrailPoints.count - 12)
         }
         
-        let path = UIBezierPath()
-
-        path.move(to: sliceTrailPoints.first!)
-        
-        for index in 1 ..< sliceTrailPoints.count {
-            path.addLine(to: sliceTrailPoints[index])
-        }
-        
-        sliceTrailBG.path = path.cgPath
-        sliceTrailFG.path = path.cgPath
+        sliceTrailBG.path = drawableSliceTrailPath
+        sliceTrailFG.path = drawableSliceTrailPath
     }
     
     
@@ -188,5 +206,16 @@ class GameScene: SKScene {
         
         sliceTrailBG.alpha = 1
         sliceTrailFG.alpha = 1
+    }
+    
+    
+    func playSwooshSound() {
+        let soundAction = swooshSoundActions.randomElement()!
+        
+        isPlayingSwooshSound = true
+        
+        run(soundAction) { [unowned self] in
+            self.isPlayingSwooshSound = false
+        }
     }
 }
