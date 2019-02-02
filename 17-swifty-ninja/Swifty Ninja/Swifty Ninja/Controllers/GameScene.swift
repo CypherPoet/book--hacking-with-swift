@@ -13,6 +13,17 @@ let sceneWidth = 1024.0
 let sceneHeight = 768.0
 let enemySize = 64.0
 
+enum EnemySequence: CaseIterable {
+    case onePenguin
+    case oneRandom
+    case onePenguinOneBomb
+    case twoRandoms
+    case threeRandoms
+    case fourRandoms
+    case chain
+    case fastChain
+}
+
 enum NextEnemy {
     case bomb
     case penguin
@@ -31,8 +42,19 @@ class GameScene: SKScene {
     var sliceTrailBG: SKShapeNode!
     var sliceTrailFG: SKShapeNode!
     var currentBombSoundEffect: AVAudioPlayer?
-    
+
     var isPlayingSwooshSound = false
+    var enemyRespawnInterval = 0.9
+    var enemySequenceQueue: [EnemySequence]!
+    var enemySequencePosition = 0
+    var isNextEnemySequenceQueued = false
+    
+    /**
+     * Enemy chains don't wait until the previous enemy is offscreen before
+     * creating a new one. Instead, they'll spawn multiple enemies
+     * quickly, but with a small delay between each one.
+     */
+    var enemyChainInterval = 3.0
     
     lazy var swooshSoundActions = [
         SKAction.playSoundFileNamed("swoosh1.caf", waitForCompletion: true),
@@ -40,11 +62,24 @@ class GameScene: SKScene {
         SKAction.playSoundFileNamed("swoosh3.caf", waitForCompletion: true)
     ]
     
+    // Make the enemy scale out and fade out at the same time, then remove it from the parent node
+    lazy var destroyEnemyActionSequence = SKAction.sequence([
+        SKAction.group([
+            SKAction.scale(to: 0.001, duration: 0.2),
+            SKAction.fadeOut(withDuration: 0.2)
+        ]),
+        SKAction.removeFromParent()
+    ])
+    
+    lazy var destroyPenguinSoundAction = SKAction.playSoundFileNamed("whack.caf", waitForCompletion: false)
+    lazy var destroyBombSoundAction = SKAction.playSoundFileNamed("explosion.caf", waitForCompletion: false)
+    
     var lifeIndicators = [SKSpriteNode]()
     var sliceTrailPoints = [CGPoint]()
     var activeEnemies = [SKSpriteNode]()
     
     var remainingLives = 3
+    let startingEnemyYPosition = sceneHeight * -0.2
     
     var currentScore = 0 {
         didSet {
@@ -78,6 +113,7 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setupUI()
         setupPhysics()
+        startSpawningEnemies()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -91,12 +127,10 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         
-        sliceTrailPoints.append(touch.location(in: self))
-        redrawSliceTrails()
+        let touchPoint = touch.location(in: self)
         
-        if !isPlayingSwooshSound {
-            playSwooshSound()
-        }
+        expandSliceTrails(to: touchPoint)
+        detectHitsOnTouchesMoved(to: touchPoint)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -111,6 +145,16 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         if !hasBombsOnScreen {
             clearAnyBombSoundEffect()
+        }
+        
+        if activeEnemies.count > 0 {
+            clearPassedEnemies()
+        } else if !isNextEnemySequenceQueued {
+            DispatchQueue.main.asyncAfter(deadline: .now() + enemyRespawnInterval) { [unowned self] in
+                self.spawnEnemies()
+            }
+
+            isNextEnemySequenceQueued = true
         }
     }
     
@@ -292,7 +336,7 @@ class GameScene: SKScene {
         let bomb = SKSpriteNode(imageNamed: "sliceBomb")
         let fuse = SKEmitterNode(fileNamed: "sliceFuse")!
         
-        fuse.position = CGPoint(x: bomb.size.width + 12, y: bomb.size.height)
+        fuse.position = CGPoint(x: (bomb.size.width / 2) + 12, y: bomb.size.height / 2)
         
         container.zPosition = 1
         
@@ -321,10 +365,9 @@ class GameScene: SKScene {
     
     
     func configureInScene(enemy: SKSpriteNode) {
-        let yPosition = sceneHeight * -0.2
         let xPosition = Double.random(in: enemySize ... (sceneHeight - enemySize))
         
-        let position = CGPoint(x: xPosition, y: yPosition)
+        let position = CGPoint(x: xPosition, y: startingEnemyYPosition)
         let angularVelocity = CGFloat.random(in: -6...6) / 2.0
         
         let yVelocity = Int.random(in: 24 ... 36)
@@ -348,5 +391,189 @@ class GameScene: SKScene {
             currentBombSoundEffect!.stop()
             currentBombSoundEffect = nil
         }
+    }
+    
+    /**
+     * 📝 We're going to decrease both `enemyRespawnInterval` and `enemyChainInterval` so that the game gets harder.
+     * Sneakily, we're always going to increase the speed of our physics world,
+     * so that objects move, rise, and fall faster, too
+     */
+    func spawnEnemies() {
+        enemyRespawnInterval *= 0.991
+        enemyChainInterval *= 0.99
+        physicsWorld.speed *= 1.02
+        
+        let sequenceType = enemySequenceQueue[enemySequencePosition]
+        
+        switch sequenceType {
+        case .onePenguin:
+            createEnemy(ofType: .penguin)
+        case .oneRandom:
+            createEnemy(ofType: .random)
+        case .onePenguinOneBomb:
+            createEnemy(ofType: .penguin)
+            createEnemy(ofType: .bomb)
+        case .twoRandoms:
+            for _ in 0...1 { createEnemy(ofType: .random) }
+        case .threeRandoms:
+            for _ in 0...2 { createEnemy(ofType: .random) }
+        case .fourRandoms:
+            for _ in 0...3 { createEnemy(ofType: .random) }
+        case .chain:
+            let now = DispatchTime.now()
+            
+            createEnemy(ofType: .random)
+            
+            for deadline in [
+                now + enemyChainInterval * 0.2,
+                now + enemyChainInterval * 0.4,
+                now + enemyChainInterval * 0.6,
+                now + enemyChainInterval * 0.8
+            ] {
+                DispatchQueue.main.asyncAfter(deadline: deadline) { [unowned self] in
+                    self.createEnemy(ofType: .random)
+                }
+            }
+        case .fastChain:
+            let now = DispatchTime.now()
+            
+            createEnemy(ofType: .random)
+            
+            for deadline in [
+                now + enemyChainInterval * 0.1,
+                now + enemyChainInterval * 0.2,
+                now + enemyChainInterval * 0.3,
+                now + enemyChainInterval * 0.4
+            ] {
+                DispatchQueue.main.asyncAfter(deadline: deadline) { [unowned self] in
+                    self.createEnemy(ofType: .random)
+                }
+            }
+        }
+        
+        enemySequencePosition += 1
+        isNextEnemySequenceQueued = false
+    }
+    
+    
+    func startSpawningEnemies() {
+        enemySequenceQueue = [
+            .onePenguin,
+            .onePenguin,
+            .onePenguinOneBomb,
+            .onePenguinOneBomb,
+            .threeRandoms,
+            .oneRandom,
+            .chain
+        ]
+        
+        for _ in 0...1000 {
+            enemySequenceQueue.append(EnemySequence.allCases.randomElement()!)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+            self.spawnEnemies()
+        }
+    }
+    
+    func clearPassedEnemies() {
+        for node in activeEnemies {
+            if Double(node.position.y) < Double(startingEnemyYPosition - enemySize) {
+                node.removeFromParent()
+                
+                if let index = activeEnemies.index(of: node) {
+                    activeEnemies.remove(at: index)
+                }
+            }
+        }
+    }
+    
+    func expandSliceTrails(to location: CGPoint) {
+        sliceTrailPoints.append(location)
+        redrawSliceTrails()
+        
+        if !isPlayingSwooshSound {
+            playSwooshSound()
+        }
+    }
+    
+    
+    func detectHitsOnTouchesMoved(to location: CGPoint) {
+        let nodesAtTouchPoint = nodes(at: location)
+        
+        for node in nodesAtTouchPoint {
+            if node.name == NodeName.bomb.rawValue {
+                destroy(bomb: node)
+            } else if node.name == NodeName.penguin.rawValue {
+                destroy(penguin: node)
+                currentScore += 1
+            }
+        }
+    }
+    
+    /**
+     * - Create a particle effect over the penguin.
+     * - Clear its node name so that it can't be swiped repeatedly.
+     * - Disable the isDynamic of its physics body so that it doesn't carry on falling.
+     * - Run a group of destruction animation actions and then remove the penguin from the scene.
+     * - Remove the enemy from our activeEnemies array.
+     * - Play a sound so the player knows they hit the penguin.
+     */
+    func destroy(penguin penguinNode: SKNode) {
+        let emitter = SKEmitterNode(fileNamed: "sliceHitEnemy")!
+        
+        emitter.position = penguinNode.position
+        addChild(emitter)
+        
+        penguinNode.name = ""
+        penguinNode.physicsBody?.isDynamic = false
+        
+        penguinNode.run(destroyEnemyActionSequence)
+        
+        if let enemyIndex = activeEnemies.index(of: penguinNode as! SKSpriteNode) {
+            activeEnemies.remove(at: enemyIndex)
+            run(destroyPenguinSoundAction)
+        }
+    }
+    
+    
+    /**
+     *  - The node called "bomb" is the bomb image, which is inside the bomb container.
+     *    So, we need to reference the node's parent when looking up our position,
+     *    changing the physics body, removing the node from the scene,
+     *    and removing the node from our activeEnemies array.
+     *
+     *  - create a different particle effect for bombs than for penguins.
+     *  - end by calling the (as yet unwritten) method endGame()
+     *
+     */
+    func destroy(bomb bombNode: SKNode) {
+        let bombContainer = bombNode.parent! as! SKSpriteNode
+        
+        guard bombContainer.name == NodeName.bombContainer.rawValue else {
+            fatalError("Couldn't find bombContainer from what was supposed to be a bomb node")
+        }
+
+        let emitter = SKEmitterNode(fileNamed: "sliceHitBomb")!
+        
+        emitter.position = bombContainer.position
+        addChild(emitter)
+        
+        bombNode.name = ""
+//        bombContainer.name = ""
+        bombContainer.physicsBody?.isDynamic = false
+        bombContainer.run(destroyEnemyActionSequence)
+        
+        if let index = activeEnemies.index(of: bombContainer) {
+            activeEnemies.remove(at: index)
+            run(destroyBombSoundAction)
+        }
+        
+        endGame(triggeredByBomb: true)
+    }
+    
+    
+    func endGame(triggeredByBomb: Bool) {
+        
     }
 }
