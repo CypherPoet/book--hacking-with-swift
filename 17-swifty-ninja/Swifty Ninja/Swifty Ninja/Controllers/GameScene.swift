@@ -12,6 +12,7 @@ import AVFoundation
 let sceneWidth = 1024.0
 let sceneHeight = 768.0
 let enemySize = 64.0
+let startingLives = 3
 
 enum EnemySequence: CaseIterable {
     case onePenguin
@@ -73,13 +74,29 @@ class GameScene: SKScene {
     
     lazy var destroyPenguinSoundAction = SKAction.playSoundFileNamed("whack.caf", waitForCompletion: false)
     lazy var destroyBombSoundAction = SKAction.playSoundFileNamed("explosion.caf", waitForCompletion: false)
+    lazy var lostLifeSoundAction = SKAction.playSoundFileNamed("wrong.caf", waitForCompletion: false)
+    lazy var expiredLifeTexture = SKTexture(imageNamed: "sliceLifeGone")
+    
     
     var lifeIndicators = [SKSpriteNode]()
     var sliceTrailPoints = [CGPoint]()
     var activeEnemies = [SKSpriteNode]()
     
-    var remainingLives = 3
+    var remainingLives = startingLives
+    var hasGameEnded = false
+    
+    var previousLifeImageSlot: SKSpriteNode {
+        let index = startingLives - remainingLives - 1
+        
+        return lifeIndicators[index]
+    }
+    
     let startingEnemyYPosition = sceneHeight * -0.2
+    
+    // If an enemy falls past this point, the player looses a life
+    var enemyFalloffThreshold: Double {
+        return startingEnemyYPosition - enemySize
+    }
     
     var currentScore = 0 {
         didSet {
@@ -125,6 +142,7 @@ class GameScene: SKScene {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard !hasGameEnded else { return }
         guard let touch = touches.first else { return }
         
         let touchPoint = touch.location(in: self)
@@ -399,6 +417,8 @@ class GameScene: SKScene {
      * so that objects move, rise, and fall faster, too
      */
     func spawnEnemies() {
+        guard !hasGameEnded else { return }
+
         enemyRespawnInterval *= 0.991
         enemyChainInterval *= 0.99
         physicsWorld.speed *= 1.02
@@ -478,12 +498,17 @@ class GameScene: SKScene {
     
     func clearPassedEnemies() {
         for node in activeEnemies {
-            if Double(node.position.y) < Double(startingEnemyYPosition - enemySize) {
-                node.removeFromParent()
-                
+            if Double(node.position.y) < enemyFalloffThreshold {
                 if let index = activeEnemies.index(of: node) {
                     activeEnemies.remove(at: index)
                 }
+                
+                if node.name == NodeName.penguin.rawValue {
+                    subtractLife()
+                }
+                
+                node.removeAllActions()
+                node.name = ""
             }
         }
     }
@@ -560,7 +585,7 @@ class GameScene: SKScene {
         addChild(emitter)
         
         bombNode.name = ""
-//        bombContainer.name = ""
+        bombContainer.name = ""
         bombContainer.physicsBody?.isDynamic = false
         bombContainer.run(destroyEnemyActionSequence)
         
@@ -573,7 +598,44 @@ class GameScene: SKScene {
     }
     
     
-    func endGame(triggeredByBomb: Bool) {
+    func subtractLife() {
+        guard !hasGameEnded else { return }
+
+        remainingLives -= 1
         
+        let lifeImageSlot = previousLifeImageSlot
+        
+        lifeImageSlot.texture = expiredLifeTexture
+        lifeImageSlot.xScale = 1.3
+        lifeImageSlot.yScale = 1.3
+        lifeImageSlot.run(SKAction.scale(to: 1, duration: 0.1))
+        run(lostLifeSoundAction)
+        
+        if remainingLives == 0 {
+            endGame(triggeredByBomb: false)
+        }
+    }
+    
+    
+    func endGame(triggeredByBomb: Bool) {
+        guard !hasGameEnded else { return }
+        
+        hasGameEnded = true
+        isUserInteractionEnabled = false
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+            self.physicsWorld.speed = 0
+            
+            if self.currentBombSoundEffect != nil {
+                self.currentBombSoundEffect!.stop()
+                self.currentBombSoundEffect = nil
+            }
+        }
+        
+        if triggeredByBomb {
+            for lifeIndicaor in lifeIndicators {
+                lifeIndicaor.texture = expiredLifeTexture
+            }
+        }
     }
 }
