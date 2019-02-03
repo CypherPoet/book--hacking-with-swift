@@ -34,7 +34,7 @@
 | :--: | :-------------------------: | :------------: | :------: |
 | 16   | 📱<br>[Safari Extension & JavaScript Injection](/16-safari-extension)  | NSExtensionItem, plists (property lists), NSDictionary, NSExtensionJavaScriptPreprocessingResultsKey, UITextView, NSItemProvider, kUTTypePropertyList, keyboard notifications, NSValue, CGRect, CGPoint, CGSize, view.convert, UIEdgeInsets | ✅ |
 | 17   | 🎮<br>[Swifty Ninja](/17-swifty-ninja)       | SKShapeNode, CGPath, UIBezierPath, AVAudioPlayer, CaseIterable & custom enums, SKAction sequences and groups, default method parameters | ✅ |
-| 18   | 🛠<br>[Debugging](/18-debugging)             | `print`, `assert`, breakpoints, Visual Debugging | 🚧 |
+| 18   | 🛠<br>[Debugging](/18-debugging)             | `print`, `assert`, breakpoints, visual debugging, conditional breakpoints, lldb printing and expressions | ✅ |
 | 19   | 📱<br>[Capital Cities](/19-capital-cities)        | MKMapView, MKAnnotation, MKPinAnnotationView, CLLocationCoordinate2D, dequeueReusableAnnotationView() | 🔴 |
 | 20   | 🎮<br>[Fireworks Night](/20-fireworks-night)       | Timer, SKNode, follow(), motionBegan(), prefersStatusBarHidden, Timer.invalidate() | 🔴 |
 | 21   | 🛠<br>[Local Notifications](/21-local-notifications)   | UNUserNotificationCenter, UNNotificationRequest, UNNotificationAction, UNNotificationCategory, UNUserNotificationCenterDelegate, UNNotificationDefaultActionIdentifier | 🔴 |
@@ -72,6 +72,8 @@
 | 2    | 🎮<br>[Hangman](/challenges/hangman)            | ✅ |
 | 3    | 📱<br>[Storm Viewer 2 (Collection View)](/challenges/storm-viewer-collection-view)            | ✅ |
 | 4    | 📱<br>[Country Facts](/challenges/country-facts)            | ✅ |
+| 5    | 📱<br>[Imitation Apple Notes App](/challenges/apple-notes-imitation)            | 🚧 |
+
 
 
 ## Certificate of Completion 🏆
