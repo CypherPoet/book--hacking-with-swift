@@ -11,7 +11,11 @@
 		F33B43D62207F326001E6083 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F33B43CD2207F326001E6083 /* LaunchScreen.storyboard */; };
 		F33B43D82207F326001E6083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43D02207F326001E6083 /* AppDelegate.swift */; };
 		F33B43D92207F326001E6083 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F33B43D32207F326001E6083 /* Home.storyboard */; };
-		F33B43DA2207F326001E6083 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43D42207F326001E6083 /* HomeViewController.swift */; };
+		F33B43DA2207F326001E6083 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43D42207F326001E6083 /* HomeTableViewController.swift */; };
+		F33B43DC2208043E001E6083 /* Notebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43DB2208043E001E6083 /* Notebook.swift */; };
+		F33B43DE2208047E001E6083 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43DD2208047E001E6083 /* Note.swift */; };
+		F33B43E422080629001E6083 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43E322080629001E6083 /* NoteDetailViewController.swift */; };
+		F33B43E722080732001E6083 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43E622080732001E6083 /* NotesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +25,11 @@
 		F33B43CE2207F326001E6083 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F33B43D02207F326001E6083 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F33B43D32207F326001E6083 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		F33B43D42207F326001E6083 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F33B43D42207F326001E6083 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		F33B43DB2208043E001E6083 /* Notebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notebook.swift; sourceTree = "<group>"; };
+		F33B43DD2208047E001E6083 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		F33B43E322080629001E6083 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
+		F33B43E622080732001E6083 /* NotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,8 @@
 		F33B43CB2207F326001E6083 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F33B43DB2208043E001E6083 /* Notebook.swift */,
+				F33B43DD2208047E001E6083 /* Note.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -98,6 +108,8 @@
 		F33B43D12207F326001E6083 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F33B43E522080732001E6083 /* Folder */,
+				F33B43E0220805AF001E6083 /* Note */,
 				F33B43D22207F326001E6083 /* Home */,
 			);
 			path = Controllers;
@@ -107,10 +119,27 @@
 			isa = PBXGroup;
 			children = (
 				F33B43D32207F326001E6083 /* Home.storyboard */,
-				F33B43D42207F326001E6083 /* HomeViewController.swift */,
+				F33B43D42207F326001E6083 /* HomeTableViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
+		};
+		F33B43E0220805AF001E6083 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				F33B43E322080629001E6083 /* NoteDetailViewController.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		F33B43E522080732001E6083 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				F33B43E622080732001E6083 /* NotesTableViewController.swift */,
+			);
+			name = Folder;
+			path = Source/Controllers/Folder;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -184,7 +213,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33B43D82207F326001E6083 /* AppDelegate.swift in Sources */,
-				F33B43DA2207F326001E6083 /* HomeViewController.swift in Sources */,
+				F33B43E722080732001E6083 /* NotesTableViewController.swift in Sources */,
+				F33B43DC2208043E001E6083 /* Notebook.swift in Sources */,
+				F33B43DA2207F326001E6083 /* HomeTableViewController.swift in Sources */,
+				F33B43DE2208047E001E6083 /* Note.swift in Sources */,
+				F33B43E422080629001E6083 /* NoteDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +354,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.sipple.Apple-Notes-Imitation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -339,7 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.sipple.Apple-Notes-Imitation";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
