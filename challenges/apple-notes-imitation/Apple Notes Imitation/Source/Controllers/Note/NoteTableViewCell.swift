@@ -1,15 +1,13 @@
 //
-//  Note.swift
+//  NoteTableViewCell.swift
 //  Apple Notes Imitation
 //
 //  Created by Brian Sipple on 2/4/19.
 //  Copyright © 2019 Brian Sipple. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct Note: Codable {
-    var title: String
-    var body: String
-    var lastUpdatedAt: String
+class NoteTableViewCell: UITableViewCell {
+    var note: Note!
 }
