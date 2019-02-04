@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F33B43B42206D655001E6083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43B32206D655001E6083 /* AppDelegate.swift */; };
-		F33B43B62206D655001E6083 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43B52206D655001E6083 /* ViewController.swift */; };
-		F33B43B92206D655001E6083 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F33B43B72206D655001E6083 /* Main.storyboard */; };
-		F33B43BB2206D657001E6083 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F33B43BA2206D657001E6083 /* Assets.xcassets */; };
-		F33B43BE2206D657001E6083 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F33B43BC2206D657001E6083 /* LaunchScreen.storyboard */; };
+		F33B43D52207F326001E6083 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F33B43CA2207F326001E6083 /* Assets.xcassets */; };
+		F33B43D62207F326001E6083 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F33B43CD2207F326001E6083 /* LaunchScreen.storyboard */; };
+		F33B43D82207F326001E6083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43D02207F326001E6083 /* AppDelegate.swift */; };
+		F33B43D92207F326001E6083 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F33B43D32207F326001E6083 /* Home.storyboard */; };
+		F33B43DA2207F326001E6083 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43D42207F326001E6083 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F33B43B02206D655001E6083 /* Apple Notes Imitation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Notes Imitation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F33B43B32206D655001E6083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F33B43B52206D655001E6083 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F33B43B82206D655001E6083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F33B43BA2206D657001E6083 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F33B43BD2206D657001E6083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F33B43BF2206D657001E6083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F33B43CA2207F326001E6083 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F33B43CD2207F326001E6083 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F33B43CE2207F326001E6083 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F33B43D02207F326001E6083 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F33B43D32207F326001E6083 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		F33B43D42207F326001E6083 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +38,7 @@
 		F33B43A72206D655001E6083 = {
 			isa = PBXGroup;
 			children = (
-				F33B43B22206D655001E6083 /* Apple Notes Imitation */,
+				F33B43C82207F326001E6083 /* Source */,
 				F33B43B12206D655001E6083 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,17 +51,65 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F33B43B22206D655001E6083 /* Apple Notes Imitation */ = {
+		F33B43C82207F326001E6083 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				F33B43B32206D655001E6083 /* AppDelegate.swift */,
-				F33B43B52206D655001E6083 /* ViewController.swift */,
-				F33B43B72206D655001E6083 /* Main.storyboard */,
-				F33B43BA2206D657001E6083 /* Assets.xcassets */,
-				F33B43BC2206D657001E6083 /* LaunchScreen.storyboard */,
-				F33B43BF2206D657001E6083 /* Info.plist */,
+				F33B43C92207F326001E6083 /* Resources */,
+				F33B43CB2207F326001E6083 /* Models */,
+				F33B43CC2207F326001E6083 /* Supporting Files */,
+				F33B43CF2207F326001E6083 /* App Start */,
+				F33B43D12207F326001E6083 /* Controllers */,
 			);
-			path = "Apple Notes Imitation";
+			path = Source;
+			sourceTree = "<group>";
+		};
+		F33B43C92207F326001E6083 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F33B43CA2207F326001E6083 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F33B43CB2207F326001E6083 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F33B43CC2207F326001E6083 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F33B43CD2207F326001E6083 /* LaunchScreen.storyboard */,
+				F33B43CE2207F326001E6083 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F33B43CF2207F326001E6083 /* App Start */ = {
+			isa = PBXGroup;
+			children = (
+				F33B43D02207F326001E6083 /* AppDelegate.swift */,
+			);
+			path = "App Start";
+			sourceTree = "<group>";
+		};
+		F33B43D12207F326001E6083 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F33B43D22207F326001E6083 /* Home */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F33B43D22207F326001E6083 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F33B43D32207F326001E6083 /* Home.storyboard */,
+				F33B43D42207F326001E6083 /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +170,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F33B43BE2206D657001E6083 /* LaunchScreen.storyboard in Resources */,
-				F33B43BB2206D657001E6083 /* Assets.xcassets in Resources */,
-				F33B43B92206D655001E6083 /* Main.storyboard in Resources */,
+				F33B43D52207F326001E6083 /* Assets.xcassets in Resources */,
+				F33B43D62207F326001E6083 /* LaunchScreen.storyboard in Resources */,
+				F33B43D92207F326001E6083 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,31 +183,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F33B43B62206D655001E6083 /* ViewController.swift in Sources */,
-				F33B43B42206D655001E6083 /* AppDelegate.swift in Sources */,
+				F33B43D82207F326001E6083 /* AppDelegate.swift in Sources */,
+				F33B43DA2207F326001E6083 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F33B43B72206D655001E6083 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F33B43B82206D655001E6083 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F33B43BC2206D657001E6083 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F33B43BD2206D657001E6083 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F33B43C02206D657001E6083 /* Debug */ = {
@@ -284,7 +313,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRXXH2RKAG;
-				INFOPLIST_FILE = "Apple Notes Imitation/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRXXH2RKAG;
-				INFOPLIST_FILE = "Apple Notes Imitation/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
