@@ -9,7 +9,7 @@
 import Foundation
 
 struct Note: Codable {
-    var title: String
-    var body: String
-    var lastUpdatedAt: String
+    var title: String?
+    var body: String?
+    var lastUpdatedAt: Date?
 }

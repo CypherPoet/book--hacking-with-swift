@@ -9,80 +9,85 @@
 import UIKit
 
 class NotesListViewController: UITableViewController {
-    var notes: [Note]!
+    var folder: Folder!
+    
+    var notes: [Note] {
+        return folder.notes
+    }
+    
+    var userDataKey: String {
+        return "\(folder.title)::notes"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
+        title = folder.title
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return notes.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Note Item", for: indexPath) as! NoteTableViewCell
 
-        // Configure the cell...
-
+        cell.note = notes[indexPath.row]
+        
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        launchNoteDetailView(with: notes[indexPath.row])
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    
+    @IBAction func composeNote(_ sender: Any) {
+        let newNote = Note(title: "New Note", body: "", lastUpdatedAt: Date())
+        
+        folder.notes.append(newNote)
+        saveFolders()
+        
+        launchNoteDetailView(with: newNote)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    
+    func launchNoteDetailView(with note: Note) {
+        if let noteDetailViewController = storyboard?.instantiateViewController(withIdentifier: "Note Detail") as? NoteDetailViewController {
+            noteDetailViewController.note = note
+            navigationController?.pushViewController(noteDetailViewController, animated: true)
+        }
     }
-    */
+    
+    
+    func saveFolders() {
+        let userDefaults = UserDefaults.standard
+        
+        if let savedFolders = userDefaults.object(forKey: "folders") as? Data {
+            let decoder = JSONDecoder()
+            
+            do {
+                var folders = try decoder.decode([Folder].self, from: savedFolders)
+                
+                if let index = folders.firstIndex(where: { $0.title == folder.title }) {
+                    folders[index] = folder
+                
+                    let encoder = JSONEncoder()
+                    let folderData = try encoder.encode(folders)
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+                    UserDefaults.standard.set(folderData, forKey: "folders")
+                }
+                
+            } catch let error {
+                print("Error while loading folder data: \n\(error)")
+            }
+        }
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

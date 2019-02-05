@@ -88,7 +88,7 @@
             </objects>
             <point key="canvasLocation" x="69.599999999999994" y="15.742128935532236"/>
         </scene>
-        <!--Notes-->
+        <!--Folder Name-->
         <scene sceneID="d3y-2a-ydB">
             <objects>
                 <tableViewController storyboardIdentifier="Notes List" id="Cxa-lD-wMf" customClass="NotesListViewController" customModule="Apple_Notes_Imitation" customModuleProvider="target" sceneMemberID="viewController">
@@ -97,13 +97,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Note Cell" id="As0-sT-9hW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Note Item" id="As0-sT-9hW" customClass="NoteTableViewCell" customModule="Apple_Notes_Imitation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="As0-sT-9hW" id="eJz-yW-dIv">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Awesome Swift Projects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbS-yv-PgJ">
+                                            <rect key="frame" x="20" y="7" width="151" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" text="22/22/2222" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-lb-Msd">
+                                            <rect key="frame" x="20" y="26" width="56" height="13"/>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="11"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" text="Project 1: Apple Notes..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nK-4A-3K1">
+                                            <rect key="frame" x="90" y="26" width="304" height="13"/>
+                                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="11"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6nK-4A-3K1" firstAttribute="leading" secondItem="DuK-lb-Msd" secondAttribute="trailing" constant="14" id="UL5-gE-gBB"/>
+                                        <constraint firstAttribute="trailing" secondItem="6nK-4A-3K1" secondAttribute="trailing" constant="274" id="UYN-w0-xH7"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentPreviewLabel" destination="6nK-4A-3K1" id="biG-Ed-l60"/>
+                                    <outlet property="lastUpdatedAtLabel" destination="DuK-lb-Msd" id="dgN-Zj-y1m"/>
+                                    <outlet property="noteTitleLabel" destination="EbS-yv-PgJ" id="lyu-JS-kV7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -115,29 +145,51 @@
                         <barButtonItem width="338" style="plain" systemItem="fixedSpace" id="l2r-2C-URe"/>
                         <barButtonItem systemItem="compose" id="gQA-rf-Di8">
                             <color key="tintColor" red="0.87843137250000003" green="0.66666666669999997" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="composeNote:" destination="Cxa-lD-wMf" id="2uQ-M9-0qp"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Notes" id="sxd-1a-08z"/>
+                    <navigationItem key="navigationItem" title="Folder Name" id="sxd-1a-08z"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U7A-wt-WYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="727"/>
+            <point key="canvasLocation" x="1008.6956521739131" y="726.5625"/>
         </scene>
-        <!--Note Detail-->
+        <!--Note Detail View Controller-->
         <scene sceneID="ohB-uS-O9x">
             <objects>
-                <viewController storyboardIdentifier="Note Detail" title="Note Detail" id="PHX-5J-NEV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Note Detail" id="PHX-5J-NEV" customClass="NoteDetailViewController" customModule="Apple_Notes_Imitation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rtH-Cn-2I3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mkD-16-oPz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="C3T-VR-m2w"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="oHq-xR-weT"/>
+                        <barButtonItem systemItem="trash" id="gdV-L0-6vc">
+                            <color key="tintColor" red="0.87843137250000003" green="0.66666666669999997" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="noteDeleted:" destination="PHX-5J-NEV" id="iSd-Ks-cJe"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qI9-Xe-kka" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1923" y="727"/>
+            <point key="canvasLocation" x="1921.7391304347827" y="726.5625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wH1-Jf-Iub">

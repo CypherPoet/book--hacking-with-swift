@@ -48,9 +48,9 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let notesListViewController = storyboard?.instantiateViewController(withIdentifier: "Notes List") as? NotesListViewController {
-            let notes = folders[indexPath.row].notes
-        
-            notesListViewController.notes = notes
+            let folder = folders[indexPath.row]
+            
+            notesListViewController.folder = folder
             
             navigationController?.pushViewController(notesListViewController, animated: true)
         }
@@ -72,6 +72,7 @@ class HomeTableViewController: UITableViewController {
         }
     }
 
+    
     func saveData() {
         let encoder = JSONEncoder()
         

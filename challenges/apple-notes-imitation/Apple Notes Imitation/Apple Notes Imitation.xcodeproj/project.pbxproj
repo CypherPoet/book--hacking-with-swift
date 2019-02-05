@@ -17,7 +17,7 @@
 		F33B43E422080629001E6083 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43E322080629001E6083 /* NoteDetailViewController.swift */; };
 		F33B43E722080732001E6083 /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43E622080732001E6083 /* NotesListViewController.swift */; };
 		F33B43E9220811C5001E6083 /* FolderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43E8220811C5001E6083 /* FolderTableViewCell.swift */; };
-		F33B43EB220811F0001E6083 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43EA220811F0001E6083 /* NoteTableViewCell.swift */; };
+		F33B43ED22095731001E6083 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33B43EC22095731001E6083 /* NoteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		F33B43E322080629001E6083 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		F33B43E622080732001E6083 /* NotesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
 		F33B43E8220811C5001E6083 /* FolderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewCell.swift; sourceTree = "<group>"; };
-		F33B43EA220811F0001E6083 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		F33B43EC22095731001E6083 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +122,7 @@
 		F33B43D22207F326001E6083 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F33B43E8220811C5001E6083 /* FolderTableViewCell.swift */,
 				F33B43D32207F326001E6083 /* Home.storyboard */,
 				F33B43D42207F326001E6083 /* HomeTableViewController.swift */,
 			);
@@ -132,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				F33B43E322080629001E6083 /* NoteDetailViewController.swift */,
-				F33B43EA220811F0001E6083 /* NoteTableViewCell.swift */,
 			);
 			path = Note;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				F33B43E622080732001E6083 /* NotesListViewController.swift */,
-				F33B43E8220811C5001E6083 /* FolderTableViewCell.swift */,
+				F33B43EC22095731001E6083 /* NoteTableViewCell.swift */,
 			);
 			name = Folder;
 			path = Source/Controllers/Folder;
@@ -221,7 +221,7 @@
 				F33B43D82207F326001E6083 /* AppDelegate.swift in Sources */,
 				F33B43E722080732001E6083 /* NotesListViewController.swift in Sources */,
 				F33B43DC2208043E001E6083 /* Folder.swift in Sources */,
-				F33B43EB220811F0001E6083 /* NoteTableViewCell.swift in Sources */,
+				F33B43ED22095731001E6083 /* NoteTableViewCell.swift in Sources */,
 				F33B43DA2207F326001E6083 /* HomeTableViewController.swift in Sources */,
 				F33B43DE2208047E001E6083 /* Note.swift in Sources */,
 				F33B43E9220811C5001E6083 /* FolderTableViewCell.swift in Sources */,
