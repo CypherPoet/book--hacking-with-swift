@@ -8,8 +8,9 @@
 
 import UIKit
 
-class NotesTableViewController: UITableViewController {
-
+class NotesListViewController: UITableViewController {
+    var notes: [Note]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

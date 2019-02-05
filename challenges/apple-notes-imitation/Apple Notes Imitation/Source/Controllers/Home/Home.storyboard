@@ -91,17 +91,17 @@
         <!--Notes-->
         <scene sceneID="d3y-2a-ydB">
             <objects>
-                <tableViewController storyboardIdentifier="Notes Table" id="Cxa-lD-wMf" customClass="NotesTableViewController" customModule="Apple_Notes_Imitation" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Notes List" id="Cxa-lD-wMf" customClass="NotesListViewController" customModule="Apple_Notes_Imitation" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BuS-bL-WAh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Note Cell" id="As0-sT-9hW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Note Cell" id="As0-sT-9hW">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="As0-sT-9hW" id="eJz-yW-dIv">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -111,7 +111,14 @@
                             <outlet property="delegate" destination="Cxa-lD-wMf" id="C3h-Cv-NvJ"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem width="338" style="plain" systemItem="fixedSpace" id="l2r-2C-URe"/>
+                        <barButtonItem systemItem="compose" id="gQA-rf-Di8">
+                            <color key="tintColor" red="0.87843137250000003" green="0.66666666669999997" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Notes" id="sxd-1a-08z"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U7A-wt-WYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -47,10 +47,13 @@ class HomeTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Folder Cell")!
-        let folder = folders[indexPath.row]
+        if let notesListViewController = storyboard?.instantiateViewController(withIdentifier: "Notes List") as? NotesListViewController {
+            let notes = folders[indexPath.row].notes
         
-        cell.textLabel?.text = folder.title
+            notesListViewController.notes = notes
+            
+            navigationController?.pushViewController(notesListViewController, animated: true)
+        }
     }
 
 
@@ -129,6 +132,5 @@ class HomeTableViewController: UITableViewController {
         
         present(alertController, animated: true)
     }
-    
 }
 
