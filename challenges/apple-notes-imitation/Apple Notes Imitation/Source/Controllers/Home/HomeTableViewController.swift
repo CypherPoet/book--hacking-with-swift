@@ -22,6 +22,13 @@ class HomeTableViewController: UITableViewController {
         
         loadFolders()
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
+    }
 
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

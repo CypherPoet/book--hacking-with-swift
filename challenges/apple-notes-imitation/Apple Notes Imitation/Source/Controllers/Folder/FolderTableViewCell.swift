@@ -11,8 +11,7 @@ import UIKit
 class FolderTableViewCell: UITableViewCell {
     @IBOutlet weak var noteCountLabel: UILabel!
     
-    
-    
+
     var folder: Folder! {
         didSet {
             self.textLabel?.text = folder.title
