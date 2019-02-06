@@ -1,6 +1,6 @@
 <img src="/logo.png" width="1000">
 
-#### My project portfolio from following along with the book [Hacking With Swift](https://www.hackingwithswift.com/read).
+#### My project portfolio from following along with the book [_Hacking With Swift_](https://www.hackingwithswift.com/read).
 
 ![Shield.io MIT License Shield](https://img.shields.io/github/license/mashape/apistatus.svg)
 
@@ -74,11 +74,6 @@
 | 4    | 📱<br>[Country Facts](/challenges/country-facts)            | ✅ |
 | 5    | 📱<br>[Imitation Apple Notes App](/challenges/apple-notes-imitation)            | 🚧 |
 
-
-
-## Certificate of Completion 🏆
-
-<img src="/certificate.jpg" width="500">
 
 |  KEY  |
 | ----- |
