@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kmo-2M-v2U">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Capital_Cities" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Qb4-CB-UPw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="0Na-VB-YAM"/>
                                 </connections>
@@ -27,14 +27,23 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Qb4-CB-UPw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="NkE-p4-CX7"/>
-                            <constraint firstAttribute="trailing" secondItem="Qb4-CB-UPw" secondAttribute="trailing" id="Xdy-dh-QAR"/>
-                            <constraint firstItem="Qb4-CB-UPw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="f5Q-ye-kwW"/>
-                            <constraint firstItem="Qb4-CB-UPw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ic7-OP-h0M"/>
+                            <constraint firstItem="Qb4-CB-UPw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="6Jn-4G-8EH"/>
+                            <constraint firstItem="Qb4-CB-UPw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MyP-1C-4cq"/>
+                            <constraint firstAttribute="trailing" secondItem="Qb4-CB-UPw" secondAttribute="trailing" id="m3c-c1-Did"/>
+                            <constraint firstItem="Qb4-CB-UPw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vEu-Ot-MNz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8e2-9a-dkx"/>
+                        <barButtonItem title="Map Style" id="7hV-8P-5Vh">
+                            <connections>
+                                <action selector="selectMapStyle:" destination="BYZ-38-t0r" id="cB2-Bi-WAO"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="KZy-Vo-vG7"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="mapView" destination="Qb4-CB-UPw" id="3vY-TM-OPn"/>
                     </connections>
@@ -49,7 +58,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kmo-2M-v2U" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Aa-ax-5xa">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

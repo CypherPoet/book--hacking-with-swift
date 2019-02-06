@@ -47,6 +47,14 @@ let initialCapitals = [
     ),
 ]
 
+let mapTypes = [
+    "Standard": MKMapType.standard,
+    "Satellite": MKMapType.satellite,
+    "Satellite Flyover": MKMapType.satelliteFlyover,
+    "Hybrid": MKMapType.hybrid,
+    "Hybrid Flyover": MKMapType.hybridFlyover,
+    "Muted Standard": MKMapType.mutedStandard,
+]
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
@@ -62,9 +70,29 @@ class HomeViewController: UIViewController {
         setupMap()
     }
 
-    
+
     func setupMap() {
         mapView.addAnnotations(Array(capitalAnnotations!.values))
+    }
+    
+
+    func switchMapStyle(action: UIAlertAction) {
+        guard let mapType: MKMapType = mapTypes[action.title!] else {
+            preconditionFailure("Couldn't get MKMapType from \(action.title!)")
+        }
+        
+        mapView.mapType = mapType
+    }
+    
+
+    @IBAction func selectMapStyle(_ sender: Any) {
+        let chooser = UIAlertController(title: "Choose a map style.", message: nil, preferredStyle: .actionSheet)
+        
+        for (mapTypeKey, _) in mapTypes {
+            chooser.addAction(UIAlertAction(title: mapTypeKey, style: .default, handler: switchMapStyle))
+        }
+        
+        self.present(chooser, animated: true)
     }
 }
 
@@ -91,7 +119,6 @@ extension HomeViewController: MKMapViewDelegate {
             
         }
     }
-    
     
     
     func makeNewCapitalAnnotationView(_ annotation: MKAnnotation) -> MKPinAnnotationView {
