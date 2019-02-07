@@ -30,10 +30,11 @@ class GameScene: SKScene {
     
     var gameTimer: Timer!
     var fireworks = [SKNode]()
+    var scoreLabel: SKLabelNode!
     
-    var score = 0 {
+    var currentScore = 0 {
         didSet {
-            
+            scoreLabel.text = "Score: \(currentScore)"
         }
     }
     
@@ -43,10 +44,13 @@ class GameScene: SKScene {
     
     lazy var sceneCenterPoint = CGPoint(x: sceneWidth / 2.0, y: sceneHeight / 2.0)
     
+    
     override func didMove(to view: SKView) {
         setupBackground()
+        setupUI()
         setupTimer()
     }
+    
     
     func setupTimer() {
         gameTimer = Timer.scheduledTimer(
@@ -56,6 +60,16 @@ class GameScene: SKScene {
             userInfo: nil,
             repeats: true
         )
+    }
+    
+    func setupUI() {
+        scoreLabel = SKLabelNode(fontNamed: "Futura")
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.verticalAlignmentMode = .top
+        scoreLabel.position = CGPoint(x: sceneWidth - 16, y: sceneHeight - 16)
+        
+        currentScore = 0
+        addChild(scoreLabel)
     }
     
     func setupBackground() {
@@ -154,7 +168,6 @@ class GameScene: SKScene {
             let xPosition = Double(sceneCenterPoint.x) + (currentSpacing * directionFromCenter)
             let xMovement = xPosition
             
-            print("X position: \(xPosition)")
             createLaunch(xMovement: xMovement, xPos: xPosition, yPos: bottomEdge)
         }
     }
