@@ -47,4 +47,12 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        let spriteKitView = self.view as! SKView
+        let gameScene = spriteKitView.scene as! GameScene
+        
+        gameScene.explodeSelectedFireworks()
+    }
 }
+

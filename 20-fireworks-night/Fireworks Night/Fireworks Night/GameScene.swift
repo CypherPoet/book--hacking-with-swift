@@ -13,7 +13,8 @@ let sceneWidth = 1024.0
 let sceneHeight = 768.0
 
 enum NodeName: String {
-    case fireworkRocket
+    case fireworkRocket = "Firework Rocket"
+    case selectedFireworkRocket = "Firework Rocket (Selected)"
 }
 
 enum LaunchStyle: CaseIterable {
@@ -23,13 +24,15 @@ enum LaunchStyle: CaseIterable {
 
 class GameScene: SKScene {
     let fireworkInterval = 4.0
-    let fireworkSpeed = 400.0
+    let fireworkSpeed = 200.0
+    let yThreshold = sceneHeight * 1.25
     let leftEdge = -22.0
     let bottomEdge = -22.0
     let rightEdge = sceneWidth + 22
     
     var gameTimer: Timer!
     var fireworks = [SKNode]()
+    var selectedRockets = [SKSpriteNode]()
     var scoreLabel: SKLabelNode!
     
     var currentScore = 0 {
@@ -38,9 +41,8 @@ class GameScene: SKScene {
         }
     }
     
-    var randomFireworkColor: UIColor {
-        return [UIColor.cyan, UIColor.green, UIColor.red].randomElement()!
-    }
+    var colorToDetonate: UIColor!
+    lazy var rocketColors = [UIColor.cyan, UIColor.green, UIColor.red]
     
     lazy var sceneCenterPoint = CGPoint(x: sceneWidth / 2.0, y: sceneHeight / 2.0)
     
@@ -49,6 +51,25 @@ class GameScene: SKScene {
         setupBackground()
         setupUI()
         setupTimer()
+    }
+    
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        guard let touch = touches.first else { return }
+        handleTouch(touch)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        guard let touch = touches.first else { return }
+        handleTouch(touch)
+    }
+    
+    
+    override func update(_ currentTime: TimeInterval) {
+        super.update(currentTime)
+        cleanupPastFireworks()
     }
     
     
@@ -121,7 +142,7 @@ class GameScene: SKScene {
         
         fireworkRocket.colorBlendFactor = 1
         fireworkRocket.name = NodeName.fireworkRocket.rawValue
-        fireworkRocket.color = randomFireworkColor
+        fireworkRocket.color = rocketColors.randomElement()!
         
         fireworkGlow.position = CGPoint(x: 0, y: -22)
         
@@ -199,5 +220,71 @@ class GameScene: SKScene {
             createLaunch(xMovement: -xMovement, xPos: rightEdge, yPos: yPosition)
         }
     }
+
     
+    func handleTouch(_ touch: UITouch) {
+        let location = touch.location(in: self)
+        
+        for node in nodes(at: location) {
+            if node is SKSpriteNode && node.name == NodeName.fireworkRocket.rawValue {
+                let rocketNode = node as! SKSpriteNode
+                
+                if !selectedRockets.isEmpty && rocketNode.color != colorToDetonate {
+                    resetSelectedRockets()
+                } else {
+                    colorToDetonate = rocketNode.color
+                    rocketNode.name = NodeName.selectedFireworkRocket.rawValue
+                    rocketNode.colorBlendFactor = 0
+                    rocketNode.color = UIColor.white
+                    selectedRockets.append(rocketNode)
+                }
+            }
+        }
+    }
+    
+    
+    func resetSelectedRockets() {
+        for rocketNode in selectedRockets {
+            rocketNode.name = NodeName.fireworkRocket.rawValue
+            rocketNode.color = colorToDetonate
+            rocketNode.colorBlendFactor = 1
+        }
+        
+        selectedRockets.removeAll(keepingCapacity: true)
+    }
+    
+
+    func cleanupPastFireworks() {
+        for (index, firework) in fireworks.enumerated().reversed() {
+            if Double(firework.position.y) > yThreshold {
+                fireworks.remove(at: index)
+                firework.removeFromParent()
+            }
+        }
+    }
+    
+
+    func explodeSelectedFireworks() {
+        let pointsToAward = selectedRockets.count * 200
+        
+        selectedRockets.removeAll(keepingCapacity: true)
+        
+        for (index, firework) in fireworks.enumerated().reversed() {
+            if firework.childNode(withName: NodeName.selectedFireworkRocket.rawValue) != nil {
+                fireworks.remove(at: index)
+                explode(firework: firework)
+            }
+        }
+        
+        currentScore += pointsToAward
+    }
+
+
+    func explode(firework: SKNode) {
+        let emitter = SKEmitterNode(fileNamed: "explode")!
+        
+        emitter.position = firework.position
+        addChild(emitter)
+        firework.removeFromParent()
+    }
 }
