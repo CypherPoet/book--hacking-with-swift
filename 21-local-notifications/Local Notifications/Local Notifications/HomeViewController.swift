@@ -9,8 +9,15 @@
 import UIKit
 import UserNotifications
 
-class HomeViewController: UIViewController {
+enum NotificationCategory: String {
+    case soundMoney = "Sound Money"
+    case universeUpdates = "Universe Updates"
+}
 
+class HomeViewController: UIViewController {
+    var notificationCenter: UNUserNotificationCenter {
+        return UNUserNotificationCenter.current()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +44,6 @@ class HomeViewController: UIViewController {
     
     
     @objc func registerLocalNotifications() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        
         notificationCenter.requestAuthorization(
             options: [.alert, .sound, .badge],
             completionHandler: { (authWasGranted: Bool, _: Error?) -> Void in
@@ -49,8 +54,7 @@ class HomeViewController: UIViewController {
     
     
     @objc func scheduleLocalNotifications() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        
+        registerCategories()
         notificationCenter.removeAllPendingNotificationRequests()
         
         let calendarRequest = makeCalendarNotificationRequest()
@@ -74,8 +78,8 @@ class HomeViewController: UIViewController {
         content.title = "🤯 Woah!"
         content.body = "The Earth has spun 0.00417 degrees on its axis since its day began in your time zone."
         content.sound = UNNotificationSound.default
-        content.categoryIdentifier = "Universe Updates"
-        content.userInfo = ["planet": "Earth"]
+        content.categoryIdentifier = NotificationCategory.universeUpdates.rawValue
+        content.userInfo = ["prediction": "This is likely to happen again soon."]
         
         return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
     }
@@ -89,10 +93,60 @@ class HomeViewController: UIViewController {
         content.title = "Another one"
         content.body = "Another block has been mined on the Bitcoin blockchain"
         content.sound = UNNotificationSound.default
-        content.categoryIdentifier = "Sound Money"
+        content.categoryIdentifier = NotificationCategory.soundMoney.rawValue
         content.userInfo = ["miningReward": 12.5]
         
         return UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+    }
+    
+    func registerCategories() {
+        notificationCenter.delegate = self
+        
+        
+        let actions = [
+            UNNotificationAction(identifier: "Show BTC Details", title: "Tell me more...", options: .foreground)
+        ]
+        
+        let categories = [
+            UNNotificationCategory(
+                identifier: NotificationCategory.soundMoney.rawValue,
+                actions: actions,
+                intentIdentifiers: []
+            )
+        ]
+        
+        notificationCenter.setNotificationCategories(Set(categories))
+    }
+    
+    func promptOnNotificationResponse(message: String) {
+        let alertController = UIAlertController(title: "More Details", message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "👌 OK", style: .default))
+        
+        self.present(alertController, animated: true)
+    }
+}
+
+
+extension HomeViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if let category = NotificationCategory(rawValue: response.notification.request.content.categoryIdentifier) {
+            let userInfo = response.notification.request.content.userInfo
+
+            var message: String
+            
+            switch category {
+            case .soundMoney:
+                message = "A mining reward of \(userInfo["miningReward"] as! Double) BTC was just awarded."
+            case .universeUpdates:
+                message = userInfo["prediction"] as! String
+            }
+            
+            promptOnNotificationResponse(message: message)
+        }
+        
+        completionHandler()
     }
 }
 
