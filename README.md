@@ -36,9 +36,9 @@
 | 17   | 🎮<br>[Swifty Ninja](/17-swifty-ninja)       | SKShapeNode, CGPath, UIBezierPath, AVAudioPlayer, CaseIterable & custom enums, SKAction sequences and groups, default method parameters | ✅ |
 | 18   | 🛠<br>[Debugging](/18-debugging)             | `print`, `assert`, breakpoints, visual debugging, conditional breakpoints, lldb printing and expressions | ✅ |
 | 19   | 📱<br>[Capital Cities](/19-capital-cities)        | MKMapView, MKAnnotation, MKPinAnnotationView, CLLocationCoordinate2D, dequeueReusableAnnotationView(), switching between different map styles | ✅ |
-| 20   | 🎮<br>[Fireworks Night](/20-fireworks-night)       | Timer, SKNode, follow(), motionBegan(), prefersStatusBarHidden, Timer.invalidate() | ✅ |
-| 21   | 🛠<br>[Local Notifications](/21-local-notifications)   | UNUserNotificationCenter, UNNotificationRequest, UNNotificationAction, UNNotificationCategory, UNUserNotificationCenterDelegate, UNNotificationDefaultActionIdentifier | 🔴 |
-| 22   | 📱<br>[Detect-A-Beacon](/22-detect-a-beacon)       | Core Location, CLBeaconRegion, CLLocationManager, startMonitoring(for:), startRangingBeacons(in:), `uuidgen`, CLBeaconRegion, CLProximity | 🔴 |
+| 20   | 🎮<br>[Fireworks Night](/20-fireworks-night)       | Timer, SKNode, SKAction.follow() and its awesome `orientToPath` option, motionBegan(), prefersStatusBarHidden, Timer.invalidate(), colorBlendFactor for SKSpriteNodes | ✅ |
+| 21   | 🛠<br>[Local Notifications](/21-local-notifications)   | UNUserNotificationCenter, UNNotificationRequest, UNNotificationAction, UNNotificationCategory, UNUserNotificationCenterDelegate, UNNotificationDefaultActionIdentifier | ✅ |
+| 22   | 📱<br>[Detect-A-Beacon](/22-detect-a-beacon)       | iBeacons, Core Location, CLBeaconRegion, CLLocationManager, startMonitoring(for:), startRangingBeacons(in:), `uuidgen`, CLBeaconRegion, CLProximity | 🚧 |
 | 23   | 🎮<br>[Space Race](/23-space-race)            | Per-Pixel Collision Detection, Advancing Particle Systems, Adjust Linear & Angular Damping, touchesEnded(), touchesMoved(), touchesBegan() | 🔴 |
 | 24   | 🛠<br>[Swift Extensions](/24-swift-extensions/swiftextensions.playground)      | `mutating`, Protocol-Oriented Programming, Methods as Verbs, Properties as State, ExSwift | 🔴 |
 | 25   | 📱<br>[Selfie Share](/25-selfie-share)             | MCSession, MCBrowswerViewController, showConnectionPrompt(), MCPeerID, MCAdvertiserAssistant, MCSessionDelegate, MCBrowserViewControllerDelegate, Data, data(using:), String.Encoding.utf8 | 🔴 |
