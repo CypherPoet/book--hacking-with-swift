@@ -40,7 +40,7 @@
 | 21   | 🛠<br>[Local Notifications](/21-local-notifications)   | UNUserNotificationCenter, UNNotificationRequest, UNNotificationAction, UNNotificationCategory, UNUserNotificationCenterDelegate, UNNotificationDefaultActionIdentifier | ✅ |
 | 22   | 📱<br>[Detect-A-Beacon](/22-detect-a-beacon)       | iBeacons, Core Location, CLBeaconRegion, CLLocationManager, startMonitoring(for:), startRangingBeacons(in:), `uuidgen`, CLBeaconRegion, CLProximity | ✅ |
 | 23   | 🎮<br>[Space Race](/23-space-race)            | per-pixel collision detection, advancing particle systems, adjust linear & angular damping, touchesEnded(), touchesMoved(), touchesBegan() | ✅ |
-| 24   | 🛠<br>[Swift Extensions](/24-swift-extensions)      | `mutating` methods, Protocol-Oriented programming, conventions regarding methods (generally, verbs) vs computed properties (generally, nouns/state), ExSwift | ✅ |
+| 24   | 🛠<br>[Swift Extensions](/24-swift-extensions)      | `mutating` methods, Protocol-Oriented programming, `Self` vs `self`, conventions regarding methods (generally, verbs) vs computed properties (generally, nouns/state), ExSwift | ✅ |
 | 25   | 📱<br>[Selfie Share](/25-selfie-share)             | MCSession, MCBrowswerViewController, showConnectionPrompt(), MCPeerID, MCAdvertiserAssistant, MCSessionDelegate, MCBrowserViewControllerDelegate, Data, data(using:), String.Encoding.utf8 | 🔴 |
 | 26   | 🎮<br>[Marble Maze](/26-marble-maze)              | categoryBitMask, collisionBitMask, contactTestBitMask, CMMotionManager, update() | 🔴 |
 | 27   | 🛠<br>[Core Graphics](/27-core-graphics)            | UIGraphicsImageRenderer, UIGraphicsImageRendererContext, CGContext, addRect(), addEllipse(), String.draw(with:), UIFont, NSMutableParagraphStyle() | 🔴 |
@@ -73,6 +73,7 @@
 | 3    | 📱<br>[Storm Viewer 2 (Collection View)](/challenges/storm-viewer-collection-view)            | ✅ |
 | 4    | 📱<br>[Country Facts](/challenges/country-facts)            | ✅ |
 | 5    | 📱<br>[Imitation Apple Notes App](/challenges/apple-notes-imitation)            | 🚧 |
+| 6    | 🛠<br>[Expanding on Extensions](/challenges/extensions)            | ✅ |
 
 
 |  KEY  |
