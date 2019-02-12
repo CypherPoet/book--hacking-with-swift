@@ -50,6 +50,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="📸 Photo Share" id="BYf-Oy-RbV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="mE8-x4-gpp">
+                            <connections>
+                                <action selector="showConnectionPrompt:" destination="LmH-cG-zvL" id="p8X-OW-4dU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="3Nk-bT-Dy1">
                             <connections>
                                 <action selector="importPhoto:" destination="LmH-cG-zvL" id="PKA-3s-oYC"/>
@@ -58,6 +63,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="importPhotoButton" destination="3Nk-bT-Dy1" id="JWW-Dp-FQ3"/>
+                        <outlet property="newToSessionButton" destination="mE8-x4-gpp" id="efF-3E-9HG"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZk-HE-dhU" userLabel="First Responder" sceneMemberID="firstResponder"/>
