@@ -42,8 +42,8 @@
 | 23   | 🎮<br>[Space Race](/23-space-race)            | per-pixel collision detection, advancing particle systems, adjust linear & angular damping, touchesEnded(), touchesMoved(), touchesBegan() | ✅ |
 | 24   | 🛠<br>[Swift Extensions](/24-swift-extensions)      | `mutating` methods, Protocol-Oriented programming, `Self` vs `self`, conventions regarding methods (generally, verbs) vs computed properties (generally, nouns/state), ExSwift | ✅ |
 | 25   | 📱<br>[Photo Share](/25-photo-share)             | MultipeerConnectivity, MCSession, MCBrowswerViewController, showConnectionPrompt(), MCPeerID, MCAdvertiserAssistant, MCSessionDelegate, MCBrowserViewControllerDelegate, MCSession.send | ✅ |
-| 26   | 🎮<br>[Marble Maze](/26-marble-maze)              | categoryBitMask, collisionBitMask, contactTestBitMask, CMMotionManager | 🚧 |
-| 27   | 🛠<br>[Core Graphics](/27-core-graphics)            | UIGraphicsImageRenderer, UIGraphicsImageRendererContext, CGContext, addRect(), addEllipse(), String.draw(with:), UIFont, NSMutableParagraphStyle() | 🔴 |
+| 26   | 🎮<br>[Marble Maze](/26-marble-maze)              | categoryBitMask, collisionBitMask, contactTestBitMask, CMMotionManager | ✅ |
+| 27   | 🛠<br>[Core Graphics](/27-core-graphics)            | Core 👏 Graphics 👏, UIGraphicsImageRenderer, UIGraphicsImageRendererContext, CGContext, addRect(), addEllipse(), String.draw(with:), UIFont, NSMutableParagraphStyle() | 🚧 |
 | 28   | 📱<br>[Secret Swift](/28-secret-swift)             | KeychainWrapper, resignFirstResponder(), NotificationCenter, UIApplication.willResignActiveNotification, LocalAuthentication, LAContext, canEvaluatePolicy(), .deviceOwnerAuthenticationWithBiometrics, evaluatePolicy(), `[unowned self]`, `self`, Privacy for Touch ID & Face ID | 🔴 |
 | 29   | 🎮<br>[Exploding Monkeys](/29-exploding-monkeys)       | UIKit + SpriteKit, Texture Atlases, Scene Transitions, Destructable Terrain | 🔴 |
 | 30   | 🛠<br>[Instruments](/30-instruments)              | TimeProfiler, Color Blended Layers, Color Offscreen-Rendered Yellow, Color Hits Green and Misses Red | 🔴 |
