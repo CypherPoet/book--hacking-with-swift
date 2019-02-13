@@ -14,12 +14,16 @@ let sceneWidth = 1024.0
 let sceneHeight = 768.0
 let cellSize = 64.0
 
-enum CellType: String, CaseIterable {
+enum CellType: String {
     case space
     case wall
     case vortex
     case star
     case finish
+}
+
+enum NodeNames: String {
+    case player
 }
 
 let cellTypes: [String: CellType] = [
@@ -40,31 +44,62 @@ enum CollisionTypes: UInt32 {
 }
 
 
+enum GameplayState: String {
+    case disabled
+    case enabled
+    case over
+}
+
+
 class GameScene: SKScene {
     lazy var sceneCenterPoint = CGPoint(x: sceneWidth / 2, y: sceneHeight / 2)
     lazy var vortexSpinAction = SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat.pi, duration: 1))
-    lazy var playerNode = SKSpriteNode(imageNamed: "player")
+    lazy var scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
     lazy var motionManager = CMMotionManager()
+
+    var playerNode: SKSpriteNode!
     
     let xSpeedMultiplier = 50.0
     let ySpeedMultiplier = 50.0
     
+    var gameplayState = GameplayState.enabled
+    
+    var currentScore = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(currentScore)"
+        }
+    }
+    
     override func didMove(to view: SKView) {
         loadLevel(filename: "level1")
         setupBackground()
-//        setupUI()
+        setupUI()
         setupPhysics()
         setupPlayer()
         motionManager.startAccelerometerUpdates()
     }
     
     override func update(_ currentTime: TimeInterval) {
+        guard gameplayState != .over else { return }
+        guard gameplayState != .disabled else { return }
+        
         handleTilt()
+    }
+    
+    
+    func setupUI() {
+        scoreLabel.position = CGPoint(x: 16, y: 16)
+        scoreLabel.horizontalAlignmentMode = .left
+        scoreLabel.zPosition = 1
+        
+        currentScore = 0
+        addChild(scoreLabel)
     }
     
     
     func setupPhysics() {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        physicsWorld.contactDelegate = self
     }
     
     func handleTilt() {
@@ -72,23 +107,35 @@ class GameScene: SKScene {
             // 📝 Coordinates are flipped becuase we're in landscape mode
             let dx = -(accelerometerData.acceleration.y) * xSpeedMultiplier
             let dy = accelerometerData.acceleration.x * ySpeedMultiplier
-            
+
             physicsWorld.gravity = CGVector(dx: dx, dy: dy)
         }
     }
     
 
     func setupPlayer() {
+        playerNode = SKSpriteNode(imageNamed: "player")
+
+        playerNode.zPosition = 1
+        playerNode.name = NodeNames.player.rawValue
+        
+        setPlayerInScene()
+        
+        addChild(playerNode)
+    }
+    
+    func setPlayerInScene() {
         playerNode.position = CGPoint(x: cellSize * 1.5, y: cellSize * 10.5)
+        
         playerNode.physicsBody = SKPhysicsBody(circleOfRadius: playerNode.size.width / 2)
+        playerNode.physicsBody?.isDynamic = true
         playerNode.physicsBody?.allowsRotation = false
         playerNode.physicsBody?.linearDamping = 0.5
+
         playerNode.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
         playerNode.physicsBody?.contactTestBitMask = (
             CollisionTypes.star.rawValue | CollisionTypes.vortex.rawValue | CollisionTypes.finish.rawValue
         )
-        
-        addChild(playerNode)
     }
     
     
@@ -197,5 +244,62 @@ class GameScene: SKScene {
         
         return node
     }
+    
+    
+    func handlePlayerCollision(with node: SKSpriteNode) -> Void {
+        switch node.name {
+        case CellType.star.rawValue:
+            starHit(node)
+        case CellType.vortex.rawValue:
+            vortexHit(node)
+        case CellType.finish.rawValue:
+            levelFinished()
+        default:
+            assertionFailure("Unexpected collision detection. Node name: \"\(node.name ?? "")\"")
+        }
+    }
+    
+    
+    func starHit(_ star: SKSpriteNode) -> Void {
+        star.removeFromParent()
+        currentScore += 10
+    }
+    
+    
+    func vortexHit(_ vortex: SKSpriteNode) -> Void {
+        gameplayState = .disabled
+        playerNode.physicsBody?.isDynamic = false
+        
+        let actionSequence = SKAction.sequence([
+            SKAction.move(to: vortex.position, duration: 0.25),
+            SKAction.scale(to: 0.0001, duration: 0.25),
+            SKAction.removeFromParent()
+        ])
+        
+        playerNode.run(actionSequence, completion: { [unowned self] in
+            self.currentScore -= 3
+            self.setupPlayer()
+            self.gameplayState = .enabled
+        })
+    }
+    
+    
+    func levelFinished() {
+        
+    }
+    
 }
 
+
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node as? SKSpriteNode else { return }
+        guard let nodeB = contact.bodyB.node as? SKSpriteNode else { return }
+        
+        if nodeA == playerNode {
+            handlePlayerCollision(with: nodeB)
+        } else if nodeB == playerNode {
+            handlePlayerCollision(with: nodeA)
+        }
+    }
+}
