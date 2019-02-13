@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import CoreMotion
 
 let sceneWidth = 1024.0
 let sceneHeight = 768.0
@@ -42,11 +43,52 @@ enum CollisionTypes: UInt32 {
 class GameScene: SKScene {
     lazy var sceneCenterPoint = CGPoint(x: sceneWidth / 2, y: sceneHeight / 2)
     lazy var vortexSpinAction = SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat.pi, duration: 1))
-
+    lazy var playerNode = SKSpriteNode(imageNamed: "player")
+    lazy var motionManager = CMMotionManager()
+    
+    let xSpeedMultiplier = 50.0
+    let ySpeedMultiplier = 50.0
     
     override func didMove(to view: SKView) {
         loadLevel(filename: "level1")
         setupBackground()
+//        setupUI()
+        setupPhysics()
+        setupPlayer()
+        motionManager.startAccelerometerUpdates()
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        handleTilt()
+    }
+    
+    
+    func setupPhysics() {
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+    }
+    
+    func handleTilt() {
+        if let accelerometerData = motionManager.accelerometerData {
+            // 📝 Coordinates are flipped becuase we're in landscape mode
+            let dx = -(accelerometerData.acceleration.y) * xSpeedMultiplier
+            let dy = accelerometerData.acceleration.x * ySpeedMultiplier
+            
+            physicsWorld.gravity = CGVector(dx: dx, dy: dy)
+        }
+    }
+    
+
+    func setupPlayer() {
+        playerNode.position = CGPoint(x: cellSize * 1.5, y: cellSize * 10.5)
+        playerNode.physicsBody = SKPhysicsBody(circleOfRadius: playerNode.size.width / 2)
+        playerNode.physicsBody?.allowsRotation = false
+        playerNode.physicsBody?.linearDamping = 0.5
+        playerNode.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
+        playerNode.physicsBody?.contactTestBitMask = (
+            CollisionTypes.star.rawValue | CollisionTypes.vortex.rawValue | CollisionTypes.finish.rawValue
+        )
+        
+        addChild(playerNode)
     }
     
     
