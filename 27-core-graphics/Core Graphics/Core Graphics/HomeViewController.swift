@@ -14,6 +14,7 @@ enum DrawType: String, CaseIterable {
     case checkerboard
     case rotatedSquares
     case spiralSquares
+    case mouseScene
 }
 
 class HomeViewController: UIViewController {
@@ -25,6 +26,14 @@ class HomeViewController: UIViewController {
     lazy var renderer = UIGraphicsImageRenderer(size: CGSize(width: imageViewWidth, height: imageViewHeight))
     lazy var imageViewRect = CGRect(x: 0, y: 0, width: imageViewWidth, height: imageViewHeight)
     
+    lazy var paragraphStyle = NSMutableParagraphStyle()
+    lazy var fontAttrs = [
+        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Thin", size: 36)!,
+        NSAttributedString.Key.paragraphStyle: paragraphStyle
+    ]
+    
+    lazy var mouseImage = UIImage(named: "mouse")
+    
     var currentDrawType = DrawType.rectangle
     
     var currentDrawFunction: () -> UIImage {
@@ -34,6 +43,7 @@ class HomeViewController: UIViewController {
             .checkerboard: drawCheckerboard,
             .rotatedSquares: drawRotatedSquares,
             .spiralSquares: drawSpiralSquares,
+            .mouseScene: drawMouseScene,
         ][currentDrawType]!
     }
     
@@ -142,7 +152,24 @@ class HomeViewController: UIViewController {
         })
     }
     
-
+    func drawMouseScene() -> UIImage {
+        return renderer.image(actions: { (context: UIGraphicsImageRendererContext) in
+            let string: NSString = "The best-laid schemes o'\nmice an' men gang aft agley"
+            
+            paragraphStyle.alignment = .center
+            
+            string.draw(
+                with: CGRect(x: 32, y: 32, width: imageViewWidth * 0.875, height: imageViewWidth * 0.875),
+                options: .usesLineFragmentOrigin,
+                attributes: fontAttrs,
+                context: nil
+            )
+   
+            mouseImage?.draw(at: CGPoint(x: imageViewWidth * 0.55, y: imageViewHeight * 0.30))
+        })
+    }
+   
+    
     @IBAction func redrawTapped(_ sender: Any) {
         let nextDrawTypeIndex = (DrawType.allCases.index(of: currentDrawType)! + 1) % DrawType.allCases.count
         
