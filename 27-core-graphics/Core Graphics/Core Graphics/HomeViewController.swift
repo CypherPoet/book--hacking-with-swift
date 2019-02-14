@@ -13,6 +13,7 @@ enum DrawType: String, CaseIterable {
     case circle
     case checkerboard
     case rotatedSquares
+    case spiralSquares
 }
 
 class HomeViewController: UIViewController {
@@ -32,6 +33,7 @@ class HomeViewController: UIViewController {
             .circle: drawCircle,
             .checkerboard: drawCheckerboard,
             .rotatedSquares: drawRotatedSquares,
+            .spiralSquares: drawSpiralSquares,
         ][currentDrawType]!
     }
     
@@ -107,6 +109,32 @@ class HomeViewController: UIViewController {
             for _ in 0 ..< numRotations {
                 cgContext.rotate(by: CGFloat(rotationAmount))
                 cgContext.addRect(CGRect(x: -squareSize / 2.0, y: -squareSize / 2.0, width: squareSize, height: squareSize))
+            }
+            
+            cgContext.setStrokeColor(UIColor.black.cgColor)
+            cgContext.strokePath()
+        })
+    }
+    
+    
+    func drawSpiralSquares() -> UIImage {
+        return renderer.image(actions: { (context: UIGraphicsImageRendererContext) in
+            let cgContext = context.cgContext
+            let numSquares = Int(imageViewWidth / 2)
+            
+            cgContext.translateBy(x: imageViewWidth / 2.0, y: imageViewHeight / 2.0)
+            var currentLength = imageViewWidth / 2.0
+            
+            for i in 0 ..< numSquares {
+                cgContext.rotate(by: CGFloat.pi / 2)
+                
+                if i == 0 {
+                    cgContext.move(to: CGPoint(x: currentLength, y: 50))
+                } else {
+                    cgContext.addLine(to: CGPoint(x: currentLength, y: 50))
+                }
+                
+                currentLength *= 0.99
             }
             
             cgContext.setStrokeColor(UIColor.black.cgColor)
