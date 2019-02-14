@@ -48,5 +48,9 @@ class HomeViewController: UIViewController {
         textView.scrollIndicatorInsets = textView.contentInset
         textView.scrollRangeToVisible(textView.selectedRange)
     }
+    
+    
+    @IBAction func authenticateTapped(_ sender: Any) {
+    }
 }
 

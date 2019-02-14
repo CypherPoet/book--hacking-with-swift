@@ -18,7 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tdi-a4-0ZX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meP-dq-KlX">
+                                <rect key="frame" x="115.5" y="309.5" width="144" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="PJn-GK-Ry8"/>
+                                    <constraint firstAttribute="height" constant="48" id="pvs-9I-1H5"/>
+                                </constraints>
+                                <state key="normal" title="🔐 Authenticate"/>
+                                <connections>
+                                    <action selector="authenticateTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SJF-y4-DNe"/>
+                                </connections>
+                            </button>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tdi-a4-0ZX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -29,6 +40,8 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tdi-a4-0ZX" secondAttribute="trailing" id="0Vo-K6-29X"/>
                             <constraint firstItem="tdi-a4-0ZX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BDU-pn-ii6"/>
+                            <constraint firstItem="meP-dq-KlX" firstAttribute="centerX" secondItem="tdi-a4-0ZX" secondAttribute="centerX" id="IKc-MW-f1h"/>
+                            <constraint firstItem="meP-dq-KlX" firstAttribute="centerY" secondItem="tdi-a4-0ZX" secondAttribute="centerY" id="UfS-NL-YHN"/>
                             <constraint firstItem="tdi-a4-0ZX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uUs-Vs-YSw"/>
                             <constraint firstItem="tdi-a4-0ZX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xCf-bc-Nl1"/>
                         </constraints>
