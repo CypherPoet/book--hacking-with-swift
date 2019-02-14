@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -22,7 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dci-EO-vH2">
-                                <rect key="frame" x="132" y="748" width="150" height="64"/>
+                                <rect key="frame" x="132" y="754" width="150" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="rHz-A6-CVz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Redraw"/>
                                 <connections>
@@ -32,7 +35,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dci-EO-vH2" secondAttribute="bottom" constant="95" id="11f-OX-cmC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dci-EO-vH2" secondAttribute="bottom" constant="40" id="11f-OX-cmC"/>
                             <constraint firstItem="dci-EO-vH2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="659" id="Bre-ej-9t4"/>
                             <constraint firstItem="dci-EO-vH2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="132" id="JMY-sq-GVq"/>
                             <constraint firstItem="hft-Hp-ogP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UKG-0n-juf"/>
@@ -49,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="132.68365817091455"/>
+            <point key="canvasLocation" x="131.8840579710145" y="132.58928571428572"/>
         </scene>
     </scenes>
 </document>
