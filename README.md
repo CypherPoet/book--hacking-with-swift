@@ -74,7 +74,7 @@
 | 4    | 📱<br>[Country Facts](/challenges/country-facts)            | ✅ |
 | 5    | 📱<br>[Imitation Apple Notes App](/challenges/apple-notes-imitation)            | 🚧 |
 | 6    | 🛠<br>[Expanding on Extensions](/challenges/extensions)            | ✅ |
-| 7    | 🛠<br>[Core Graphics Rainbow 🌈](/challenges/core-graphics-rainbow)            | 🚧 |
+| 7    | 🛠<br>[Core Graphics Rainbow 🌈](/challenges/core-graphics-rainbow)            | ✅ |
 
 
 |  KEY  |
