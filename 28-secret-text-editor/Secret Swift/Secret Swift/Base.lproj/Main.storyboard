@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--✌️ Swift Notes-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Secret_Swift" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,18 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meP-dq-KlX">
-                                <rect key="frame" x="115.5" y="309.5" width="144" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="144" id="PJn-GK-Ry8"/>
-                                    <constraint firstAttribute="height" constant="48" id="pvs-9I-1H5"/>
-                                </constraints>
+                                <rect key="frame" x="116" y="310" width="143" height="47"/>
                                 <state key="normal" title="🔐 Authenticate"/>
                                 <connections>
                                     <action selector="authenticateTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SJF-y4-DNe"/>
                                 </connections>
                             </button>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tdi-a4-0ZX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -38,18 +34,20 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="tdi-a4-0ZX" secondAttribute="trailing" id="0Vo-K6-29X"/>
-                            <constraint firstItem="tdi-a4-0ZX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="BDU-pn-ii6"/>
-                            <constraint firstItem="meP-dq-KlX" firstAttribute="centerX" secondItem="tdi-a4-0ZX" secondAttribute="centerX" id="IKc-MW-f1h"/>
-                            <constraint firstItem="meP-dq-KlX" firstAttribute="centerY" secondItem="tdi-a4-0ZX" secondAttribute="centerY" id="UfS-NL-YHN"/>
-                            <constraint firstItem="tdi-a4-0ZX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="uUs-Vs-YSw"/>
-                            <constraint firstItem="tdi-a4-0ZX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xCf-bc-Nl1"/>
+                            <constraint firstItem="meP-dq-KlX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="AoE-LM-Dgv"/>
+                            <constraint firstItem="meP-dq-KlX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="116" id="Jsh-IU-IdS"/>
+                            <constraint firstItem="meP-dq-KlX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="246" id="PCR-qz-OQW"/>
+                            <constraint firstItem="tdi-a4-0ZX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="SOR-d6-Tt1"/>
+                            <constraint firstItem="tdi-a4-0ZX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="duq-RF-FFW"/>
+                            <constraint firstAttribute="trailing" secondItem="tdi-a4-0ZX" secondAttribute="trailing" id="kIF-PF-iNl"/>
+                            <constraint firstItem="tdi-a4-0ZX" firstAttribute="centerX" secondItem="meP-dq-KlX" secondAttribute="centerX" id="sqG-He-qhH"/>
+                            <constraint firstItem="tdi-a4-0ZX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="w5E-Ga-Ijq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vNj-0T-KPw"/>
+                    <navigationItem key="navigationItem" title="✌️ Swift Notes" id="vNj-0T-KPw"/>
                     <connections>
-                        <outlet property="textView" destination="tdi-a4-0ZX" id="TPP-ul-xHr"/>
+                        <outlet property="secretTextView" destination="tdi-a4-0ZX" id="TPP-ul-xHr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

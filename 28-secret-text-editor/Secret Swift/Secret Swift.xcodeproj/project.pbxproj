@@ -12,6 +12,8 @@
 		F3D3F32A2215A3A500628D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F3282215A3A500628D44 /* Main.storyboard */; };
 		F3D3F32C2215A3A600628D44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F32B2215A3A600628D44 /* Assets.xcassets */; };
 		F3D3F32F2215A3A600628D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F32D2215A3A600628D44 /* LaunchScreen.storyboard */; };
+		F3D3F3372215C35800628D44 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F3362215C35800628D44 /* Cartfile */; };
+		F3D3F38A22164C6000628D44 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D3F38922164C6000628D44 /* KeychainAccess.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		F3D3F32B2215A3A600628D44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3D3F32E2215A3A600628D44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3D3F3302215A3A600628D44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3D3F3362215C35800628D44 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		F3D3F38922164C6000628D44 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D3F38A22164C6000628D44 /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				F3D3F3232215A3A500628D44 /* Secret Swift */,
 				F3D3F3222215A3A500628D44 /* Products */,
+				F3D3F3362215C35800628D44 /* Cartfile */,
+				F3D3F3862215C93A00628D44 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,14 @@
 			path = "Secret Swift";
 			sourceTree = "<group>";
 		};
+		F3D3F3862215C93A00628D44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3D3F38922164C6000628D44 /* KeychainAccess.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +89,7 @@
 				F3D3F31D2215A3A500628D44 /* Sources */,
 				F3D3F31E2215A3A500628D44 /* Frameworks */,
 				F3D3F31F2215A3A500628D44 /* Resources */,
+				F3D3F3852215C70E00628D44 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -124,11 +140,34 @@
 			files = (
 				F3D3F32F2215A3A600628D44 /* LaunchScreen.storyboard in Resources */,
 				F3D3F32C2215A3A600628D44 /* Assets.xcassets in Resources */,
+				F3D3F3372215C35800628D44 /* Cartfile in Resources */,
 				F3D3F32A2215A3A500628D44 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F3D3F3852215C70E00628D44 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/KeychainAccess.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3D3F31D2215A3A500628D44 /* Sources */ = {
@@ -284,6 +323,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRXXH2RKAG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Secret Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +345,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRXXH2RKAG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Secret Swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
