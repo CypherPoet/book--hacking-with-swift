@@ -24,17 +24,51 @@ enum NodeNames: String {
     case player
 }
 
+let buildingSpacing = 2.0
+
+let buildingMinHeight = sceneHeight * 0.30
+let buildingMaxHeight = sceneHeight * 0.54
+
 
 class GameScene: SKScene {
     lazy var sceneCenter = CGPoint(x: sceneWidth / 2.0, y: sceneHeight / 2.0)
     
+    var buildings = [BuildingNode]()
     
-    override func didMove(to view: SKView) {
-        setupBackground()
+    var buildingHeight: Double {
+        return Double.random(in: buildingMinHeight...buildingMaxHeight)
+    }
+    
+    var buildingWidth: Double {
+        return Double(40 * Int.random(in: 2...4))
     }
     
     
-    func setupBackground() -> Void {
+    override func didMove(to view: SKView) {
+        backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
         
+        createBuildings()
+    }
+    
+    
+    func createBuildings() -> Void {
+        var currentXPos = -15.0
+        
+        while currentXPos < sceneWidth {
+            let width = buildingWidth
+            let height = buildingHeight
+            
+            print("Current X: \(currentXPos), Current width: \(width)")
+            
+            let building = BuildingNode(color: UIColor.red, size: CGSize(width: width, height: height))
+            
+            building.position = CGPoint(x: currentXPos + (width / 2.0), y: height / 2.0)
+            building.setup()
+            
+            addChild(building)
+            buildings.append(building)
+            
+            currentXPos += (width + buildingSpacing)
+        }
     }
 }
