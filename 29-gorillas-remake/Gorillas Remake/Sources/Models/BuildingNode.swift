@@ -26,15 +26,16 @@ class BuildingNode: SKSpriteNode {
     var currentImage: UIImage! {
         didSet {
             texture = SKTexture(image: currentImage)
+            configurePhysics()
         }
     }
+    
     
     func setup() {
         name = NodeNames.building.rawValue
         currentImage = draw(size: size)
-        
-        configurePhysics()
     }
+    
     
     func draw(size: CGSize) -> UIImage {
         return renderer.image(actions: { (context: UIGraphicsImageRendererContext) in
@@ -66,7 +67,23 @@ class BuildingNode: SKSpriteNode {
     }
     
     
-    func hitAt(point: CGPoint) {
+    func hit(atPoint point: CGPoint, withImpactSize impactSize: CGSize) {
+        let convertedPoint = CGPoint(x: point.x + (size.width / 2.0), y: abs(point.y - (size.height / 2.0)))
         
+        currentImage = renderer.image(actions: { (context: UIGraphicsImageRendererContext) in
+            let cgContext = context.cgContext
+
+            currentImage.draw(at: CGPoint(x: 0, y: 0))
+            
+            cgContext.addEllipse(in: CGRect(
+                x: convertedPoint.x - (impactSize.width / 2.0),
+                y: convertedPoint.y - (impactSize.height / 2.0),
+                width: impactSize.width,
+                height: impactSize.height
+            ))
+            
+            cgContext.setBlendMode(.clear)
+            cgContext.drawPath(using: .fill)
+        })
     }
 }

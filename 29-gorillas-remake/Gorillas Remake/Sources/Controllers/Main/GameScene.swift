@@ -223,7 +223,11 @@ class GameScene: SKScene {
         // won't be detected in `didBegin`
         banana.name = ""
         
-        buildingNode.hitAt(point: buildingLocation)
+        launchCompleted()
+        buildingNode.hit(
+            atPoint: buildingLocation,
+            withImpactSize: CGSize(width: banana.size.width * 3.0, height: banana.size.width * 3.0)
+        )
     }
     
     func launchCompleted() {
@@ -237,9 +241,11 @@ class GameScene: SKScene {
             let newScene = GameScene(size: self.size)
 
             newScene.gameViewController = self.gameViewController
+            self.gameViewController.gameScene = newScene  // 😐 not sure that tight coupling like this is the best
+            
             self.view?.presentScene(newScene, transition: self.sceneTransition)
             
-            self.gameViewController.changeCurrentPlayer()
+            self.gameViewController.launchCompleted()
         }
     }
     
