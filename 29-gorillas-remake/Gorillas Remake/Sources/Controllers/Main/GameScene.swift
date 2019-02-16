@@ -89,6 +89,8 @@ class GameScene: SKScene {
         createBuildings()
         createPlayers()
         createBanana()
+        
+        physicsWorld.contactDelegate = self
     }
     
     
@@ -190,8 +192,51 @@ class GameScene: SKScene {
         banana.physicsBody?.applyImpulse(velocity)
     }
     
+    /**
+     If a banana hits a player, it means they have lost the game.
+     The hit player will also explode 🙂
+     */
+    func destroy(player: SKSpriteNode) {
+        
+    }
+    
+    func bananaHit(building buildingNode: BuildingNode, _ bananaNode: SKSpriteNode) {
+    }
+    
     
     func radiansFromDegrees(_ degrees: Double) -> Double {
         return (degrees / Double.pi) * 180.0
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    
+    /**
+     Possible contacts to handle:
+        - banana hit building
+        - building hit banana
+        - banana hit player 1
+        - player 1 hit banana
+        - banana hit player 2
+        - player 2 hit banana
+     */
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard let nodeA = contact.bodyA.node as? SKSpriteNode else { return }
+        guard let nodeB = contact.bodyB.node as? SKSpriteNode else { return }
+        
+        let nodes = [nodeA, nodeB]
+        
+        if [nodeA.name, nodeB.name].contains(NodeNames.banana.rawValue) {
+            let bananaNode = nodes.first(where: { $0.name == NodeNames.banana.rawValue })!
+            let otherNode = nodes.first(where: { $0.name != NodeNames.banana.rawValue })!
+            
+            if otherNode.name == NodeNames.player1.rawValue {
+                destroy(player: player1)
+            } else if nodeB.name == NodeNames.player2.rawValue {
+                destroy(player: player2)
+            } else if otherNode.name == NodeNames.building.rawValue {
+                bananaHit(building: otherNode as! BuildingNode, bananaNode)
+            }
+        }
     }
 }
