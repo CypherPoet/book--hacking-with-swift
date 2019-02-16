@@ -29,8 +29,10 @@ let buildingSpacing = 2.0
 let buildingMinHeight = sceneHeight * 0.21
 let buildingMaxHeight = sceneHeight * 0.52
 
-let throwSpeedMultipler = 0.10
+let throwSpeedMultipler = 0.25
 
+let sceneTransitionDelay: TimeInterval = 2.0
+let sceneTransitionDuration: TimeInterval = 1.5
 
 class GameScene: SKScene {
     weak var gameViewController: GameViewController!
@@ -43,6 +45,8 @@ class GameScene: SKScene {
     
     lazy var player1ArmRaise = SKAction.setTexture(SKTexture(imageNamed: "player1Throw"))
     lazy var player2ArmRaise = SKAction.setTexture(SKTexture(imageNamed: "player2Throw"))
+    
+    lazy var sceneTransition = SKTransition.crossFade(withDuration: sceneTransitionDuration)
 
     var throwingAnimationSequence: SKAction {
         let armRaiseAction = currentPlayer == .playerOne ? player1ArmRaise : player2ArmRaise
@@ -83,14 +87,19 @@ class GameScene: SKScene {
         }
     }
     
+    
     override func didMove(to view: SKView) {
         backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
         
         createBuildings()
         createPlayers()
-        createBanana()
         
         physicsWorld.contactDelegate = self
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        super.update(currentTime)
+        handleBananaOffScene()
     }
     
     
@@ -147,13 +156,22 @@ class GameScene: SKScene {
         }
     }
     
-    func createBanana() {
+    func addBananaToScene() {
+        if self.intersects(banana) {
+            banana.removeFromParent()
+        }
+        
+        banana.position = bananaStartingPosition
         banana.name = NodeNames.banana.rawValue
         banana.physicsBody = SKPhysicsBody(circleOfRadius: banana.size.height)
+        
         banana.physicsBody?.categoryBitMask = CollisionBitMasks.banana.rawValue
         banana.physicsBody?.collisionBitMask = CollisionBitMasks.building.rawValue | CollisionBitMasks.player.rawValue
         banana.physicsBody?.contactTestBitMask = CollisionBitMasks.building.rawValue | CollisionBitMasks.player.rawValue
         banana.physicsBody?.usesPreciseCollisionDetection = true
+        banana.physicsBody?.angularVelocity = CGFloat(20) * CGFloat(throwXDirectionWeight)
+
+        addChild(banana)
     }
 
     /**
@@ -164,10 +182,6 @@ class GameScene: SKScene {
     func launch(angle: Int, speed: Int) {
         currentPlayerNode.run(throwingAnimationSequence)
         throwBanana(angle: angle, speed: speed)
-        
-        // on launch finished...
-        gameViewController.launchCompleted()
-        
     }
     
     func throwBanana(angle degrees: Int, speed: Int) {
@@ -179,16 +193,7 @@ class GameScene: SKScene {
         
         let velocity = CGVector(dx: xMomentum, dy: yMomentum)
         
-        if self.intersects(banana) {
-            banana.removeFromParent()
-        }
-        
-        banana.position = bananaStartingPosition
-        banana.physicsBody?.angularVelocity = CGFloat(20) * CGFloat(throwXDirectionWeight)
-        
-        // actions
-        
-        addChild(banana)
+        addBananaToScene()
         banana.physicsBody?.applyImpulse(velocity)
     }
     
@@ -197,15 +202,63 @@ class GameScene: SKScene {
      The hit player will also explode 🙂
      */
     func destroy(player: SKSpriteNode) {
+        let explosion = SKEmitterNode(fileNamed: "hitPlayer")!
         
+        explosion.position = player.position
+        player.removeFromParent()
+        banana.removeFromParent()
+        
+        transitionToNewScene()
     }
     
-    func bananaHit(building buildingNode: BuildingNode, _ bananaNode: SKSpriteNode) {
+    func bananaHit(building buildingNode: BuildingNode) {
+        let buildingLocation = convert(banana.position, to: buildingNode)
+        let explosion = SKEmitterNode(fileNamed: "hitBuilding")!
+        
+        explosion.position = banana.position
+
+        addChild(explosion)
+        
+        // account for the banana potentially hitting two buildings at the same time by making sure the second hit
+        // won't be detected in `didBegin`
+        banana.name = ""
+        
+        buildingNode.hitAt(point: buildingLocation)
+    }
+    
+    func launchCompleted() {
+        banana.removeFromParent()
+        gameViewController.launchCompleted()
+    }
+
+    
+    func transitionToNewScene() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + sceneTransitionDelay) { [unowned self] in
+            let newScene = GameScene(size: self.size)
+
+            newScene.gameViewController = self.gameViewController
+            self.view?.presentScene(newScene, transition: self.sceneTransition)
+            
+            self.gameViewController.changeCurrentPlayer()
+        }
+    }
+    
+    func handleBananaOffScene() {
+        guard gameViewController.gameplayState == .throwing else { return }
+        guard let firstBuilding = buildings.first else { return }
+        guard let lastBuilding = buildings.last else { return }
+        
+        if (
+            banana.position.x > lastBuilding.position.x + lastBuilding.size.width ||
+            banana.position.x < firstBuilding.position.x
+        ) {
+            launchCompleted()
+        }
     }
     
     
     func radiansFromDegrees(_ degrees: Double) -> Double {
-        return (degrees / Double.pi) * 180.0
+        return (degrees / 180.0) * Double.pi
     }
 }
 
@@ -227,7 +280,6 @@ extension GameScene: SKPhysicsContactDelegate {
         let nodes = [nodeA, nodeB]
         
         if [nodeA.name, nodeB.name].contains(NodeNames.banana.rawValue) {
-            let bananaNode = nodes.first(where: { $0.name == NodeNames.banana.rawValue })!
             let otherNode = nodes.first(where: { $0.name != NodeNames.banana.rawValue })!
             
             if otherNode.name == NodeNames.player1.rawValue {
@@ -235,7 +287,7 @@ extension GameScene: SKPhysicsContactDelegate {
             } else if nodeB.name == NodeNames.player2.rawValue {
                 destroy(player: player2)
             } else if otherNode.name == NodeNames.building.rawValue {
-                bananaHit(building: otherNode as! BuildingNode, bananaNode)
+                bananaHit(building: otherNode as! BuildingNode)
             }
         }
     }

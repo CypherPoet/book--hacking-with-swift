@@ -64,4 +64,9 @@ class BuildingNode: SKSpriteNode {
         physicsBody?.categoryBitMask = CollisionBitMasks.building.rawValue
         physicsBody?.contactTestBitMask = CollisionBitMasks.banana.rawValue
     }
+    
+    
+    func hitAt(point: CGPoint) {
+        
+    }
 }

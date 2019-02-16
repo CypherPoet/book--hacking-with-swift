@@ -121,7 +121,10 @@ class GameViewController: UIViewController {
     
     func launchCompleted() {
         gameplayState = .awaitingThrow
-        
+        changeCurrentPlayer()
+    }
+    
+    func changeCurrentPlayer() {
         switch currentPlayer {
         case .playerOne:
             currentPlayer = .playerTwo
@@ -129,6 +132,11 @@ class GameViewController: UIViewController {
             currentPlayer = .playerOne
         }
     }
+    
+    func sceneTransitioned() {
+        
+    }
+    
     
     @IBAction func angleChanged(_ sender: Any) {
         currentThrowAngle = Int(throwAngleSlider.value)
