@@ -290,7 +290,7 @@ extension GameScene: SKPhysicsContactDelegate {
             
             if otherNode.name == NodeNames.player1.rawValue {
                 destroy(player: player1)
-            } else if nodeB.name == NodeNames.player2.rawValue {
+            } else if otherNode.name == NodeNames.player2.rawValue {
                 destroy(player: player2)
             } else if otherNode.name == NodeNames.building.rawValue {
                 bananaHit(building: otherNode as! BuildingNode)
