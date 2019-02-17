@@ -12,6 +12,9 @@ class SelectionViewController: UITableViewController {
 	var items = [String]() // this is the array that will store the filenames to load
 	var viewControllers = [UIViewController]() // create a cache of the detail view controllers for faster loading
 	var dirty = false
+    
+    lazy var thumbnailRect = CGRect(origin: CGPoint.zero, size: CGSize(width: 90, height: 90))
+    lazy var thumbnailRenderer = UIGraphicsImageRenderer(size: thumbnailRect.size)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,28 +65,25 @@ class SelectionViewController: UITableViewController {
 		let currentImage = items[indexPath.row % items.count]
 		let imageRootName = currentImage.replacingOccurrences(of: "Large", with: "Thumb")
 		let path = Bundle.main.path(forResource: imageRootName, ofType: nil)!
-		let original = UIImage(contentsOfFile: path)!
+		let thumbnailSourceImage = UIImage(contentsOfFile: path)!
 
-		let renderer = UIGraphicsImageRenderer(size: original.size)
-
-		let rounded = renderer.image { ctx in
-            ctx.cgContext.setShadow(offset: CGSize.zero, blur: 200, color: UIColor.black.cgColor)
-			ctx.cgContext.fillEllipse(in: CGRect(origin: CGPoint.zero, size: original.size))
-            ctx.cgContext.setShadow(offset: CGSize.zero, blur: 0, color: nil)
-            
-            ctx.cgContext.addEllipse(in: CGRect(origin: CGPoint.zero, size: original.size))
+		let roundedImage = thumbnailRenderer.image { ctx in
+            ctx.cgContext.addEllipse(in: thumbnailRect)
 			ctx.cgContext.clip()
 
-			original.draw(at: CGPoint.zero)
+            thumbnailSourceImage.draw(in: thumbnailRect)
 		}
 
-		cell.imageView?.image = rounded
+		cell.imageView?.image = roundedImage
 
 		// give the images a nice shadow to make them look a bit more dramatic
-//        cell.imageView?.layer.shadowColor = UIColor.black.cgColor
-//        cell.imageView?.layer.shadowOpacity = 1
-//        cell.imageView?.layer.shadowRadius = 10
-//        cell.imageView?.layer.shadowOffset = CGSize.zero
+        cell.imageView?.layer.shadowColor = UIColor.black.cgColor
+        cell.imageView?.layer.shadowOpacity = 1
+        cell.imageView?.layer.shadowRadius = 10
+        cell.imageView?.layer.shadowOffset = CGSize.zero
+        
+        // 🔑 Tell iOS not to automatically calculate the shadow path for our images by giving it the exact shadow path to use
+        cell.imageView?.layer.shadowPath = UIBezierPath(ovalIn: thumbnailRect).cgPath
 
 		// each image stores how often it's been tapped
 		let defaults = UserDefaults.standard
