@@ -45,8 +45,8 @@
 | 26   | 🎮<br>[Marble Maze](/26-marble-maze)              | categoryBitMask, collisionBitMask, contactTestBitMask, CMMotionManager, startAccelerometerUpdates, reading accelerometer data, compiler directives | ✅ |
 | 27   | 🛠<br>[Core Graphics](/27-core-graphics)            | Core 👏 Graphics 👏, UIGraphicsImageRenderer, exporting images with UIGraphicsImageRenderer.image(), UIGraphicsImageRendererContext, CGContext, CGContext.addRect(), CGContext.addEllipse(), NSString.draw(with:), UIFont, NSMutableParagraphStyle(), drawing UIImages straight into a rendering context | ✅ |
 | 28   | 📱<br>[Secret Swift](/28-secret-text-editor)             | Using the KeychainAccess library, resignFirstResponder(), NotificationCenter, UIApplication.willResignActiveNotification, LocalAuthentication, LAContext, canEvaluatePolicy(), .deviceOwnerAuthenticationWithBiometrics, evaluatePolicy(), privacy for Touch ID & Face ID, simulating Face ID with the Simulator | ✅ |
-| 29   | 🎮<br>[Exploding Monkeys](/29-exploding-monkeys)       | UIKit + SpriteKit, texture atlases, scene transitions, destructable terrain, using `stride` to create a sequence of evenly-spaced numbers 💥 | 🚧 |
-| 30   | 🛠<br>[Instruments](/30-instruments)              | TimeProfiler, Color Blended Layers, Color Offscreen-Rendered Yellow, Color Hits Green and Misses Red | 🔴 |
+| 29   | 🎮<br>[Exploding Monkeys](/29-exploding-monkeys)       | UIKit + SpriteKit, texture atlases, scene transitions, destructable terrain, using `stride` to create a sequence of evenly-spaced numbers 💥 | ✅ |
+| 30   | 🛠<br>[Instruments](/30-instruments)              | Profiling applications with the Instruments app, color-blended layers, color offscreen-rendered yellow, color hits green and misses red | 🔴 |
 
 ## Advanced 📘
 
