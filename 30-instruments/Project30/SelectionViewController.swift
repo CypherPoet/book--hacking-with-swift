@@ -9,13 +9,14 @@
 import UIKit
 
 let cellReuseIdentifier = "Cell"
+let cellRowHeight = 90
 
 class SelectionViewController: UITableViewController {
 	var items = [String]() // this is the array that will store the filenames to load
 	var viewControllers = [UIViewController]() // create a cache of the detail view controllers for faster loading
 	var dirty = false
     
-    lazy var thumbnailRect = CGRect(origin: CGPoint.zero, size: CGSize(width: 90, height: 90))
+    lazy var thumbnailRect = CGRect(origin: CGPoint.zero, size: CGSize(width: cellRowHeight, height: cellRowHeight))
     lazy var thumbnailRenderer = UIGraphicsImageRenderer(size: thumbnailRect.size)
 
     override func viewDidLoad() {
@@ -23,7 +24,7 @@ class SelectionViewController: UITableViewController {
 
 		title = "Reactionist"
 
-		tableView.rowHeight = 90
+		tableView.rowHeight = CGFloat(cellRowHeight)
 		tableView.separatorStyle = .none
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)

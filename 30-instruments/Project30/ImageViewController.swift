@@ -14,7 +14,10 @@ class ImageViewController: UIViewController {
 	var animTimer: Timer!
 
 	var imageView: UIImageView!
+    
+    lazy var imageFilePath = Bundle.main.path(forResource: image, ofType: nil)!
 
+    
 	override func loadView() {
 		super.loadView()
 		
@@ -45,22 +48,24 @@ class ImageViewController: UIViewController {
 		}
 	}
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let sourceImage = UIImage(contentsOfFile: imageFilePath) else { return }
 
 		title = image.replacingOccurrences(of: "-Large.jpg", with: "")
-		let original = UIImage(named: image)!
+        
+		let renderer = UIGraphicsImageRenderer(size: sourceImage.size)
 
-		let renderer = UIGraphicsImageRenderer(size: original.size)
-
-		let rounded = renderer.image { ctx in
-			ctx.cgContext.addEllipse(in: CGRect(origin: CGPoint.zero, size: original.size))
+		let roundedImage = renderer.image { ctx in
+			ctx.cgContext.addEllipse(in: CGRect(origin: CGPoint.zero, size: sourceImage.size))
 			ctx.cgContext.closePath()
 
-			original.draw(at: CGPoint.zero)
+			sourceImage.draw(at: CGPoint.zero)
 		}
 
-		imageView.image = rounded
+		imageView.image = roundedImage
     }
 
 	override func viewDidAppear(_ animated: Bool) {
