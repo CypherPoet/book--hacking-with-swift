@@ -15,7 +15,7 @@
             <objects>
                 <collectionViewController id="qJn-Na-DWX" customClass="HomeViewController" customModule="Private_Gallery" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bTP-Qw-4PE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ufX-om-NRe">
@@ -45,9 +45,18 @@
                             <outlet property="delegate" destination="qJn-Na-DWX" id="uPe-DN-ADn"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="sYV-yf-jxH"/>
+                        <barButtonItem systemItem="add" id="DfQ-C0-5IH">
+                            <connections>
+                                <action selector="addPhotoTapped:" destination="qJn-Na-DWX" id="bQG-fa-xW9"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="🛰 Planetscapes" id="ITB-Fp-G5n">
                         <barButtonItem key="rightBarButtonItem" title="🚀" style="plain" id="IPW-K4-aGe"/>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="signInButton" destination="IPW-K4-aGe" id="IPE-Pf-zVe"/>
                     </connections>
