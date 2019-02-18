@@ -13,7 +13,6 @@ let cellRowHeight = 90
 
 class SelectionViewController: UITableViewController {
 	var items = [String]() // this is the array that will store the filenames to load
-	var viewControllers = [UIViewController]() // create a cache of the detail view controllers for faster loading
 	var dirty = false
     
     lazy var thumbnailRect = CGRect(origin: CGPoint.zero, size: CGSize(width: cellRowHeight, height: cellRowHeight))
@@ -106,7 +105,6 @@ class SelectionViewController: UITableViewController {
 		dirty = false
 
 		// add to our view controller cache and show
-		viewControllers.append(vc)
 		navigationController!.pushViewController(vc, animated: true)
 	}
 }
