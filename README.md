@@ -28,6 +28,7 @@
 | 14   | 🎮<br>[Whack-a-Penguin](/14-whack-a-penguin)        | SKCropNode, SKTexture, SKActions, GCD's asyncAfter(), SKAction.playSoundFileNamed, SKAction.wait, run(block:) | ✅ |
 | 15   | 🛠<br>[Core Animation](/15-animation)         | Swifty switch/case statements, animate(withDuration:), CGAffineTransform, view.transform, changing animatable properties of UIViews within an animation closure | ✅ |
 
+
 ### Intermediate 📗
 
 | #    | Project Name                | Topics Learned | Progress |
@@ -45,8 +46,9 @@
 | 26   | 🎮<br>[Marble Maze](/26-marble-maze)              | categoryBitMask, collisionBitMask, contactTestBitMask, CMMotionManager, startAccelerometerUpdates, reading accelerometer data, compiler directives | ✅ |
 | 27   | 🛠<br>[Core Graphics](/27-core-graphics)            | Core 👏 Graphics 👏, UIGraphicsImageRenderer, exporting images with UIGraphicsImageRenderer.image(), UIGraphicsImageRendererContext, CGContext, CGContext.addRect(), CGContext.addEllipse(), NSString.draw(with:), UIFont, NSMutableParagraphStyle(), drawing UIImages straight into a rendering context | ✅ |
 | 28   | 📱<br>[Secret Swift](/28-secret-text-editor)             | Using the KeychainAccess library, resignFirstResponder(), NotificationCenter, UIApplication.willResignActiveNotification, LocalAuthentication, LAContext, canEvaluatePolicy(), .deviceOwnerAuthenticationWithBiometrics, evaluatePolicy(), privacy for Touch ID & Face ID, simulating Face ID with the Simulator | ✅ |
-| 29   | 🎮<br>[Exploding Monkeys](/29-exploding-monkeys)       | UIKit + SpriteKit, texture atlases, scene transitions, destructable terrain, using `stride` to create a sequence of evenly-spaced numbers 💥 | ✅ |
-| 30   | 🛠<br>[Instruments](/30-instruments)              | Profiling applications with the Instruments app, color-blended layers, color offscreen-rendered yellow, color hits green and misses red | 🔴 |
+| 29   | 🎮<br>[Exploding Monkeys](/29-exploding-monkeys)       | UIKit + SpriteKit, texture atlases, scene transitions, destructable terrain, using `stride` to create a sequence of evenly-spaced numbers 💥, HSB FTW 🎨 | ✅ |
+| 30   | 🛠<br>[Instruments](/30-instruments)              | Profiling applications with the Instruments app, view debugging, draw debugging, memory pressure debugging, Time Profile debugging | ✅ |
+
 
 ## Advanced 📘
 
@@ -75,6 +77,7 @@
 | 5    | 📱<br>[Imitation Apple Notes App](/challenges/apple-notes-imitation)            | 🚧 |
 | 6    | 🛠<br>[Expanding on Extensions](/challenges/extensions)            | ✅ |
 | 7    | 🛠<br>[Core Graphics Rainbow 🌈](/challenges/core-graphics-rainbow)            | ✅ |
+| 8    | 📱<br>[Private Photos App](/challenges/private-photos-app)            | 🚧 |
 
 
 |  KEY  |
