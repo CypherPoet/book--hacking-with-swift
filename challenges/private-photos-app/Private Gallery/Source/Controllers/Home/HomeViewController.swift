@@ -49,6 +49,20 @@ class HomeViewController: UICollectionViewController {
         
         loadImages()
     }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let photo = photos[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Image Cell", for: indexPath) as! HomeCollectionViewCell
+        
+        cell.imageView.image = photo
+        
+        return cell
+    }
 
 
     func viewModeChanged() {
@@ -76,13 +90,19 @@ class HomeViewController: UICollectionViewController {
         
     }
     
+    
     func loadPublicPhotos() {
-        
+        for imageNumber in 1...9 {
+            if let image = UIImage(named: "nasa-\(imageNumber)") {
+                photos.append(image)
+            }
+        }
     }
     
     
     @IBAction func addPhotoTapped(_ sender: Any) {
     }
-    
 }
+
+
 
