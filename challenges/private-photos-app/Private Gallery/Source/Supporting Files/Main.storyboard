@@ -32,12 +32,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="148" height="148"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b5W-cq-bFC">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b5W-cq-bFC">
                                             <rect key="frame" x="0.0" y="0.0" width="148" height="148"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="b5W-cq-bFC" firstAttribute="leading" secondItem="bth-Rg-xHk" secondAttribute="leading" id="3EF-VT-1ba"/>
+                                    <constraint firstItem="b5W-cq-bFC" firstAttribute="top" secondItem="bth-Rg-xHk" secondAttribute="top" id="UOA-FG-jM5"/>
+                                    <constraint firstAttribute="trailing" secondItem="b5W-cq-bFC" secondAttribute="trailing" id="gkI-Te-wOM"/>
+                                    <constraint firstAttribute="bottom" secondItem="b5W-cq-bFC" secondAttribute="bottom" id="jyZ-xQ-m93"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="imageView" destination="b5W-cq-bFC" id="kET-ag-8wP"/>
                                 </connections>
@@ -68,20 +73,25 @@
             </objects>
             <point key="canvasLocation" x="1298.5507246376812" y="52.901785714285715"/>
         </scene>
-        <!--Image Detail View Controller-->
+        <!--Photo Detail View Controller-->
         <scene sceneID="Vno-NJ-LLo">
             <objects>
-                <viewController storyboardIdentifier="Image Detail View" id="H5M-1C-ujY" customClass="ImageDetailViewController" customModule="Private_Gallery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Photo Detail View" id="H5M-1C-ujY" customClass="PhotoDetailViewController" customModule="Private_Gallery" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dkm-sx-KDW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Oe-R2-x9d">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Oe-R2-x9d">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Oe-R2-x9d" firstAttribute="top" secondItem="Dkm-sx-KDW" secondAttribute="top" id="CzY-gQ-Db9"/>
+                            <constraint firstAttribute="trailing" secondItem="9Oe-R2-x9d" secondAttribute="trailing" id="NbT-aU-Tlt"/>
+                            <constraint firstAttribute="bottom" secondItem="9Oe-R2-x9d" secondAttribute="bottom" id="hFw-sF-JWz"/>
+                            <constraint firstItem="9Oe-R2-x9d" firstAttribute="leading" secondItem="Dkm-sx-KDW" secondAttribute="leading" id="z6Z-sK-I25"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="J8e-c5-CPh"/>
                     </view>
                     <connections>

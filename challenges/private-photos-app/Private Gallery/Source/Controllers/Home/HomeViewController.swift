@@ -70,6 +70,17 @@ class HomeViewController: UICollectionViewController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = photos[indexPath.item]
+        if let detailViewController = (
+            storyboard?.instantiateViewController(withIdentifier: "Photo Detail View") as?  PhotoDetailViewController
+        ) {
+            detailViewController.photo = photo
+            
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isToolbarHidden = false

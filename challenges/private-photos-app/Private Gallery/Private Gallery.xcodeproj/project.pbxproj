@@ -15,7 +15,7 @@
 		F3D3F452221AB22A00628D44 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F451221AB22A00628D44 /* README.md */; };
 		F3D3F455221AB27A00628D44 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F454221AB27A00628D44 /* Cartfile */; };
 		F3D3F458221AD6FA00628D44 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D3F457221AD6FA00628D44 /* KeychainAccess.framework */; };
-		F3D3F45B221ADF2700628D44 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F45A221ADF2700628D44 /* ImageDetailViewController.swift */; };
+		F3D3F45B221ADF2700628D44 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F45A221ADF2700628D44 /* PhotoDetailViewController.swift */; };
 		F3D3F49A221C3D1300628D44 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F499221C3D1300628D44 /* HomeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +30,7 @@
 		F3D3F451221AB22A00628D44 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		F3D3F454221AB27A00628D44 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		F3D3F457221AD6FA00628D44 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
-		F3D3F45A221ADF2700628D44 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		F3D3F45A221ADF2700628D44 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		F3D3F499221C3D1300628D44 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				F3D3F446221AB09900628D44 /* HomeViewController.swift */,
-				F3D3F45A221ADF2700628D44 /* ImageDetailViewController.swift */,
+				F3D3F45A221ADF2700628D44 /* PhotoDetailViewController.swift */,
 				F3D3F499221C3D1300628D44 /* HomeCollectionViewCell.swift */,
 			);
 			path = Home;
@@ -233,7 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3D3F44C221AB09900628D44 /* HomeViewController.swift in Sources */,
-				F3D3F45B221ADF2700628D44 /* ImageDetailViewController.swift in Sources */,
+				F3D3F45B221ADF2700628D44 /* PhotoDetailViewController.swift in Sources */,
 				F3D3F44B221AB09900628D44 /* AppDelegate.swift in Sources */,
 				F3D3F49A221C3D1300628D44 /* HomeCollectionViewCell.swift in Sources */,
 			);

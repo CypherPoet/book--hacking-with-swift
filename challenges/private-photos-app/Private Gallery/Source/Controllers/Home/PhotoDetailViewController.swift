@@ -8,13 +8,24 @@
 
 import UIKit
 
-class ImageDetailViewController: UIViewController {
+class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
+    
+    var photo: UIImage!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupImageView()
+    }
+    
+    func setupImageView() {
+        guard imageView != nil else { return }
+        guard photo != nil else { return }
+        
+        imageView.image = photo
     }
     
 
