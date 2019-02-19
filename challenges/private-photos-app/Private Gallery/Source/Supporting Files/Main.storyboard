@@ -61,7 +61,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
-                        <outlet property="signInButton" destination="IPW-K4-aGe" id="IPE-Pf-zVe"/>
+                        <outlet property="viewModeButton" destination="IPW-K4-aGe" id="IPE-Pf-zVe"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5UA-rs-UiX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -102,6 +102,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SYf-ME-VbR">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="qJn-Na-DWX" kind="relationship" relationship="rootViewController" id="Pa3-Gu-mwb"/>
                     </connections>
