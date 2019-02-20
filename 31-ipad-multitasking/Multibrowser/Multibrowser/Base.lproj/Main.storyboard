@@ -40,15 +40,29 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nfO-E2-nuf"/>
+                    <navigationItem key="navigationItem" id="nfO-E2-nuf">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="D7y-wQ-NkI">
+                                <connections>
+                                    <action selector="addWebView:" destination="BYZ-38-t0r" id="qBD-ti-G5m"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="nBz-Mn-Hrb">
+                                <connections>
+                                    <action selector="deleteWebView:" destination="BYZ-38-t0r" id="zJa-Jg-Fk1"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressBar" destination="jYU-dR-unr" id="9D7-0X-x74"/>
+                        <outlet property="deleteWebViewButton" destination="nBz-Mn-Hrb" id="JrK-bc-UYZ"/>
                         <outlet property="stackView" destination="Wqs-Qr-mVC" id="6eG-0Q-lNL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934.53237410071949" y="133.81294964028777"/>
+            <point key="canvasLocation" x="939" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sYu-kN-pLc">
