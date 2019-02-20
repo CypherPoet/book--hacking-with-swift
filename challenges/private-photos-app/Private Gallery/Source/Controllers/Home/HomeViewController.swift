@@ -35,6 +35,8 @@ enum NavContent {
 class HomeViewController: UICollectionViewController {
     @IBOutlet weak var viewModeButton: UIBarButtonItem!
 
+    lazy var notificationCenter = NotificationCenter.default
+    
     let authReason = "We'll need to see some ID"
     lazy var authContext = LAContext()
     
@@ -50,10 +52,12 @@ class HomeViewController: UICollectionViewController {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        addNotificationObservers()
         loadImages()
     }
     
@@ -82,7 +86,6 @@ class HomeViewController: UICollectionViewController {
         }
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isToolbarHidden = false
         super.viewWillAppear(animated)
@@ -94,6 +97,17 @@ class HomeViewController: UICollectionViewController {
     }
 
 
+    func addNotificationObservers() {
+        notificationCenter.addObserver(
+            self, selector: #selector(exitPrivateMode), name: UIApplication.willResignActiveNotification, object: nil
+        )
+    }
+    
+    @objc func exitPrivateMode() {
+        currentViewMode = .publicFacing
+    }
+    
+    
     func viewModeChanged() {
         switch currentViewMode {
         case .publicFacing:
