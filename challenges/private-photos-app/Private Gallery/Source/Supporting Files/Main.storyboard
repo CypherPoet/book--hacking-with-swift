@@ -62,7 +62,11 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="🛰 Planetscapes" id="ITB-Fp-G5n">
-                        <barButtonItem key="rightBarButtonItem" title="🚀" id="IPW-K4-aGe"/>
+                        <barButtonItem key="rightBarButtonItem" title="🚀" id="IPW-K4-aGe">
+                            <connections>
+                                <action selector="viewModeButtonTapped:" destination="qJn-Na-DWX" id="ZLY-kx-Ki0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>

@@ -34,6 +34,9 @@ enum NavContent {
 
 class HomeViewController: UICollectionViewController {
     @IBOutlet weak var viewModeButton: UIBarButtonItem!
+
+    let authReason = "We'll need to see some ID"
+    lazy var authContext = LAContext()
     
     var photos = [UIImage]()
     
@@ -44,9 +47,7 @@ class HomeViewController: UICollectionViewController {
     }
     
     var documentsDirectoryURL: URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        
-        return paths[0]
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     
     override func viewDidLoad() {
@@ -103,7 +104,9 @@ class HomeViewController: UICollectionViewController {
             viewModeButton.title = NavContent.viewModeToggle.privatePhotos
         }
         
+        photos.removeAll(keepingCapacity: true)
         loadImages()
+        collectionView.reloadData()
     }
     
     
@@ -116,8 +119,36 @@ class HomeViewController: UICollectionViewController {
         }
     }
     
+    
     func loadPrivatePhotos() {
+        let fileManager = FileManager.default
         
+        do {
+            let imageURLS = try fileManager.contentsOfDirectory(at: documentsDirectoryURL, includingPropertiesForKeys: nil)
+            
+            print(imageURLS)
+            
+            for url in imageURLS {
+                if let photo = loadPhoto(fromURL: url) {
+                    photos.append(photo)
+                }
+            }
+            
+        } catch let error {
+            print("Error loading image paths from disk: \(error.localizedDescription)")
+        }
+    }
+    
+    
+    func loadPhoto(fromURL url: URL) -> UIImage? {
+        do {
+            let data = try Data(contentsOf: url)
+            return UIImage(data: data)
+        } catch {
+            print("Error loading image: \(error.localizedDescription)")
+        }
+        
+        return nil
     }
     
     
@@ -162,8 +193,53 @@ class HomeViewController: UICollectionViewController {
     }
     
     
+    func authWithFaceId() {
+        authContext.evaluatePolicy(
+            .deviceOwnerAuthenticationWithBiometrics,
+            localizedReason: authReason,
+            reply: { (success: Bool, error: Error?) -> Void in
+                if success {
+                    DispatchQueue.main.async { [unowned self] in
+                        self.currentViewMode = .privatePhotos
+                    }
+                } else {
+                    print(error?.localizedDescription ?? "Failed to authenticate")
+                }
+            }
+        )
+    }
+    
+    
+    func authWithPassword() {
+        print("📝 TODO: Auth with Password")
+    }
+    
+    
+    func performAuthentication() {
+        var authError: NSError?
+        
+        authContext.localizedCancelTitle = "Use a username and password"
+        
+        if authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
+            authWithFaceId()
+        } else if authContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &authError) {
+            // attempt to fallback to a passcode when biometrics fails or is unavailable
+            authWithPassword()
+        }
+    }
+    
+    
     @IBAction func addPhotoTapped(_ sender: Any) {
         promptForAddingPhoto()
+    }
+    
+    
+    @IBAction func viewModeButtonTapped(_ sender: Any) {
+        if currentViewMode == .privatePhotos {
+            currentViewMode = .publicFacing
+        } else {
+            performAuthentication()
+        }
     }
 }
 
