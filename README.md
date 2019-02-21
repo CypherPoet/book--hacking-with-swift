@@ -5,7 +5,7 @@
 ![Shield.io MIT License Shield](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 
-### Beginner 📕
+### Beginner 🐣
 
 | #    | Project                      | Topics Covered   | Progress   |
 | :--: | :--------------------------: | :--------------: | :--------: |
@@ -29,7 +29,7 @@
 | 15   | 🛠<br>[Core Animation](/15-animation)         | Swifty switch/case statements, animate(withDuration:), CGAffineTransform, view.transform, changing animatable properties of UIViews within an animation closure | ✅ |
 
 
-### Intermediate 📗
+### Intermediate 🐥
 
 | #    | Project Name                | Topics Learned | Progress |
 | :--: | :-------------------------: | :------------: | :------: |
@@ -50,12 +50,12 @@
 | 30   | 🛠<br>[Instruments](/30-instruments)              | Profiling applications with the Instruments app, view debugging, draw debugging, memory pressure debugging, Time Profile debugging | ✅ |
 
 
-## Advanced 📘
+## Advanced 🦅
 
 | #    | Project Name                | Topics Learned   | Progress   |
 | :--: | :-------------------------: | :--------------: | :--------: |
 | 31   | 📱<br>[Multibrowser](/31-multibrowser)            | UIStackView, iPad multitasking, addArrangedSubview(), WKNavigationDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, App Transport Security, Adaptive UI (Size Classes and Dynamic Type), using `StackView.removeArrangedSubview` alongside `WKWebView.removeFromSuperview` | ✅ |
-| 32   | 📱<br>[Swift Searcher](/32-swift-searcher)            | Dynamic Type, NSAttributedString, SFSafariViewController, SFSafariViewControllerDelegate, Core Spotlight, UIContentSizeCategoryDidChange | 🔴 |
+| 32   | 📱<br>[Swift Searcher](/32-swift-searcher)            | Dynamic Type, NSAttributedString, SFSafariViewController, SFSafariViewControllerDelegate, Core Spotlight, UIContentSizeCategoryDidChange | 🚧 |
 | 33   | 📱<br>[Name That Tune](/33-name-that-tune)          | AVAudioRecorder, AVAudioSession, requestRecordPermission(), CloudKit, CKRecord, CKAsset, CloudKit Dashboard, CKQueryOperation, NSPredicate, CKRecord.Reference, fetch(withRecordID:), save(), CKQuerySubscription, NSSortDescriptor | 🔴 |
 | 34   | 🎮<br>[Four in a Row](/34-connect-four)            | GameplayKit AI, GKGameModel, GKGameModelPlayer, GKGameModelUpdate, AI Heuristics, NSCopying, GKMinmaxStrategist | 🔴 |
 | 35   | 🛠<br>[Random Numbers](/35-Random-Numbers)           | Int.random(in:), Float.random(in:), Double.random(in:), CGFloat.random(in:), Bool.random(), arc4random(), GKRandomSource.sharedRandom(), GKLinearCongruentialRandomSource, GKMersenneTwisterRandomSource, GKARC4RandomSource, GKRandomDistribution, GKShuffledDistribution, GKGaussianDistribution, Fisher-Yates Algorithm, arrayByShufflingObjects(in:) | 🔴 |
