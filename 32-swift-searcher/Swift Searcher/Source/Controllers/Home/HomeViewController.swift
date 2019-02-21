@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import SafariServices
 
 class HomeTableViewController: UITableViewController {
     var projects = [Project]()
     
+    var safariConfig: SFSafariViewController.Configuration {
+        let config = SFSafariViewController.Configuration()
+        
+        config.entersReaderIfAvailable = true
+        
+        return config
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +39,12 @@ class HomeTableViewController: UITableViewController {
         cell.textLabel?.attributedText = project.tableCellFormat()
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let project = projects[indexPath.row]
+        
+        showWebpage(forProject: project.projectNumber)
     }
     
 
@@ -59,6 +73,13 @@ class HomeTableViewController: UITableViewController {
         }
         
         return nil
+    }
+    
+    func showWebpage(forProject projectNumber: Int) {
+        let url = URL(string: "https://www.hackingwithswift.com/read/\(projectNumber)")!
+        let viewController = SFSafariViewController(url: url, configuration: safariConfig)
+        
+        present(viewController, animated: true)
     }
 }
 

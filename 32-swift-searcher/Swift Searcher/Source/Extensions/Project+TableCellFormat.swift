@@ -8,7 +8,7 @@ import UIKit
 extension Project {
     func tableCellFormat() -> NSAttributedString {
         let nameAttributes = [
-            NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),            
+            NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),
             NSAttributedString.Key.foregroundColor: UIColor.purple
         ]
         
@@ -16,7 +16,7 @@ extension Project {
             NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline)
         ]
         
-        let titleString = NSMutableAttributedString(string: "\(name)\n", attributes: nameAttributes)
+        let titleString = NSMutableAttributedString(string: "Project \(projectNumber): \(title)\n", attributes: nameAttributes)
         let subtitleString = NSAttributedString(string: subtitle, attributes: subtitleAttributes)
         
         titleString.append(subtitleString)

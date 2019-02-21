@@ -1,34 +1,42 @@
 [
     {
-        "name": "Project 1: Storm Viewer",
+        "project_number": 1,
+        "title": "Storm Viewer",
         "subtitle": "Constants and variables, UITableView, UIImageView, FileManager, storyboards"
     },
     {
-        "name": "Project 2: Guess the Flag",
+        "project_number": 2,
+        "title": "Guess the Flag",
         "subtitle": "@2x and @3x images, asset catalogs, integers, doubles, floats, operators (+= and -=), UIButton, enums, CALayer, UIColor, random numbers, actions, strin interpolation, UIAlertController"
     },
     {
-        "name": "Project 3: Social Media",
+        "project_number": 3,
+        "title": "Social Media",
         "subtitle": "UIBarButtonItem, UIActivityViewController, the Social framework, URL"
     },
     {
-        "name": "Project 4: Easy Browse",
+        "project_number": 4,
+        "title": "Easy Browse",
         "subtitle": "loadView(), WKWebView, delegation, classes and structs, URLRequest, UIToolbar, UIProgressView., key-value observing"
     },
     {
-        "name": "Project 5: Word Scramble",
+        "project_number": 5,
+        "title": "Word Scramble",
         "subtitle": "Closures, method return values, booleans, NSRange"
     },
     {
-        "name": "Project 6: Auto Layout",
+        "project_number": 6,
+        "title": "Auto Layout",
         "subtitle": "Get to grips with Auto Layout using practical examples and code"
     },
     {
-        "name": "Project 7: Near Earth Objects",
+        "project_number": 7,
+        "title": "Near Earth Objects",
         "subtitle": "JSON, Data, UITabBarController"
     },
     {
-        "name": "Project 8: 7 Swifty Words",
+        "project_number": 8,
+        "title": "7 Swifty Words",
         "subtitle": "addTarget(), enumerated(), count, index(of:), property observers, range operators."
     }
 ]

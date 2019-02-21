@@ -4,9 +4,16 @@
 //
 //
 
-import Foundation
+import UIKit
 
 struct Project: Codable {
-    var name: String
+    var projectNumber: Int
+    var title: String
     var subtitle: String
+    
+    enum CodingKeys: String, CodingKey {
+        case projectNumber = "project_number"
+        case title
+        case subtitle
+    }
 }
