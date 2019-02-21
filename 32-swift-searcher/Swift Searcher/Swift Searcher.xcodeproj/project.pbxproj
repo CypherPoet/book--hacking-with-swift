@@ -14,6 +14,7 @@
 		F3D3F4EA221E308D00628D44 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F4E5221E308D00628D44 /* HomeViewController.swift */; };
 		F3D3F4EC221E347500628D44 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F4EB221E347400628D44 /* Project.swift */; };
 		F3D3F4EE221E355F00628D44 /* projects.json in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F4ED221E355F00628D44 /* projects.json */; };
+		F3D3F4F3221E4B9500628D44 /* Project+TableCellFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F4F2221E4B9500628D44 /* Project+TableCellFormat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		F3D3F4E5221E308D00628D44 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F3D3F4EB221E347400628D44 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		F3D3F4ED221E355F00628D44 /* projects.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = projects.json; sourceTree = "<group>"; };
+		F3D3F4F2221E4B9500628D44 /* Project+TableCellFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+TableCellFormat.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				F3D3F4DC221E308D00628D44 /* Models */,
 				F3D3F4DD221E308D00628D44 /* Supporting Files */,
 				F3D3F4E0221E308D00628D44 /* App Start */,
+				F3D3F4EF221E4A9B00628D44 /* Extensions */,
 				F3D3F4E3221E308D00628D44 /* Controllers */,
 			);
 			path = Source;
@@ -117,6 +120,15 @@
 			);
 			path = Home;
 			sourceTree = "<group>";
+		};
+		F3D3F4EF221E4A9B00628D44 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F3D3F4F2221E4B9500628D44 /* Project+TableCellFormat.swift */,
+			);
+			name = Extensions;
+			path = Source/Extensions;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -192,6 +204,7 @@
 			files = (
 				F3D3F4E9221E308D00628D44 /* AppDelegate.swift in Sources */,
 				F3D3F4EA221E308D00628D44 /* HomeViewController.swift in Sources */,
+				F3D3F4F3221E4B9500628D44 /* Project+TableCellFormat.swift in Sources */,
 				F3D3F4EC221E347500628D44 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
