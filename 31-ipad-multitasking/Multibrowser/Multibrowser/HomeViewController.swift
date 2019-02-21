@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
     weak var activeWebView: WKWebView! {
         didSet {
             activeWebViewChanged()
+            updateAddressBar(for: activeWebView)
         }
     }
     
@@ -51,6 +52,10 @@ class HomeViewController: UIViewController {
     func setupDefaultUI() {
         deleteWebViewButton.isEnabled = false
         title = defaultTitle
+    }
+    
+    func updateAddressBar(for webView: WKWebView) {
+        addressBar.text = webView.url?.absoluteString ?? ""
     }
     
     func replaceActiveWebView(afterDeletingFromIndex previousIndex: Int) {
@@ -111,7 +116,9 @@ class HomeViewController: UIViewController {
 
 
 extension HomeViewController: WKNavigationDelegate {
-    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        updateAddressBar(for: webView)
+    }
 }
 
 
