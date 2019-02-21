@@ -76,6 +76,21 @@ class HomeViewController: UIViewController {
         }
     }
     
+    /**
+     - When we have a regular horizontal size class, we'll use horizontal stacking
+     - When we have a compact horizontal size class, we'll use vertical stacking
+     */
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let horizontalSizeClasss = previousTraitCollection?.horizontalSizeClass else { return }
+        
+        switch horizontalSizeClasss {
+        case .regular, .unspecified:
+            stackView.axis = .horizontal
+        case .compact:
+            stackView.axis = .vertical
+        }
+    }
+    
     
     @IBAction func addWebView(_ sender: Any) {
         let webView = WKWebView()
