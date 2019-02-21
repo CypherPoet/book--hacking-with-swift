@@ -54,7 +54,7 @@
 
 | #    | Project Name                | Topics Learned   | Progress   |
 | :--: | :-------------------------: | :--------------: | :--------: |
-| 31   | 📱<br>[Multibrowser](/31-multibrowser)            | UIStackView, iPad multitasking, addArrangedSubview(), WKNavigationDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, App Transport Security | 🚧 |
+| 31   | 📱<br>[Multibrowser](/31-multibrowser)            | UIStackView, iPad multitasking, addArrangedSubview(), WKNavigationDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, App Transport Security, Adaptive UI (Size Classes and Dynamic Type), using `StackView.removeArrangedSubview` alongside `WKWebView.removeFromSuperview` | ✅ |
 | 32   | 📱<br>[Swift Searcher](/32-swift-searcher)            | Dynamic Type, NSAttributedString, SFSafariViewController, SFSafariViewControllerDelegate, Core Spotlight, UIContentSizeCategoryDidChange | 🔴 |
 | 33   | 📱<br>[Name That Tune](/33-name-that-tune)          | AVAudioRecorder, AVAudioSession, requestRecordPermission(), CloudKit, CKRecord, CKAsset, CloudKit Dashboard, CKQueryOperation, NSPredicate, CKRecord.Reference, fetch(withRecordID:), save(), CKQuerySubscription, NSSortDescriptor | 🔴 |
 | 34   | 🎮<br>[Four in a Row](/34-connect-four)            | GameplayKit AI, GKGameModel, GKGameModelPlayer, GKGameModelUpdate, AI Heuristics, NSCopying, GKMinmaxStrategist | 🔴 |
