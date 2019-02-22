@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		F3D3F51F221F8F7D00628D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F515221F8F7D00628D44 /* Main.storyboard */; };
-		F3D3F520221F8F7D00628D44 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F516221F8F7D00628D44 /* Info.plist */; };
 		F3D3F521221F8F7D00628D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F518221F8F7D00628D44 /* LaunchScreen.storyboard */; };
 		F3D3F522221F8F7D00628D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F519221F8F7D00628D44 /* AppDelegate.swift */; };
 		F3D3F523221F8F7D00628D44 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F51C221F8F7D00628D44 /* HomeViewController.swift */; };
 		F3D3F524221F8F7D00628D44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F51E221F8F7D00628D44 /* Assets.xcassets */; };
+		F3D3F527221F91F900628D44 /* RecordSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F526221F91F900628D44 /* RecordSongViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +23,7 @@
 		F3D3F519221F8F7D00628D44 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3D3F51C221F8F7D00628D44 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F3D3F51E221F8F7D00628D44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3D3F526221F91F900628D44 /* RecordSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSongViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +93,7 @@
 		F3D3F51A221F8F7D00628D44 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F3D3F525221F91DC00628D44 /* Record Song */,
 				F3D3F51B221F8F7D00628D44 /* Home */,
 			);
 			path = Controllers;
@@ -111,6 +113,14 @@
 				F3D3F51E221F8F7D00628D44 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F3D3F525221F91DC00628D44 /* Record Song */ = {
+			isa = PBXGroup;
+			children = (
+				F3D3F526221F91F900628D44 /* RecordSongViewController.swift */,
+			);
+			path = "Record Song";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,7 +182,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3D3F521221F8F7D00628D44 /* LaunchScreen.storyboard in Resources */,
-				F3D3F520221F8F7D00628D44 /* Info.plist in Resources */,
 				F3D3F524221F8F7D00628D44 /* Assets.xcassets in Resources */,
 				F3D3F51F221F8F7D00628D44 /* Main.storyboard in Resources */,
 			);
@@ -185,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3D3F527221F91F900628D44 /* RecordSongViewController.swift in Sources */,
 				F3D3F522221F8F7D00628D44 /* AppDelegate.swift in Sources */,
 				F3D3F523221F8F7D00628D44 /* HomeViewController.swift in Sources */,
 			);
