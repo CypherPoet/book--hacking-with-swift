@@ -14,8 +14,11 @@ class RecordSongViewController: UIViewController {
     lazy var stackView = makeStackView()
     lazy var recordingSession = AVAudioSession.sharedInstance()
     lazy var recordButton = makeRecordButton()
+    lazy var playButton = makePlayButton()
     lazy var failureLabel = makeFailureLabel()
     lazy var songRecorder: AVAudioRecorder? = makeRecorder()
+    lazy var songPlayer: AVAudioPlayer? = makeAudioPlayer()
+    lazy var songURL = UIViewController.getSongURL()
     
     var submitRecordingButton: UIBarButtonItem!
     
@@ -83,7 +86,8 @@ class RecordSongViewController: UIViewController {
     
     
     func loadRecordingUI() {
-       stackView.addArrangedSubview(recordButton)
+        stackView.addArrangedSubview(recordButton)
+        stackView.addArrangedSubview(playButton)
     }
     
     
@@ -109,6 +113,10 @@ class RecordSongViewController: UIViewController {
             currentRecordingState = .recording
             songRecorder?.record()
         }
+    }
+    
+    @objc func playButtonTapped() {
+        songPlayer?.play()
     }
 
     @objc func submitButtonTapped() {
@@ -141,6 +149,20 @@ class RecordSongViewController: UIViewController {
     }
     
     
+    func makePlayButton() -> UIButton {
+        let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Tap to Play", for: .normal)
+        button.isHidden = true
+        button.alpha = 0
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+        button.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
+        
+        return button
+    }
+    
+    
     func makeFailureLabel() -> UILabel {
         let label = UILabel()
         
@@ -153,8 +175,7 @@ class RecordSongViewController: UIViewController {
     
     
     func makeRecorder() -> AVAudioRecorder? {
-        let songPath = UIViewController.getSongURL()
-        print("URL for recorded song: \(songPath.absoluteString)")
+        print("URL for recorded song: \(songURL.absoluteString)")
         
         let recorderSettings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -164,12 +185,25 @@ class RecordSongViewController: UIViewController {
         ]
         
         do {
-            let recorder = try AVAudioRecorder(url: songPath, settings: recorderSettings)
+            let recorder = try AVAudioRecorder(url: songURL, settings: recorderSettings)
             recorder.delegate = self
             
             return recorder
         } catch {
             self.currentRecordingState = .finishedUnsuccessfully
+        }
+        
+        return nil
+    }
+    
+    
+    func makeAudioPlayer() -> AVAudioPlayer? {
+        print("URL for recorded song: \(songURL.absoluteString)")
+        
+        do {
+            return try AVAudioPlayer(contentsOf: songURL)
+        } catch let error {
+            warnOnError(title: "Playback failed", message: "There was a problem playing your song. Please try re-recording.")
         }
         
         return nil
@@ -185,6 +219,8 @@ class RecordSongViewController: UIViewController {
                 withDuration: animationDuration,
                 animations: { [unowned self] in
                     self.view.backgroundColor = #colorLiteral(red: 0.79293257, green: 0.2189754248, blue: 0.2273216546, alpha: 1)
+                    self.playButton.alpha = 0
+                    self.playButton.isHidden = true
                 },
                 completion: { [unowned self] _ in
                     self.recordButton.setTitle("Tap to Stop", for: .normal)
@@ -195,7 +231,7 @@ class RecordSongViewController: UIViewController {
             UIView.animate(
                 withDuration: animationDuration,
                 animations: { [unowned self] in
-                    self.view.backgroundColor = #colorLiteral(red: 0.3365412951, green: 0.3497310877, blue: 0.5033047199, alpha: 1)
+                    self.view.backgroundColor = #colorLiteral(red: 0.2512912154, green: 0.2826214135, blue: 0.5264708996, alpha: 1)
                 },
                 completion: { [unowned self] _ in
                     self.recordButton.setTitle("Tap to Record", for: .normal)
@@ -207,6 +243,8 @@ class RecordSongViewController: UIViewController {
                 withDuration: animationDuration,
                 animations: { [unowned self] in
                     self.view.backgroundColor = #colorLiteral(red: 0, green: 0.7464764714, blue: 0.310388267, alpha: 1)
+                    self.playButton.alpha = 1
+                    self.playButton.isHidden = false
                 },
                 completion: { [unowned self] _ in
                     self.recordButton.setTitle("Tap to Re-Record", for: .normal)
@@ -214,24 +252,20 @@ class RecordSongViewController: UIViewController {
                 }
             )
         case .finishedUnsuccessfully:
-            let alertController = UIAlertController(
-                title: "Record failed.",
-                message: "There was a problem recording your song. Please try again.",
-                preferredStyle: .alert
-            )
-            
-            alertController.addAction(
-                UIAlertAction(
-                    title: "OK",
-                    style: .default,
-                    handler: { [unowned self] (UIAlertAction) -> Void in
-                        self.currentRecordingState = .inactive
-                    }
-                )
-            )
-            
-            present(alertController, animated: true)
+            warnOnError(title: "Record failed.", message: "There was a problem recording your song. Please try again.")
         }
+    }
+    
+    func warnOnError(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alertController.addAction(
+            UIAlertAction(title: "OK", style: .default) { [unowned self] (UIAlertAction) -> Void in
+                self.currentRecordingState = .inactive
+            }
+        )
+        
+        present(alertController, animated: true)
     }
 }
 
