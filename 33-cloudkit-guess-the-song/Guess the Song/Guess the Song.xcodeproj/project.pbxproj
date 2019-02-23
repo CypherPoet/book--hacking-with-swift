@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F3B74E52221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */; };
+		F3B74E54221FAACD005DD023 /* UIViewController+getSongURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */; };
 		F3D3F51F221F8F7D00628D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F515221F8F7D00628D44 /* Main.storyboard */; };
 		F3D3F521221F8F7D00628D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F518221F8F7D00628D44 /* LaunchScreen.storyboard */; };
 		F3D3F522221F8F7D00628D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F519221F8F7D00628D44 /* AppDelegate.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getDocumentsDirectory.swift"; sourceTree = "<group>"; };
+		F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getSongURL.swift"; sourceTree = "<group>"; };
 		F3D3F4FD221F8E8400628D44 /* Guess the Song.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guess the Song.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3D3F515221F8F7D00628D44 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F3D3F516221F8F7D00628D44 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F3B74E50221FAA78005DD023 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */,
+				F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F3D3F4F4221F8E8400628D44 = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +70,7 @@
 		F3D3F512221F8F7D00628D44 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				F3B74E50221FAA78005DD023 /* Extensions */,
 				F3D3F513221F8F7D00628D44 /* Models */,
 				F3D3F514221F8F7D00628D44 /* Supporting Files */,
 				F3D3F517221F8F7D00628D44 /* App Start */,
@@ -194,8 +208,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3B74E54221FAACD005DD023 /* UIViewController+getSongURL.swift in Sources */,
 				F3D3F527221F91F900628D44 /* RecordSongViewController.swift in Sources */,
 				F3D3F522221F8F7D00628D44 /* AppDelegate.swift in Sources */,
+				F3B74E52221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift in Sources */,
 				F3D3F523221F8F7D00628D44 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
