@@ -120,7 +120,9 @@ class RecordSongViewController: UIViewController {
     }
 
     @objc func submitButtonTapped() {
+        let viewController = SelectGenreTableViewController()
         
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 
@@ -202,7 +204,7 @@ class RecordSongViewController: UIViewController {
         
         do {
             return try AVAudioPlayer(contentsOf: songURL)
-        } catch let error {
+        } catch {
             warnOnError(title: "Playback failed", message: "There was a problem playing your song. Please try re-recording.")
         }
         
