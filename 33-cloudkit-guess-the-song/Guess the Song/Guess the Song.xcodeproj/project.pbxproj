@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F35A347E2221C7A800ED756A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F35A347D2221C7A800ED756A /* CloudKit.framework */; };
+		F35A3480222243CC00ED756A /* SoundBite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A347F222243CC00ED756A /* SoundBite.swift */; };
+		F35A348222225E3100ED756A /* UIViewController+displayBasicAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A348122225E3100ED756A /* UIViewController+displayBasicAlert.swift */; };
 		F3B74E52221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */; };
 		F3B74E54221FAACD005DD023 /* UIViewController+getSongURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */; };
 		F3B74E562220ED17005DD023 /* SelectGenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E552220ED17005DD023 /* SelectGenreTableViewController.swift */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		F35A347B2221C7A200ED756A /* Guess the Song.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Guess the Song.entitlements"; sourceTree = "<group>"; };
 		F35A347D2221C7A800ED756A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F35A347F222243CC00ED756A /* SoundBite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundBite.swift; sourceTree = "<group>"; };
+		F35A348122225E3100ED756A /* UIViewController+displayBasicAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+displayBasicAlert.swift"; sourceTree = "<group>"; };
 		F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getDocumentsDirectory.swift"; sourceTree = "<group>"; };
 		F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getSongURL.swift"; sourceTree = "<group>"; };
 		F3B74E552220ED17005DD023 /* SelectGenreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreTableViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 			children = (
 				F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */,
 				F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */,
+				F35A348122225E3100ED756A /* UIViewController+displayBasicAlert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 		F3D3F513221F8F7D00628D44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F35A347F222243CC00ED756A /* SoundBite.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -242,7 +248,9 @@
 				F3B74E5A22210442005DD023 /* SubmitViewController.swift in Sources */,
 				F3B74E54221FAACD005DD023 /* UIViewController+getSongURL.swift in Sources */,
 				F3B74E562220ED17005DD023 /* SelectGenreTableViewController.swift in Sources */,
+				F35A3480222243CC00ED756A /* SoundBite.swift in Sources */,
 				F3D3F527221F91F900628D44 /* RecordSoundViewController.swift in Sources */,
+				F35A348222225E3100ED756A /* UIViewController+displayBasicAlert.swift in Sources */,
 				F3D3F522221F8F7D00628D44 /* AppDelegate.swift in Sources */,
 				F3B74E52221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift in Sources */,
 				F3B74E582220FE2A005DD023 /* AddCommentsViewController.swift in Sources */,

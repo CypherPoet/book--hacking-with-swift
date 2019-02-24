@@ -254,7 +254,13 @@ class RecordSoundViewController: UIViewController {
                 }
             )
         case .finishedUnsuccessfully:
-            warnOnError(title: "Record failed.", message: "There was a problem recording your sound. Please try again.")
+//            warnOnError(title: "Record failed.", message: "There was a problem recording your sound. Please try again.")
+            displayBasicAlert(
+                title: "Record failed.",
+                message: "There was a problem recording your sound. Please try again."
+            ) { [unowned self] (_) in
+                self.currentRecordingState = .inactive
+            }
         }
     }
     

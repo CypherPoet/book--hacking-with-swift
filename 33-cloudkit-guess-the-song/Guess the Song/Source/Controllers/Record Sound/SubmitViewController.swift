@@ -95,6 +95,7 @@ class SubmitViewController: UIViewController {
             [unowned self] (record: CKRecord?, error: Error?) in
                 DispatchQueue.main.async {
                     if let error = error {
+                        HomeViewController.hasNewSoundBiteData = true
                         self.saveErrorMessage = "Error during save: \(error.localizedDescription)"
                         self.currentSubmitState = .submitFailed
                     } else {
