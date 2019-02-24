@@ -46,7 +46,7 @@ class SelectGenreTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let genre = Genre.allCases[indexPath.row]
-        let viewController = AddSongCommentsViewController()
+        let viewController = AddCommentsViewController()
         
         viewController.genre = genre
         

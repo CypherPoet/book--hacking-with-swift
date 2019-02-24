@@ -1,5 +1,5 @@
 //
-//  RecordSongViewController.swift
+//  RecordSoundViewController.swift
 //  Guess the Song
 //
 //  Created by Brian Sipple on 2/21/19.
@@ -10,15 +10,15 @@ import UIKit
 import AVFoundation
 
 
-class RecordSongViewController: UIViewController {
+class RecordSoundViewController: UIViewController {
     lazy var stackView = makeStackView()
     lazy var recordingSession = AVAudioSession.sharedInstance()
     lazy var recordButton = makeRecordButton()
     lazy var playButton = makePlayButton()
     lazy var failureLabel = makeFailureLabel()
-    lazy var songRecorder: AVAudioRecorder? = makeRecorder()
-    lazy var songPlayer: AVAudioPlayer? = makeAudioPlayer()
-    lazy var songURL = UIViewController.getSongURL()
+    lazy var soundRecorder: AVAudioRecorder? = makeRecorder()
+    lazy var soundPlayer: AVAudioPlayer? = makeAudioPlayer()
+    lazy var soundURL = UIViewController.getSoundURL()
     
     var submitRecordingButton: UIBarButtonItem!
     
@@ -55,7 +55,7 @@ class RecordSongViewController: UIViewController {
     
     
     func setupNavbar() {
-        title = "Record Your Song 🎤"
+        title = "Record Your Sound 🎤"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: nil, action: nil)
         
         submitRecordingButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(submitButtonTapped))
@@ -108,15 +108,15 @@ class RecordSongViewController: UIViewController {
     @objc func recordTapped() {
         switch currentRecordingState {
         case .recording:
-            songRecorder?.stop()
+            soundRecorder?.stop()
         default:
             currentRecordingState = .recording
-            songRecorder?.record()
+            soundRecorder?.record()
         }
     }
     
     @objc func playButtonTapped() {
-        songPlayer?.play()
+        soundPlayer?.play()
     }
 
     @objc func submitButtonTapped() {
@@ -177,7 +177,7 @@ class RecordSongViewController: UIViewController {
     
     
     func makeRecorder() -> AVAudioRecorder? {
-        print("URL for recorded song: \(songURL.absoluteString)")
+        print("URL for recorded sound: \(soundURL.absoluteString)")
         
         let recorderSettings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -187,7 +187,7 @@ class RecordSongViewController: UIViewController {
         ]
         
         do {
-            let recorder = try AVAudioRecorder(url: songURL, settings: recorderSettings)
+            let recorder = try AVAudioRecorder(url: soundURL, settings: recorderSettings)
             recorder.delegate = self
             
             return recorder
@@ -200,12 +200,12 @@ class RecordSongViewController: UIViewController {
     
     
     func makeAudioPlayer() -> AVAudioPlayer? {
-        print("URL for recorded song: \(songURL.absoluteString)")
+        print("URL for recorded sound: \(soundURL.absoluteString)")
         
         do {
-            return try AVAudioPlayer(contentsOf: songURL)
+            return try AVAudioPlayer(contentsOf: soundURL)
         } catch {
-            warnOnError(title: "Playback failed", message: "There was a problem playing your song. Please try re-recording.")
+            warnOnError(title: "Playback failed", message: "There was a problem playing your sound. Please try re-recording.")
         }
         
         return nil
@@ -254,7 +254,7 @@ class RecordSongViewController: UIViewController {
                 }
             )
         case .finishedUnsuccessfully:
-            warnOnError(title: "Record failed.", message: "There was a problem recording your song. Please try again.")
+            warnOnError(title: "Record failed.", message: "There was a problem recording your sound. Please try again.")
         }
     }
     
@@ -272,7 +272,7 @@ class RecordSongViewController: UIViewController {
 }
 
 
-extension RecordSongViewController: AVAudioRecorderDelegate {
+extension RecordSoundViewController: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         currentRecordingState = flag ? .finishedSuccessfully : .finishedUnsuccessfully
     }

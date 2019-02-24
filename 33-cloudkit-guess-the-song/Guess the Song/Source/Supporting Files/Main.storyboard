@@ -25,7 +25,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qKr-p6-79t">
                             <color key="tintColor" red="0.45880425499999999" green="0.42457667529999998" blue="0.85103040929999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="addSong:" destination="BYZ-38-t0r" id="rdf-uF-Yhp"/>
+                                <action selector="addSound:" destination="BYZ-38-t0r" id="rdf-uF-Yhp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="129" y="133"/>
         </scene>
-        <!--Record Your Song 🎤-->
+        <!--Record Your Sound 🎤-->
         <scene sceneID="nt2-xp-ngm">
             <objects>
-                <viewController title="Record Your Song 🎤" id="Cew-W7-OHw" customClass="RecordSongViewController" customModule="Guess_the_Song" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Record Your Sound 🎤" id="Cew-W7-OHw" customClass="RecordSoundViewController" customModule="Guess_the_Song" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ERu-Iq-bWW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

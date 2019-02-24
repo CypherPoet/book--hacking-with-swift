@@ -7,24 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F35A347E2221C7A800ED756A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F35A347D2221C7A800ED756A /* CloudKit.framework */; };
 		F3B74E52221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */; };
 		F3B74E54221FAACD005DD023 /* UIViewController+getSongURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */; };
 		F3B74E562220ED17005DD023 /* SelectGenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E552220ED17005DD023 /* SelectGenreTableViewController.swift */; };
-		F3B74E582220FE2A005DD023 /* AddSongCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E572220FE2A005DD023 /* AddSongCommentsViewController.swift */; };
+		F3B74E582220FE2A005DD023 /* AddCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E572220FE2A005DD023 /* AddCommentsViewController.swift */; };
 		F3B74E5A22210442005DD023 /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E5922210442005DD023 /* SubmitViewController.swift */; };
 		F3D3F51F221F8F7D00628D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F515221F8F7D00628D44 /* Main.storyboard */; };
 		F3D3F521221F8F7D00628D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F518221F8F7D00628D44 /* LaunchScreen.storyboard */; };
 		F3D3F522221F8F7D00628D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F519221F8F7D00628D44 /* AppDelegate.swift */; };
 		F3D3F523221F8F7D00628D44 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F51C221F8F7D00628D44 /* HomeViewController.swift */; };
 		F3D3F524221F8F7D00628D44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3D3F51E221F8F7D00628D44 /* Assets.xcassets */; };
-		F3D3F527221F91F900628D44 /* RecordSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F526221F91F900628D44 /* RecordSongViewController.swift */; };
+		F3D3F527221F91F900628D44 /* RecordSoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D3F526221F91F900628D44 /* RecordSoundViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F35A347B2221C7A200ED756A /* Guess the Song.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Guess the Song.entitlements"; sourceTree = "<group>"; };
+		F35A347D2221C7A800ED756A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getDocumentsDirectory.swift"; sourceTree = "<group>"; };
 		F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getSongURL.swift"; sourceTree = "<group>"; };
 		F3B74E552220ED17005DD023 /* SelectGenreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreTableViewController.swift; sourceTree = "<group>"; };
-		F3B74E572220FE2A005DD023 /* AddSongCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSongCommentsViewController.swift; sourceTree = "<group>"; };
+		F3B74E572220FE2A005DD023 /* AddCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentsViewController.swift; sourceTree = "<group>"; };
 		F3B74E5922210442005DD023 /* SubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
 		F3D3F4FD221F8E8400628D44 /* Guess the Song.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guess the Song.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3D3F515221F8F7D00628D44 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -33,7 +36,7 @@
 		F3D3F519221F8F7D00628D44 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3D3F51C221F8F7D00628D44 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F3D3F51E221F8F7D00628D44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F3D3F526221F91F900628D44 /* RecordSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSongViewController.swift; sourceTree = "<group>"; };
+		F3D3F526221F91F900628D44 /* RecordSoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSoundViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,12 +44,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F35A347E2221C7A800ED756A /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F35A347C2221C7A800ED756A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F35A347D2221C7A800ED756A /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F3B74E50221FAA78005DD023 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,9 +71,11 @@
 		F3D3F4F4221F8E8400628D44 = {
 			isa = PBXGroup;
 			children = (
+				F35A347B2221C7A200ED756A /* Guess the Song.entitlements */,
 				F3D3F51D221F8F7D00628D44 /* Resources */,
 				F3D3F512221F8F7D00628D44 /* Source */,
 				F3D3F4FE221F8E8400628D44 /* Products */,
+				F35A347C2221C7A800ED756A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,7 +127,7 @@
 		F3D3F51A221F8F7D00628D44 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F3D3F525221F91DC00628D44 /* Record Song */,
+				F3D3F525221F91DC00628D44 /* Record Sound */,
 				F3D3F51B221F8F7D00628D44 /* Home */,
 			);
 			path = Controllers;
@@ -135,15 +149,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		F3D3F525221F91DC00628D44 /* Record Song */ = {
+		F3D3F525221F91DC00628D44 /* Record Sound */ = {
 			isa = PBXGroup;
 			children = (
-				F3D3F526221F91F900628D44 /* RecordSongViewController.swift */,
+				F3D3F526221F91F900628D44 /* RecordSoundViewController.swift */,
 				F3B74E552220ED17005DD023 /* SelectGenreTableViewController.swift */,
-				F3B74E572220FE2A005DD023 /* AddSongCommentsViewController.swift */,
+				F3B74E572220FE2A005DD023 /* AddCommentsViewController.swift */,
 				F3B74E5922210442005DD023 /* SubmitViewController.swift */,
 			);
-			path = "Record Song";
+			path = "Record Sound";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +192,14 @@
 				TargetAttributes = {
 					F3D3F4FC221F8E8400628D44 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -220,10 +242,10 @@
 				F3B74E5A22210442005DD023 /* SubmitViewController.swift in Sources */,
 				F3B74E54221FAACD005DD023 /* UIViewController+getSongURL.swift in Sources */,
 				F3B74E562220ED17005DD023 /* SelectGenreTableViewController.swift in Sources */,
-				F3D3F527221F91F900628D44 /* RecordSongViewController.swift in Sources */,
+				F3D3F527221F91F900628D44 /* RecordSoundViewController.swift in Sources */,
 				F3D3F522221F8F7D00628D44 /* AppDelegate.swift in Sources */,
 				F3B74E52221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift in Sources */,
-				F3B74E582220FE2A005DD023 /* AddSongCommentsViewController.swift in Sources */,
+				F3B74E582220FE2A005DD023 /* AddCommentsViewController.swift in Sources */,
 				F3D3F523221F8F7D00628D44 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Guess the Song.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRXXH2RKAG;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Supporting Files/Info.plist";
@@ -369,6 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Guess the Song.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRXXH2RKAG;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Supporting Files/Info.plist";

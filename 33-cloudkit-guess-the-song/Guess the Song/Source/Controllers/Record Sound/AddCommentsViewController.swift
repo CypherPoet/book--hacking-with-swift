@@ -1,5 +1,5 @@
 //
-//  AddSongCommentsViewController.swift
+//  AddCommentsViewController.swift
 //  Guess the Song
 //
 //  Created by Brian Sipple on 2/22/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddSongCommentsViewController: UIViewController {
+class AddCommentsViewController: UIViewController {
     var genre: SelectGenreTableViewController.Genre! = nil
     
     let placeholderText = """
@@ -25,7 +25,12 @@ class AddSongCommentsViewController: UIViewController {
     }
     
     override func loadView() {
-        createView()
+        view = UIView()
+        view.backgroundColor = UIColor.white
+        
+        view.addSubview(commentsTextView)
+        
+        configureViewConstraints()
     }
     
     override func viewDidLoad() {
@@ -37,12 +42,7 @@ class AddSongCommentsViewController: UIViewController {
     }
     
     
-    func createView() {
-        view = UIView()
-        view.backgroundColor = UIColor.white
-        
-        view.addSubview(commentsTextView)
-        
+    func configureViewConstraints() {
         commentsTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         commentsTextView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         commentsTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -77,7 +77,7 @@ class AddSongCommentsViewController: UIViewController {
 }
 
 
-extension AddSongCommentsViewController: UITextViewDelegate {
+extension AddCommentsViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if isShowingPlaceholder {
             isShowingPlaceholder = false

@@ -16,8 +16,8 @@ class HomeViewController: UIViewController {
     }
 
 
-    @IBAction func addSong(_ sender: Any) {
-        let vc = RecordSongViewController()
+    @IBAction func addSound(_ sender: Any) {
+        let vc = RecordSoundViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
