@@ -2,15 +2,12 @@
 //  ViewController.swift
 //  Storm Viewer
 //
-//  Created by Brian Sipple on 1/10/19.
-//  Copyright © 2019 Brian Sipple. All rights reserved.
-//
 
 import UIKit
 
 class ViewController: UITableViewController {
     var imagePaths = [String]()
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,7 +19,7 @@ class ViewController: UITableViewController {
         
         let images = try! fm.contentsOfDirectory(atPath: path)
         
-        imagePaths = images.filter({ $0.hasPrefix("nssl") })
+        imagePaths = images.filter({ $0.hasPrefix("nssl") }).sorted()
     }
     
     
@@ -41,13 +38,11 @@ class ViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // try loading the "Detail" view controller and typecasting it to be DetailViewController
-        
         if let detailViewController = storyboard?.instantiateViewController(withIdentifier: "Image Detail") as? DetailViewController {
-            // set the vc's `imagePath` property to match the image selected
-            detailViewController.selectedImagePath = imagePaths[indexPath.row]
+            detailViewController.imagePath = imagePaths[indexPath.row]
+            detailViewController.imageNumber = indexPath.row + 1
+            detailViewController.totalImageCount = imagePaths.count
             
-            // push the detail VC onto the navigation controller
             navigationController?.pushViewController(detailViewController, animated: true)
         }
     }

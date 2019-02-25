@@ -11,30 +11,31 @@ import UIKit
 class DetailViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     
-    var selectedImagePath: String?
+    var imagePath: String!
+    var imageNumber: Int!
+    var totalImageCount: Int!
     
+    
+    var imageName: String {
+        if let index = imagePath.firstIndex(of: ".") {
+            return String(imagePath.prefix(upTo: index))
+        } else {
+            return imagePath
+        }
+    }
+    
+
     override var prefersHomeIndicatorAutoHidden: Bool {
         get {
             return navigationController?.hidesBarsOnTap ?? false
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = selectedImagePath
-        navigationItem.largeTitleDisplayMode = .never
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .action,
-            target: self,
-            action: #selector(shareTapped)
-        )
-        
-        if let _imagePath = selectedImagePath {
-            imageView.image = UIImage(named: _imagePath)
-        }
+        setupNavbar()
+        imageView.image = UIImage(named: imagePath)
     }
     
     
@@ -44,33 +45,35 @@ class DetailViewController: UIViewController {
         navigationController?.hidesBarsOnTap = true
     }
     
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
     }
+
+    
+    // MARK: - Helper functions
+    
+    func setupNavbar() {
+        title = "Picture \(imageNumber!) of \(totalImageCount!)"
+        navigationItem.largeTitleDisplayMode = .never
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped))
+    }
     
     
-    @objc func shareTapped() {
-        let controller = UIActivityViewController(
-            activityItems: [imageView.image!],
-            applicationActivities: []
-        )
+    // MARK: - Event handlers
+    
+    @objc func shareButtonTapped() {
+        guard let imageData = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            print("No image data found")
+            return
+        }
         
-        // tell iOS where the controller should be anchored
-        controller.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        let viewController = UIActivityViewController(activityItems: [imageData, imageName], applicationActivities: nil)
         
-        present(controller, animated: true)
+        viewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        
+        present(viewController, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
