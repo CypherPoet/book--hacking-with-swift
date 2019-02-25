@@ -24,10 +24,9 @@ class HomeViewController: UITableViewController {
     ]
     
     let queryResultsLimit = 50
-    lazy var queryOperation = makeSoundBitesQueryOperation()
     lazy var publicCloudDB = CKContainer.default().publicCloudDatabase
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,11 +37,6 @@ class HomeViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //        // clear the table view's selection if it has one
-        //        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-        //            tableView.deselectRow(at: selectedIndexPath, animated: true)
-        //        }
         
         if HomeViewController.hasNewSoundBiteData {
             loadSoundBites()
@@ -81,6 +75,7 @@ class HomeViewController: UITableViewController {
     // MARK: - Helper functions
     
     func loadSoundBites() {
+        let queryOperation = makeSoundBitesQueryOperation()
         var newRecords: [SoundBite] = []
         
         queryOperation.recordFetchedBlock = { record in
