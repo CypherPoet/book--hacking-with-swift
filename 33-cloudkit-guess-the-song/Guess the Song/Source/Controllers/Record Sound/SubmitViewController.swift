@@ -44,7 +44,7 @@ class SubmitViewController: UIViewController {
     }
     
     var newSoundRecord: CKRecord {
-        let soundRecord = CKRecord(recordType: "Sounds")
+        let soundRecord = CKRecord(recordType: AppCKRecordType.soundBites)
         let soundAsset = CKAsset(fileURL: UIViewController.getSoundURL())
         
         soundRecord["genre"] = genre.rawValue as CKRecordValue
@@ -95,10 +95,11 @@ class SubmitViewController: UIViewController {
             [unowned self] (record: CKRecord?, error: Error?) in
                 DispatchQueue.main.async {
                     if let error = error {
-                        HomeViewController.hasNewSoundBiteData = true
+                        HomeViewController.hasNewSoundBiteData = false
                         self.saveErrorMessage = "Error during save: \(error.localizedDescription)"
                         self.currentSubmitState = .submitFailed
                     } else {
+                        HomeViewController.hasNewSoundBiteData = true
                         self.currentSubmitState = .submitSucceeded
                     }
                 }

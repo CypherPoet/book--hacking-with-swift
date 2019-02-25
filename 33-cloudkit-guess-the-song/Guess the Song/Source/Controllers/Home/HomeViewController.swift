@@ -16,7 +16,7 @@ class HomeViewController: UITableViewController {
     
     lazy var cellTitleStringAttributes = [
         NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline),
-        NSAttributedString.Key.foregroundColor: UIColor.purple,
+        NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4665188789, green: 0.4245759249, blue: 0.8790055513, alpha: 1),
     ]
     
     lazy var cellSubtitleStringAttributes = [
@@ -27,16 +27,35 @@ class HomeViewController: UITableViewController {
     lazy var queryOperation = makeSoundBitesQueryOperation()
     lazy var publicCloudDB = CKContainer.default().publicCloudDatabase
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        clearsSelectionOnViewWillAppear = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //        // clear the table view's selection if it has one
+        //        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+        //            tableView.deselectRow(at: selectedIndexPath, animated: true)
+        //        }
+        
+        if HomeViewController.hasNewSoundBiteData {
+            loadSoundBites()
+        }
+    }
     
+    
+    // MARK: - Table view data source
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return soundBites.count
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
@@ -49,20 +68,17 @@ class HomeViewController: UITableViewController {
         return cell
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let soundBite = soundBites[indexPath.row]
+        let viewController = SoundResultsTableViewController()
         
-        // clear the table view's selection if it has one
-        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: selectedIndexPath, animated: true)
-        }
+        viewController.soundBite = soundBite
         
-        if HomeViewController.hasNewSoundBiteData {
-            loadSoundBites()
-        }
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
+    
+    // MARK: - Helper functions
     
     func loadSoundBites() {
         var newRecords: [SoundBite] = []
@@ -104,17 +120,21 @@ class HomeViewController: UITableViewController {
     }
     
     
+    // MARK: - Action handling
+    
     @IBAction func addSound(_ sender: Any) {
         let vc = RecordSoundViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
     
+    // MARK: - Private functions
+    
     private func makeSoundBitesQueryOperation() -> CKQueryOperation {
         let predicate = NSPredicate(value: true)
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         
-        let query = CKQuery(recordType: "Sounds", predicate: predicate)
+        let query = CKQuery(recordType: AppCKRecordType.soundBites, predicate: predicate)
         query.sortDescriptors = [sortDescriptor]
         
         let operation = CKQueryOperation(query: query)

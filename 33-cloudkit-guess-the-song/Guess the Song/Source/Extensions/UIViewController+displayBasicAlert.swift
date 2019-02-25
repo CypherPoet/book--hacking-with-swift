@@ -11,7 +11,7 @@ import UIKit
 extension UIViewController {
     func displayBasicAlert(
         title: String,
-        message: String,
+        message: String = "",
         onClose onCloseHandler: ((UIAlertAction) -> Void)? = nil
     ) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
