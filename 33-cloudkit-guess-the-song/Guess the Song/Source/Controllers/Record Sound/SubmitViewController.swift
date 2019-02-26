@@ -14,7 +14,7 @@ class SubmitViewController: UIViewController {
         case inProgress, inactive, submitSucceeded, submitFailed
     }
     
-    var genre: SelectGenreTableViewController.Genre!
+    var genre: Genre!
     var comments: String!
     var saveErrorMessage = ""
     

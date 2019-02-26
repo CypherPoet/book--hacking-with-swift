@@ -39,8 +39,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Guess the Song 🎶" id="b8U-Jj-aWv">
-                        <barButtonItem key="leftBarButtonItem" title="Home" style="plain" id="04b-MA-BnM">
+                        <barButtonItem key="leftBarButtonItem" title="Genres" style="plain" id="04b-MA-BnM">
                             <color key="tintColor" red="0.45880425499999999" green="0.42457667529999998" blue="0.85103040929999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="selectGenres:" destination="VmJ-da-be6" id="KwT-ii-GR0"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="94u-hH-8fY">
                             <color key="tintColor" red="0.45880425499999999" green="0.42457667529999998" blue="0.85103040929999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -9,7 +9,7 @@
 import UIKit
 
 class AddCommentsViewController: UIViewController {
-    var genre: SelectGenreTableViewController.Genre! = nil
+    var genre: Genre! = nil
     
     let placeholderText = """
         If you have any additional comments that might help identify your song,

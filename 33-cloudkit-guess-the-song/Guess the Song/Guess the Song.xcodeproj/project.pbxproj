@@ -12,6 +12,9 @@
 		F35A348222225E3100ED756A /* UIViewController+displayBasicAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A348122225E3100ED756A /* UIViewController+displayBasicAlert.swift */; };
 		F35A34852223104500ED756A /* SoundResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A34842223104400ED756A /* SoundResultsTableViewController.swift */; };
 		F35A348B222379C600ED756A /* AppCKRecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A348A222379C600ED756A /* AppCKRecordType.swift */; };
+		F35A348E2224A17800ED756A /* MyGenresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A348D2224A17800ED756A /* MyGenresTableViewController.swift */; };
+		F35A34902224CC7B00ED756A /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A348F2224CC7B00ED756A /* Genre.swift */; };
+		F35A34922224CF6100ED756A /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A34912224CF6100ED756A /* UserDefaultsKey.swift */; };
 		F3B74E52221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */; };
 		F3B74E54221FAACD005DD023 /* UIViewController+getSongURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */; };
 		F3B74E562220ED17005DD023 /* SelectGenreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B74E552220ED17005DD023 /* SelectGenreTableViewController.swift */; };
@@ -32,6 +35,9 @@
 		F35A348122225E3100ED756A /* UIViewController+displayBasicAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+displayBasicAlert.swift"; sourceTree = "<group>"; };
 		F35A34842223104400ED756A /* SoundResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundResultsTableViewController.swift; sourceTree = "<group>"; };
 		F35A348A222379C600ED756A /* AppCKRecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCKRecordType.swift; sourceTree = "<group>"; };
+		F35A348D2224A17800ED756A /* MyGenresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGenresTableViewController.swift; sourceTree = "<group>"; };
+		F35A348F2224CC7B00ED756A /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		F35A34912224CF6100ED756A /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		F3B74E51221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getDocumentsDirectory.swift"; sourceTree = "<group>"; };
 		F3B74E53221FAACD005DD023 /* UIViewController+getSongURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getSongURL.swift"; sourceTree = "<group>"; };
 		F3B74E552220ED17005DD023 /* SelectGenreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreTableViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +79,14 @@
 				F35A34842223104400ED756A /* SoundResultsTableViewController.swift */,
 			);
 			path = Sound;
+			sourceTree = "<group>";
+		};
+		F35A348C2224A15B00ED756A /* Genres */ = {
+			isa = PBXGroup;
+			children = (
+				F35A348D2224A17800ED756A /* MyGenresTableViewController.swift */,
+			);
+			path = Genres;
 			sourceTree = "<group>";
 		};
 		F3B74E50221FAA78005DD023 /* Extensions */ = {
@@ -130,6 +144,8 @@
 				F3D3F515221F8F7D00628D44 /* Main.storyboard */,
 				F3D3F516221F8F7D00628D44 /* Info.plist */,
 				F35A348A222379C600ED756A /* AppCKRecordType.swift */,
+				F35A348F2224CC7B00ED756A /* Genre.swift */,
+				F35A34912224CF6100ED756A /* UserDefaultsKey.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -146,6 +162,7 @@
 		F3D3F51A221F8F7D00628D44 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F35A348C2224A15B00ED756A /* Genres */,
 				F35A348322230DC700ED756A /* Sound */,
 				F3D3F525221F91DC00628D44 /* Record Sound */,
 				F3D3F51B221F8F7D00628D44 /* Home */,
@@ -265,12 +282,15 @@
 				F3B74E562220ED17005DD023 /* SelectGenreTableViewController.swift in Sources */,
 				F35A34852223104500ED756A /* SoundResultsTableViewController.swift in Sources */,
 				F35A3480222243CC00ED756A /* SoundBite.swift in Sources */,
+				F35A348E2224A17800ED756A /* MyGenresTableViewController.swift in Sources */,
+				F35A34922224CF6100ED756A /* UserDefaultsKey.swift in Sources */,
 				F3D3F527221F91F900628D44 /* RecordSoundViewController.swift in Sources */,
 				F35A348222225E3100ED756A /* UIViewController+displayBasicAlert.swift in Sources */,
 				F3D3F522221F8F7D00628D44 /* AppDelegate.swift in Sources */,
 				F3B74E52221FAA91005DD023 /* UIViewController+getDocumentsDirectory.swift in Sources */,
 				F3B74E582220FE2A005DD023 /* AddCommentsViewController.swift in Sources */,
 				F3D3F523221F8F7D00628D44 /* HomeViewController.swift in Sources */,
+				F35A34902224CC7B00ED756A /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

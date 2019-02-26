@@ -122,6 +122,11 @@ class HomeViewController: UITableViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func selectGenres(_ sender: Any) {
+        let vc = MyGenresTableViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     // MARK: - Private functions
     

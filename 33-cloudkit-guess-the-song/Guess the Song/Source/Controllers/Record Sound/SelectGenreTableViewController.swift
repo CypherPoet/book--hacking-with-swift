@@ -11,12 +11,6 @@ import UIKit
 class SelectGenreTableViewController: UITableViewController {
     static let cellReuseIdentifier = "Cell"
     
-    enum Genre: String, CaseIterable {
-        case unknown = "Unknown", blues = "Blues", classical = "Classical", electronic = "Electronic"
-        case jazz = "Jazz", metal = "Metal", pop = "Pop", reggae = "Reggae", rnb = "RnB", soul = "Soul"
-        case rap = "Rap", HipHop = "Hip-Hop", rockAndRoll = "Rock & Roll"
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
