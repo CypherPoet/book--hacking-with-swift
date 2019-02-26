@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F35A34A022250A3D00ED756A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A349F22250A3D00ED756A /* AppDelegate.swift */; };
-		F35A34A222250A3D00ED756A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A34A122250A3D00ED756A /* HomeViewController.swift */; };
-		F35A34A522250A3D00ED756A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35A34A322250A3D00ED756A /* Main.storyboard */; };
-		F35A34A722250A3E00ED756A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F35A34A622250A3E00ED756A /* Assets.xcassets */; };
-		F35A34AA22250A3E00ED756A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35A34A822250A3E00ED756A /* LaunchScreen.storyboard */; };
+		F35A34BE222513E700ED756A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35A34B4222513E700ED756A /* Main.storyboard */; };
+		F35A34C0222513E700ED756A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35A34B7222513E700ED756A /* LaunchScreen.storyboard */; };
+		F35A34C1222513E700ED756A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A34B8222513E700ED756A /* AppDelegate.swift */; };
+		F35A34C2222513E700ED756A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A34BB222513E700ED756A /* HomeViewController.swift */; };
+		F35A34C3222513E700ED756A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F35A34BD222513E700ED756A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F35A349C22250A3D00ED756A /* Four In A Row.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Four In A Row.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F35A349F22250A3D00ED756A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F35A34A122250A3D00ED756A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		F35A34A422250A3D00ED756A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F35A34A622250A3E00ED756A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F35A34A922250A3E00ED756A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F35A34AB22250A3E00ED756A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F35A34B4222513E700ED756A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F35A34B5222513E700ED756A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F35A34B7222513E700ED756A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F35A34B8222513E700ED756A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F35A34BB222513E700ED756A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F35A34BD222513E700ED756A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +38,8 @@
 		F35A349322250A3D00ED756A = {
 			isa = PBXGroup;
 			children = (
-				F35A349E22250A3D00ED756A /* Four In A Row */,
+				F35A34B1222513E700ED756A /* Sources */,
+				F35A34BC222513E700ED756A /* Resources */,
 				F35A349D22250A3D00ED756A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,17 +52,64 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F35A349E22250A3D00ED756A /* Four In A Row */ = {
+		F35A34B1222513E700ED756A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				F35A349F22250A3D00ED756A /* AppDelegate.swift */,
-				F35A34A122250A3D00ED756A /* HomeViewController.swift */,
-				F35A34A322250A3D00ED756A /* Main.storyboard */,
-				F35A34A622250A3E00ED756A /* Assets.xcassets */,
-				F35A34A822250A3E00ED756A /* LaunchScreen.storyboard */,
-				F35A34AB22250A3E00ED756A /* Info.plist */,
+				F35A34B2222513E700ED756A /* Models */,
+				F35A34B3222513E700ED756A /* Supporting Files */,
+				F35A34B6222513E700ED756A /* App Start */,
+				F35A34B9222513E700ED756A /* Controllers */,
 			);
-			path = "Four In A Row";
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		F35A34B2222513E700ED756A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F35A34B3222513E700ED756A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F35A34B4222513E700ED756A /* Main.storyboard */,
+				F35A34B5222513E700ED756A /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F35A34B6222513E700ED756A /* App Start */ = {
+			isa = PBXGroup;
+			children = (
+				F35A34B7222513E700ED756A /* LaunchScreen.storyboard */,
+				F35A34B8222513E700ED756A /* AppDelegate.swift */,
+			);
+			path = "App Start";
+			sourceTree = "<group>";
+		};
+		F35A34B9222513E700ED756A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F35A34BA222513E700ED756A /* Home */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F35A34BA222513E700ED756A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F35A34BB222513E700ED756A /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F35A34BC222513E700ED756A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F35A34BD222513E700ED756A /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +170,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F35A34AA22250A3E00ED756A /* LaunchScreen.storyboard in Resources */,
-				F35A34A722250A3E00ED756A /* Assets.xcassets in Resources */,
-				F35A34A522250A3D00ED756A /* Main.storyboard in Resources */,
+				F35A34C0222513E700ED756A /* LaunchScreen.storyboard in Resources */,
+				F35A34C3222513E700ED756A /* Assets.xcassets in Resources */,
+				F35A34BE222513E700ED756A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,31 +183,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F35A34A222250A3D00ED756A /* HomeViewController.swift in Sources */,
-				F35A34A022250A3D00ED756A /* AppDelegate.swift in Sources */,
+				F35A34C1222513E700ED756A /* AppDelegate.swift in Sources */,
+				F35A34C2222513E700ED756A /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F35A34A322250A3D00ED756A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F35A34A422250A3D00ED756A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F35A34A822250A3E00ED756A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F35A34A922250A3E00ED756A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F35A34AC22250A3E00ED756A /* Debug */ = {
@@ -284,7 +313,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRXXH2RKAG;
-				INFOPLIST_FILE = "Four In A Row/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QRXXH2RKAG;
-				INFOPLIST_FILE = "Four In A Row/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
