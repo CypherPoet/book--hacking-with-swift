@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let notificationAuthorizationOptions: UNAuthorizationOptions = [.alert, .sound, .badge]
+    let notificationPresentationOptions: UNNotificationPresentationOptions = [.alert, .sound, .badge]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+                
+        UNUserNotificationCenter.current().requestAuthorization(options: notificationAuthorizationOptions) {
+            (granted: Bool, error: Error?) in
+            if let error = error {
+                print("Error while attempting to grant notification authorization:\n\(error.localizedDescription)")
+            } else {
+                UNUserNotificationCenter.current().delegate = self
+                application.registerForRemoteNotifications()
+            }
+        }
+        
         return true
     }
 
@@ -40,7 +53,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+
+    /**
+     Show the notification, even when the app is currently running
+     */
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        completionHandler(notificationPresentationOptions)
+    }
 }
 

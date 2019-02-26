@@ -131,7 +131,7 @@ class MyGenresTableViewController: UITableViewController {
     }
     
     func makeSubscriptions() {
-        subscribeLoop: for genre in userGenres {
+        for genre in userGenres {
             let notificationInfo = CKSubscription.NotificationInfo()
             
             notificationInfo.alertBody = "There's a new sound bite for the \"\(genre)\" genre"
@@ -151,8 +151,12 @@ class MyGenresTableViewController: UITableViewController {
                     self.displayBasicAlert(
                         title: "Save error",
                         message: """
-                            An error occured while attempting to save your subscription\
-                            to the "\(genre)" genre :\n\(error.localizedDescription)\nPlease try again later.
+                            An error occured while attempting to save your subscription \
+                            to the "\(genre)" genre:
+                            \
+                            \(error.localizedDescription)
+                            \
+                            Please try again later.
                             """
                     )
                 }
