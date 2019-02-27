@@ -12,6 +12,8 @@
 		F35A34C1222513E700ED756A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A34B8222513E700ED756A /* AppDelegate.swift */; };
 		F35A34C2222513E700ED756A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A34BB222513E700ED756A /* HomeViewController.swift */; };
 		F35A34C3222513E700ED756A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F35A34BD222513E700ED756A /* Assets.xcassets */; };
+		F35A34C52225150D00ED756A /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A34C42225150D00ED756A /* Board.swift */; };
+		F35A34C72225923200ED756A /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A34C62225923200ED756A /* Chip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		F35A34B8222513E700ED756A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F35A34BB222513E700ED756A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F35A34BD222513E700ED756A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F35A34C42225150D00ED756A /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		F35A34C62225923200ED756A /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 		F35A34B2222513E700ED756A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F35A34C42225150D00ED756A /* Board.swift */,
+				F35A34C62225923200ED756A /* Chip.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,7 +190,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F35A34C1222513E700ED756A /* AppDelegate.swift in Sources */,
+				F35A34C72225923200ED756A /* Chip.swift in Sources */,
 				F35A34C2222513E700ED756A /* HomeViewController.swift in Sources */,
+				F35A34C52225150D00ED756A /* Board.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
