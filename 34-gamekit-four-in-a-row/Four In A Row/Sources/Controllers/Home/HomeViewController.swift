@@ -9,11 +9,6 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    enum BackgroundColor {
-        static let red = #colorLiteral(red: 0.9146130681, green: 0, blue: 0.3108665347, alpha: 1)
-        static let black = #colorLiteral(red: 0.09483634681, green: 0.09486005455, blue: 0.09483323246, alpha: 1)
-    }
-    
     @IBOutlet var columnButtons: [UIButton]!
     
     var board: Board!
@@ -38,7 +33,7 @@ class HomeViewController: UIViewController {
         
         if let row = board.nextEmptyRow(inColumn: column) {
             board.add(chip: .red, toColumn: column)
-            addChip(inColumn: column, row: row, colored: BackgroundColor.red)
+            addChip(inColumn: column, row: row, colored: Player.ChipUIColor.red)
         }
     }
     

@@ -9,6 +9,11 @@
 import UIKit
 
 class Player: NSObject {
+    enum ChipUIColor {
+        static let red = #colorLiteral(red: 0.9146130681, green: 0, blue: 0.3108665347, alpha: 1)
+        static let black = #colorLiteral(red: 0.09483634681, green: 0.09486005455, blue: 0.09483323246, alpha: 1)
+    }
+    
     // MARK: - Static Properties
     
     static var allPlayers: [Player] = [Player(chipColor: .red), Player(chipColor: .black)]
@@ -25,9 +30,9 @@ class Player: NSObject {
     var uiColor: UIColor {
         switch chipColor {
         case .red:
-            return #colorLiteral(red: 0.9146130681, green: 0, blue: 0.3108665347, alpha: 1)
+            return .red
         case .black:
-            return #colorLiteral(red: 0.09483634681, green: 0.09486005455, blue: 0.09483323246, alpha: 1)
+            return .black
         case .none:
             return .lightGray
         }
