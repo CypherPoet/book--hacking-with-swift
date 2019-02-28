@@ -85,12 +85,12 @@
                     <navigationItem key="navigationItem" id="xH6-hU-zTP"/>
                     <connections>
                         <outletCollection property="columnButtons" destination="UlX-tP-DM9" collectionClass="NSMutableArray" id="weG-r3-1oY"/>
-                        <outletCollection property="columnButtons" destination="MF8-RX-diZ" collectionClass="NSMutableArray" id="JcW-1z-yXM"/>
                         <outletCollection property="columnButtons" destination="Lbq-lp-fDf" collectionClass="NSMutableArray" id="Uz0-Ya-dhU"/>
                         <outletCollection property="columnButtons" destination="3AS-Hp-Eia" collectionClass="NSMutableArray" id="s3s-hs-jcd"/>
                         <outletCollection property="columnButtons" destination="sBL-wo-mmq" collectionClass="NSMutableArray" id="aWw-FL-qOa"/>
                         <outletCollection property="columnButtons" destination="Gpd-19-Iw6" collectionClass="NSMutableArray" id="M0z-sO-arb"/>
                         <outletCollection property="columnButtons" destination="lCM-hE-wiY" collectionClass="NSMutableArray" id="uNO-Vc-L4L"/>
+                        <outletCollection property="columnButtons" destination="MF8-RX-diZ" collectionClass="NSMutableArray" id="T9i-Me-8ff"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

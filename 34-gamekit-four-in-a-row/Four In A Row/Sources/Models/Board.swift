@@ -18,13 +18,13 @@ class Board: NSObject {
         return rows * columns
     }
     
-    enum Color: Int {
+    enum ChipColor: Int {
         case none = 0
         case red
         case black
     }
     
-    var slots: [Color]
+    var slots: [ChipColor]
     
     
     // MARK: - Lifecylcle
@@ -38,11 +38,11 @@ class Board: NSObject {
     
     // MARK: - Methods
     
-    func color(inColumn column: Int, row: Int) -> Color {
+    func color(inColumn column: Int, row: Int) -> ChipColor {
         return slots[slotIndex(forColumn: column, row: row)]
     }
     
-    func set(color: Color, inColumn column: Int, row: Int) {
+    func set(color: ChipColor, inColumn column: Int, row: Int) {
         slots[slotIndex(forColumn: column, row: row)] = color
     }
     
@@ -62,7 +62,7 @@ class Board: NSObject {
     }
     
     
-    func add(chip color: Color, toColumn column: Int) {
+    func add(chip color: ChipColor, toColumn column: Int) {
         guard let row = nextEmptyRow(inColumn: column) else { return }
         
         set(color: color, inColumn: column, row: row)

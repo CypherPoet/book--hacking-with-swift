@@ -8,17 +8,9 @@
 
 import UIKit
 
-class Chip {
+class Chip: UIView {
     // MARK: - Properties
-    
     var row: Int?
     var column: Int?
-    var color: Board.Color
-    
-    
-    // MARK: - Lifecycle
-    
-    init(color: Board.Color) {
-        self.color = color
-    }
+    var color: Board.ChipColor = .none
 }
