@@ -11,16 +11,31 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet var columnButtons: [UIButton]!
     
+    enum GameplayState {
+        case playing
+        case fullBoardDraw
+        case playerHasWon
+    }
+    
+    
+    // MARK: - Instance Properties
+    
     var board: Board!
     lazy var placedChipColumns: [[Chip]] = Array(repeating: [Chip](), count: Board.columns)
 
-
+    var currentGameplayState = GameplayState.playing {
+        didSet {
+            gameplayStateChanged()
+        }
+    }
+    
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        resetBoard()
+        resetGame()
     }
 
 
@@ -32,25 +47,30 @@ class HomeViewController: UIViewController {
         assert(column < columnButtons.count, "button tag should be able to index a button in memory")
         
         if let row = board.nextEmptyRow(inColumn: column) {
-            board.add(chip: .red, toColumn: column)
-            addChip(inColumn: column, row: row, colored: Player.ChipUIColor.red)
+            board.add(chip: board.currentPlayer.chipColor, toColumn: column)
+            addChip(inColumn: column, row: row, forPlayer: board.currentPlayer)
+            
+            advanceGame()
         }
+        
     }
     
     
     // MARK: - Helper functions
     
-    func resetBoard() {
+    func resetGame() {
         board = Board()
-        
-        for var column in placedChipColumns {
-            column.forEach { chip in chip.removeFromSuperview() }
-            column.removeAll(keepingCapacity: true)
+
+        for i in 0..<placedChipColumns.count {
+            placedChipColumns[i].forEach({ $0.removeFromSuperview() })
+            placedChipColumns[i].removeAll(keepingCapacity: true)
         }
+        
+        currentGameplayState = .playing
     }
     
 
-    func addChip(inColumn column: Int, row: Int, colored color: UIColor) {
+    func addChip(inColumn column: Int, row: Int, forPlayer player: Player) {
         let button = columnButtons[column]
         let size = min(button.frame.width, button.frame.height / CGFloat(Board.rows))
         let rect = CGRect(x: 0, y: 0, width: size, height: size)
@@ -59,7 +79,7 @@ class HomeViewController: UIViewController {
             let newChip = Chip(frame: rect)
             
             newChip.isUserInteractionEnabled = false
-            newChip.backgroundColor = color
+            newChip.backgroundColor = player.uiColor
             newChip.layer.cornerRadius = size / 2
             newChip.center = positionForChip(inColumn: column, row: row)
             newChip.transform = CGAffineTransform(translationX: 0, y: -800)
@@ -90,6 +110,49 @@ class HomeViewController: UIViewController {
         return min(columnButton.frame.width, columnButton.frame.height / CGFloat(Board.rows))
     }
     
+    
+    
+    func advanceGame() {
+        if board.isFull {
+            if board.hasWin(forPlayer: board.currentPlayer) {
+                currentGameplayState = .playerHasWon
+            } else {
+                currentGameplayState = .fullBoardDraw
+            }
+        } else {
+            if board.hasWin(forPlayer: board.currentPlayer) {
+                currentGameplayState = .playerHasWon
+            } else {
+                currentGameplayState = .playing
+                board.switchCurrentPlayer()
+            }
+        }
+    }
+    
+    
+    func endGame(message: String) {
+        let alertController = UIAlertController(title: "Game Over", message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Restart", style: .default) { [unowned self] _ in
+            self.resetGame()
+        })
+        
+        present(alertController, animated: true)
+    }
+    
+    
     // MARK: - Private functions
+    
+    private func gameplayStateChanged() {
+        switch currentGameplayState {
+        case .playing:
+            title = "\(board.currentPlayer.name)'s Turn"
+        case .fullBoardDraw:
+            endGame(message: "The board is full and game has ended in a draw.")
+        case .playerHasWon:
+            endGame(message: "\(board.currentPlayer.name) has won!")
+        }
+    }
+    
 }
 
