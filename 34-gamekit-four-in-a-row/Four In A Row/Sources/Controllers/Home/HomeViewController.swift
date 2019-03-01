@@ -12,9 +12,10 @@ class HomeViewController: UIViewController {
     @IBOutlet var columnButtons: [UIButton]!
     
     enum GameplayState {
-        case playing
+        case inactive
         case fullBoardDraw
-        case playerHasWon
+        case playing(Player)
+        case playerHasWon(Player)
     }
     
     
@@ -23,10 +24,8 @@ class HomeViewController: UIViewController {
     var board: Board!
     lazy var placedChipColumns: [[Chip]] = Array(repeating: [Chip](), count: Board.columns)
 
-    var currentGameplayState = GameplayState.playing {
-        didSet {
-            gameplayStateChanged()
-        }
+    var currentGameplayState = GameplayState.inactive {
+        didSet { gameplayStateChanged() }
     }
     
     
@@ -66,7 +65,7 @@ class HomeViewController: UIViewController {
             placedChipColumns[i].removeAll(keepingCapacity: true)
         }
         
-        currentGameplayState = .playing
+        currentGameplayState = .playing(board.currentPlayer)
     }
     
 
@@ -114,16 +113,16 @@ class HomeViewController: UIViewController {
     
     func advanceGame() {
         if board.isFull {
-            if board.hasWin(forPlayer: board.currentPlayer) {
-                currentGameplayState = .playerHasWon
+            if board.isWin(forPlayer: board.currentPlayer) {
+                currentGameplayState = .playerHasWon(board.currentPlayer)
             } else {
                 currentGameplayState = .fullBoardDraw
             }
         } else {
-            if board.hasWin(forPlayer: board.currentPlayer) {
-                currentGameplayState = .playerHasWon
+            if board.isWin(forPlayer: board.currentPlayer) {
+                currentGameplayState = .playerHasWon(board.currentPlayer)
             } else {
-                currentGameplayState = .playing
+                currentGameplayState = .playing(board.currentPlayer)
                 board.switchCurrentPlayer()
             }
         }
@@ -145,12 +144,14 @@ class HomeViewController: UIViewController {
     
     private func gameplayStateChanged() {
         switch currentGameplayState {
-        case .playing:
-            title = "\(board.currentPlayer.name)'s Turn"
+        case .inactive:
+            break
+        case .playing(let currentPlayer):
+            title = "\(currentPlayer.name)'s Turn"
         case .fullBoardDraw:
             endGame(message: "The board is full and game has ended in a draw.")
-        case .playerHasWon:
-            endGame(message: "\(board.currentPlayer.name) has won!")
+        case .playerHasWon(let currentPlayer):
+            endGame(message: "\(currentPlayer.name) has won!")
         }
     }
     

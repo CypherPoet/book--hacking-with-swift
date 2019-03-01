@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameplayKit
 
 class Player: NSObject {
     enum ChipUIColor {
@@ -52,4 +53,8 @@ class Player: NSObject {
         
         super.init()
     }
+}
+
+extension Player: GKGameModelPlayer {
+    
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameplayKit
 
 class Board: NSObject {
     // MARK: - Static Properties
@@ -85,13 +86,15 @@ class Board: NSObject {
         Victory occurs when a player has lined up four consecutive chips
         in any direction (horizontally, vertically or diagonally)
      */
-    func hasWin(forPlayer player: Player) -> Bool {
+    func isWin(forPlayer player: GKGameModelPlayer) -> Bool {
+        let chipColor = (player as! Player).chipColor
+        
         for row in 0 ..< Board.rows {
             for column in 0 ..< Board.columns {
-                if hasHorizontalWin(row: row, column: column, color: player.chipColor) { return true }
-                if hasVerticalWin(row: row, column: column, color: player.chipColor) { return true }
-                if hasDiagonalWin(row: row, column: column, color: player.chipColor, rowDirection: 1) { return true }
-                if hasDiagonalWin(row: row, column: column, color: player.chipColor, rowDirection: -1) { return true }
+                if hasHorizontalWin(row: row, column: column, color: chipColor) { return true }
+                if hasVerticalWin(row: row, column: column, color: chipColor) { return true }
+                if hasDiagonalWin(row: row, column: column, color: chipColor, rowDirection: 1) { return true }
+                if hasDiagonalWin(row: row, column: column, color: chipColor, rowDirection: -1) { return true }
             }
         }
         
