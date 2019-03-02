@@ -59,7 +59,8 @@ class HomeViewController: UIViewController {
     
     func resetGame() {
         board = Board()
-
+        columnButtons.forEach({ $0.isEnabled = true })
+        
         for i in 0..<placedChipColumns.count {
             placedChipColumns[i].forEach({ $0.removeFromSuperview() })
             placedChipColumns[i].removeAll(keepingCapacity: true)
@@ -112,19 +113,13 @@ class HomeViewController: UIViewController {
     
     
     func advanceGame() {
-        if board.isFull {
-            if board.isWin(for: board.currentPlayer) {
-                currentGameplayState = .playerHasWon(board.currentPlayer)
-            } else {
-                currentGameplayState = .fullBoardDraw
-            }
+        if board.isWin(for: board.currentPlayer) {
+            currentGameplayState = .playerHasWon(board.currentPlayer)
+        } else if board.isFull {
+            currentGameplayState = .fullBoardDraw
         } else {
-            if board.isWin(for: board.currentPlayer) {
-                currentGameplayState = .playerHasWon(board.currentPlayer)
-            } else {
-                currentGameplayState = .playing(board.currentPlayer)
-                board.switchCurrentPlayer()
-            }
+            board.switchCurrentPlayer()
+            currentGameplayState = .playing(board.currentPlayer)
         }
     }
     
@@ -136,7 +131,9 @@ class HomeViewController: UIViewController {
             self.resetGame()
         })
         
-        present(alertController, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [unowned self] in
+            self.present(alertController, animated: true)
+        }
     }
     
     
@@ -145,7 +142,7 @@ class HomeViewController: UIViewController {
     private func gameplayStateChanged() {
         switch currentGameplayState {
         case .inactive:
-            break
+            columnButtons.forEach({ $0.isEnabled = false })
         case .playing(let currentPlayer):
             title = "\(currentPlayer.name)'s Turn"
         case .fullBoardDraw:
