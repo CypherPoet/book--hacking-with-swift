@@ -113,13 +113,13 @@ class HomeViewController: UIViewController {
     
     func advanceGame() {
         if board.isFull {
-            if board.isWin(forPlayer: board.currentPlayer) {
+            if board.isWin(for: board.currentPlayer) {
                 currentGameplayState = .playerHasWon(board.currentPlayer)
             } else {
                 currentGameplayState = .fullBoardDraw
             }
         } else {
-            if board.isWin(forPlayer: board.currentPlayer) {
+            if board.isWin(for: board.currentPlayer) {
                 currentGameplayState = .playerHasWon(board.currentPlayer)
             } else {
                 currentGameplayState = .playing(board.currentPlayer)

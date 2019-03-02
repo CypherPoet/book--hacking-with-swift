@@ -81,27 +81,7 @@ class Board: NSObject {
         currentPlayer = currentPlayer.opponent
     }
     
-    
-    /**
-        Victory occurs when a player has lined up four consecutive chips
-        in any direction (horizontally, vertically or diagonally)
-     */
-    func isWin(forPlayer player: GKGameModelPlayer) -> Bool {
-        let chipColor = (player as! Player).chipColor
-        
-        for row in 0 ..< Board.rows {
-            for column in 0 ..< Board.columns {
-                if hasHorizontalWin(row: row, column: column, color: chipColor) { return true }
-                if hasVerticalWin(row: row, column: column, color: chipColor) { return true }
-                if hasDiagonalWin(row: row, column: column, color: chipColor, rowDirection: 1) { return true }
-                if hasDiagonalWin(row: row, column: column, color: chipColor, rowDirection: -1) { return true }
-            }
-        }
-        
-        return false
-    }
-    
-    
+
     func hasHorizontalWin(row: Int, column: Int, color: ChipColor) -> Bool {
         for rowOffset in 0 ... 3 {
             if row + rowOffset >= Board.rows {
@@ -164,5 +144,89 @@ class Board: NSObject {
     /// - Returns: the corresponding index to the `slots` array
     private func slotIndex(forColumn column: Int, row: Int) -> Int {
         return (Board.rows * column) + row
+    }
+}
+
+
+extension Board: GKGameModel {
+    /**
+     Victory occurs when a player has lined up four consecutive chips
+     in any direction (horizontally, vertically or diagonally)
+     */
+    func isWin(for player: GKGameModelPlayer) -> Bool {
+        let chipColor = (player as! Player).chipColor
+        
+        for row in 0 ..< Board.rows {
+            for column in 0 ..< Board.columns {
+                if hasHorizontalWin(row: row, column: column, color: chipColor) { return true }
+                if hasVerticalWin(row: row, column: column, color: chipColor) { return true }
+                if hasDiagonalWin(row: row, column: column, color: chipColor, rowDirection: 1) { return true }
+                if hasDiagonalWin(row: row, column: column, color: chipColor, rowDirection: -1) { return true }
+            }
+        }
+        
+        return false
+    }
+    
+    var players: [GKGameModelPlayer]? {
+        return Player.allPlayers
+    }
+    
+    var activePlayer: GKGameModelPlayer? {
+        return currentPlayer
+    }
+    
+    func setGameModel(_ gameModel: GKGameModel) {
+        guard let board = gameModel as? Board else { return }
+        slots = board.slots
+        currentPlayer = board.currentPlayer
+    }
+    
+    /**
+        If `isWin(for:)` is true either for the player or their opponent we return nil.
+        If not, we call `canMove(in:)` for every column to see if the AI can move in each column.
+        If so, we create a new Move object to represent that column, and add it to an array of possible moves.”
+     */
+    func gameModelUpdates(for player: GKGameModelPlayer) -> [GKGameModelUpdate]? {
+        guard let player = player as? Player else { return nil }
+        
+        if isWin(for: player) || isWin(for: player.opponent) {
+            return nil
+        }
+        
+        return (0 ..< Board.columns).reduce([GKGameModelUpdate]()) { (moves, column) -> [GKGameModelUpdate] in
+            if canMove(inColumn: column) {
+                return moves + [Move(column: column)]
+            }
+            return moves
+        }
+    }
+    
+    
+    func apply(_ gameModelUpdate: GKGameModelUpdate) {
+        guard let move = gameModelUpdate as? Move else { return }
+        
+        add(chip: currentPlayer.chipColor, toColumn: move.column)
+        currentPlayer = currentPlayer.opponent
+    }
+    
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let boardCopy = Board()
+        boardCopy.setGameModel(self)
+        
+        return boardCopy
+    }
+    
+    func score(for player: GKGameModelPlayer) -> Int {
+        if let player = player as? Player {
+            if isWin(for: player) {
+                return 1000
+            } else if isWin(for: player.opponent) {
+                return -1000
+            }
+        }
+        
+        return 0
     }
 }
