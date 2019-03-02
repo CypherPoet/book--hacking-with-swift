@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
     
     lazy var placedChipColumns: [[Chip]] = Array(repeating: [Chip](), count: Board.columns)
     lazy var strategist = makeStrategist()
+    lazy var thinkingSpinner = makeSpinner()
 
     var currentGameplayState = GameplayState.inactive {
         didSet { gameplayStateChanged() }
@@ -36,6 +37,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        setupUI()
         resetGame()
     }
 
@@ -57,6 +59,10 @@ class HomeViewController: UIViewController {
     
     
     // MARK: - Helper functions
+    
+    func setupUI() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: thinkingSpinner)
+    }
     
     func resetGame() {
         board = Board()
@@ -170,7 +176,8 @@ class HomeViewController: UIViewController {
     }
     
     func toggleBoard(interactionEnabled: Bool) {
-        columnButtons.forEach({ $0.isEnabled = interactionEnabled })
+        columnButtons.forEach { $0.isEnabled = interactionEnabled }
+        interactionEnabled ? thinkingSpinner.stopAnimating() : thinkingSpinner.startAnimating()
     }
     
     
@@ -205,5 +212,13 @@ class HomeViewController: UIViewController {
         strategist.randomSource = GKARC4RandomSource()
 
         return strategist
+    }
+    
+    private func makeSpinner() -> UIActivityIndicatorView {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        
+        spinner.hidesWhenStopped = true
+
+        return spinner
     }
 }
