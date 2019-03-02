@@ -57,13 +57,7 @@ class Board: NSObject {
     
     
     func nextEmptyRow(inColumn column: Int) -> Int? {
-        for row in 0 ..< Board.rows {
-            if color(inColumn: column, row: row) == .none {
-                return row
-            }
-        }
-        
-        return nil
+        return (0 ..< Board.rows).first( where: { color(inColumn: column, row: $0) == .none })
     }
     
     func canMove(inColumn column: Int) -> Bool {

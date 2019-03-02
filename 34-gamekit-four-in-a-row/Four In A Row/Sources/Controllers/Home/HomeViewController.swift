@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GameplayKit
 
 class HomeViewController: UIViewController {
     @IBOutlet var columnButtons: [UIButton]!
@@ -18,11 +19,12 @@ class HomeViewController: UIViewController {
         case playerHasWon(Player)
     }
     
-    
     // MARK: - Instance Properties
-    
+    let aiTimeCeiling: TimeInterval = 1.0
     var board: Board!
+    
     lazy var placedChipColumns: [[Chip]] = Array(repeating: [Chip](), count: Board.columns)
+    lazy var strategist = makeStrategist()
 
     var currentGameplayState = GameplayState.inactive {
         didSet { gameplayStateChanged() }
@@ -51,7 +53,6 @@ class HomeViewController: UIViewController {
             
             advanceGame()
         }
-        
     }
     
     
@@ -59,13 +60,14 @@ class HomeViewController: UIViewController {
     
     func resetGame() {
         board = Board()
-        columnButtons.forEach({ $0.isEnabled = true })
+        strategist.gameModel = board
         
         for i in 0..<placedChipColumns.count {
             placedChipColumns[i].forEach({ $0.removeFromSuperview() })
             placedChipColumns[i].removeAll(keepingCapacity: true)
         }
         
+        toggleBoard(interactionEnabled: true)
         currentGameplayState = .playing(board.currentPlayer)
     }
     
@@ -111,7 +113,6 @@ class HomeViewController: UIViewController {
     }
     
     
-    
     func advanceGame() {
         if board.isWin(for: board.currentPlayer) {
             currentGameplayState = .playerHasWon(board.currentPlayer)
@@ -122,7 +123,6 @@ class HomeViewController: UIViewController {
             currentGameplayState = .playing(board.currentPlayer)
         }
     }
-    
     
     func endGame(message: String) {
         let alertController = UIAlertController(title: "Game Over", message: message, preferredStyle: .alert)
@@ -136,15 +136,59 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func columnForAIMove() -> Int? {
+        guard let activePlayer = board.activePlayer else { return nil }
+        
+        if let move = strategist.bestMove(for: activePlayer) as? Move {
+            return move.column
+        }
+        
+        return nil
+    }
+    
+    func makeAIMove(inColumn column: Int) {
+        if let nextRow = board.nextEmptyRow(inColumn: column) {
+            board.add(chip: board.currentPlayer.chipColor, toColumn: column)
+            addChip(inColumn: column, row: nextRow, forPlayer: board.currentPlayer)
+            
+            advanceGame()
+        }
+    }
+    
+    func startAIMove() {
+        DispatchQueue.global().async { [unowned self] in
+            let strategistTime = CFAbsoluteTimeGetCurrent()
+            guard let column = self.columnForAIMove() else { return }
+            
+            let elapsedTime = CFAbsoluteTimeGetCurrent() - strategistTime
+            let delay = self.aiTimeCeiling - elapsedTime
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                self.makeAIMove(inColumn: column)
+            }
+        }
+    }
+    
+    func toggleBoard(interactionEnabled: Bool) {
+        columnButtons.forEach({ $0.isEnabled = interactionEnabled })
+    }
+    
     
     // MARK: - Private functions
     
     private func gameplayStateChanged() {
         switch currentGameplayState {
         case .inactive:
-            columnButtons.forEach({ $0.isEnabled = false })
+            toggleBoard(interactionEnabled: false)
         case .playing(let currentPlayer):
             title = "\(currentPlayer.name)'s Turn"
+            
+            if board.currentPlayer.chipColor == .black {
+                toggleBoard(interactionEnabled: false)
+                startAIMove()
+            } else {
+                toggleBoard(interactionEnabled: true)
+            }
         case .fullBoardDraw:
             endGame(message: "The board is full and game has ended in a draw.")
         case .playerHasWon(let currentPlayer):
@@ -152,5 +196,14 @@ class HomeViewController: UIViewController {
         }
     }
     
-}
+    private func makeStrategist() -> GKMinmaxStrategist {
+        let strategist = GKMinmaxStrategist()
+        
+        // Greater lookahead depth results in stronger play by a
+        // strategist-controlled player, but at a cost of increased computation time and memory usage.
+        strategist.maxLookAheadDepth = 7
+        strategist.randomSource = GKARC4RandomSource()
 
+        return strategist
+    }
+}
