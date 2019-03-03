@@ -21,15 +21,57 @@ class GameScene: SKScene {
     lazy var player = makePlayer()
     
     
-    
     // MARK: - Lifecycle
     
     override func didMove(to view: SKView) {
         addChild(player)
+        createSky()
+        createBackground()
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    
+    // MARK: - Methods
+    
+    func createSky() {
+        let topSky = SKSpriteNode(color: SceneColor.topSky, size: CGSize(width: frame.width, height: frame.height * 0.67))
+        let bottomSky = SKSpriteNode(color: SceneColor.bottomSky, size: CGSize(width: frame.width, height: frame.height * 0.33))
+        
+        [topSky, bottomSky].forEach { (node) in
+            node.anchorPoint = CGPoint(x: 0.5, y: 1)
+            node.position = CGPoint(x: frame.midX, y: frame.height)
+            node.zPosition = -40
+            
+            addChild(node)
+        }
+    }
+    
+    
+    func createBackground() {
+        let backgroundTexture = SKTexture(imageNamed: "background")
+        let backgroundSize = backgroundTexture.size()
+        
+        let slideSequence = SKAction.sequence([
+            SKAction.moveBy(x: -backgroundSize.width, y: 0, duration: 20),
+            SKAction.moveBy(x: backgroundSize.width, y: 0, duration: 0)
+        ])
+        
+        for i in 0 ... 1 {
+            let background = SKSpriteNode(texture: backgroundTexture)
+            let xPos = (CGFloat(i) * backgroundTexture.size().width) - CGFloat(1 * i) // small overlap for second piece
+            
+            background.anchorPoint = CGPoint.zero
+            background.zPosition = -30
+            background.position = CGPoint(x: xPos, y: 100)
+            
+            background.run(SKAction.repeatForever(slideSequence))
+            
+            addChild(background)
+        }
         
     }
     
