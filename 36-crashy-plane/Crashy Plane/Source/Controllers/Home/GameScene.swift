@@ -27,6 +27,7 @@ class GameScene: SKScene {
         addChild(player)
         createSky()
         createBackground()
+        createGround()
     }
     
     
@@ -44,7 +45,7 @@ class GameScene: SKScene {
         [topSky, bottomSky].forEach { (node) in
             node.anchorPoint = CGPoint(x: 0.5, y: 1)
             node.position = CGPoint(x: frame.midX, y: frame.height)
-            node.zPosition = -40
+            node.zPosition = ZPosition.sky
             
             addChild(node)
         }
@@ -60,20 +61,43 @@ class GameScene: SKScene {
             SKAction.moveBy(x: backgroundSize.width, y: 0, duration: 0)
         ])
         
-        for i in 0 ... 1 {
+        for i in 0...1 {
             let background = SKSpriteNode(texture: backgroundTexture)
             let xPos = (CGFloat(i) * backgroundTexture.size().width) - CGFloat(1 * i) // small overlap for second piece
             
             background.anchorPoint = CGPoint.zero
-            background.zPosition = -30
-            background.position = CGPoint(x: xPos, y: 100)
+            background.zPosition = ZPosition.slidingBackground
+            background.position = CGPoint(x: xPos, y: 10)
             
             background.run(SKAction.repeatForever(slideSequence))
             
             addChild(background)
         }
-        
     }
+    
+    
+    func createGround() {
+        let groundTexture = SKTexture(imageNamed: "ground")
+        let groundSize = groundTexture.size()
+        
+        let slideSequence = SKAction.sequence([
+            SKAction.moveBy(x: -groundSize.width, y: 0, duration: 5),
+            SKAction.moveBy(x: groundSize.width, y: 0, duration: 0)
+        ])
+        
+        for i in 0...1 {
+            let xPos = (groundSize.width / 2) + (CGFloat(i) * groundSize.width)
+            let yPos = groundSize.height / 2
+            let ground = SKSpriteNode(texture: groundTexture)
+            
+            ground.position = CGPoint(x: xPos, y: yPos)
+            ground.zPosition = ZPosition.ground
+            ground.run(SKAction.repeatForever(slideSequence))
+            
+            addChild(ground)
+        }
+    }
+    
     
     
     // MARK: - Private functions
@@ -93,7 +117,7 @@ class GameScene: SKScene {
         let player = SKSpriteNode(texture: texture1)
         let propellerAnimation = SKAction.animate(with: [texture1, texture2, texture3, texture2], timePerFrame: 0.01)
         
-        player.zPosition = 10
+        player.zPosition = ZPosition.player
         player.position = CGPoint(x: frame.width * 0.16667, y: frame.height * 0.75)
         
         player.run(SKAction.repeatForever(propellerAnimation))
