@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+enum Duration {
+    static let rockSlide = 6.2
+    static let groundSlide = 5.0
+    static let backgroundSlide = 20.0
+}

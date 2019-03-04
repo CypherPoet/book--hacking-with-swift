@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+enum NodeName {
+    static let clearanceMarker = "Rock Clearance Point"
+}

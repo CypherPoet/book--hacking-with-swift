@@ -13,4 +13,5 @@ enum ZPosition {
     static let slidingBackground = CGFloat(-30)
     static let ground = CGFloat(-10)
     static let player = CGFloat(10)
+    static let rocks = CGFloat(-20)
 }
