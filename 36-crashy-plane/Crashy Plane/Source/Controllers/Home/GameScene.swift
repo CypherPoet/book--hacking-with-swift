@@ -25,17 +25,22 @@ class GameScene: SKScene {
     lazy var backgroundTexture = SKTexture(imageNamed: "background")
     lazy var groundTexture = SKTexture(imageNamed: "ground")
     
-    
     var currentScore = 0 {
         didSet {
             scoreLabel.text = "SCORE: \(currentScore)"
         }
     }
     
+    var playerRotationAngle: CGFloat {
+        return player.physicsBody!.velocity.dy * 0.001
+    }
+    
+
     // MARK: - Lifecycle
     
     override func didMove(to view: SKView) {
         currentScore = 0
+        setupPhysicsWorld()
         
         addChild(player)
         addChild(scoreLabel)
@@ -43,12 +48,19 @@ class GameScene: SKScene {
         createSky()
         createBackground()
         createGround()
+        
         startGame()
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nudgePlayerUpwards()
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        super.update(currentTime)
         
+        rotate(player, toAngle: playerRotationAngle)
     }
     
     
@@ -67,6 +79,9 @@ class GameScene: SKScene {
         run(SKAction.repeatForever(runSequence))
     }
     
+    func rotate(_ node: SKSpriteNode, toAngle angle: CGFloat) {
+        node.run(SKAction.rotate(toAngle: angle, duration: 0.1))
+    }
     
     /**
         1. Create top and bottom rock sprites. They are both the same graphic, but we're going to rotate the
@@ -106,6 +121,8 @@ class GameScene: SKScene {
             rock.zPosition = ZPosition.rocks
             rock.position.x = rockXPos
             rock.yScale = 1.5
+            rock.physicsBody = SKPhysicsBody(texture: rockTexture, size: rock.size)
+            rock.physicsBody!.isDynamic = false
         }
         
         let maxYFocalPoint = frame.maxY * 0.43
@@ -121,6 +138,8 @@ class GameScene: SKScene {
         let clearanceMarker = SKSpriteNode(color: .red, size: CGSize(width: player.size.width, height: frame.height))
         clearanceMarker.name = NodeName.clearanceMarker
         clearanceMarker.position = CGPoint(x: rockXPos + (topRock.size.width / 2) + (clearanceMarker.size.width / 2), y: frame.midY)
+        clearanceMarker.physicsBody = SKPhysicsBody(rectangleOf: clearanceMarker.size)
+        clearanceMarker.physicsBody!.isDynamic = false
         
         return (topRock, bottomRock, clearanceMarker)
     }
@@ -178,12 +197,27 @@ class GameScene: SKScene {
             
             ground.position = CGPoint(x: xPos, y: yPos)
             ground.zPosition = ZPosition.ground
-            ground.run(SKAction.repeatForever(slideSequence))
+
+            ground.physicsBody = SKPhysicsBody(texture: groundTexture, size: groundTexture.size())
+            ground.physicsBody?.isDynamic = false
             
+            ground.run(SKAction.repeatForever(slideSequence))
             addChild(ground)
         }
     }
     
+    
+    func setupPhysicsWorld() {
+        physicsWorld.gravity = CGVector(dx: 0, dy: -2.0)
+        physicsWorld.contactDelegate = self
+    }
+    
+    func nudgePlayerUpwards() {
+        /// Neutralize any current upward velocity the player might have when nudged again
+        player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        
+        player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
+    }
     
     
     // MARK: - Private functions
@@ -206,6 +240,11 @@ class GameScene: SKScene {
         player.zPosition = ZPosition.player
         player.position = CGPoint(x: frame.width * 0.16667, y: frame.height * 0.75)
         
+        player.physicsBody = SKPhysicsBody(texture: texture1, size: texture1.size())
+        player.physicsBody!.contactTestBitMask = player.physicsBody!.collisionBitMask  // shortcut to listening for touches against everything
+        player.physicsBody!.isDynamic = true
+        player.physicsBody!.collisionBitMask = 0
+        
         player.run(SKAction.repeatForever(propellerAnimation))
         
         return player
@@ -220,4 +259,9 @@ class GameScene: SKScene {
         
         return label
     }
+}
+
+
+extension GameScene: SKPhysicsContactDelegate {
+    
 }
