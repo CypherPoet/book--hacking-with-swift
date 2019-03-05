@@ -24,12 +24,18 @@ class GameScene: SKScene {
     lazy var rockTexture = SKTexture(imageNamed: "rock")
     lazy var backgroundTexture = SKTexture(imageNamed: "background")
     lazy var groundTexture = SKTexture(imageNamed: "ground")
+    lazy var playerExplosionSound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
     
     var currentScore = 0 {
         didSet {
             scoreLabel.text = "SCORE: \(currentScore)"
         }
     }
+    
+    var currentGameplayState = GameplayState.inProgress {
+        didSet { gameplayStateChanged() }
+    }
+    
     
     var playerRotationAngle: CGFloat {
         return player.physicsBody!.velocity.dy * 0.001
@@ -220,6 +226,35 @@ class GameScene: SKScene {
     }
     
     
+    func rockCleared(_ marker: SKSpriteNode) {
+        currentScore += 1
+        marker.removeFromParent()
+        
+        run(SKAction.playSoundFileNamed("coin.wav", waitForCompletion: false))
+    }
+    
+    func playerDied() {
+        guard let playerExplosion = SKEmitterNode(fileNamed: "PlayerExplosion") else { return }
+        playerExplosion.position = player.position
+        
+        addChild(playerExplosion)
+        run(playerExplosionSound)
+        
+        player.removeFromParent()
+        
+        currentGameplayState = .playerDied
+    }
+    
+    
+    func gameplayStateChanged() {
+        switch currentGameplayState {
+        case .inProgress:
+            speed = 1
+        case .playerDied:
+            speed = 0
+        }
+    }
+    
     // MARK: - Private functions
     
     /**
@@ -263,5 +298,20 @@ class GameScene: SKScene {
 
 
 extension GameScene: SKPhysicsContactDelegate {
-    
+    func didBegin(_ contact: SKPhysicsContact) {
+        guard
+            let nodeA = contact.bodyA.node,
+            let nodeB = contact.bodyB.node
+        else {
+            return
+        }
+        
+        if player == nodeA || player == nodeB {
+            if let marker = [nodeA, nodeB].first(where: { $0.name == NodeName.clearanceMarker }) {
+                rockCleared(marker as! SKSpriteNode)
+            } else {
+                playerDied()
+            }
+        }
+    }
 }
