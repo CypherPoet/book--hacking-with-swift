@@ -1,0 +1,667 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F3857E7F222E4A2E009A33C4 /* ESP Tester WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F3857E7E222E4A2E009A33C4 /* ESP Tester WatchKit App.app */; };
+		F3857E85222E4A2E009A33C4 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3857E83222E4A2E009A33C4 /* Interface.storyboard */; };
+		F3857E87222E4A2E009A33C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3857E86222E4A2E009A33C4 /* Assets.xcassets */; };
+		F3857E8E222E4A2F009A33C4 /* ESP Tester WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F3857E8D222E4A2F009A33C4 /* ESP Tester WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F3857E93222E4A2F009A33C4 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3857E92222E4A2F009A33C4 /* InterfaceController.swift */; };
+		F3857E95222E4A2F009A33C4 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3857E94222E4A2F009A33C4 /* ExtensionDelegate.swift */; };
+		F3857E97222E4A2F009A33C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3857E96222E4A2F009A33C4 /* Assets.xcassets */; };
+		F3857EA7222E4A98009A33C4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F3857EA6222E4A98009A33C4 /* README.md */; };
+		F3857EB4222E4D27009A33C4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3857EAC222E4D27009A33C4 /* HomeViewController.swift */; };
+		F3857EB5222E4D27009A33C4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3857EAD222E4D27009A33C4 /* Home.storyboard */; };
+		F3857EB6222E4D27009A33C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3857EAF222E4D27009A33C4 /* Assets.xcassets */; };
+		F3857EB7222E4D27009A33C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3857EB1222E4D27009A33C4 /* LaunchScreen.storyboard */; };
+		F3857EB8222E4D27009A33C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3857EB2222E4D27009A33C4 /* AppDelegate.swift */; };
+		F3857EBC222E517E009A33C4 /* PhantomFromSpace.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3857EBA222E517E009A33C4 /* PhantomFromSpace.mp3 */; };
+		F3857EBD222E517E009A33C4 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3857EBB222E517E009A33C4 /* README.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F3857E80222E4A2E009A33C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3857E64222E4A2C009A33C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3857E7D222E4A2E009A33C4;
+			remoteInfo = "ESP Tester WatchKit App";
+		};
+		F3857E8F222E4A2F009A33C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3857E64222E4A2C009A33C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F3857E8C222E4A2F009A33C4;
+			remoteInfo = "ESP Tester WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F3857E9E222E4A2F009A33C4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F3857E8E222E4A2F009A33C4 /* ESP Tester WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3857EA2222E4A2F009A33C4 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F3857E7F222E4A2E009A33C4 /* ESP Tester WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F3857E6C222E4A2C009A33C4 /* ESP Tester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ESP Tester.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3857E7E222E4A2E009A33C4 /* ESP Tester WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ESP Tester WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3857E84222E4A2E009A33C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		F3857E86222E4A2E009A33C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3857E88222E4A2E009A33C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3857E8D222E4A2F009A33C4 /* ESP Tester WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "ESP Tester WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3857E92222E4A2F009A33C4 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		F3857E94222E4A2F009A33C4 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		F3857E96222E4A2F009A33C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3857E98222E4A2F009A33C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3857EA6222E4A98009A33C4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F3857EA9222E4D27009A33C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3857EAC222E4D27009A33C4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F3857EAD222E4D27009A33C4 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		F3857EAF222E4D27009A33C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3857EB1222E4D27009A33C4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F3857EB2222E4D27009A33C4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F3857EBA222E517E009A33C4 /* PhantomFromSpace.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PhantomFromSpace.mp3; sourceTree = "<group>"; };
+		F3857EBB222E517E009A33C4 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F3857E69222E4A2C009A33C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3857E8A222E4A2F009A33C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F3857E63222E4A2C009A33C4 = {
+			isa = PBXGroup;
+			children = (
+				F3857E6E222E4A2C009A33C4 /* ESP Tester */,
+				F3857E82222E4A2E009A33C4 /* ESP Tester WatchKit App */,
+				F3857E91222E4A2F009A33C4 /* ESP Tester WatchKit Extension */,
+				F3857E6D222E4A2C009A33C4 /* Products */,
+				F3857EA6222E4A98009A33C4 /* README.md */,
+			);
+			sourceTree = "<group>";
+		};
+		F3857E6D222E4A2C009A33C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F3857E6C222E4A2C009A33C4 /* ESP Tester.app */,
+				F3857E7E222E4A2E009A33C4 /* ESP Tester WatchKit App.app */,
+				F3857E8D222E4A2F009A33C4 /* ESP Tester WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F3857E6E222E4A2C009A33C4 /* ESP Tester */ = {
+			isa = PBXGroup;
+			children = (
+				F3857EB0222E4D27009A33C4 /* App Start */,
+				F3857EAA222E4D27009A33C4 /* Controllers */,
+				F3857EAE222E4D27009A33C4 /* Resources */,
+				F3857EA8222E4D27009A33C4 /* Supporting Files */,
+			);
+			path = "ESP Tester";
+			sourceTree = "<group>";
+		};
+		F3857E82222E4A2E009A33C4 /* ESP Tester WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				F3857E83222E4A2E009A33C4 /* Interface.storyboard */,
+				F3857E86222E4A2E009A33C4 /* Assets.xcassets */,
+				F3857E88222E4A2E009A33C4 /* Info.plist */,
+			);
+			path = "ESP Tester WatchKit App";
+			sourceTree = "<group>";
+		};
+		F3857E91222E4A2F009A33C4 /* ESP Tester WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F3857E92222E4A2F009A33C4 /* InterfaceController.swift */,
+				F3857E94222E4A2F009A33C4 /* ExtensionDelegate.swift */,
+				F3857E96222E4A2F009A33C4 /* Assets.xcassets */,
+				F3857E98222E4A2F009A33C4 /* Info.plist */,
+			);
+			path = "ESP Tester WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		F3857EA8222E4D27009A33C4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F3857EA9222E4D27009A33C4 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F3857EAA222E4D27009A33C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F3857EAB222E4D27009A33C4 /* Home */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F3857EAB222E4D27009A33C4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F3857EAC222E4D27009A33C4 /* HomeViewController.swift */,
+				F3857EAD222E4D27009A33C4 /* Home.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F3857EAE222E4D27009A33C4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F3857EAF222E4D27009A33C4 /* Assets.xcassets */,
+				F3857EB9222E517E009A33C4 /* Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F3857EB0222E4D27009A33C4 /* App Start */ = {
+			isa = PBXGroup;
+			children = (
+				F3857EB1222E4D27009A33C4 /* LaunchScreen.storyboard */,
+				F3857EB2222E4D27009A33C4 /* AppDelegate.swift */,
+			);
+			path = "App Start";
+			sourceTree = "<group>";
+		};
+		F3857EB9222E517E009A33C4 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				F3857EBA222E517E009A33C4 /* PhantomFromSpace.mp3 */,
+				F3857EBB222E517E009A33C4 /* README.txt */,
+			);
+			name = Content;
+			path = "../../../../private/book-source/project37-files/Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F3857E6B222E4A2C009A33C4 /* ESP Tester */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3857EA3222E4A2F009A33C4 /* Build configuration list for PBXNativeTarget "ESP Tester" */;
+			buildPhases = (
+				F3857E68222E4A2C009A33C4 /* Sources */,
+				F3857E69222E4A2C009A33C4 /* Frameworks */,
+				F3857E6A222E4A2C009A33C4 /* Resources */,
+				F3857EA2222E4A2F009A33C4 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3857E81222E4A2E009A33C4 /* PBXTargetDependency */,
+			);
+			name = "ESP Tester";
+			productName = "ESP Tester";
+			productReference = F3857E6C222E4A2C009A33C4 /* ESP Tester.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F3857E7D222E4A2E009A33C4 /* ESP Tester WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3857E9F222E4A2F009A33C4 /* Build configuration list for PBXNativeTarget "ESP Tester WatchKit App" */;
+			buildPhases = (
+				F3857E7C222E4A2E009A33C4 /* Resources */,
+				F3857E9E222E4A2F009A33C4 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F3857E90222E4A2F009A33C4 /* PBXTargetDependency */,
+			);
+			name = "ESP Tester WatchKit App";
+			productName = "ESP Tester WatchKit App";
+			productReference = F3857E7E222E4A2E009A33C4 /* ESP Tester WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		F3857E8C222E4A2F009A33C4 /* ESP Tester WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F3857E9B222E4A2F009A33C4 /* Build configuration list for PBXNativeTarget "ESP Tester WatchKit Extension" */;
+			buildPhases = (
+				F3857E89222E4A2F009A33C4 /* Sources */,
+				F3857E8A222E4A2F009A33C4 /* Frameworks */,
+				F3857E8B222E4A2F009A33C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ESP Tester WatchKit Extension";
+			productName = "ESP Tester WatchKit Extension";
+			productReference = F3857E8D222E4A2F009A33C4 /* ESP Tester WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F3857E64222E4A2C009A33C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Brian Sipple";
+				TargetAttributes = {
+					F3857E6B222E4A2C009A33C4 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					F3857E7D222E4A2E009A33C4 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					F3857E8C222E4A2F009A33C4 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = F3857E67222E4A2C009A33C4 /* Build configuration list for PBXProject "ESP Tester" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F3857E63222E4A2C009A33C4;
+			productRefGroup = F3857E6D222E4A2C009A33C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F3857E6B222E4A2C009A33C4 /* ESP Tester */,
+				F3857E7D222E4A2E009A33C4 /* ESP Tester WatchKit App */,
+				F3857E8C222E4A2F009A33C4 /* ESP Tester WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F3857E6A222E4A2C009A33C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3857EB5222E4D27009A33C4 /* Home.storyboard in Resources */,
+				F3857EB6222E4D27009A33C4 /* Assets.xcassets in Resources */,
+				F3857EB7222E4D27009A33C4 /* LaunchScreen.storyboard in Resources */,
+				F3857EA7222E4A98009A33C4 /* README.md in Resources */,
+				F3857EBD222E517E009A33C4 /* README.txt in Resources */,
+				F3857EBC222E517E009A33C4 /* PhantomFromSpace.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3857E7C222E4A2E009A33C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3857E87222E4A2E009A33C4 /* Assets.xcassets in Resources */,
+				F3857E85222E4A2E009A33C4 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3857E8B222E4A2F009A33C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3857E97222E4A2F009A33C4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F3857E68222E4A2C009A33C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3857EB8222E4D27009A33C4 /* AppDelegate.swift in Sources */,
+				F3857EB4222E4D27009A33C4 /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3857E89222E4A2F009A33C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3857E95222E4A2F009A33C4 /* ExtensionDelegate.swift in Sources */,
+				F3857E93222E4A2F009A33C4 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F3857E81222E4A2E009A33C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3857E7D222E4A2E009A33C4 /* ESP Tester WatchKit App */;
+			targetProxy = F3857E80222E4A2E009A33C4 /* PBXContainerItemProxy */;
+		};
+		F3857E90222E4A2F009A33C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F3857E8C222E4A2F009A33C4 /* ESP Tester WatchKit Extension */;
+			targetProxy = F3857E8F222E4A2F009A33C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F3857E83222E4A2E009A33C4 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F3857E84222E4A2E009A33C4 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F3857E99222E4A2F009A33C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F3857E9A222E4A2F009A33C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F3857E9C222E4A2F009A33C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRXXH2RKAG;
+				INFOPLIST_FILE = "ESP Tester WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.sipple.ESP-Tester.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		F3857E9D222E4A2F009A33C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRXXH2RKAG;
+				INFOPLIST_FILE = "ESP Tester WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.sipple.ESP-Tester.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		F3857EA0222E4A2F009A33C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRXXH2RKAG;
+				IBSC_MODULE = ESP_Tester_WatchKit_Extension;
+				INFOPLIST_FILE = "ESP Tester WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.sipple.ESP-Tester.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		F3857EA1222E4A2F009A33C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRXXH2RKAG;
+				IBSC_MODULE = ESP_Tester_WatchKit_Extension;
+				INFOPLIST_FILE = "ESP Tester WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.sipple.ESP-Tester.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		F3857EA4222E4A2F009A33C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRXXH2RKAG;
+				INFOPLIST_FILE = "$(SRCROOT)/ESP Tester/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.sipple.ESP-Tester";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F3857EA5222E4A2F009A33C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QRXXH2RKAG;
+				INFOPLIST_FILE = "$(SRCROOT)/ESP Tester/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.sipple.ESP-Tester";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F3857E67222E4A2C009A33C4 /* Build configuration list for PBXProject "ESP Tester" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3857E99222E4A2F009A33C4 /* Debug */,
+				F3857E9A222E4A2F009A33C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3857E9B222E4A2F009A33C4 /* Build configuration list for PBXNativeTarget "ESP Tester WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3857E9C222E4A2F009A33C4 /* Debug */,
+				F3857E9D222E4A2F009A33C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3857E9F222E4A2F009A33C4 /* Build configuration list for PBXNativeTarget "ESP Tester WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3857EA0222E4A2F009A33C4 /* Debug */,
+				F3857EA1222E4A2F009A33C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F3857EA3222E4A2F009A33C4 /* Build configuration list for PBXNativeTarget "ESP Tester" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F3857EA4222E4A2F009A33C4 /* Debug */,
+				F3857EA5222E4A2F009A33C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F3857E64222E4A2C009A33C4 /* Project object */;
+}
