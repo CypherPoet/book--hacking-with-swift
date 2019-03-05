@@ -11,8 +11,9 @@ import GameplayKit
 
 class GameScene: SKScene {
     enum GameplayState {
+        case intro
         case inProgress
-        case playerDied
+        case gameOver
     }
     
     // MARK: - Instance Properties
@@ -21,6 +22,7 @@ class GameScene: SKScene {
     
     lazy var player = makePlayer()
     lazy var scoreLabel = makeScoreLabel()
+    lazy var backgroundMusic = makeBackgroundMusic()
     lazy var rockTexture = SKTexture(imageNamed: "rock")
     lazy var backgroundTexture = SKTexture(imageNamed: "background")
     lazy var groundTexture = SKTexture(imageNamed: "ground")
@@ -32,7 +34,7 @@ class GameScene: SKScene {
         }
     }
     
-    var currentGameplayState = GameplayState.inProgress {
+    var currentGameplayState = GameplayState.intro {
         didSet { gameplayStateChanged() }
     }
     
@@ -45,19 +47,18 @@ class GameScene: SKScene {
     // MARK: - Lifecycle
     
     override func didMove(to view: SKView) {
-        currentScore = 0
         setupPhysicsWorld()
         
         addChild(player)
         addChild(scoreLabel)
+//        addChild(backgroundMusic)
         
         createSky()
         createBackground()
         createGround()
-        
-        startGame()
+
+        currentGameplayState = .intro
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         nudgePlayerUpwards()
@@ -73,6 +74,9 @@ class GameScene: SKScene {
     // MARK: - Methods
     
     func startGame() {
+        currentScore = 0
+        speed = 1
+
         let create = SKAction.run { [weak self] in
             self?.createRocks()
         }
@@ -85,9 +89,11 @@ class GameScene: SKScene {
         run(SKAction.repeatForever(runSequence))
     }
     
+    
     func rotate(_ node: SKSpriteNode, toAngle angle: CGFloat) {
         node.run(SKAction.rotate(toAngle: angle, duration: 0.1))
     }
+    
     
     /**
         1. Create top and bottom rock sprites. They are both the same graphic, but we're going to rotate the
@@ -242,16 +248,28 @@ class GameScene: SKScene {
         
         player.removeFromParent()
         
-        currentGameplayState = .playerDied
+        currentGameplayState = .gameOver
+    }
+    
+    
+    func displayStartScreen() {
+        
+    }
+    
+    
+    func endGame() {
+        speed = 0
     }
     
     
     func gameplayStateChanged() {
         switch currentGameplayState {
+        case .intro:
+            displayStartScreen()
         case .inProgress:
-            speed = 1
-        case .playerDied:
-            speed = 0
+            startGame()
+        case .gameOver:
+            endGame()
         }
     }
     
@@ -293,6 +311,15 @@ class GameScene: SKScene {
         label.fontColor = .black
         
         return label
+    }
+    
+    
+    private func makeBackgroundMusic() -> SKAudioNode {
+        if let musicURL = Bundle.main.url(forResource: "music", withExtension: "m4a") {
+            return SKAudioNode(url: musicURL)
+        }
+        
+        return SKAudioNode()
     }
 }
 
