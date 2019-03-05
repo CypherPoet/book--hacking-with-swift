@@ -11,7 +11,8 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    let isDebugging = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,9 +28,9 @@ class GameViewController: UIViewController {
             
             view.ignoresSiblingOrder = true
             
-            view.showsFPS = true
-            view.showsNodeCount = true
-            view.showsPhysics = true
+            view.showsFPS = isDebugging
+            view.showsNodeCount = isDebugging
+            view.showsPhysics = isDebugging
         }
     }
 

@@ -23,6 +23,9 @@ class GameScene: SKScene {
     lazy var player = makePlayer()
     lazy var scoreLabel = makeScoreLabel()
     lazy var backgroundMusic = makeBackgroundMusic()
+    lazy var introScreenGroup = makeIntroScreenGroup()
+    lazy var gameOverLogo = makeGameOverLogo()
+    lazy var sceneCenterPoint = CGPoint(x: frame.midX, y: frame.midY)
     lazy var rockTexture = SKTexture(imageNamed: "rock")
     lazy var backgroundTexture = SKTexture(imageNamed: "background")
     lazy var groundTexture = SKTexture(imageNamed: "ground")
@@ -51,7 +54,9 @@ class GameScene: SKScene {
         
         addChild(player)
         addChild(scoreLabel)
-//        addChild(backgroundMusic)
+        addChild(introScreenGroup)
+        addChild(gameOverLogo)
+        addChild(backgroundMusic)
         
         createSky()
         createBackground()
@@ -60,22 +65,55 @@ class GameScene: SKScene {
         currentGameplayState = .intro
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        nudgePlayerUpwards()
+        switch currentGameplayState {
+        case .intro:
+            currentGameplayState = .inProgress
+        case .inProgress:
+            nudgePlayerUpwards()
+        case .gameOver:
+            restartScene()
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
-        super.update(currentTime)
-        
         rotate(player, toAngle: playerRotationAngle)
     }
     
     
     // MARK: - Methods
     
+    func displayStartScreen() {
+        introScreenGroup.alpha = 1
+        gameOverLogo.alpha = 0
+        speed = 1
+        player.physicsBody!.isDynamic = false
+    }
+    
+    
     func startGame() {
         currentScore = 0
-        speed = 1
+        
+        let startSequence = SKAction.sequence([
+            SKAction.fadeOut(withDuration: 0.5),
+            
+            SKAction.run { [weak self] in
+                guard let self = self else { return }
+                self.player.physicsBody?.isDynamic = true
+                self.backgroundMusic.run(SKAction.play())
+                self.startCreatingRocks()
+            },
+            
+            SKAction.wait(forDuration: 0.5),
+            SKAction.removeFromParent(),
+        ])
+        
+        introScreenGroup.run(startSequence)
+    }
+    
+    
+    func startCreatingRocks() {
 
         let create = SKAction.run { [weak self] in
             self?.createRocks()
@@ -87,6 +125,26 @@ class GameScene: SKScene {
         ])
         
         run(SKAction.repeatForever(runSequence))
+    }
+    
+    
+    func endGame() {
+        speed = 0
+        player.physicsBody?.isDynamic = false
+        backgroundMusic.run(SKAction.stop())
+        gameOverLogo.alpha = 1
+    }
+    
+    
+    /**
+        Rather than manually resetting each bit of state to its origin, we
+        can just present a whole new `GameScene` here.
+     */
+    func restartScene() {
+        let scene = GameScene(fileNamed: "GameScene")!
+        let transition = SKTransition.moveIn(with: SKTransitionDirection.right, duration: 1)
+        
+        view?.presentScene(scene, transition: transition)
     }
     
     
@@ -252,16 +310,6 @@ class GameScene: SKScene {
     }
     
     
-    func displayStartScreen() {
-        
-    }
-    
-    
-    func endGame() {
-        speed = 0
-    }
-    
-    
     func gameplayStateChanged() {
         switch currentGameplayState {
         case .intro:
@@ -295,7 +343,6 @@ class GameScene: SKScene {
         
         player.physicsBody = SKPhysicsBody(texture: texture1, size: texture1.size())
         player.physicsBody!.contactTestBitMask = player.physicsBody!.collisionBitMask  // shortcut to listening for touches against everything
-        player.physicsBody!.isDynamic = true
         player.physicsBody!.collisionBitMask = 0
         
         player.run(SKAction.repeatForever(propellerAnimation))
@@ -316,10 +363,42 @@ class GameScene: SKScene {
     
     private func makeBackgroundMusic() -> SKAudioNode {
         if let musicURL = Bundle.main.url(forResource: "music", withExtension: "m4a") {
-            return SKAudioNode(url: musicURL)
+            let audio = SKAudioNode(url: musicURL)
+            
+            audio.run(SKAction.stop())
+            
+            return audio
         }
         
         return SKAudioNode()
+    }
+    
+    
+    private func makeIntroScreenGroup() -> SKSpriteNode {
+        let container = SKSpriteNode()
+        let logo = SKSpriteNode(imageNamed: "logo")
+        let label = SKLabelNode(fontNamed: "EuphemiaUCAS-Bold")
+        
+        logo.position = sceneCenterPoint
+        
+        label.text = "Touch to Start"
+        label.position = CGPoint(x: sceneCenterPoint.x, y: CGFloat(sceneCenterPoint.y - logo.size.height))
+        label.horizontalAlignmentMode = .center
+        label.fontColor = SceneColor.startLabelText
+        
+        container.addChild(logo)
+        container.addChild(label)
+        
+        return container
+    }
+    
+    
+    private func makeGameOverLogo() -> SKSpriteNode {
+        let label = SKSpriteNode(imageNamed: "gameover")
+        
+        label.position = sceneCenterPoint
+        
+        return label
     }
 }
 
