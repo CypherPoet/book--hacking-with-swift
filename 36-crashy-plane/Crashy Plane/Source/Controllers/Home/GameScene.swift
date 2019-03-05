@@ -205,7 +205,7 @@ class GameScene: SKScene {
         topRock.zRotation = .pi
         topRock.xScale = -1
         
-        let clearanceMarker = SKSpriteNode(color: .red, size: CGSize(width: player.size.width, height: frame.height))
+        let clearanceMarker = SKSpriteNode(color: .clear, size: CGSize(width: player.size.width, height: frame.height))
         clearanceMarker.name = NodeName.clearanceMarker
         clearanceMarker.position = CGPoint(x: rockXPos + (topRock.size.width / 2) + (clearanceMarker.size.width / 2), y: frame.midY)
         clearanceMarker.physicsBody = SKPhysicsBody(rectangleOf: clearanceMarker.size)
