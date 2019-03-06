@@ -11,8 +11,15 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet var cardContainer: UIView!
     
+    enum CardState {
+        case allFlat
+        case flipping
+    }
+    
+    
     // MARK: - Instance Properties
     
+    var currentCardState = CardState.allFlat
     var cardViewControllers: [CardViewController] = []
     
     lazy var cardPositions = makeCardPositions()
@@ -58,6 +65,8 @@ class HomeViewController: UIViewController {
             
             cardViewControllers.append(cardViewController)
         }
+        
+        currentCardState = .allFlat
     }
     
     func removeCardsInView() {
@@ -68,6 +77,27 @@ class HomeViewController: UIViewController {
         
         cardViewControllers.removeAll(keepingCapacity: true)
     }
+    
+    
+    // MARK: - Event handling
+    
+    func cardTapped(_ tappedCard: CardViewController) {
+        guard currentCardState == .allFlat else { return }
+        
+        currentCardState = .flipping
+        
+        for card in cardViewControllers {
+            if card == tappedCard {
+                card.flipToReveal()
+                card.perform(#selector(card.fadeAway), with: nil, afterDelay: 1)
+            } else {
+                card.fadeAway()
+            }
+        }
+        
+        perform(#selector(loadCards), with: nil, afterDelay: 2)
+    }
+    
     
     // MARK: - Private functions
     

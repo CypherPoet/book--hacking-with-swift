@@ -11,7 +11,7 @@ import UIKit
 class CardViewController: UIViewController {
     // MARK: - Instance Properties
     
-    weak var delegate: UIViewController!
+    weak var delegate: HomeViewController!
     
     lazy var frontImageView = makeFrontImageView()
     lazy var backImageView = makeBackImageView()
@@ -32,6 +32,33 @@ class CardViewController: UIViewController {
         
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.backImageView.alpha = 1
+        })
+    }
+    
+    
+    // MARK: - Event handling
+    
+    @objc func cardTapped(_ sender: UIGestureRecognizer) {
+        delegate.cardTapped(self)
+    }
+
+    @objc func flipToReveal() {
+        UIView.transition(
+            with: view,
+            duration: 0.7,
+            options: [.transitionFlipFromRight],
+            animations: { [weak self] in
+                self?.backImageView.isHidden = true
+                self?.frontImageView.isHidden = false
+            }
+        )
+    }
+    
+    
+    @objc func fadeAway() {
+        UIView.animate(withDuration: 0.7, animations: { [weak self] in
+            self?.view.transform = CGAffineTransform(scaleX: 0.00001, y: 0.00001) // shrink down
+            self?.view.alpha = 0
         })
     }
     
@@ -62,6 +89,8 @@ class CardViewController: UIViewController {
         let imageView = makeCardImageView()
         
         imageView.alpha = 0
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cardTapped)))
         
         return imageView
     }
