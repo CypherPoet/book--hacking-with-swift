@@ -10,6 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet var cardContainer: UIView!
+    @IBOutlet var gradientView: UIView!
     
     enum CardState {
         case allFlat
@@ -32,6 +33,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        setupBackground()
         loadCards()
     }
     
@@ -76,6 +78,20 @@ class HomeViewController: UIViewController {
         }
         
         cardViewControllers.removeAll(keepingCapacity: true)
+    }
+    
+    
+    func setupBackground() {
+        view.backgroundColor = .red
+        
+        UIView.animate(
+            withDuration: 20,
+            delay: 0,
+            options: [.allowUserInteraction, .autoreverse, .repeat],
+            animations: { [weak self] in
+                self?.view.backgroundColor = .blue
+            }
+        )
     }
     
     

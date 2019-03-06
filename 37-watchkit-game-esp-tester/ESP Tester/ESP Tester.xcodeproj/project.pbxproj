@@ -24,6 +24,7 @@
 		F3857EBD222E517E009A33C4 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3857EBB222E517E009A33C4 /* README.txt */; };
 		F3857EBF222E5BEB009A33C4 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3857EBE222E5BEB009A33C4 /* CardViewController.swift */; };
 		F3857EC1222E5DD9009A33C4 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3857EC0222E5DD9009A33C4 /* Dimension.swift */; };
+		F3857EC3222FA7C8009A33C4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3857EC2222FA7C7009A33C4 /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		F3857EBB222E517E009A33C4 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		F3857EBE222E5BEB009A33C4 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		F3857EC0222E5DD9009A33C4 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
+		F3857EC2222FA7C7009A33C4 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				F3857EAC222E4D27009A33C4 /* HomeViewController.swift */,
 				F3857EAD222E4D27009A33C4 /* Home.storyboard */,
 				F3857EBE222E5BEB009A33C4 /* CardViewController.swift */,
+				F3857EC2222FA7C7009A33C4 /* GradientView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			files = (
 				F3857EC1222E5DD9009A33C4 /* Dimension.swift in Sources */,
 				F3857EB8222E4D27009A33C4 /* AppDelegate.swift in Sources */,
+				F3857EC3222FA7C8009A33C4 /* GradientView.swift in Sources */,
 				F3857EB4222E4D27009A33C4 /* HomeViewController.swift in Sources */,
 				F3857EBF222E5BEB009A33C4 /* CardViewController.swift in Sources */,
 			);
