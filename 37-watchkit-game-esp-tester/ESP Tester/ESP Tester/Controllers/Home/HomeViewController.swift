@@ -35,6 +35,10 @@ class HomeViewController: UIViewController {
         
         setupBackground()
         loadCards()
+        setupWiggling()
+        playBackgroundMusic()
+        
+        currentCardState = .allFlat
     }
     
     
@@ -67,8 +71,6 @@ class HomeViewController: UIViewController {
             
             cardViewControllers.append(cardViewController)
         }
-        
-        currentCardState = .allFlat
     }
     
     
@@ -115,6 +117,28 @@ class HomeViewController: UIViewController {
         }
         
         perform(#selector(loadCards), with: nil, afterDelay: 2)
+    }
+    
+    
+    func setupWiggling() {
+        cardViewControllers.forEach({ card in
+            perform(#selector(wiggle), with: card, afterDelay: Double.random(in: 0...10))
+        })
+    }
+    
+    @objc func wiggle(_ card: CardViewController) {
+        card.wiggle()
+        
+        if Int.random(in: 0...1) == 1 {
+            perform(#selector(wiggle), with: card, afterDelay: Double.random(in: 1...2))
+        } else {
+            perform(#selector(wiggle), with: card, afterDelay: Double.random(in: 7...10))
+        }
+    }
+    
+    
+    func playBackgroundMusic() {
+        
     }
     
     

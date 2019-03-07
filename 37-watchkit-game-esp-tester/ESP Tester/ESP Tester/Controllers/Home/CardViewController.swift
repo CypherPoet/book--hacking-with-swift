@@ -35,13 +35,8 @@ class CardViewController: UIViewController {
         })
     }
     
+    // MARK: - Methods
     
-    // MARK: - Event handling
-    
-    @objc func cardTapped(_ sender: UIGestureRecognizer) {
-        delegate.cardTapped(self)
-    }
-
     @objc func flipToReveal() {
         UIView.transition(
             with: view,
@@ -62,6 +57,34 @@ class CardViewController: UIViewController {
         })
     }
     
+    
+    @objc func wiggle() {
+        UIView.animate(
+            withDuration: 0.25,
+            delay: 0,
+            options: [.allowUserInteraction],
+            animations: { [weak self] in
+                self?.backImageView.transform = CGAffineTransform(
+                    scaleX: 1.04, y: 1.04
+                ).concatenating(
+                    CGAffineTransform(rotationAngle: (6.6 / 180.0) * .pi)
+                ).concatenating(
+                    CGAffineTransform(rotationAngle: -(6.6 / 180.0) * .pi)
+                )
+            },
+            completion: { [weak self] _ in
+                self?.backImageView.transform = CGAffineTransform.identity
+            }
+        )
+    }
+
+
+    // MARK: - Event handling
+    
+    @objc func cardTapped(_ sender: UIGestureRecognizer) {
+        delegate.cardTapped(self)
+    }
+
 
     /*
     // MARK: - Navigation
