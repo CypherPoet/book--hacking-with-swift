@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     
     lazy var cardPositions = makeCardPositions()
     lazy var cardImages = makeCardImages()
-    
+    lazy var particleEmitter = makeParticleEmitter()
     
     // MARK: - Lifecycle
     
@@ -71,6 +71,7 @@ class HomeViewController: UIViewController {
         currentCardState = .allFlat
     }
     
+    
     func removeCardsInView() {
         for card in cardViewControllers {
             card.view.removeFromSuperview()
@@ -92,6 +93,8 @@ class HomeViewController: UIViewController {
                 self?.view.backgroundColor = .blue
             }
         )
+        
+        gradientView.layer.addSublayer(particleEmitter)
     }
     
     
@@ -149,6 +152,33 @@ class HomeViewController: UIViewController {
             
             return image
         }
+    }
+    
+    
+    private func makeParticleEmitter() -> CAEmitterLayer {
+        let emitterLayer = CAEmitterLayer()
+        
+        emitterLayer.position = CGPoint(x: view.frame.midX, y: view.frame.minY - 50)
+        emitterLayer.emitterShape = .line
+        emitterLayer.emitterSize = CGSize(width: view.frame.width, height: 1)
+        emitterLayer.renderMode = .additive
+        
+        let emitterCell = CAEmitterCell()
+        emitterCell.birthRate = 2
+        emitterCell.lifetime = 5.0
+        emitterCell.velocity = 100
+        emitterCell.velocityRange = 50
+        emitterCell.emissionLongitude = .pi
+        emitterCell.spinRange = 5
+        emitterCell.scale = 0.5
+        emitterCell.scaleRange = 0.25
+        emitterCell.color = UIColor(white: 1, alpha: 0.1).cgColor
+        emitterCell.alphaSpeed = -0.025
+        emitterCell.contents = UIImage(named: "particle")?.cgImage
+        
+        emitterLayer.emitterCells = [emitterCell]
+        
+        return emitterLayer
     }
 }
 
