@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class HomeViewController: UIViewController {
     @IBOutlet var cardContainer: UIView!
@@ -26,6 +27,7 @@ class HomeViewController: UIViewController {
     lazy var cardPositions = makeCardPositions()
     lazy var cardImages = makeCardImages()
     lazy var particleEmitter = makeParticleEmitter()
+    lazy var backgroundMusic: AVAudioPlayer? = makeAudioPlayer()
     
     // MARK: - Lifecycle
     
@@ -36,7 +38,7 @@ class HomeViewController: UIViewController {
         setupBackground()
         loadCards()
         setupWiggling()
-        playBackgroundMusic()
+        backgroundMusic?.play()
         
         currentCardState = .allFlat
     }
@@ -137,11 +139,6 @@ class HomeViewController: UIViewController {
     }
     
     
-    func playBackgroundMusic() {
-        
-    }
-    
-    
     // MARK: - Private functions
     
     private func makeCardPositions() -> [CGPoint] {
@@ -203,6 +200,24 @@ class HomeViewController: UIViewController {
         emitterLayer.emitterCells = [emitterCell]
         
         return emitterLayer
+    }
+    
+    
+    private func makeAudioPlayer() -> AVAudioPlayer? {
+        if let audioURL = Bundle.main.url(forResource: "PhantomFromSpace", withExtension: "mp3") {
+            do {
+                let player = try AVAudioPlayer(contentsOf: audioURL)
+                player.numberOfLoops = -1
+                
+                return player
+            } catch {
+                 print("Error while trying to load background music audio: \(error.localizedDescription)")
+            }
+        } else {
+            print("Couldn't find URL for \"PhantomFromSpace.mp3\"")
+        }
+        
+        return nil
     }
 }
 
