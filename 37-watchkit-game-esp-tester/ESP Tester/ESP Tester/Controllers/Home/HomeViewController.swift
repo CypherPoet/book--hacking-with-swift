@@ -59,6 +59,24 @@ class HomeViewController: UIViewController {
         backgroundMusic?.play()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let instructions = """
+        Please ensure your Apple Watch is configured correctly. On your iPhone, \
+        launch Apple's 'Watch' configuration app then choose General > Wake Screen.
+        
+        On that screen, please disable Wake Screen On Wrist Raise, then select \
+        Wake For 70 Seconds. On your Apple Watch, please swipe up on your watch \
+        face and enable Silent Mode. You're done!
+        """
+        
+        let alertController = UIAlertController(title: "Adjust your settings", message: instructions, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        present(alertController, animated: true)
+    }
+    
     
     // MARK: - Methods
     
@@ -83,7 +101,7 @@ class HomeViewController: UIViewController {
             cardViewController.frontImageView.image = cardImage
             
             // if the new card is a star, mark is as "correct"
-            if cardImage.accessibilityIdentifier == "star" {
+            if cardImage.accessibilityIdentifier == "Star" {
                 cardViewController.isCorrect = true
             }
             
@@ -163,8 +181,7 @@ class HomeViewController: UIViewController {
         guard let touch = touches.first else { return }
         
         if let touchedCard = card(from: touch) {
-//            if isForceTouchEnabled && touch.force == touch.maximumPossibleForce {
-            if true {
+            if isForceTouchEnabled && touch.force == touch.maximumPossibleForce {
                 touchedCard.frontImageView.image = UIImage(named: "cardStar")
                 touchedCard.isCorrect = true
             }

@@ -66,6 +66,7 @@ extension InterfaceController: WCSessionDelegate {
      Whenever the watch recieves a message from the phone, it will tap the wearer's wrist
      */
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print("Watch `didReceiveMessage` called")
         WKInterfaceDevice().play(.click)
     }
 }
