@@ -8,6 +8,8 @@
 
 import UIKit
 import AVFoundation
+import WatchConnectivity
+
 
 class HomeViewController: UIViewController {
     @IBOutlet var cardContainer: UIView!
@@ -23,11 +25,25 @@ class HomeViewController: UIViewController {
     
     var currentCardState = CardState.allFlat
     var cardViewControllers: [CardViewController] = []
+    var lastMessageSentAt: CFAbsoluteTime = 0
     
     lazy var cardPositions = makeCardPositions()
     lazy var cardImages = makeCardImages()
     lazy var particleEmitter = makeParticleEmitter()
     lazy var backgroundMusic: AVAudioPlayer? = makeAudioPlayer()
+    
+    lazy var watchConnectivitySession: WCSession? = {
+        guard WCSession.isSupported() else { return nil }
+        
+        let session = WCSession.default
+        session.delegate = self
+        return session
+    }()
+    
+    var isForceTouchEnabled: Bool {
+        return view.traitCollection.forceTouchCapability == .available
+    }
+    
     
     // MARK: - Lifecycle
     
@@ -35,12 +51,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        watchConnectivitySession?.activate()
+        
         setupBackground()
         loadCards()
         setupWiggling()
         backgroundMusic?.play()
-        
-        currentCardState = .allFlat
     }
     
     
@@ -73,6 +89,8 @@ class HomeViewController: UIViewController {
             
             cardViewControllers.append(cardViewController)
         }
+        
+        currentCardState = .allFlat
     }
     
     
@@ -102,6 +120,23 @@ class HomeViewController: UIViewController {
     }
     
     
+    func setupWiggling() {
+        cardViewControllers.forEach({ card in
+            perform(#selector(wiggle), with: card, afterDelay: Double.random(in: 0...10))
+        })
+    }
+    
+    @objc func wiggle(_ card: CardViewController) {
+        card.wiggle()
+        
+        if Int.random(in: 0...1) == 1 {
+            perform(#selector(wiggle), with: card, afterDelay: Double.random(in: 1...2))
+        } else {
+            perform(#selector(wiggle), with: card, afterDelay: Double.random(in: 7...10))
+        }
+    }
+    
+    
     // MARK: - Event handling
     
     func cardTapped(_ tappedCard: CardViewController) {
@@ -122,19 +157,21 @@ class HomeViewController: UIViewController {
     }
     
     
-    func setupWiggling() {
-        cardViewControllers.forEach({ card in
-            perform(#selector(wiggle), with: card, afterDelay: Double.random(in: 0...10))
-        })
-    }
-    
-    @objc func wiggle(_ card: CardViewController) {
-        card.wiggle()
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
         
-        if Int.random(in: 0...1) == 1 {
-            perform(#selector(wiggle), with: card, afterDelay: Double.random(in: 1...2))
-        } else {
-            perform(#selector(wiggle), with: card, afterDelay: Double.random(in: 7...10))
+        guard let touch = touches.first else { return }
+        
+        if let touchedCard = card(from: touch) {
+//            if isForceTouchEnabled && touch.force == touch.maximumPossibleForce {
+            if true {
+                touchedCard.frontImageView.image = UIImage(named: "cardStar")
+                touchedCard.isCorrect = true
+            }
+            
+            if touchedCard.isCorrect {
+                sendWatchMessage()
+            }
         }
     }
     
@@ -218,6 +255,43 @@ class HomeViewController: UIViewController {
         }
         
         return nil
+    }
+    
+    private func card(from touch: UITouch) -> CardViewController? {
+        let touchLocation = touch.location(in: cardContainer)
+        
+        return cardViewControllers.first(where: { $0.view.frame.contains(touchLocation) })
+    }
+}
+
+
+// MARK: - WCSessionDelegate
+extension HomeViewController: WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        // TODO:
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        // TODO:
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        // TODO:
+    }
+    
+    func sendWatchMessage() {
+        let currentTime = CFAbsoluteTimeGetCurrent()
+        
+        if lastMessageSentAt + 0.5 > currentTime {
+            return
+        }
+        
+        if watchConnectivitySession?.isReachable ?? false {
+            let message = ["Dummy Message": "Hello, Watch"]
+            watchConnectivitySession?.sendMessage(message, replyHandler: nil)
+        }
+        
+        lastMessageSentAt = CFAbsoluteTimeGetCurrent()
     }
 }
 
