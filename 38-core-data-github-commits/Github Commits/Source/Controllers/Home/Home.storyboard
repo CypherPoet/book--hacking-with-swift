@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -74,6 +75,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGS-bc-RpM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="141.59999999999999" y="29.23538230884558"/>
+        </scene>
+        <!--Commit Detail View Controller-->
+        <scene sceneID="UY9-ju-Gx8">
+            <objects>
+                <viewController storyboardIdentifier="Commit Detail" id="FNf-23-mUR" customClass="CommitDetailViewController" customModule="Github_Commits" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="akY-EL-x5c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJw-6f-pCD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gJw-6f-pCD" firstAttribute="leading" secondItem="akY-EL-x5c" secondAttribute="leading" id="8iz-cl-3a5"/>
+                            <constraint firstAttribute="trailing" secondItem="gJw-6f-pCD" secondAttribute="trailing" id="MBs-nq-aV9"/>
+                            <constraint firstItem="gJw-6f-pCD" firstAttribute="top" secondItem="akY-EL-x5c" secondAttribute="top" id="isU-lC-ATc"/>
+                            <constraint firstItem="gJw-6f-pCD" firstAttribute="bottom" secondItem="cVz-Ha-FFs" secondAttribute="bottom" id="rHO-uM-cSm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cVz-Ha-FFs"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailLabel" destination="gJw-6f-pCD" id="jeS-y3-DFx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kKI-8T-tkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2097" y="30"/>
         </scene>
     </scenes>
 </document>

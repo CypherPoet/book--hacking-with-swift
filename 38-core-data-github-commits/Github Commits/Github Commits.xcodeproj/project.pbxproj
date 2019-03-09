@@ -12,6 +12,7 @@
 		F3A237782233870A00986BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A237702233870A00986BB6 /* AppDelegate.swift */; };
 		F3A237792233870A00986BB6 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A237732233870A00986BB6 /* Home.storyboard */; };
 		F3A2377A2233870A00986BB6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A237742233870A00986BB6 /* HomeViewController.swift */; };
+		F3A2377D2233B2A200986BB6 /* CommitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2377C2233B2A200986BB6 /* CommitDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		F3A237702233870A00986BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A237732233870A00986BB6 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		F3A237742233870A00986BB6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F3A2377C2233B2A200986BB6 /* CommitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		F3A237712233870A00986BB6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F3A2377B2233B28700986BB6 /* Commit */,
 				F3A237722233870A00986BB6 /* Home */,
 			);
 			path = Controllers;
@@ -103,6 +106,15 @@
 			);
 			path = Home;
 			sourceTree = "<group>";
+		};
+		F3A2377B2233B28700986BB6 /* Commit */ = {
+			isa = PBXGroup;
+			children = (
+				F3A2377C2233B2A200986BB6 /* CommitDetailViewController.swift */,
+			);
+			name = Commit;
+			path = Source/Controllers/Commit;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -175,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A2377D2233B2A200986BB6 /* CommitDetailViewController.swift in Sources */,
 				F3A237782233870A00986BB6 /* AppDelegate.swift in Sources */,
 				F3A2377A2233870A00986BB6 /* HomeViewController.swift in Sources */,
 			);
