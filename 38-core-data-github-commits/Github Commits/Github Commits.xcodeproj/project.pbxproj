@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F35ABF8B2233E65F00206C90 /* Commit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35ABF892233E65F00206C90 /* Commit+CoreDataClass.swift */; };
+		F35ABF8C2233E65F00206C90 /* Commit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35ABF8A2233E65F00206C90 /* Commit+CoreDataProperties.swift */; };
 		F3A237752233870A00986BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A2376B2233870A00986BB6 /* Assets.xcassets */; };
 		F3A237772233870A00986BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A2376F2233870A00986BB6 /* LaunchScreen.storyboard */; };
 		F3A237782233870A00986BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A237702233870A00986BB6 /* AppDelegate.swift */; };
 		F3A237792233870A00986BB6 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A237732233870A00986BB6 /* Home.storyboard */; };
 		F3A2377A2233870A00986BB6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A237742233870A00986BB6 /* HomeViewController.swift */; };
 		F3A2377D2233B2A200986BB6 /* CommitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2377C2233B2A200986BB6 /* CommitDetailViewController.swift */; };
+		F3A237842233C30200986BB6 /* GithubCommits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3A237822233C30200986BB6 /* GithubCommits.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F35ABF892233E65F00206C90 /* Commit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F35ABF8A2233E65F00206C90 /* Commit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F3A2375422335D8100986BB6 /* Github Commits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github Commits.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A2376B2233870A00986BB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3A2376D2233870A00986BB6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		F3A237732233870A00986BB6 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		F3A237742233870A00986BB6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F3A2377C2233B2A200986BB6 /* CommitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitDetailViewController.swift; sourceTree = "<group>"; };
+		F3A237832233C30200986BB6 /* GithubCommits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GithubCommits.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		F3A237692233870A00986BB6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				F3A237812233C30200986BB6 /* Models */,
 				F3A2376A2233870A00986BB6 /* Resources */,
 				F3A2376C2233870A00986BB6 /* Supporting Files */,
 				F3A2376E2233870A00986BB6 /* App Start */,
@@ -115,6 +122,16 @@
 			name = Commit;
 			path = Source/Controllers/Commit;
 			sourceTree = SOURCE_ROOT;
+		};
+		F3A237812233C30200986BB6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F35ABF892233E65F00206C90 /* Commit+CoreDataClass.swift */,
+				F35ABF8A2233E65F00206C90 /* Commit+CoreDataProperties.swift */,
+				F3A237822233C30200986BB6 /* GithubCommits.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -189,7 +206,10 @@
 			files = (
 				F3A2377D2233B2A200986BB6 /* CommitDetailViewController.swift in Sources */,
 				F3A237782233870A00986BB6 /* AppDelegate.swift in Sources */,
+				F35ABF8B2233E65F00206C90 /* Commit+CoreDataClass.swift in Sources */,
 				F3A2377A2233870A00986BB6 /* HomeViewController.swift in Sources */,
+				F35ABF8C2233E65F00206C90 /* Commit+CoreDataProperties.swift in Sources */,
+				F3A237842233C30200986BB6 /* GithubCommits.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +390,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F3A237822233C30200986BB6 /* GithubCommits.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F3A237832233C30200986BB6 /* GithubCommits.xcdatamodel */,
+			);
+			currentVersion = F3A237832233C30200986BB6 /* GithubCommits.xcdatamodel */;
+			path = GithubCommits.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F3A2374C22335D8100986BB6 /* Project object */;
 }
