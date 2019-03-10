@@ -29,8 +29,14 @@ class HomeViewController: UITableViewController {
         DispatchQueue.global(qos: .background).async { [weak self] in
             self?.fetchCommits()
         }
+        
+        loadSavedData()
     }
     
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commits.count
@@ -40,7 +46,7 @@ class HomeViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         let commit = commits[indexPath.row]
         
-        cell.textLabel?.text = commit.sha
+        cell.textLabel?.text = commit.message
         cell.detailTextLabel?.text = commit.date.description
         
         return cell
@@ -55,7 +61,7 @@ class HomeViewController: UITableViewController {
                 let data = try Data(contentsOf: commitsURL)
                 parseCommits(fromJSON: data)
             } catch {
-                fatalError("Error fetching data from Github API: \(error.localizedDescription)")
+                showError(title: "Error fetching data from Github API", message: error.localizedDescription)
             }
         } else {
             fatalError("Error constructing URL to GitHub API")
@@ -74,15 +80,32 @@ class HomeViewController: UITableViewController {
         decoder.userInfo[mangedObjectContextKey] = managedObjectContext
         
         do {
-            commits = try decoder.decode([Commit].self, from: json)
-            print("Received \(commits.count) new commits")
+            let commits = try decoder.decode([Commit].self, from: json)
+            print("Parsed \(commits.count) new commits from API")
             
             DispatchQueue.main.async { [weak self] in
-                // TODO: more with commits here?
                 self?.saveData()
+                self?.loadSavedData()
             }
         } catch {
-            print("Error while parsing `Commit` json data:\n\n\(error.localizedDescription)")
+            showError(title: "Error while parsing `Commit` json data", message: error.localizedDescription)
+        }
+    }
+    
+    
+    func loadSavedData() {
+        let fetchRequest = Commit.createFetchRequest()
+        let sort1 = NSSortDescriptor(key: "date", ascending: false)
+        let sort2 = NSSortDescriptor(key: "message", ascending: true)
+        
+        fetchRequest.sortDescriptors = [sort1, sort2]
+        
+        do {
+            commits = try dataContainer.viewContext.fetch(fetchRequest)
+            print("Fetched \(commits.count) from our persistent container context")
+            tableView.reloadData()
+        } catch {
+            showError(title: "Error while fetching data from persistent container context", message: error.localizedDescription)
         }
     }
     
@@ -94,7 +117,7 @@ class HomeViewController: UITableViewController {
             print("Saving persistent data container view context")
             try dataContainer.viewContext.save()
         } catch {
-            print("Error while saving persistent data store: \(error.localizedDescription)")
+            showError(title: "Error while saving persistent data store", message: error.localizedDescription)
         }
     }
 }

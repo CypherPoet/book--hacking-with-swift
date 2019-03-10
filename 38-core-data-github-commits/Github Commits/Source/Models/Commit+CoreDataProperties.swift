@@ -13,7 +13,7 @@ import CoreData
 
 extension Commit {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Commit> {
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<Commit> {
         return NSFetchRequest<Commit>(entityName: "Commit")
     }
 
