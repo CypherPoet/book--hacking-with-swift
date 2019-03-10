@@ -13,7 +13,7 @@
         <!--Home View Controller-->
         <scene sceneID="wYa-YB-reN">
             <objects>
-                <tableViewController id="vEB-cP-3lI" customClass="HomeViewController" customModule="Github_Commits" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Home View Controller" title="Home View Controller" id="vEB-cP-3lI" customClass="HomeViewController" customModule="Github_Commits" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vmh-tG-hzJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,6 +41,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DTv-IH-ghm">
+                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>

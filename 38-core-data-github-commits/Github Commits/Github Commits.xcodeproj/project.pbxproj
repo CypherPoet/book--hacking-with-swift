@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F35ABF8B2233E65F00206C90 /* Commit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35ABF892233E65F00206C90 /* Commit+CoreDataClass.swift */; };
 		F35ABF8C2233E65F00206C90 /* Commit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35ABF8A2233E65F00206C90 /* Commit+CoreDataProperties.swift */; };
+		F35ABF8E2233F5CE00206C90 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35ABF8D2233F5CE00206C90 /* GithubAPI.swift */; };
+		F35ABF912234BDE000206C90 /* CodingUserInfoKey+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35ABF902234BDE000206C90 /* CodingUserInfoKey+Util.swift */; };
 		F3A237752233870A00986BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A2376B2233870A00986BB6 /* Assets.xcassets */; };
 		F3A237772233870A00986BB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A2376F2233870A00986BB6 /* LaunchScreen.storyboard */; };
 		F3A237782233870A00986BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A237702233870A00986BB6 /* AppDelegate.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		F35ABF892233E65F00206C90 /* Commit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F35ABF8A2233E65F00206C90 /* Commit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F35ABF8D2233F5CE00206C90 /* GithubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
+		F35ABF902234BDE000206C90 /* CodingUserInfoKey+Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Util.swift"; sourceTree = "<group>"; };
 		F3A2375422335D8100986BB6 /* Github Commits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github Commits.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A2376B2233870A00986BB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3A2376D2233870A00986BB6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F35ABF8F2234BDCC00206C90 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F35ABF902234BDE000206C90 /* CodingUserInfoKey+Util.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F3A2374B22335D8100986BB6 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +74,7 @@
 		F3A237692233870A00986BB6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				F35ABF8F2234BDCC00206C90 /* Extensions */,
 				F3A237812233C30200986BB6 /* Models */,
 				F3A2376A2233870A00986BB6 /* Resources */,
 				F3A2376C2233870A00986BB6 /* Supporting Files */,
@@ -83,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				F3A2376D2233870A00986BB6 /* Info.plist */,
+				F35ABF8D2233F5CE00206C90 /* GithubAPI.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -204,11 +218,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F35ABF912234BDE000206C90 /* CodingUserInfoKey+Util.swift in Sources */,
 				F3A2377D2233B2A200986BB6 /* CommitDetailViewController.swift in Sources */,
 				F3A237782233870A00986BB6 /* AppDelegate.swift in Sources */,
 				F35ABF8B2233E65F00206C90 /* Commit+CoreDataClass.swift in Sources */,
 				F3A2377A2233870A00986BB6 /* HomeViewController.swift in Sources */,
 				F35ABF8C2233E65F00206C90 /* Commit+CoreDataProperties.swift in Sources */,
+				F35ABF8E2233F5CE00206C90 /* GithubAPI.swift in Sources */,
 				F3A237842233C30200986BB6 /* GithubCommits.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

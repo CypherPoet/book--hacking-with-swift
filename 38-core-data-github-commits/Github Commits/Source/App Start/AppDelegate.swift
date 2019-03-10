@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    /// Persistent data container for Core Data Model
+    lazy var persistentContainer: NSPersistentContainer = makePersistentContainer()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setupRootVC()
         return true
     }
 
@@ -41,6 +46,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    
+    // MARK: - Private functions
+    
+    private func makePersistentContainer() -> NSPersistentContainer {
+        let container = NSPersistentContainer(name: "GithubCommits")
+        
+        container.loadPersistentStores() { (description, error) in
+            if let error = error {
+                fatalError("Error fetching data from Github API: \(error.localizedDescription)")
+            }
+        }
+        
+        return container
+    }
+    
+    private func setupRootVC() {
+        if let homeViewController = window?.rootViewController?.children.first as? HomeViewController {
+            homeViewController.dataContainer = persistentContainer
+        }
+    }
 }
 
