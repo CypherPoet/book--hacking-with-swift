@@ -10,12 +10,22 @@ import UIKit
 import CoreData
 
 class HomeViewController: UITableViewController {
+    enum CommitFilter {
+        static let bugFix = NSPredicate(format: "message CONTAINS[c] 'fix'")
+        static let notPR = NSPredicate(format: "NOT message BEGINSWITH 'Merge pull request'")
+        static let last24Hours = NSPredicate(format: "date > %@", Date().addingTimeInterval(-86_400) as NSDate)
+        static let allCommits: NSPredicate? = nil
+    }
+    
     // MARK: - Instance Properties
     
     let cellReuseIdentifier = "Commit Cell"
     var dataContainer: NSPersistentContainer!
     var commits: [Commit] = []
     
+    var currentCommitFilter: NSPredicate? = CommitFilter.allCommits {
+        didSet { loadSavedData() }
+    }
     
     // MARK: - Lifecycle
     
@@ -33,6 +43,8 @@ class HomeViewController: UITableViewController {
         loadSavedData()
     }
     
+    
+    // MARK: - Data Source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -99,6 +111,7 @@ class HomeViewController: UITableViewController {
         let sort2 = NSSortDescriptor(key: "message", ascending: true)
         
         fetchRequest.sortDescriptors = [sort1, sort2]
+        fetchRequest.predicate = currentCommitFilter
         
         do {
             commits = try dataContainer.viewContext.fetch(fetchRequest)
@@ -119,6 +132,34 @@ class HomeViewController: UITableViewController {
         } catch {
             showError(title: "Error while saving persistent data store", message: error.localizedDescription)
         }
+    }
+    
+    
+    
+    // MARK: - Event handling
+
+    @IBAction func filterButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Filter Commits", message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Bug Fixes Only", style: .default) { [weak self] _ in
+            self?.currentCommitFilter = CommitFilter.bugFix
+        })
+        
+        alertController.addAction(UIAlertAction(title: "Ignore Pull Requests", style: .default) { [weak self] _ in
+            self?.currentCommitFilter = CommitFilter.notPR
+        })
+
+        alertController.addAction(UIAlertAction(title: "Last 24 Hours", style: .default) { [weak self] _ in
+            self?.currentCommitFilter = CommitFilter.last24Hours
+        })
+        
+        alertController.addAction(UIAlertAction(title: "Show All Commits", style: .default) { [weak self] _ in
+            self?.currentCommitFilter = CommitFilter.allCommits
+        })
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        present(alertController, animated: true)
     }
 }
 

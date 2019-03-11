@@ -53,7 +53,13 @@
                             <outlet property="delegate" destination="vEB-cP-3lI" id="M47-Ox-J61"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="dIU-Zf-Jy8"/>
+                    <navigationItem key="navigationItem" id="dIU-Zf-Jy8">
+                        <barButtonItem key="rightBarButtonItem" title="🌪 Filter" id="8pG-CY-wFE">
+                            <connections>
+                                <action selector="filterButtonTapped:" destination="vEB-cP-3lI" id="BB8-Ij-aJt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cCb-IM-2qG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
