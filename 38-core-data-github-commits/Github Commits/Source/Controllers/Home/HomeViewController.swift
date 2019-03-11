@@ -81,7 +81,7 @@ class HomeViewController: UITableViewController {
         
         do {
             let commits = try decoder.decode([Commit].self, from: json)
-            print("Parsed \(commits.count) new commits from API")
+            print("Parsed \(commits.count) new commits from the API")
             
             DispatchQueue.main.async { [weak self] in
                 self?.saveData()

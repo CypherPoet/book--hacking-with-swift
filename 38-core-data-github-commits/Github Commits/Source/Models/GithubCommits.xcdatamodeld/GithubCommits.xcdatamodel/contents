@@ -5,6 +5,11 @@
         <attribute name="message" attributeType="String" syncable="YES"/>
         <attribute name="sha" attributeType="String" syncable="YES"/>
         <attribute name="url" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="sha"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="Commit" positionX="-63" positionY="-18" width="128" height="105"/>

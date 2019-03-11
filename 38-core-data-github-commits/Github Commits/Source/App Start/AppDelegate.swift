@@ -56,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let error = error {
                 fatalError("Error fetching data from Github API: \(error.localizedDescription)")
             }
+            
+            container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         }
         
         return container
