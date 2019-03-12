@@ -13,7 +13,7 @@ import CoreData
 @objc(Commit)
 public class Commit: NSManagedObject, Decodable {
     
-    enum CodingKeys: String, CodingKey {
+    enum RootCodingKeys: String, CodingKey {
         case commit
         case sha
         case url = "html_url"
@@ -26,6 +26,7 @@ public class Commit: NSManagedObject, Decodable {
     
     enum CommitterCodingKeys: String, CodingKey {
         case date
+        case name
     }
     
     
@@ -42,7 +43,7 @@ public class Commit: NSManagedObject, Decodable {
         
         self.init(entity: entity, insertInto: managedObjectContext)
         
-        let rootContainer = try decoder.container(keyedBy: CodingKeys.self)
+        let rootContainer = try decoder.container(keyedBy: RootCodingKeys.self)
         let commitContainer = try rootContainer.nestedContainer(keyedBy: CommitCodingKeys.self, forKey: .commit)
         let committerContainer = try commitContainer.nestedContainer(keyedBy: CommitterCodingKeys.self, forKey: .committer)
         
@@ -53,9 +54,28 @@ public class Commit: NSManagedObject, Decodable {
         self.date = ISO8601DateFormatter().date(from: dateString) ?? Date()
         
         self.message = try commitContainer.decode(String.self, forKey: .message)
+
+        let authorName = try committerContainer.decode(String.self, forKey: .name)
+        self.author = try fetchAuthor(named: authorName, in: managedObjectContext, with: decoder)
     }
 }
 
+extension Commit {
+    func fetchAuthor(
+        named authorName: String,
+        in context: NSManagedObjectContext,
+        with decoder: Decoder
+    ) throws -> Author {
+        if let authors = try? context.fetch(Author.sortedFetchBy(name: authorName)) {
+            if !authors.isEmpty {
+                return authors.first!
+            }
+        }
+        
+        let author = try Author(from: decoder)
+        return author
+    }
+}
 
 //// MARK: - Encodable
 //

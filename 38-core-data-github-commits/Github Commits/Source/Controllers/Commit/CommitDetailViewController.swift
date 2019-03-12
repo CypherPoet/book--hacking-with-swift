@@ -11,15 +11,30 @@ import UIKit
 class CommitDetailViewController: UIViewController {
     @IBOutlet var detailLabel: UILabel!
     
+    
+    // MARK: - Instance Properties
+    
+    var commit: Commit!
+    
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        guard commit != nil else { return }
+        
+        setupUI()
+    }
+    
+
+    // MARK: - Core Methods
+    
+    func setupUI() {
+        detailLabel.text = commit.message
     }
     
     
-    
-
     /*
     // MARK: - Navigation
 
@@ -29,5 +44,4 @@ class CommitDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

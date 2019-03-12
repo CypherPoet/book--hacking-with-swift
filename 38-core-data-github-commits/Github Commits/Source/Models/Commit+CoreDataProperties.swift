@@ -12,14 +12,74 @@ import CoreData
 
 
 extension Commit {
-
     @nonobjc public class func createFetchRequest() -> NSFetchRequest<Commit> {
         return NSFetchRequest<Commit>(entityName: "Commit")
     }
-
+    
+    // MARK: - Attributes
+    
     @NSManaged public var date: Date
     @NSManaged public var message: String
     @NSManaged public var sha: String
     @NSManaged public var url: String
 
+    
+    // MARK: - Relationships
+    
+    @NSManaged public var author: Author
+}
+
+
+
+// MARK: - Fetch Request Extensions
+
+extension Commit {
+    enum Predicate {
+        static let bugFix = NSPredicate(format: "message CONTAINS[c] 'fix'")
+        static let notPR = NSPredicate(format: "NOT message BEGINSWITH 'Merge pull request'")
+        static let last24Hours = NSPredicate(format: "date > %@", Date().addingTimeInterval(-86_400) as NSDate)
+        static let durianCommits = NSPredicate(format: "author.name == 'Joe Groff'")
+        static let allCommits: NSPredicate? = nil
+    }
+    
+    
+    static var defaultSortDescriptors: [NSSortDescriptor] = [
+        NSSortDescriptor(key: "date", ascending: false),
+        NSSortDescriptor(key: "message", ascending: true),
+    ]
+
+    static var sortedFetchRequest: NSFetchRequest<Commit> {
+        let request = createFetchRequest()
+        
+        request.sortDescriptors = defaultSortDescriptors
+        
+        return request
+    }
+    
+    static var newestCommitRequest: NSFetchRequest<Commit> {
+        let request = createFetchRequest()
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        
+        request.sortDescriptors = [sort]
+        request.fetchLimit = 1
+        
+        return request
+    }
+}
+
+
+// MARK: - Computed properties
+
+extension Commit {
+    static func newestCommitDate(in context: NSManagedObjectContext) -> Date {
+        let request = newestCommitRequest
+        
+        if let commits = try? context.fetch(request) {
+            if !commits.isEmpty {
+                return commits[0].date.addingTimeInterval(1)
+            }
+        }
+        
+        return Date(timeIntervalSince1970: 0)
+    }
 }

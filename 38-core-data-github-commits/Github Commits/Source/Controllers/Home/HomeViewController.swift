@@ -10,20 +10,15 @@ import UIKit
 import CoreData
 
 class HomeViewController: UITableViewController {
-    enum CommitFilter {
-        static let bugFix = NSPredicate(format: "message CONTAINS[c] 'fix'")
-        static let notPR = NSPredicate(format: "NOT message BEGINSWITH 'Merge pull request'")
-        static let last24Hours = NSPredicate(format: "date > %@", Date().addingTimeInterval(-86_400) as NSDate)
-        static let allCommits: NSPredicate? = nil
-    }
     
     // MARK: - Instance Properties
     
     let cellReuseIdentifier = "Commit Cell"
+    let detailViewIdentifier = "Commit Detail"
     var dataContainer: NSPersistentContainer!
     var commits: [Commit] = []
     
-    var currentCommitFilter: NSPredicate? = CommitFilter.allCommits {
+    var currentCommitFilter: NSPredicate? = Commit.Predicate.allCommits {
         didSet { loadSavedData() }
     }
     
@@ -42,9 +37,12 @@ class HomeViewController: UITableViewController {
         
         loadSavedData()
     }
+}
     
-    
-    // MARK: - Data Source
+
+// MARK: - Data Source
+
+extension HomeViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -59,16 +57,47 @@ class HomeViewController: UITableViewController {
         let commit = commits[indexPath.row]
         
         cell.textLabel?.text = commit.message
-        cell.detailTextLabel?.text = commit.date.description
+        cell.detailTextLabel?.text = "By \(commit.author.name) on \(commit.date.description)"
         
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let detailViewController = storyboard?
+            .instantiateViewController(withIdentifier: detailViewIdentifier)
+            as? CommitDetailViewController
+        {
+            detailViewController.commit = commits[indexPath.row]
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
+    }
     
-    // MARK: - Core Methods
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let commit = commits[indexPath.row]
+            
+            dataContainer.viewContext.delete(commit)
+            commits.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            saveData()
+        }
+    }
+}
+
+    
+// MARK: - Helper Methods
+
+private extension HomeViewController {
     
     func fetchCommits() {
-        if let commitsURL = URL(string: "\(GithubAPI.commits)?per_page=100") {
+        let newestCommitDateString = ISO8601DateFormatter()
+            .string(from: Commit.newestCommitDate(in: dataContainer.viewContext))
+        
+        let urlString = "\(GithubAPI.commits)?" +
+            "\(GithubAPI.QueryParams.perPage)=1000&" +
+            "\(GithubAPI.QueryParams.sinceDate)=\(newestCommitDateString)"
+        
+        if let commitsURL = URL(string: urlString) {
             do {
                 let data = try Data(contentsOf: commitsURL)
                 parseCommits(fromJSON: data)
@@ -106,11 +135,8 @@ class HomeViewController: UITableViewController {
     
     
     func loadSavedData() {
-        let fetchRequest = Commit.createFetchRequest()
-        let sort1 = NSSortDescriptor(key: "date", ascending: false)
-        let sort2 = NSSortDescriptor(key: "message", ascending: true)
+        let fetchRequest = Commit.sortedFetchRequest
         
-        fetchRequest.sortDescriptors = [sort1, sort2]
         fetchRequest.predicate = currentCommitFilter
         
         do {
@@ -133,29 +159,36 @@ class HomeViewController: UITableViewController {
             showError(title: "Error while saving persistent data store", message: error.localizedDescription)
         }
     }
+}
     
-    
-    
-    // MARK: - Event handling
 
+// MARK: - Event handling
+
+extension HomeViewController {
+    
     @IBAction func filterButtonTapped(_ sender: Any) {
         let alertController = UIAlertController(title: "Filter Commits", message: nil, preferredStyle: .actionSheet)
         
         alertController.addAction(UIAlertAction(title: "Bug Fixes Only", style: .default) { [weak self] _ in
-            self?.currentCommitFilter = CommitFilter.bugFix
+            self?.currentCommitFilter = Commit.Predicate.bugFix
         })
         
         alertController.addAction(UIAlertAction(title: "Ignore Pull Requests", style: .default) { [weak self] _ in
-            self?.currentCommitFilter = CommitFilter.notPR
+            self?.currentCommitFilter = Commit.Predicate.notPR
         })
 
         alertController.addAction(UIAlertAction(title: "Last 24 Hours", style: .default) { [weak self] _ in
-            self?.currentCommitFilter = CommitFilter.last24Hours
+            self?.currentCommitFilter = Commit.Predicate.last24Hours
         })
         
         alertController.addAction(UIAlertAction(title: "Show All Commits", style: .default) { [weak self] _ in
-            self?.currentCommitFilter = CommitFilter.allCommits
+            self?.currentCommitFilter = Commit.Predicate.allCommits
         })
+        
+        alertController.addAction(UIAlertAction(title: "Show Only Durian Commits", style: .default) { [weak self] _ in
+            self?.currentCommitFilter = Commit.Predicate.durianCommits
+        })
+
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
