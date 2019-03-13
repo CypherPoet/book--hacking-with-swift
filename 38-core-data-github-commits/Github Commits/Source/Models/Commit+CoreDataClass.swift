@@ -60,11 +60,10 @@ public class Commit: NSManagedObject, Decodable {
     }
 }
 
-extension Commit {
+
+private extension Commit {
     func fetchAuthor(
-        named authorName: String,
-        in context: NSManagedObjectContext,
-        with decoder: Decoder
+        named authorName: String, in context: NSManagedObjectContext, with decoder: Decoder
     ) throws -> Author {
         if let authors = try? context.fetch(Author.sortedFetchBy(name: authorName)) {
             if !authors.isEmpty {

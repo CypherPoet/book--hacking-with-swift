@@ -15,12 +15,14 @@ class HomeViewController: UITableViewController {
     
     let cellReuseIdentifier = "Commit Cell"
     let detailViewIdentifier = "Commit Detail"
+    
     var dataContainer: NSPersistentContainer!
-    var commits: [Commit] = []
+    lazy var fetchedResultsController = makeFetchedResultsController()
     
     var currentCommitFilter: NSPredicate? = Commit.Predicate.allCommits {
         didSet { loadSavedData() }
     }
+    
     
     // MARK: - Lifecycle
     
@@ -45,16 +47,28 @@ class HomeViewController: UITableViewController {
 extension HomeViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return fetchedResultsController.sections?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sections = fetchedResultsController.sections else {
+            fatalError("No sections in `fetchedResultsController`")
+        }
+        
+        return sections[section].name
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commits.count
+        guard let sections = fetchedResultsController.sections else {
+            fatalError("No sections in `fetchedResultsController`")
+        }
+        
+        return sections[section].numberOfObjects
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        let commit = commits[indexPath.row]
+        let commit = fetchedResultsController.object(at: indexPath)
         
         cell.textLabel?.text = commit.message
         cell.detailTextLabel?.text = "By \(commit.author.name) on \(commit.date.description)"
@@ -67,19 +81,17 @@ extension HomeViewController {
             .instantiateViewController(withIdentifier: detailViewIdentifier)
             as? CommitDetailViewController
         {
-            detailViewController.commit = commits[indexPath.row]
+            detailViewController.commit = fetchedResultsController.object(at: indexPath)
             navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let commit = commits[indexPath.row]
+            let commit = fetchedResultsController.object(at: indexPath)
             
             dataContainer.viewContext.delete(commit)
-            commits.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            saveData()
+            saveDataContext()
         }
     }
 }
@@ -102,7 +114,7 @@ private extension HomeViewController {
                 let data = try Data(contentsOf: commitsURL)
                 parseCommits(fromJSON: data)
             } catch {
-                showError(title: "Error fetching data from Github API", message: error.localizedDescription)
+                showError(error, title: "Error fetching data from Github API")
             }
         } else {
             fatalError("Error constructing URL to GitHub API")
@@ -125,39 +137,54 @@ private extension HomeViewController {
             print("Parsed \(commits.count) new commits from the API")
             
             DispatchQueue.main.async { [weak self] in
-                self?.saveData()
+                self?.saveDataContext()
                 self?.loadSavedData()
             }
         } catch {
-            showError(title: "Error while parsing `Commit` json data", message: error.localizedDescription)
+            showError(error, title: "Error while parsing `Commit` json data")
         }
     }
     
     
     func loadSavedData() {
-        let fetchRequest = Commit.sortedFetchRequest
-        
-        fetchRequest.predicate = currentCommitFilter
-        
         do {
-            commits = try dataContainer.viewContext.fetch(fetchRequest)
-            print("Fetched \(commits.count) from our persistent container context")
+            try fetchedResultsController.performFetch()
             tableView.reloadData()
         } catch {
-            showError(title: "Error while fetching data from persistent container context", message: error.localizedDescription)
+            showError(error, title: "Error while fetching data from persistent container context")
         }
     }
     
     
-    func saveData() {
+    func saveDataContext() {
         guard dataContainer.viewContext.hasChanges else { return }
         
         do {
             print("Saving persistent data container view context")
             try dataContainer.viewContext.save()
         } catch {
-            showError(title: "Error while saving persistent data store", message: error.localizedDescription)
+            showError(error, title: "Error while saving persistent data store")
         }
+    }
+    
+    
+    func makeFetchedResultsController() -> NSFetchedResultsController<Commit> {
+        let fetchRequest = Commit.dateSortedFetchRequest
+        
+        fetchRequest.sortDescriptors?.insert(Commit.SortDescriptor.authorNameAsc, at: 0)
+        fetchRequest.predicate = currentCommitFilter
+        fetchRequest.fetchBatchSize = 20
+        
+        fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: dataContainer.viewContext,
+            sectionNameKeyPath: "author.name",
+            cacheName: nil
+        )
+        
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
     }
 }
     
@@ -196,3 +223,25 @@ extension HomeViewController {
     }
 }
 
+
+// MARK: - NSFetchedResultsControllerDelegate
+
+extension HomeViewController: NSFetchedResultsControllerDelegate {
+
+    func controller(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+        didChange anObject: Any,
+        at indexPath: IndexPath?,
+        for type: NSFetchedResultsChangeType,
+        newIndexPath: IndexPath?
+    ) {
+        guard let indexPath = indexPath else { return }
+        
+        switch type {
+        case .delete:
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        default:
+            break
+        }
+    }
+}

@@ -19,6 +19,8 @@
 		F3A2377A2233870A00986BB6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A237742233870A00986BB6 /* HomeViewController.swift */; };
 		F3A2377D2233B2A200986BB6 /* CommitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2377C2233B2A200986BB6 /* CommitDetailViewController.swift */; };
 		F3A237842233C30200986BB6 /* GithubCommits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3A237822233C30200986BB6 /* GithubCommits.xcdatamodeld */; };
+		F3E26D5B2238C78800AE182D /* Author+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E26D592238C78800AE182D /* Author+CoreDataProperties.swift */; };
+		F3E26D5C2238C78800AE182D /* Author+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E26D5A2238C78800AE182D /* Author+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		F3A237742233870A00986BB6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F3A2377C2233B2A200986BB6 /* CommitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitDetailViewController.swift; sourceTree = "<group>"; };
 		F3A237832233C30200986BB6 /* GithubCommits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GithubCommits.xcdatamodel; sourceTree = "<group>"; };
+		F3E26D592238C78800AE182D /* Author+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F3E26D5A2238C78800AE182D /* Author+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 		F3A237812233C30200986BB6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F3E26D5A2238C78800AE182D /* Author+CoreDataClass.swift */,
+				F3E26D592238C78800AE182D /* Author+CoreDataProperties.swift */,
 				F35ABF892233E65F00206C90 /* Commit+CoreDataClass.swift */,
 				F35ABF8A2233E65F00206C90 /* Commit+CoreDataProperties.swift */,
 				F3A237822233C30200986BB6 /* GithubCommits.xcdatamodeld */,
@@ -228,7 +234,9 @@
 				F3A2377A2233870A00986BB6 /* HomeViewController.swift in Sources */,
 				F35ABF8C2233E65F00206C90 /* Commit+CoreDataProperties.swift in Sources */,
 				F35ABFD22235548400206C90 /* UIViewController+Util.swift in Sources */,
+				F3E26D5C2238C78800AE182D /* Author+CoreDataClass.swift in Sources */,
 				F35ABF8E2233F5CE00206C90 /* GithubAPI.swift in Sources */,
+				F3E26D5B2238C78800AE182D /* Author+CoreDataProperties.swift in Sources */,
 				F3A237842233C30200986BB6 /* GithubCommits.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

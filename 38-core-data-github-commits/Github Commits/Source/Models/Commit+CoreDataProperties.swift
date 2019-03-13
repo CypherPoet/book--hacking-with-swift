@@ -31,7 +31,7 @@ extension Commit {
 
 
 
-// MARK: - Fetch Request Extensions
+// MARK: - Fetch Helpers
 
 extension Commit {
     enum Predicate {
@@ -42,17 +42,16 @@ extension Commit {
         static let allCommits: NSPredicate? = nil
     }
     
+    enum SortDescriptor {
+        static let dateDesc = NSSortDescriptor(key: "date", ascending: false)
+        static let messageAsc = NSSortDescriptor(key: "message", ascending: true)
+        static let authorNameAsc = NSSortDescriptor(key: "author.name", ascending: true)
+    }
     
-    static var defaultSortDescriptors: [NSSortDescriptor] = [
-        NSSortDescriptor(key: "date", ascending: false),
-        NSSortDescriptor(key: "message", ascending: true),
-    ]
-
-    static var sortedFetchRequest: NSFetchRequest<Commit> {
+    static var dateSortedFetchRequest: NSFetchRequest<Commit> {
         let request = createFetchRequest()
         
-        request.sortDescriptors = defaultSortDescriptors
-        
+        request.sortDescriptors = [SortDescriptor.dateDesc, SortDescriptor.messageAsc]
         return request
     }
     
