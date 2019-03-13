@@ -62,7 +62,7 @@
 | 36   | 🎮<br>[Crashy Plane](/36-crashy-plane)             | scale modes, parallax scrolling, SpriteKit Physics, SKPhysicsContactDelegate, SKPhysicsBody, SKAudioNode, managing game state with enums, restarting entire game scenes  | ✅ |
 | 37   | 🎮<br>[WatchKit ESP Tester](/37-watchkit-game-esp-tester)           | View Controller containment, WatchKit Extensions, 3D Touch, CAEmitterLayer, CAGradientLayer, @IBDesignable, @IBInspectable, transition(with:), WCSession, WKInterfaceLabel, WKInterfaceButton, WCSessionDelegate overrides, passing messages between a phone and a paired watch | ✅ |
 | 38   | 🛠<br>[Github Commits (Core Data)](/38-core-data-github-commits) | All about Core Data 💪, NSFetchRequest, NSManagedObject, NSManagedObjectContext, NSPredicate, NSSortDescriptor, NSFetchedResultsController, ISO8601DateFormatter, Core Data relationships and attribute constraints | ✅ |
-| 39   | 🛠<br>[Unit testing with XCTest](/39-swift-unit-tests) | XCTest, `filter()`, Test-Driven Development, Functional Programming, XCTestCase, Setting a Baseline, NSCountedSet, XCUIApplication(), XCUIElementQuery, UI Test Recording | 🔴 |
+| 39   | 🛠<br>[Unit testing with XCTest](/39-ios-unit-testing) | XCTest, Test-Driven Development in iOS, XCTestCase, setting a baseline, `measure()` NSCountedSet, XCUIApplication(), XCUIElementQuery, UI test recording | 🚧 |
 
 
 ## Challenges 🥅
