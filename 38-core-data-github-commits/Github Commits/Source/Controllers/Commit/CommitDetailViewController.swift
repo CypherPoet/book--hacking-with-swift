@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class CommitDetailViewController: UIViewController {
     @IBOutlet var detailLabel: UILabel!
+    @IBOutlet var moreCommitsButton: UIButton!
     
-    
+
     // MARK: - Instance Properties
     
     var commit: Commit!
+    var persistentDataContainer: NSPersistentContainer!
     
     
     // MARK: - Lifecycle
@@ -26,22 +29,32 @@ class CommitDetailViewController: UIViewController {
         
         setupUI()
     }
-    
+}
 
-    // MARK: - Core Methods
-    
+
+// MARK: - Core Methods
+
+extension CommitDetailViewController {
     func setupUI() {
         detailLabel.text = commit.message
+//        moreCommitsButton.setTitle("More Commits by \(commit.author.name)", for: .normal)
     }
-    
-    
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
+// MARK: - Event handling
+
+extension CommitDetailViewController {
+    @IBAction func moreCommitsButtonTapped(_ sender: Any) {
+        guard let viewController = storyboard?
+            .instantiateViewController(withIdentifier: StoryboardID.ViewController.authorCommitsList)
+            as? AuthorCommitsListViewController
+        else {
+            return
+        }
+        
+        viewController.author = commit.author
+        viewController.persistentDataContainer = persistentDataContainer
+        navigationController?.pushViewController(viewController, animated: true)
     }
-    */
 }

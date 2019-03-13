@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lhd-hA-v1z">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,28 +13,28 @@
         <!--Home View Controller-->
         <scene sceneID="wYa-YB-reN">
             <objects>
-                <tableViewController storyboardIdentifier="Home View Controller" title="Home View Controller" id="vEB-cP-3lI" customClass="HomeViewController" customModule="Github_Commits" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Home Commits List" title="Home View Controller" id="vEB-cP-3lI" customClass="HomeViewController" customModule="Github_Commits" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vmh-tG-hzJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Commit Cell" textLabel="302-g7-edJ" detailTextLabel="pTb-04-MF5" imageView="DTv-IH-ghm" style="IBUITableViewCellStyleSubtitle" id="GSH-KV-aIx">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GSH-KV-aIx" id="AA5-Mk-57N">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="302-g7-edJ">
-                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="20" y="5" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pTb-04-MF5">
-                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="20" y="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -71,7 +71,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lhd-hA-v1z" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u7q-gq-neo">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -88,11 +88,26 @@
             <objects>
                 <viewController storyboardIdentifier="Commit Detail" id="FNf-23-mUR" customClass="CommitDetailViewController" customModule="Github_Commits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="akY-EL-x5c">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJw-6f-pCD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjh-5x-bHf">
+                                <rect key="frame" x="69" y="758" width="277" height="55"/>
+                                <color key="backgroundColor" red="0.45880425499999999" green="0.42457667529999998" blue="0.85103040929999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="277" id="Gzy-Jf-Xeu"/>
+                                    <constraint firstAttribute="height" constant="55" id="L0T-iZ-jRL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="All Author Commits">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="moreCommitsButtonTapped:" destination="FNf-23-mUR" eventType="touchUpInside" id="9Jb-jz-fom"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJw-6f-pCD">
+                                <rect key="frame" x="36" y="44" width="343" height="454"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -100,20 +115,67 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gJw-6f-pCD" firstAttribute="leading" secondItem="akY-EL-x5c" secondAttribute="leading" id="8iz-cl-3a5"/>
-                            <constraint firstAttribute="trailing" secondItem="gJw-6f-pCD" secondAttribute="trailing" id="MBs-nq-aV9"/>
-                            <constraint firstItem="gJw-6f-pCD" firstAttribute="top" secondItem="akY-EL-x5c" secondAttribute="top" id="isU-lC-ATc"/>
-                            <constraint firstItem="gJw-6f-pCD" firstAttribute="bottom" secondItem="cVz-Ha-FFs" secondAttribute="bottom" id="rHO-uM-cSm"/>
+                            <constraint firstItem="gJw-6f-pCD" firstAttribute="leading" secondItem="akY-EL-x5c" secondAttribute="leading" constant="36" id="8iz-cl-3a5"/>
+                            <constraint firstAttribute="trailing" secondItem="gJw-6f-pCD" secondAttribute="trailing" constant="35" id="MBs-nq-aV9"/>
+                            <constraint firstItem="gJw-6f-pCD" firstAttribute="top" secondItem="akY-EL-x5c" secondAttribute="top" constant="44" id="isU-lC-ATc"/>
+                            <constraint firstItem="cVz-Ha-FFs" firstAttribute="bottom" secondItem="vjh-5x-bHf" secondAttribute="bottom" constant="49" id="r3b-1e-0oO"/>
+                            <constraint firstItem="gJw-6f-pCD" firstAttribute="bottom" secondItem="cVz-Ha-FFs" secondAttribute="bottom" constant="-364" id="rHO-uM-cSm"/>
+                            <constraint firstItem="vjh-5x-bHf" firstAttribute="centerX" secondItem="gJw-6f-pCD" secondAttribute="centerX" id="s3C-Na-E6A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cVz-Ha-FFs"/>
                     </view>
                     <connections>
                         <outlet property="detailLabel" destination="gJw-6f-pCD" id="jeS-y3-DFx"/>
+                        <outlet property="moreCommitsButton" destination="vjh-5x-bHf" id="Jmf-fk-orB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKI-8T-tkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2097" y="30"/>
+            <point key="canvasLocation" x="2096.8000000000002" y="29.23538230884558"/>
+        </scene>
+        <!--Author Commits List View Controller-->
+        <scene sceneID="4fQ-dy-c9f">
+            <objects>
+                <tableViewController storyboardIdentifier="Author Commits List" id="LLc-zj-fzo" customClass="AuthorCommitsListViewController" customModule="Github_Commits" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HYr-mJ-ui7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Commit Cell" textLabel="eqk-wB-0Tr" detailTextLabel="vqd-uy-PGe" style="IBUITableViewCellStyleSubtitle" id="nfj-i6-g3c">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nfj-i6-g3c" id="ElN-zF-5yy">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eqk-wB-0Tr">
+                                            <rect key="frame" x="20" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vqd-uy-PGe">
+                                            <rect key="frame" x="20" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LLc-zj-fzo" id="M7v-Y1-fiL"/>
+                            <outlet property="delegate" destination="LLc-zj-fzo" id="M3T-wG-j4q"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7EY-Bz-Hy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2096" y="778"/>
         </scene>
     </scenes>
 </document>

@@ -13,10 +13,7 @@ class HomeViewController: UITableViewController {
     
     // MARK: - Instance Properties
     
-    let cellReuseIdentifier = "Commit Cell"
-    let detailViewIdentifier = "Commit Detail"
-    
-    var dataContainer: NSPersistentContainer!
+    var persistentDataContainer: NSPersistentContainer!
     lazy var fetchedResultsController = makeFetchedResultsController()
     
     var currentCommitFilter: NSPredicate? = Commit.Predicate.allCommits {
@@ -29,7 +26,7 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard dataContainer != nil else {
+        guard persistentDataContainer != nil else {
             fatalError("HomeViewController needs a persistent data container")
         }
         
@@ -67,7 +64,7 @@ extension HomeViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardID.TableCell.commit, for: indexPath)
         let commit = fetchedResultsController.object(at: indexPath)
         
         cell.textLabel?.text = commit.message
@@ -78,10 +75,11 @@ extension HomeViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let detailViewController = storyboard?
-            .instantiateViewController(withIdentifier: detailViewIdentifier)
+            .instantiateViewController(withIdentifier: StoryboardID.ViewController.commitDetail)
             as? CommitDetailViewController
         {
             detailViewController.commit = fetchedResultsController.object(at: indexPath)
+            detailViewController.persistentDataContainer = persistentDataContainer
             navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
@@ -90,7 +88,7 @@ extension HomeViewController {
         if editingStyle == .delete {
             let commit = fetchedResultsController.object(at: indexPath)
             
-            dataContainer.viewContext.delete(commit)
+            persistentDataContainer.viewContext.delete(commit)
             saveDataContext()
         }
     }
@@ -103,7 +101,7 @@ private extension HomeViewController {
     
     func fetchCommits() {
         let newestCommitDateString = ISO8601DateFormatter()
-            .string(from: Commit.newestCommitDate(in: dataContainer.viewContext))
+            .string(from: Commit.newestCommitDate(in: persistentDataContainer.viewContext))
         
         let urlString = "\(GithubAPI.commits)?" +
             "\(GithubAPI.QueryParams.perPage)=1000&" +
@@ -127,7 +125,7 @@ private extension HomeViewController {
             fatalError("Failed to retreive managedObjectContext coding key")
         }
         
-        let managedObjectContext = dataContainer.viewContext
+        let managedObjectContext = persistentDataContainer.viewContext
         let decoder = JSONDecoder()
         
         decoder.userInfo[mangedObjectContextKey] = managedObjectContext
@@ -157,11 +155,11 @@ private extension HomeViewController {
     
     
     func saveDataContext() {
-        guard dataContainer.viewContext.hasChanges else { return }
+        guard persistentDataContainer.viewContext.hasChanges else { return }
         
         do {
             print("Saving persistent data container view context")
-            try dataContainer.viewContext.save()
+            try persistentDataContainer.viewContext.save()
         } catch {
             showError(error, title: "Error while saving persistent data store")
         }
@@ -177,7 +175,7 @@ private extension HomeViewController {
         
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: dataContainer.viewContext,
+            managedObjectContext: persistentDataContainer.viewContext,
             sectionNameKeyPath: "author.name",
             cacheName: nil
         )

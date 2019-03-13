@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupRootVC() {
         if let homeViewController = window?.rootViewController?.children.first as? HomeViewController {
-            homeViewController.dataContainer = persistentContainer
+            homeViewController.persistentDataContainer = persistentContainer
         }
     }
 }

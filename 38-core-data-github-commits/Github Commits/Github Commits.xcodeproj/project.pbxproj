@@ -21,6 +21,8 @@
 		F3A237842233C30200986BB6 /* GithubCommits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3A237822233C30200986BB6 /* GithubCommits.xcdatamodeld */; };
 		F3E26D5B2238C78800AE182D /* Author+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E26D592238C78800AE182D /* Author+CoreDataProperties.swift */; };
 		F3E26D5C2238C78800AE182D /* Author+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E26D5A2238C78800AE182D /* Author+CoreDataClass.swift */; };
+		F3E26D5F2238E32600AE182D /* AuthorCommitsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E26D5E2238E32600AE182D /* AuthorCommitsListViewController.swift */; };
+		F3E26D612238E84500AE182D /* StoryboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E26D602238E84500AE182D /* StoryboardID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		F3A237832233C30200986BB6 /* GithubCommits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GithubCommits.xcdatamodel; sourceTree = "<group>"; };
 		F3E26D592238C78800AE182D /* Author+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F3E26D5A2238C78800AE182D /* Author+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F3E26D5E2238E32600AE182D /* AuthorCommitsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorCommitsListViewController.swift; sourceTree = "<group>"; };
+		F3E26D602238E84500AE182D /* StoryboardID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			children = (
 				F35ABF902234BDE000206C90 /* CodingUserInfoKey+Util.swift */,
 				F35ABFD12235548400206C90 /* UIViewController+Util.swift */,
+				F3E26D602238E84500AE182D /* StoryboardID.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 		F3A237712233870A00986BB6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F3E26D5D2238E2F800AE182D /* Author */,
 				F3A2377B2233B28700986BB6 /* Commit */,
 				F3A237722233870A00986BB6 /* Home */,
 			);
@@ -154,6 +160,14 @@
 				F3A237822233C30200986BB6 /* GithubCommits.xcdatamodeld */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F3E26D5D2238E2F800AE182D /* Author */ = {
+			isa = PBXGroup;
+			children = (
+				F3E26D5E2238E32600AE182D /* AuthorCommitsListViewController.swift */,
+			);
+			path = Author;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +246,9 @@
 				F3A237782233870A00986BB6 /* AppDelegate.swift in Sources */,
 				F35ABF8B2233E65F00206C90 /* Commit+CoreDataClass.swift in Sources */,
 				F3A2377A2233870A00986BB6 /* HomeViewController.swift in Sources */,
+				F3E26D612238E84500AE182D /* StoryboardID.swift in Sources */,
 				F35ABF8C2233E65F00206C90 /* Commit+CoreDataProperties.swift in Sources */,
+				F3E26D5F2238E32600AE182D /* AuthorCommitsListViewController.swift in Sources */,
 				F35ABFD22235548400206C90 /* UIViewController+Util.swift in Sources */,
 				F3E26D5C2238C78800AE182D /* Author+CoreDataClass.swift in Sources */,
 				F35ABF8E2233F5CE00206C90 /* GithubAPI.swift in Sources */,
