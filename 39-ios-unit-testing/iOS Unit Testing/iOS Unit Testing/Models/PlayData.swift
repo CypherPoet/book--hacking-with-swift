@@ -10,20 +10,40 @@ import Foundation
 
 class PlayData {
     private lazy var pathToWords = Bundle.main.path(forResource: "plays", ofType: "txt")
-
-    var wordCounts: NSCountedSet!
-
+    
+    var allWords: [String] = []
+    var wordsSortedByCount: [String] = []
+    private(set) var filteredWords: [String] = []
+    
+    var wordCounts: NSCountedSet! {
+        didSet {
+            wordCountsChanged()
+        }
+    }
+    
+    
     init() {
         loadWords()
+        filteredWords = allWords
     }
 }
+
+
+// MARK: - Core Methods
 
 extension PlayData {
-    var allWords: [String] {
-        return wordCounts.allObjects as! [String]
+    func applyCustomFilter(_ predicate: (_ word: String) -> Bool) {
+        filteredWords = allWords.filter(predicate)
+    }
+    
+    func setCountThreshold(_ minimumCount: Int) {
+        filteredWords = allWords.filter { wordCounts.count(for: $0) >= minimumCount }
     }
 }
 
+
+
+// MARK: - Private Helper Methods
 
 private extension PlayData {
     func loadWords() {
@@ -43,6 +63,14 @@ private extension PlayData {
         } catch {
             print("Error while parsing plays file:\n\n\(error.localizedDescription)")
         }
+    }
+    
+    func wordCountsChanged() {
+        allWords = wordCounts.allObjects as! [String]
+        
+        wordsSortedByCount = allWords.sorted(by: {
+            wordCounts.count(for: $0) > wordCounts.count(for: $1)
+        })
     }
 }
 

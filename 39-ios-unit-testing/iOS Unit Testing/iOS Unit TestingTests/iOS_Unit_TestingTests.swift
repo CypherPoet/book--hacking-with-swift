@@ -43,6 +43,23 @@ class iOS_Unit_TestingTests: XCTestCase {
             XCTAssertEqual(actual, expected, "\"\(word)\" did not have a count of \(count)")
         }
     }
+    
+    func testFilteredWords() {
+        let playData = PlayData()
+        
+        playData.applyCustomFilter({ $0.count >= 10 })
+        
+        var expected = 2047
+        var actual = playData.filteredWords.count
+        
+        XCTAssertEqual(actual, expected, "`filteredWords` did not have expeted count of \(expected)")
+        
+        playData.applyCustomFilter { $0.lowercased().contains("swift") }
+        
+        expected = 7
+        actual = playData.filteredWords.count
+        XCTAssertEqual(actual, expected, "`filteredWords` did not have expeted count of \(expected)")
+    }
 }
 
 
