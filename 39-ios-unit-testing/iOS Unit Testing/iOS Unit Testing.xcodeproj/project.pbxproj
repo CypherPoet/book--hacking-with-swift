@@ -16,6 +16,7 @@
 		F3E26DC22239414000AE182D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3E26DBC2239414000AE182D /* Assets.xcassets */; };
 		F3E26DC42239419400AE182D /* plays.txt in Resources */ = {isa = PBXBuildFile; fileRef = F3E26DC32239419400AE182D /* plays.txt */; };
 		F3E26DC62239427C00AE182D /* StoryboardID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E26DC52239427C00AE182D /* StoryboardID.swift */; };
+		F3E26DC92239443800AE182D /* PlayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E26DC82239443800AE182D /* PlayData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		F3E26DBC2239414000AE182D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3E26DC32239419400AE182D /* plays.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plays.txt; sourceTree = "<group>"; };
 		F3E26DC52239427C00AE182D /* StoryboardID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardID.swift; sourceTree = "<group>"; };
+		F3E26DC82239443800AE182D /* PlayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		F3E26D832239408F00AE182D /* iOS Unit Testing */ = {
 			isa = PBXGroup;
 			children = (
+				F3E26DC72239442300AE182D /* Models */,
 				F3E26DB82239414000AE182D /* App Start */,
 				F3E26DB22239414000AE182D /* Controllers */,
 				F3E26DBB2239414000AE182D /* Resources */,
@@ -170,6 +173,15 @@
 			);
 			path = Resources;
 			sourceTree = "<group>";
+		};
+		F3E26DC72239442300AE182D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F3E26DC82239443800AE182D /* PlayData.swift */,
+			);
+			name = Models;
+			path = "iOS Unit Testing/Models";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -304,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E26DC62239427C00AE182D /* StoryboardID.swift in Sources */,
+				F3E26DC92239443800AE182D /* PlayData.swift in Sources */,
 				F3E26DC12239414000AE182D /* AppDelegate.swift in Sources */,
 				F3E26DBD2239414000AE182D /* HomeViewController.swift in Sources */,
 			);

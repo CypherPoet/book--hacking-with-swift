@@ -10,25 +10,48 @@ import XCTest
 @testable import iOS_Unit_Testing
 
 class iOS_Unit_TestingTests: XCTestCase {
-
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testAllWordsLoaded() {
+        let playData = PlayData()
+        let actual = playData.allWords.count
+        let expected = 384001
+        
+        XCTAssertEqual(actual, expected, "`allWords` count was not \(expected)")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testCorrectWordCounts() {
+        let wordCounts = [
+            "amendment": 2,
+            "hath": 732,
+            "great": 339
+        ]
+        
+        let playdata = PlayData()
+        
+        for (word, count) in wordCounts {
+            let actual = playdata.wordCounts.count(for: word)
+            let expected = count
+            
+            XCTAssertEqual(actual, expected, "\"\(word)\" did not have a count of \(count)")
         }
     }
+}
 
+
+// MARK: - Performance Tests
+
+extension iOS_Unit_TestingTests {
+    func testWordLoading() {
+        measure {
+            _ = PlayData()
+        }
+    }
 }
