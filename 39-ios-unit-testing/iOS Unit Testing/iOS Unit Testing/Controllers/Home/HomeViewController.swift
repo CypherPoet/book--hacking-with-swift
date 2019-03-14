@@ -10,7 +10,10 @@ import UIKit
 
 class HomeViewController: UITableViewController {
     lazy var playData = PlayData()
-    lazy var words = playData.filteredWords
+    
+    var words: [String] {
+        return playData.filteredWords
+    }
 }
 
 
@@ -42,6 +45,33 @@ extension HomeViewController {
         cell.detailTextLabel?.text = "\(playData.wordCounts.count(for: word)) counts"
         
         return cell
+    }
+}
+
+
+// MARK: - Event handling
+
+extension HomeViewController {
+    @IBAction func filterButtonTapped(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Show words that include:", message: nil, preferredStyle: .alert)
+        
+        alertController.addTextField()
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak alertController] _ in
+            if
+                let text = alertController?.textFields?.first?.text,
+                !text.isEmpty
+            {
+                self?.playData.applyCustomFilter({ $0.lowercased().contains(text) })
+            } else {
+                self?.playData.setCountThreshold(0)
+            }
+            
+            self?.tableView.reloadData()
+        })
+        
+        present(alertController, animated: true)
     }
 }
 

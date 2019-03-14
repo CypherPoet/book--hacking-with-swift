@@ -48,7 +48,13 @@
                             <outlet property="delegate" destination="Y6G-aC-2EF" id="0sN-v9-vdj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="📜 Shakespeare Word Count" id="Nme-Fq-hmC"/>
+                    <navigationItem key="navigationItem" title="📜 Shakespeare Word Count" id="Nme-Fq-hmC">
+                        <barButtonItem key="rightBarButtonItem" title="🎯 Filter" id="pgO-Dm-xcA">
+                            <connections>
+                                <action selector="filterButtonTapped:" destination="Y6G-aC-2EF" id="FAH-P7-N4i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCe-Dq-tcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
