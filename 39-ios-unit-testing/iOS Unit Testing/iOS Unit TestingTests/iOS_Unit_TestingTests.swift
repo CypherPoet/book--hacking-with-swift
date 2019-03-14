@@ -22,7 +22,7 @@ class iOS_Unit_TestingTests: XCTestCase {
     func testAllWordsLoaded() {
         let playData = PlayData()
         let actual = playData.allWords.count
-        let expected = 384001
+        let expected = 18440
         
         XCTAssertEqual(actual, expected, "`allWords` count was not \(expected)")
     }
