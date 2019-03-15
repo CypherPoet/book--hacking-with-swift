@@ -26,9 +26,28 @@ class iOS_Unit_TestingUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testInitialCellCount() {
+        let tables = XCUIApplication().tables
+        let expected = 7
+        let actual = tables.cells.count
+        
+        XCTAssertEqual(actual, expected, "cell count did not match \(expected)")
+    }
+    
+    
+    func testFilteringDialog() {
+        let app = XCUIApplication()
+        app.navigationBars["📜 Shakespeare Word Count"].buttons["🎯 Filter"].tap()
+        
+        let alertDialog = app.alerts["Show words that include:"]
+
+        alertDialog.textFields.element.typeText("truth")
+        alertDialog.buttons["OK"].tap()
+        
+        let expected = 4
+        let actual = app.tables.cells.count
+        
+        XCTAssertEqual(actual, expected, "table view did not contain \(expected) cells")
     }
 
 }
