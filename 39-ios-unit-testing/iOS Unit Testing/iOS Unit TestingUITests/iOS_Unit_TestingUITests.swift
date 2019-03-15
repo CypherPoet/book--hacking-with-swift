@@ -35,7 +35,7 @@ class iOS_Unit_TestingUITests: XCTestCase {
     }
     
     
-    func testFilteringDialog() {
+    func testFilteringOnWord() {
         let app = XCUIApplication()
         app.navigationBars["📜 Shakespeare Word Count"].buttons["🎯 Filter"].tap()
         
@@ -48,6 +48,17 @@ class iOS_Unit_TestingUITests: XCTestCase {
         let actual = app.tables.cells.count
         
         XCTAssertEqual(actual, expected, "table view did not contain \(expected) cells")
+    }
+    
+    func testFilteringWithEmptyStringInput() {
+        let app = XCUIApplication()
+        app.navigationBars["📜 Shakespeare Word Count"].buttons["🎯 Filter"].tap()
+        
+        let alertDialog = app.alerts["Show words that include:"]
+        
+        alertDialog.buttons["OK"].tap()
+        
+        XCTAssertNotNil(app.tables.cells, "table view should not filter items when empty string is used")
     }
 
 }
