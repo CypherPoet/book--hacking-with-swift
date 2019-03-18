@@ -66,7 +66,7 @@ class iOS_Unit_TestingTests: XCTestCase {
 // MARK: - Performance Tests
 
 extension iOS_Unit_TestingTests {
-    func testWordLoading() {
+    func testWordLoadingPerformance() {
         measure {
             _ = PlayData()
         }

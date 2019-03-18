@@ -1,4 +1,4 @@
-#### My project portfolio from following along with the book [_Hacking With Swift_](https://www.hackingwithswift.com/read).
+## Project Portfolio
 
 ![Shield.io MIT License Shield](https://img.shields.io/github/license/mashape/apistatus.svg)
 
